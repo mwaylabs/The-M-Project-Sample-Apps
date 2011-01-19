@@ -54,7 +54,7 @@ KitchenSink.DataRequestSampleController = M.Controller.extend({
             response = '';
             _.each(data.results, function(res) {
                 response += res.created_at + '\n';
-                response += '<img src="' + res.profile_image_url +  '"/img><span class="twitter_user_name">' + res.from_user + '</span>: ' + res.text + '\n\n';
+                response += '<img class="twitter_pic" src="' + res.profile_image_url +  '" /><span class="twitter_user_name">' + res.from_user + '</span>: ' + res.text + '\n\n';
             });
             response = response.substring(0,response.length - 2); // delete last two \n
         }

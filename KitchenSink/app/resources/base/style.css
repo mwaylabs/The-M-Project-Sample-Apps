@@ -184,3 +184,8 @@ div.myToolbar2 h1.ui-title {
     font-weight:bold;
     color:#000;
 }
+
+.twitter_pic {
+    width: 48px;
+    height: 48px;
+}
