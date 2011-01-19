@@ -7,6 +7,10 @@
         "proxyAlias": "twitter",
         "requestMethod": "GET",
         "hostPort": "80"}
-    ] 
+    ],
+    "supportedLanguages": [
+        "en_us",
+        "de_de"
+    ]
              
 }
