@@ -1,0 +1,10 @@
+{
+    "name" : "Todos2",
+    "version": "v0.0.1",
+    "minify": false,
+    "supportedLanguages": [
+        "en_us",
+        "de_de"
+    ]
+             
+}
