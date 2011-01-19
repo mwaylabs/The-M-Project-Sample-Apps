@@ -1,0 +1,73 @@
+{
+
+    "B": [
+
+        {
+            "firstName": "Holger",
+            "lastName": "Badstuber"
+        },
+
+        {
+            "firstName": "Michael",
+            "lastName": "Ballack"
+        },
+
+        {
+            "firstName": "Jérôme",
+            "lastName": "Boateng"
+        }
+
+    ],
+
+    "F": [
+
+        {
+            "firstName": "Arne",
+            "lastName": "Friedrich"
+        },
+
+        {
+            "firstName": "Torsten",
+            "lastName": "Frings"
+        },
+
+        {
+            "firstName": "Clemens",
+            "lastName": "Fritz"
+        }
+
+    ],
+
+    "H": [
+
+        {
+            "firstName": "Alexander",
+            "lastName": "Henka"
+        }
+
+    ],
+
+    "L": [
+
+        {
+            "firstName": "Dominik",
+            "lastName": "Laubach"
+        },
+
+        {
+            "firstName": "Phillip",
+            "lastName": "Lahm"
+        }
+
+    ],
+
+    "W": [
+
+        {
+            "firstName": "Sebastian",
+            "lastName": "Werler"
+        }
+
+    ]
+
+}
