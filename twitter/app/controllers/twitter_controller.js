@@ -26,7 +26,7 @@ Twitter.TwitterController = M.Controller.extend({
         M.LoaderView.show();
 
         M.Request.init({
-            url: 'twitter/search.json?q=' + searchString + '&rpp=10',
+            url: '/twitter/search.json?q=' + searchString + '&rpp=10',
             isJSON: YES,
             beforeSend: function(req) {
                 //...
@@ -66,7 +66,7 @@ Twitter.TwitterController = M.Controller.extend({
         M.LoaderView.show();
 
         M.Request.init({
-            url: 'twitter/search.json?from=' + username + '&rpp=10',
+            url: '/twitter/search.json?from=' + username + '&rpp=10',
             isJSON: YES,
             beforeSend: function(req) {
                 //...
