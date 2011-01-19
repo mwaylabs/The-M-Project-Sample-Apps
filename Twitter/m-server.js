@@ -12,6 +12,6 @@ app.loadTheMProject();
 
 app.build(function (options) {
     app.prepareForServer(function (opt){
-        server.run("twitter");
+        server.run("Twitter");
     })
 });
