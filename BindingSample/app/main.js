@@ -11,10 +11,10 @@ BindingSample.app = M.Application.design({
 
     page: M.PageView.design({
 
-        childViews: 'header content footer',
+        childViews: 'header content',
 
         header: M.ToolbarView.design({
-            value: 'HEADER',
+            value: 'Binding Sample',
             anchorLocation : M.TOP
         }),
 
@@ -65,12 +65,7 @@ BindingSample.app = M.Application.design({
                 value: '&#160;'
 
             })
-        }),
-
-        footer: M.ToolbarView.design({
-            value: 'FOOTER',
-            anchorLocation: M.BOTTOM
         })
-        })
+    })
 
 });
