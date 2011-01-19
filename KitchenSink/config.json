@@ -1,0 +1,12 @@
+{
+    "name" : "KitchenSink",
+    "version": "v0.0.1",
+    "minify": false,
+    "proxies":[
+        {"host":"search.twitter.com",
+        "proxyAlias": "twitter",
+        "requestMethod": "GET",
+        "hostPort": "80"}
+    ] 
+             
+}
