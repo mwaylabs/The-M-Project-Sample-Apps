@@ -4,7 +4,8 @@
     "minify": false,
     "supportedLanguages": [
         "en_us",
-        "de_de"
+        "de_de",
+        "es_es"
     ]
              
 }

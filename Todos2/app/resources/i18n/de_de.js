@@ -30,6 +30,8 @@ M.I18N.de_de = {
 
     "delete": "Löschen",
 
+    "delete_": "Löschen?",
+
     "due_date_format": "dd.mm.yyyy HH:MM",
 
     "settings": "Einstellungen",
@@ -46,6 +48,8 @@ M.I18N.de_de = {
 
     "contact": "Kontakt",
 
-    "contactText": "Für weitere Informationen bezüglich dieser Anwendung oder 'The-M-Project' kontaktieren Sie bitte die M-Way Solutions GmbH."
+    "contactText": "Für weitere Informationen bezüglich dieser Anwendung oder 'The-M-Project' kontaktieren Sie bitte die M-Way Solutions GmbH.",
+
+    "confirm": "Möchten Sie diesen Eintrag wirklich löschen?"
 
 }

@@ -30,6 +30,8 @@ M.I18N.en_us = {
 
     "delete": "Delete",
 
+    "delete_": "Delete?",
+
     "due_date_format": "mm/dd/yyyy HH:MM",
 
     "settings": "Settings",
@@ -46,6 +48,8 @@ M.I18N.en_us = {
 
     "contact": "Contact",
 
-    "contactText": "For further information concerning this app or 'The-M-Project' please contact the M-Way Solutions GmbH."
+    "contactText": "For further information concerning this app or 'The-M-Project' please contact the M-Way Solutions GmbH.",
+
+    "confirm": "Do you really want to delete this item?"
 
 }

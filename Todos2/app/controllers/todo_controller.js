@@ -115,8 +115,8 @@ Todos2.TodoController = M.Controller.extend({
         this.noteToDelete = this.selId;
 
         M.DialogView.confirm({
-            title: 'Delete?',
-            message: 'Do you really want to delete this item?',
+            title: M.I18N.l('delete_'),
+            message: M.I18N.l('confirm'),
             onOk: {
                 target: this,
                 action: 'doDeleteFromSubView'
