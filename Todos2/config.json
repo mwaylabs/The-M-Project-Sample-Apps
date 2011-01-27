@@ -5,7 +5,11 @@
     "supportedLanguages": [
         "en_us",
         "de_de",
-        "es_es"
+        "es_es",
+        "pt_br",
+        "pt_pt",
+        "zh_cn",
+        "zh_tw"
     ]
              
 }

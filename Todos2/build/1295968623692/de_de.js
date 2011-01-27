@@ -40,15 +40,9 @@ M.I18N.de_de = {
 
     "german": "Deutsch",
 
-    "english": "English",
+    "english": "Englisch",
 
-    "spanish": "Español",
-
-    "portuguese": "Português",
-
-    "chinese-simple": "简体中文",
-
-    "chinese-traditional": "繁體中文",
+    "spanish": "Spanisch",
 
     "days": "Tag(e)",
 

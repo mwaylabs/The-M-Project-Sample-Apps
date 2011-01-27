@@ -1,0 +1,55 @@
+CACHE MANIFEST
+#Application:Todos2, Version:v0.0.1, Timestamp:1296146946924
+
+
+# Explicitly cached entries
+CACHE:
+/index.html
+/de_de.js
+/en_us.js
+/es_es.js
+/pt_br.js
+/pt_pt.js
+/zh_cn.js
+/zh_tw.js
+/jquery.mobile-1.0a3pre.min.js
+/underscore-min.js
+/jquery-1.4.4.min.js
+/theme/style.css
+/theme/images/apple-touch-icon.png
+/theme/images/loader.gif
+/theme/images/mway_logo.png
+/theme/images/notepad.png
+/theme/images/settings.png
+/theme/images/todo.png
+/ui.js
+/core.js
+/theme/jquery.mobile-1.0a3pre.min.css
+/theme/images/ajax-loader.gif
+/theme/images/ajax-loader.png
+/theme/images/form-check-off.png
+/theme/images/form-check-on.png
+/theme/images/form-radio-off.png
+/theme/images/form-radio-on.png
+/theme/images/icon-arrow-white-down.png
+/theme/images/icon-arrow-white-left.png
+/theme/images/icon-arrow-white-right.png
+/theme/images/icon-arrow-white-up.png
+/theme/images/icon-delete.png
+/theme/images/icon-minus-white.png
+/theme/images/icon-plus-white.png
+/theme/images/icon-search-black.png
+/theme/images/icons-18-black.png
+/theme/images/icons-18-white.png
+/theme/images/icons-36-black.png
+/theme/images/icons-36-white.png
+/Todos2_App.js
+
+
+# Resources that require the device/user to be online.
+NETWORK:
+*
+
+
+# Fallback resources 
+FALLBACK:

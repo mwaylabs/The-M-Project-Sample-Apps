@@ -38,17 +38,11 @@ M.I18N.es_es = {
 
     "language": "Idioma",
 
-    "german": "Deutsch",
+    "german": "Aleman",
 
-    "english": "English",
+    "english": "Ingles",
 
     "spanish": "Español",
-
-    "portuguese": "Português",
-
-    "chinese-simple": "简体中文",
-
-    "chinese-traditional": "繁體中文",
 
     "days": "dia(s)",
 
