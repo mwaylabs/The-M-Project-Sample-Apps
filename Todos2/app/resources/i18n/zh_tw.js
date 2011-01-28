@@ -50,6 +50,10 @@ M.I18N.zh_tw = {
 
     "chinese-traditional": "繁體中文",
 
+    "russian": "Русский",
+
+    "italian": "Italiano",
+
     "days": "天數",
 
     "contact": "聯繫人",

@@ -50,6 +50,10 @@ M.I18N.de_de = {
 
     "chinese-traditional": "繁體中文",
 
+    "russian": "Русский",
+
+    "italian": "Italiano",
+
     "days": "Tag(e)",
 
     "contact": "Kontakt",

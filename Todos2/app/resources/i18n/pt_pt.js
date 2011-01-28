@@ -1,67 +1,71 @@
 M.I18N.pt_pt = {
 
-"tab_list": "ToDo List",
+    "tab_list": "ToDo List",
 
-"tab_new": "Novo Item",
+    "tab_new": "Novo Item",
 
-"tab_settings": "Configurações",
+    "tab_settings": "Configurações",
 
-"edit": "Editar",
+    "edit": "Editar",
 
-"add": "Adicionar",
+    "add": "Adicionar",
 
-"save": "Salvar",
+    "save": "Salvar",
 
-"title": "Título",
+    "title": "Título",
 
-"details": "Detalhes",
+    "details": "Detalhes",
 
-"due_date": "Data Limite",
+    "due_date": "Data Limite",
 
-"error": "Erro",
+    "error": "Erro",
 
-"title_req": "'Título' deve ser preenchido.",
+    "title_req": "'Título' deve ser preenchido.",
 
-"details_req": "'Detalhes' deve ser preenchido.",
+    "details_req": "'Detalhes' deve ser preenchido.",
 
-"due_date_req": "'Data Limite' é obrigatório.",
+    "due_date_req": "'Data Limite' é obrigatório.",
 
-"due_date_invalid": "'Data Limite' inválida.",
+    "due_date_invalid": "'Data Limite' inválida.",
 
-"delete": "Deletar",
+    "delete": "Deletar",
 
-"delete_": "Deletar?",
+    "delete_": "Deletar?",
 
-"due_date_format": "mm/dd/aaaa HH:MM",
+    "due_date_format": "mm/dd/aaaa HH:MM",
 
-"settings": "Configurações",
+    "settings": "Configurações",
 
-"language": "Idioma",
+    "language": "Idioma",
 
-"german": "Deutsch",
+    "german": "Deutsch",
 
-"english": "English",
+    "english": "English",
 
-"spanish": "Español",
+    "spanish": "Español",
 
-"portuguese": "Português",
+    "portuguese": "Português",
 
-"chinese-simple": "简体中文",
+    "chinese-simple": "简体中文",
 
-"chinese-traditional": "繁體中文",
+    "chinese-traditional": "繁體中文",
 
-"days": "dia(s)",
+    "russian": "Русский",
 
-"contact": "Contato",
+    "italian": "Italiano",
 
-"contactText": "Para mais informações sobre este aplicativo ou 'The-M-Project', entre em contato com M-Way Solutions GmbH.",
+    "days": "dia(s)",
 
-"confirm": "Você deseja deletar este item?",
+    "contact": "Contato",
 
-"ok": "Ok",
+    "contactText": "Para mais informações sobre este aplicativo ou 'The-M-Project', entre em contato com M-Way Solutions GmbH.",
 
-"cancel": "Cancelar",
+    "confirm": "Você deseja deletar este item?",
 
-"error": "Erro"
+    "ok": "Ok",
+
+    "cancel": "Cancelar",
+
+    "error": "Erro"
 
 }
