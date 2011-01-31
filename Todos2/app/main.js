@@ -320,7 +320,7 @@ Todos2.app = M.Application.design({
 
                         langSelection: M.SelectionListView.design({
 
-                            childViews: 'item1 item2 item3 item4 item5 item6 item7 item8',
+                            childViews: 'item1 item2 item3 item4 item5 item6 item7 item8 item9 item10',
 
                             selectionMode: M.SINGLE_SELECTION,
 
@@ -386,6 +386,20 @@ Todos2.app = M.Application.design({
 
                                 label: M.I18N.l('italian'),
                                 value: 'it_it'
+
+                            }),
+
+                            item9: M.SelectionListItemView.design({
+
+                                label: M.I18N.l('polish'),
+                                value: 'pl_pl'
+
+                            }),
+
+                            item10: M.SelectionListItemView.design({
+
+                                label: M.I18N.l('dutch'),
+                                value: 'nl_nl'
 
                             })
 

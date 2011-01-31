@@ -54,6 +54,10 @@ M.I18N.zh_cn = {
 
     "italian": "Italiano",
 
+    "polish": "Polski",
+
+    "dutch": "Nederlands",
+
     "days": "天数",
 
     "contact": "联系人",

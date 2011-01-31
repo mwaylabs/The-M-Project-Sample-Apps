@@ -53,6 +53,10 @@ M.I18N.ru_ru = {
     "russian": "Русский",
 
     "italian": "Italiano",
+
+    "polish": "Polski",
+
+    "dutch": "Nederlands",
     
     "days": "дней",
 

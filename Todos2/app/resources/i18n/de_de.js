@@ -54,6 +54,10 @@ M.I18N.de_de = {
 
     "italian": "Italiano",
 
+    "polish": "Polski",
+
+    "dutch": "Nederlands",
+
     "days": "Tag(e)",
 
     "contact": "Kontakt",
