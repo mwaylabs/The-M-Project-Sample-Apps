@@ -58,6 +58,8 @@ M.I18N.it_it = {
 
     "dutch": "Nederlands",
 
+    "slovakian": "Slovenské",
+
     "days": "giorno(i)",
 
     "contact": "Contatto",

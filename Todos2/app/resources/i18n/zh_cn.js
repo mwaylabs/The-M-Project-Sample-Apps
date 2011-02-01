@@ -58,6 +58,8 @@ M.I18N.zh_cn = {
 
     "dutch": "Nederlands",
 
+    "slovakian": "Slovenské",
+
     "days": "天数",
 
     "contact": "联系人",
