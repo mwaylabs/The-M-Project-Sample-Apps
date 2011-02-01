@@ -1,0 +1,44 @@
+CACHE MANIFEST
+#Application:ChartingSample, Version:v0.0.1, Timestamp:1296564455463
+
+
+# Explicitly cached entries
+CACHE:
+theme/style.css
+jquery-1.4.4.min.js
+jquery.mobile-1.0a3pre.min.js
+underscore-min.js
+g.pie-min.js
+g.raphael-min.js
+ui.js
+ChartingSample_App.js
+core.js
+theme/jquery.mobile-1.0a3pre.min.css
+theme/images/ajax-loader.gif
+theme/images/ajax-loader.png
+theme/images/form-check-off.png
+theme/images/form-check-on.png
+theme/images/form-radio-off.png
+theme/images/form-radio-on.png
+theme/images/icon-arrow-white-down.png
+theme/images/icon-arrow-white-left.png
+theme/images/icon-arrow-white-right.png
+theme/images/icon-arrow-white-up.png
+theme/images/icon-delete.png
+theme/images/icon-minus-white.png
+theme/images/icon-plus-white.png
+theme/images/icon-search-black.png
+theme/images/icons-18-black.png
+theme/images/icons-18-white.png
+theme/images/icons-36-black.png
+theme/images/icons-36-white.png
+
+
+# Resources that require the device/user to be online.
+NETWORK:
+raphael-min.js
+*
+
+
+# Fallback resources 
+FALLBACK:
