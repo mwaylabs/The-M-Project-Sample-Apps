@@ -15,4 +15,4 @@ KitchenSink.Task = M.Model.create({
         isRequired: YES
     })
 
-}, M.LocalStorageProvider);
+}, M.DataProviderLocalStorage);
