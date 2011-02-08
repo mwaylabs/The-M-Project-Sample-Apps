@@ -9,6 +9,8 @@ var SelectionListSample  = SelectionListSample || {};
 
 SelectionListSample.app = M.Application.design({
 
+    entryPage: 'singleSelection',
+
     singleSelection: SelectionListSample.SingleSelectionPage,
 
     multipleSelection: SelectionListSample.MultipleSelectionPage,

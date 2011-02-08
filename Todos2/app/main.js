@@ -328,6 +328,8 @@ Todos2.app = M.Application.design({
 
                             name: 'language',
 
+                            //applyTheme: NO,
+
                             onSelect: {
                                 target: Todos2.LanguageController,
                                 action: 'changeLanguage'
