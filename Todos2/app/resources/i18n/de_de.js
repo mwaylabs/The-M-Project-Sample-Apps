@@ -58,7 +58,7 @@ M.I18N.de_de = {
 
     "dutch": "Nederlands",
 
-    "slovakian": "Slovenské",
+    "slovakian": "Slovenský",
 
     "days": "Tag(e)",
 

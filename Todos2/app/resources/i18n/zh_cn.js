@@ -58,7 +58,7 @@ M.I18N.zh_cn = {
 
     "dutch": "Nederlands",
 
-    "slovakian": "Slovenské",
+    "slovakian": "Slovenský",
 
     "days": "天数",
 

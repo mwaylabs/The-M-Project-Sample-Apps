@@ -1,36 +1,36 @@
 M.I18N.sk_sk = {
 
-    "tab_list": "ToDo Zoznam",
+    "tab_list": "Zoznam úloh",
 
     "tab_new": "Nová položka",
 
     "tab_settings": "Nastavenia",
 
-    "edit": "Uprav",
+    "edit": "Modifikovať",
 
-    "add": "Pridaj",
+    "add": "Pridať",
 
-    "save": "Ulož",
+    "save": "Uložiť",
 
-    "title": "Názov",
+    "title": "Titulok",
 
-    "details": "Detajly",
+    "details": "Detaily",
 
-    "due_date": "Do casu",
+    "due_date": "Termín",
 
     "error": "Chyba",
 
-    "title_req": "'Názov' je povinný.",
+    "title_req": "‘Titulok’ je povinný.",
 
-    "details_req": "'Detajly' sú povinné.",
+    "details_req": "‘Detaily’ sú povinné.",
 
-    "due_date_req": "'Do casu' je povinný.",
+    "due_date_req": "‘Termín’ je povinný.",
 
-    "due_date_invalid": "'Do casu' je neplatný.",
+    "due_date_invalid": "‘Termín’ je chybný.",
 
-    "delete": "Zmaž",
+    "delete": "Zmazať",
 
-    "delete_": "Zmazat?",
+    "delete_": "Zmazať?",
 
     "due_date_format": "mm/dd/yyyy HH:MM",
 
@@ -58,19 +58,19 @@ M.I18N.sk_sk = {
 
     "dutch": "Nederlands",
 
-    "slovakian": "Slovenské",
+    "slovakian": "Slovenský",
 
-    "days": "dní",
+    "days": "deň(dni)",
 
     "contact": "Kontakt",
 
-    "contactText": "Pre dalšie informácie o applikácii alebo 'The-M-Project' prosím kontaktujte M-Way Solutions GmbH.",
+    "contactText": "Pre ďalšie informácie v súvislosti s touto aplikáciou alebo s ‘The-M-Project’ prosím kontaktujte M-Way Solutions GmbH.",
 
-    "confirm": "Naozaj chcete zmazat túto položku ?",
+    "confirm": "Chceš skutočne zmazať túto položku ?",
 
     "ok": "Ok",
 
-    "cancel": "Zrušit",
+    "cancel": "Zrušiť",
 
     "error": "Chyba"
 
