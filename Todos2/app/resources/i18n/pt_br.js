@@ -32,7 +32,7 @@ M.I18N.pt_br = {
 
     "delete_": "Deletar?",
 
-    "due_date_format": "mm/dd/aaaa HH:MM",
+    "due_date_format": "mm/dd/yyyy HH:MM",
 
     "settings": "Configurações",
 

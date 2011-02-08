@@ -23,17 +23,7 @@
   </component>
   <component name="FileColors" enabled="true" enabledForTabs="true" />
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="main.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Todos2/app/main.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="324" column="61" selection-start="12424" selection-end="12424" vertical-scroll-proportion="0.6458967">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -47,22 +37,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/Todos2/frameworks/Mproject/modules/jquery_mobile/jquery.mobile-1.0a3.js" />
-        <option value="$PROJECT_DIR$/Todos2/frameworks/Mproject/modules/ui/page.js" />
-        <option value="$PROJECT_DIR$/Todos2/frameworks/Mproject/modules/jquery_mobile/jquery.mobile-1.0a3.min.js" />
-        <option value="$PROJECT_DIR$/Todos2/frameworks/Mproject/modules/ui/selection_list_item.js" />
-        <option value="$PROJECT_DIR$/Todos2/frameworks/Mproject/modules/ui/selection_list.js" />
-        <option value="$PROJECT_DIR$/Todos2/app/controllers/language_controller.js" />
-        <option value="$PROJECT_DIR$/Todos2/frameworks/Mproject/modules/core/foundation/event_dispatcher.js" />
-        <option value="$PROJECT_DIR$/DualbindSample/frameworks/Mproject/modules/core/foundation/view.js" />
-        <option value="$PROJECT_DIR$/DualbindSample/frameworks/Mproject/modules/core/foundation/event_dispatcher.js" />
-        <option value="$PROJECT_DIR$/DualbindSample/frameworks/Mproject/modules/ui/text_field.js" />
-        <option value="$PROJECT_DIR$/MapSample/frameworks/Mproject/modules/core/utility/location_manager.js" />
-        <option value="$PROJECT_DIR$/SelectionListSample/app/main.js" />
-        <option value="$PROJECT_DIR$/SelectionListSample/frameworks/Mproject/modules/core/foundation/application.js" />
-        <option value="$PROJECT_DIR$/SelectionListSample/frameworks/Mproject/modules/core/foundation/controller.js" />
-        <option value="$PROJECT_DIR$/Todos2/frameworks/Mproject/modules/core/foundation/controller.js" />
-        <option value="$PROJECT_DIR$/Todos2/app/main.js" />
+        <option value="$PROJECT_DIR$/MapSample/m-build.js" />
+        <option value="$PROJECT_DIR$/SelectionListSample/m-server.js" />
+        <option value="$PROJECT_DIR$/SelectionListSample/m-build.js" />
+        <option value="$PROJECT_DIR$/TabBarSample/m-server.js" />
+        <option value="$PROJECT_DIR$/TabBarSample/m-build.js" />
+        <option value="$PROJECT_DIR$/TabsButtonGroupsSample/m-server.js" />
+        <option value="$PROJECT_DIR$/TabsButtonGroupsSample/m-build.js" />
+        <option value="$PROJECT_DIR$/Todos2/m-server.js" />
+        <option value="$PROJECT_DIR$/Todos2/m-build.js" />
+        <option value="$PROJECT_DIR$/Twitter/m-server.js" />
+        <option value="$PROJECT_DIR$/Twitter/m-build.js" />
+        <option value="$PROJECT_DIR$/Todos2/app/models/note.js" />
+        <option value="$PROJECT_DIR$/Todos2/app/resources/i18n/pt_br.js" />
+        <option value="$PROJECT_DIR$/Todos2/app/resources/i18n/pt_pt.js" />
+        <option value="$PROJECT_DIR$/KitchenSink/app/models/task.js" />
+        <option value="$PROJECT_DIR$/KitchenSink/app/models/task_websql.js" />
       </list>
     </option>
   </component>
@@ -109,38 +99,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="The-M-Project-Sample-Apps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="The-M-Project-Sample-Apps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="The-M-Project-Sample-Apps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Todos2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="The-M-Project-Sample-Apps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="The-M-Project-Sample-Apps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Todos2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -195,14 +153,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1296" height="816" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1296" height="816" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19157393" sideWeight="0.0" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19157393" sideWeight="0.0" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -246,92 +204,114 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Todos2/frameworks/Mproject/modules/ui/selection_list.js">
+    <entry file="file://$PROJECT_DIR$/TabBarSample/m-build.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="367" column="62" selection-start="12516" selection-end="12516" vertical-scroll-proportion="0.40532082" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Todos2/app/controllers/language_controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="8" selection-start="375" selection-end="375" vertical-scroll-proportion="0.44189602" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Todos2/frameworks/Mproject/modules/ui/page.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="204" column="8" selection-start="6020" selection-end="6020" vertical-scroll-proportion="0.2332815" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Todos2/frameworks/Mproject/modules/core/foundation/event_dispatcher.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="130" column="67" selection-start="5597" selection-end="5597" vertical-scroll-proportion="0.53208137" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BindingSample/frameworks/Mproject/modules/core/foundation/view.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="338" column="4" selection-start="11067" selection-end="11067" vertical-scroll-proportion="0.33333334" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DualbindSample/frameworks/Mproject/modules/core/foundation/view.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="352" column="12" selection-start="11582" selection-end="11582" vertical-scroll-proportion="0.571205" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DualbindSample/frameworks/Mproject/modules/ui/text_field.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="250" column="8" selection-start="7248" selection-end="7248" vertical-scroll-proportion="1.7683882" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DualbindSample/frameworks/Mproject/modules/core/foundation/event_dispatcher.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="143" column="34" selection-start="6208" selection-end="6208" vertical-scroll-proportion="0.7183099" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MapSample/frameworks/Mproject/modules/core/utility/location.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MapSample/app/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="308" selection-end="321" vertical-scroll-proportion="0.103343464" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SelectionListSample/frameworks/Mproject/modules/core/foundation/application.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="172" column="8" selection-start="5897" selection-end="5897" vertical-scroll-proportion="0.5769829" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MapSample/frameworks/Mproject/modules/core/utility/location_manager.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="193" column="35" selection-start="4818" selection-end="4818" vertical-scroll-proportion="0.02643857">
+        <state line="4" column="38" selection-start="126" selection-end="126" vertical-scroll-proportion="0.103343464">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Todos2/frameworks/Mproject/modules/core/foundation/controller.js">
+    <entry file="file://$PROJECT_DIR$/TabsButtonGroupsSample/m-server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="98" column="185" selection-start="3767" selection-end="3767" vertical-scroll-proportion="0.31726283">
+        <state line="4" column="37" selection-start="125" selection-end="125" vertical-scroll-proportion="0.103343464">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SelectionListSample/frameworks/Mproject/modules/core/foundation/controller.js">
+    <entry file="file://$PROJECT_DIR$/TabsButtonGroupsSample/m-build.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="98" column="185" selection-start="3734" selection-end="3767" vertical-scroll-proportion="0.7138414">
+        <state line="4" column="38" selection-start="126" selection-end="126" vertical-scroll-proportion="0.103343464">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SelectionListSample/app/main.js">
+    <entry file="file://$PROJECT_DIR$/Todos2/m-server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="3" selection-start="628" selection-end="628" vertical-scroll-proportion="0.3617021">
+        <state line="4" column="37" selection-start="125" selection-end="125" vertical-scroll-proportion="0.103343464">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Todos2/m-build.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="38" selection-start="126" selection-end="126" vertical-scroll-proportion="0.103343464">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Twitter/m-server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="37" selection-start="125" selection-end="125" vertical-scroll-proportion="0.103343464">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Twitter/m-build.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="38" selection-start="126" selection-end="126" vertical-scroll-proportion="0.103343464">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DividedListSample/m-server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DividedListSample/m-build.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Todos2/app/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="324" column="61" selection-start="12424" selection-end="12424" vertical-scroll-proportion="0.6458967">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Todos2/app/models/note.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="29" selection-start="925" selection-end="925" vertical-scroll-proportion="0.56838906">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Todos2/frameworks/The-M-Project/modules/core/foundation/model.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="199" column="60" selection-start="7012" selection-end="7030" vertical-scroll-proportion="0.36084142">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Todos2/app/resources/i18n/pt_br.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="34" selection-start="591" selection-end="591" vertical-scroll-proportion="0.5349544">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Todos2/app/resources/i18n/pt_pt.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="34" selection-start="591" selection-end="591" vertical-scroll-proportion="0.4574468">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/KitchenSink/app/models/task_websql.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="23" selection-start="719" selection-end="719" vertical-scroll-proportion="0.2325228">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/KitchenSink/app/models/task.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="29" selection-start="719" selection-end="719" vertical-scroll-proportion="0.2325228">
           <folding />
         </state>
       </provider>

@@ -15,6 +15,6 @@ KitchenSink.TaskWebSql = M.Model.create({
         isRequired: YES
     })
 
-}, M.WebSqlProvider.configure({
+}, M.DataProviderWebSql.configure({
     dbName: 'KitchenSinkDB'
 }));
