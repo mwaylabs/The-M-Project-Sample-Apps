@@ -7,6 +7,8 @@
 
 var BlackBerrySample  = BlackBerrySample || {};
 
+M.Application.useTransitions = NO;
+
 BlackBerrySample.app = M.Application.design({
 
     entryPage : 'page1',
