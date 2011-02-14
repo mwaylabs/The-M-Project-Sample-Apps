@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var espresso  = require('/cygdrive/d/My Dropbox/Thesis/Development/Espresso/core/espresso').Espresso;
+var espresso  = require('../../Espresso/core/espresso').Espresso;
 
 var server = new espresso.Server(false);
 
