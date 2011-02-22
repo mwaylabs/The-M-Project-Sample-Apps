@@ -1,0 +1,84 @@
+.header {
+    font-size:1.2em;
+    color: #8a5a4b;
+}
+
+.ui-br {
+    border: 0px;
+}
+
+.firstName, .lastName {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.firstName {
+    font-weight:normal;
+}
+
+.lastName {
+    font-weight:bold;
+}
+
+.contactItem {
+
+}
+
+.ui-field-contain {
+    padding:0.5em !important;
+}
+
+.field {
+    background-color:#fff !important;
+    color:#000;
+    font-style:italic;
+    font-weight:lighter;
+    font-family:Georgia, Helvetica Neue, Arial !important;
+}
+
+.inlineField {
+    width:45% !important;
+}
+
+.inlineFieldBig {
+    width:70% !important;
+    display:inline;
+}
+
+.inlineFieldSmall {
+    width:25% !important;
+    display:inline;
+}
+
+.light {
+    color:#aaa;
+    font-style:italic;
+    font-weight:lighter;
+    font-family:Georgia, Helvetica Neue, Arial !important;
+}
+
+div.page {
+    background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0, rgb(200,200,200)),
+    color-stop(0.5, rgb(225,225,225)),
+    color-stop(1, rgb(255,255,255))
+    ) !important;
+}
+
+.portrait .ui-page {
+    min-height:100%;
+}
+
+.address {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size:0.8em;
+    font-weight:lighter;
+    color:#5b7cb2;
+    /*color:#858585;*/
+}
+
+.hidden {
+    height:0px;
+}
