@@ -8,6 +8,9 @@
 var Todos2  = Todos2 || {};
 
 Todos2.app = M.Application.design({
+    
+    entryPage: 'page1',
+
     page1: M.PageView.design({
 
                     cssClass: 'bg',

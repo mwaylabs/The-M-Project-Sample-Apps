@@ -8,7 +8,9 @@
 var DialogSample  = DialogSample || {};
 
 DialogSample.app = M.Application.design({
-
+    
+    entryPage: 'page',
+    
     page: M.PageView.design({
 
         childViews: 'header content',

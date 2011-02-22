@@ -1,4 +1,4 @@
-"manifest" : [
+{ "manifest" : [
   "jquery.ui.widget.js",
   "jquery.mobile.widget.js",
   "jquery.mobile.media.js",
@@ -24,3 +24,4 @@
   "jquery.mobile.navbar.js",
   "jquery.mobile.grid.js"
 ]
+}

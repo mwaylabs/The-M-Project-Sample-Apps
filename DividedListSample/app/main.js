@@ -8,7 +8,9 @@
 var DividedListSample  = DividedListSample || {};
 
 DividedListSample.app = M.Application.design({
-
+    
+    entryPage: 'page1',
+    
     page1: M.PageView.design({
 
         onLoad: {

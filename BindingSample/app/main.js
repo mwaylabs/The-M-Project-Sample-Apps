@@ -8,7 +8,10 @@
 var BindingSample  = BindingSample || {};
 
 BindingSample.app = M.Application.design({
-
+	
+	entryPage: 'page',
+	
+	
     page: M.PageView.design({
 
         childViews: 'header content',

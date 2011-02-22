@@ -9,6 +9,9 @@ var TabsButtonGroupsSample  = TabsButtonGroupsSample || {};
 
 TabsButtonGroupsSample.app = M.Application.design({
 
+    entryPage: 'page1',
+
+
     page1: M.PageView.design({
 
         childViews: 'header content tabs',

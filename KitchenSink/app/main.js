@@ -9,6 +9,8 @@ var KitchenSink  = KitchenSink || {};
 
 KitchenSink.app = M.Application.design({
 
+    entryPage: 'controls',
+
     controls: KitchenSink.PageControls,
 
     controlsButtonView: KitchenSink.ControlsButtonViewPage,

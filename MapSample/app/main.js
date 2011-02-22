@@ -9,6 +9,8 @@ var MapSample  = MapSample || {};
 
 MapSample.app = M.Application.design({
 
+    entryPage: 'page',
+
     page: M.PageView.design({
 
         onLoad: {

@@ -8,6 +8,8 @@
 var DualbindSample  = DualbindSample || {};
 
 DualbindSample.app = M.Application.design({
+    
+    entryPage: 'page',
 
     page: M.PageView.design({
 
