@@ -41,17 +41,17 @@ MapSample.app = M.Application.design({
 
                 isInset: YES,
 
-                showMapTypeControl: NO,
+                showMapTypeControl: YES,
 
                 showStreetViewControl: NO,
 
-                showNavigationControl: NO,
+                showNavigationControl: YES,
 
                 mapType: M.MAP_ROADMAP,
 
                 zoomLevel: 10,
 
-                isDraggable: NO,
+                isDraggable: YES,
 
                 contentBinding: 'MapSample.MapController.markers',
 
