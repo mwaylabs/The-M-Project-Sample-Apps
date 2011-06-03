@@ -14,10 +14,11 @@ m_require('app/views/utilities_i18n_list_item_template.js');
 
 KitchenSink.UtilitiesI18nPage = M.PageView.design({
 
-    onLoad : {
-        target: KitchenSink.UtilitiesI18nController,
-        action: 'init'
-    },
+    events: {
+        pageshow:{
+            target: KitchenSink.UtilitiesI18nController,
+            action: 'init'
+        }},
 
     childViews: 'header content tabBar',
 
@@ -29,8 +30,12 @@ KitchenSink.UtilitiesI18nPage = M.PageView.design({
             icon: 'arrow-l',
             anchorLocation: M.LEFT,
 
-            target: KitchenSink.UtilitiesController,
-            action: 'here'  
+            events: {
+                tap:{
+                    target: KitchenSink.UtilitiesController,
+                    action: 'here'
+                }
+            }
         }),
 
         title: M.LabelView.design({
@@ -46,7 +51,10 @@ KitchenSink.UtilitiesI18nPage = M.PageView.design({
 
         i18nList: M.ListView.design({
             listItemTemplateView: KitchenSink.UtilitiesI18nListItemTemplate,
-            contentBinding: 'KitchenSink.UtilitiesI18nController.i18nList'
+            contentBinding: {
+                target: KitchenSink.UtilitiesI18nController,
+                property: 'i18nList'
+            }
         })
     }),
 

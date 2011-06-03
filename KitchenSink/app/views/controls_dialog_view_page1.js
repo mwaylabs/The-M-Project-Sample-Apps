@@ -18,9 +18,12 @@ KitchenSink.ControlsDialogViewPage1 = M.PageView.design({
 
             anchorLocation: M.LEFT,
 
-            target: KitchenSink.ControlsDialogViewController,
-
-            action: 'here'
+            events: {
+                tap:{
+                    target: KitchenSink.ControlsDialogViewController,
+                    action: 'here'
+                }
+            }
 
         }),
 
@@ -29,9 +32,9 @@ KitchenSink.ControlsDialogViewPage1 = M.PageView.design({
             value: 'Alert dialog',
 
             anchorLocation: M.CENTER
-            
+
         }),
-        
+
         anchorLocation: M.TOP
 
     }),
@@ -44,9 +47,12 @@ KitchenSink.ControlsDialogViewPage1 = M.PageView.design({
 
             value: 'Open alert dialog',
 
-            target: KitchenSink.ControlsDialogViewController,
-
-            action: 'openAlert'
+            events: {
+                tap:{
+                    target: KitchenSink.ControlsDialogViewController,
+                    action: 'openAlert'
+                }
+            }
 
         }),
 

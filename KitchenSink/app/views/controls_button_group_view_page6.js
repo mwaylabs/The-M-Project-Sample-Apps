@@ -18,9 +18,12 @@ KitchenSink.ControlsButtonGroupViewPage6 = M.PageView.design({
 
             anchorLocation: M.LEFT,
 
-            target: KitchenSink.ControlsButtonGroupViewController,
-
-            action: 'here'
+            events: {
+                tap:{
+                    target: KitchenSink.ControlsButtonGroupViewController,
+                    action: 'here'
+                }
+            }
 
         }),
 
@@ -29,9 +32,9 @@ KitchenSink.ControlsButtonGroupViewPage6 = M.PageView.design({
             value: 'getActiveButton()',
 
             anchorLocation: M.CENTER
-            
+
         }),
-        
+
         anchorLocation: M.TOP
 
     }),
@@ -62,10 +65,13 @@ KitchenSink.ControlsButtonGroupViewPage6 = M.PageView.design({
 
             value: 'get active button',
 
-            target: KitchenSink.ControlsButtonGroupViewController,
+            events: {
+                tap:{
+                    target: KitchenSink.ControlsButtonGroupViewController,
+                    action: 'getActiveButton'
+                }
+            }
 
-            action: 'getActiveButton'
-            
         }),
 
         activeButtonLabel: M.LabelView.design({
@@ -73,14 +79,17 @@ KitchenSink.ControlsButtonGroupViewPage6 = M.PageView.design({
             value: 'Active Button: ',
 
             cssClass: 'titleSource'
-            
+
         }),
 
         activeButtonName: M.LabelView.design({
 
             value: '-',
 
-            contentBinding: 'KitchenSink.ControlsButtonGroupViewController.activeButton',
+            contentBinding: {
+                target: KitchenSink.ControlsButtonGroupViewController,
+                property: 'activeButton'
+            },
 
             cssClass: 'source'
 

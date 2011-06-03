@@ -10,9 +10,12 @@
 
 Todos2.TodoItemView = M.ListItemView.design({
 
-    target: Todos2.TodoController,
-
-    action: 'showDetails',
+    events: {
+        tap: {
+            target: Todos2.TodoController,
+            action: 'showDetails'
+        }
+    },
 
     childViews: 'title text date',
 

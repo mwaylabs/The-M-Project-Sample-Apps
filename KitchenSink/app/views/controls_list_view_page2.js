@@ -5,14 +5,15 @@ m_require('app/views/controls_list_view_page2_template.js');
 
 KitchenSink.ControlsListViewPage2 = M.PageView.design({
 
-    onLoad : {
+    events: {
+        pageshow:{
 
-        target: KitchenSink.ControlsListViewController,
+            target: KitchenSink.ControlsListViewController,
 
-        action: 'initPage2'
+            action: 'initPage2'
 
-    },
-    
+        }},
+
     childViews: 'header content tabBar',
 
     header: M.ToolbarView.design({
@@ -27,9 +28,12 @@ KitchenSink.ControlsListViewPage2 = M.PageView.design({
 
             anchorLocation: M.LEFT,
 
-            target: KitchenSink.ControlsListViewController,
-
-            action: 'here'
+            events: {
+                tap:{
+                    target: KitchenSink.ControlsListViewController,
+                    action: 'here'
+                }
+            }
 
         }),
 
@@ -38,9 +42,9 @@ KitchenSink.ControlsListViewPage2 = M.PageView.design({
             value: 'Segmented list',
 
             anchorLocation: M.CENTER
-            
+
         }),
-        
+
         anchorLocation: M.TOP
 
     }),
@@ -53,7 +57,10 @@ KitchenSink.ControlsListViewPage2 = M.PageView.design({
 
             listItemTemplateView: KitchenSink.ControlsListViewPage2Template,
 
-            contentBinding: 'KitchenSink.ControlsListViewController.page2',
+            contentBinding: {
+                target: KitchenSink.ControlsListViewController,
+                property: 'page2'
+            },
 
             isDividedList: YES
 

@@ -3,7 +3,7 @@ m_require('app/views/controls_page.js');
 m_require('app/views/controls_selectionlist_view_page.js');
 
 KitchenSink.ControlsSelectionListViewPage4 = M.PageView.design({
-    
+
     childViews: 'header content tabBar',
 
     header: M.ToolbarView.design({
@@ -18,9 +18,12 @@ KitchenSink.ControlsSelectionListViewPage4 = M.PageView.design({
 
             anchorLocation: M.LEFT,
 
-            target: KitchenSink.ControlsSelectionListViewController,
-
-            action: 'here'
+            events: {
+                tap:{
+                    target: KitchenSink.ControlsSelectionListViewController,
+                    action: 'here'
+                }
+            }
 
         }),
 
@@ -29,9 +32,9 @@ KitchenSink.ControlsSelectionListViewPage4 = M.PageView.design({
             value: 'getSelection()',
 
             anchorLocation: M.CENTER
-            
+
         }),
-        
+
         anchorLocation: M.TOP
 
     }),
@@ -51,9 +54,9 @@ KitchenSink.ControlsSelectionListViewPage4 = M.PageView.design({
                 value: 'item1',
 
                 label: 'Item 1',
-                
+
                 isSelected: YES
-                
+
             }),
 
             item2: M.SelectionListItemView.design({
@@ -86,10 +89,13 @@ KitchenSink.ControlsSelectionListViewPage4 = M.PageView.design({
 
             value: 'get selection',
 
-            target: KitchenSink.ControlsSelectionListViewController,
+            events: {
+                tap:{
+                    target: KitchenSink.ControlsSelectionListViewController,
+                    action: 'getSelection'
+                }
+            }
 
-            action: 'getSelection'
-            
         }),
 
         markupTitle: M.LabelView.design({
@@ -103,7 +109,10 @@ KitchenSink.ControlsSelectionListViewPage4 = M.PageView.design({
 
             value: '-',
 
-            contentBinding: 'KitchenSink.ControlsSelectionListViewController.selection',
+            contentBinding: {
+                target: KitchenSink.ControlsSelectionListViewController,
+                property: 'selection'
+            },
 
             cssClass: 'source'
 

@@ -28,8 +28,9 @@ DividedListSample.ListController = M.Controller.extend({
 
     },
 
-    searchStringDidChange: function(searchString) {
-        console.log(searchString);
+    searchStringDidChange: function(searchBar) {
+        var searchBar = M.ViewManager.getViewById(searchBar);
+        console.log(searchBar.value);
     }
 
 });

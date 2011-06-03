@@ -3,7 +3,7 @@ m_require('app/views/controls_page.js');
 m_require('app/views/controls_selectionlist_view_page.js');
 
 KitchenSink.ControlsSelectionListViewPage2 = M.PageView.design({
-    
+
     childViews: 'header content tabBar',
 
     header: M.ToolbarView.design({
@@ -18,9 +18,12 @@ KitchenSink.ControlsSelectionListViewPage2 = M.PageView.design({
 
             anchorLocation: M.LEFT,
 
-            target: KitchenSink.ControlsSelectionListViewController,
-
-            action: 'here'
+            events: {
+                tap:{
+                    target: KitchenSink.ControlsSelectionListViewController,
+                    action: 'here'
+                }
+            }
 
         }),
 
@@ -29,9 +32,9 @@ KitchenSink.ControlsSelectionListViewPage2 = M.PageView.design({
             value: 'Selection list (multiple selection)',
 
             anchorLocation: M.CENTER
-            
+
         }),
-        
+
         anchorLocation: M.TOP
 
     }),
@@ -51,9 +54,9 @@ KitchenSink.ControlsSelectionListViewPage2 = M.PageView.design({
                 value: 'item1',
 
                 label: 'Item 1',
-                
+
                 isSelected: YES
-                
+
             }),
 
             item2: M.SelectionListItemView.design({

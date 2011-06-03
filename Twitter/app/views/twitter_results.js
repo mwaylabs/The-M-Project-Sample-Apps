@@ -10,9 +10,12 @@ Twitter.TwitterResultsView = M.ListItemView.design({
 
     childViews: 'image1 label1 label2 text',
 
-    target: Twitter.TwitterController,
-
-    action: 'showUser',
+    events: {
+        tap: {
+            target: Twitter.TwitterController,
+            action: 'showUser'
+        }
+    },
 
     image1: M.ImageView.design({
         valuePattern: '<%= profile_image_url %>',

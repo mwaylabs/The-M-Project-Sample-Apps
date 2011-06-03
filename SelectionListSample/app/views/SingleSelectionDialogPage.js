@@ -12,6 +12,13 @@ SelectionListSample.SingleSelectionDialogPage = M.PageView.design({
 
     childViews: 'header content tabBar',
 
+    events: {
+        pageshow: {
+            target: SelectionListSample.SingleSelectionDialogController,
+            action: 'init'
+        }
+    },
+
     header: M.ToolbarView.design({
 
         value: 'Single (Dialog)',
@@ -26,9 +33,13 @@ SelectionListSample.SingleSelectionDialogPage = M.PageView.design({
 
         selectionList: M.SelectionListView.design({
 
-            //applyTheme: NO,
-
-            childViews: 'optionGermany optionItaly optionUS optionSpain',
+            events: {
+                change: {
+                    action: function(selection, selectionObject) {
+                        //console.log(selection);
+                    }
+                }
+            },
 
             selectionMode: M.SINGLE_SELECTION_DIALOG,
 
@@ -37,6 +48,23 @@ SelectionListSample.SingleSelectionDialogPage = M.PageView.design({
             cssClass: 'singleSelectionDialog',
 
             initialText: 'Please choose...',
+
+            /**
+             * This selection list uses content binding to dynamically define its child views. If you
+             * want to switch to a static way of doing this, comment these few lines and uncomment the
+             * code block below.
+             */
+            contentBinding: {
+                target: SelectionListSample.SingleSelectionDialogController,
+                property: 'items'
+            }
+
+            /**
+             * The following lines show how to statically assign items to a selection list. To use this,
+             * simply comment the lines where we set this view's content binding (right above).
+             */
+            /*
+            childViews: 'optionGermany optionItaly optionUS optionSpain',
 
             optionGermany: M.SelectionListItemView.design({
                 value: 'germany',
@@ -57,7 +85,7 @@ SelectionListSample.SingleSelectionDialogPage = M.PageView.design({
             optionSpain: M.SelectionListItemView.design({
                 value: 'spain',
                 label: 'Spain (spain)'
-            })
+            })*/
 
         }),
 
@@ -83,9 +111,12 @@ SelectionListSample.SingleSelectionDialogPage = M.PageView.design({
 
                 value: 'set selection',
 
-                target: SelectionListSample.SingleSelectionDialogController,
-
-                action: 'setSelection'
+                events: {
+                    tap: {
+                        target: SelectionListSample.SingleSelectionDialogController,
+                        action: 'setSelection'
+                    }
+                }
 
             }),
 
@@ -93,9 +124,12 @@ SelectionListSample.SingleSelectionDialogPage = M.PageView.design({
 
                 value: 'get selection',
 
-                target: SelectionListSample.SingleSelectionDialogController,
-
-                action: 'getSelection'
+                events: {
+                    tap: {
+                        target: SelectionListSample.SingleSelectionDialogController,
+                        action: 'getSelection'
+                    }
+                }
 
             })
 

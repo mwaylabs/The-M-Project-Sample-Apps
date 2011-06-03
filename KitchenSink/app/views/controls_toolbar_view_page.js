@@ -4,13 +4,14 @@ m_require('app/views/controls_toolbar_view_page_list_item_template.js');
 
 KitchenSink.ControlsToolbarViewPage = M.PageView.design({
 
-    onLoad : {
+    events: {
+        pageshow:{
 
-        target: KitchenSink.ControlsToolbarViewController,
+            target: KitchenSink.ControlsToolbarViewController,
 
-        action: 'init'
+            action: 'init'
 
-    },
+        }},
 
     childViews: 'header content tabBar',
 
@@ -26,9 +27,12 @@ KitchenSink.ControlsToolbarViewPage = M.PageView.design({
 
             anchorLocation: M.LEFT,
 
-            target: KitchenSink.ControlsToolbarViewController,
-
-            action: 'back'
+            events: {
+                tap:{
+                    target: KitchenSink.ControlsToolbarViewController,
+                    action: 'back'
+                }
+            }
 
         }),
 
@@ -37,9 +41,9 @@ KitchenSink.ControlsToolbarViewPage = M.PageView.design({
             value: 'M.ToggleView',
 
             anchorLocation: M.CENTER
-            
+
         }),
-        
+
         anchorLocation: M.TOP
 
     }),
@@ -52,7 +56,10 @@ KitchenSink.ControlsToolbarViewPage = M.PageView.design({
 
             listItemTemplateView: KitchenSink.ControlsToolbarViewPageListItemTemplate,
 
-            contentBinding: 'KitchenSink.ControlsToolbarViewController.controlsList'
+            contentBinding: {
+                target: KitchenSink.ControlsToolbarViewController,
+                property: 'controlsList'
+            }
 
         })
 

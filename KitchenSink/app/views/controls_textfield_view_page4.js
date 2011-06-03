@@ -3,7 +3,7 @@ m_require('app/views/controls_page.js');
 m_require('app/views/controls_textfield_view_page.js');
 
 KitchenSink.ControlsTextFieldViewPage4 = M.PageView.design({
-    
+
     childViews: 'header content tabBar',
 
     header: M.ToolbarView.design({
@@ -18,9 +18,12 @@ KitchenSink.ControlsTextFieldViewPage4 = M.PageView.design({
 
             anchorLocation: M.LEFT,
 
-            target: KitchenSink.ControlsTextFieldViewController,
-
-            action: 'here'
+            events: {
+                tap:{
+                    target: KitchenSink.ControlsTextFieldViewController,
+                    action: 'here'
+                }
+            }
 
         }),
 
@@ -29,9 +32,9 @@ KitchenSink.ControlsTextFieldViewPage4 = M.PageView.design({
             value: 'Custom textfield',
 
             anchorLocation: M.CENTER
-            
+
         }),
-        
+
         anchorLocation: M.TOP
 
     }),

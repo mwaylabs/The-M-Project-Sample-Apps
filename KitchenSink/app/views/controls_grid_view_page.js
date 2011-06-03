@@ -4,13 +4,14 @@ m_require('app/views/controls_grid_view_page_list_item_template.js');
 
 KitchenSink.ControlsGridViewPage = M.PageView.design({
 
-    onLoad : {
+    events: {
+        pageshow:{
 
-        target: KitchenSink.ControlsGridViewController,
+            target: KitchenSink.ControlsGridViewController,
 
-        action: 'init'
+            action: 'init'
 
-    },
+        }},
 
     childViews: 'header content tabBar',
 
@@ -26,9 +27,12 @@ KitchenSink.ControlsGridViewPage = M.PageView.design({
 
             anchorLocation: M.LEFT,
 
-            target: KitchenSink.ControlsGridViewController,
-
-            action: 'back'
+            events: {
+                tap:{
+                    target: KitchenSink.ControlsGridViewController,
+                    action: 'back'
+                }
+            }
 
         }),
 
@@ -37,9 +41,9 @@ KitchenSink.ControlsGridViewPage = M.PageView.design({
             value: 'M.GridView',
 
             anchorLocation: M.CENTER
-            
+
         }),
-        
+
         anchorLocation: M.TOP
 
     }),
@@ -52,7 +56,10 @@ KitchenSink.ControlsGridViewPage = M.PageView.design({
 
             listItemTemplateView: KitchenSink.ControlsGridViewPageListItemTemplate,
 
-            contentBinding: 'KitchenSink.ControlsGridViewController.controlsList'
+            contentBinding: {
+                target: KitchenSink.ControlsGridViewController,
+                property: 'controlsList'
+            }
 
         })
 

@@ -13,8 +13,12 @@ KitchenSink.UtilitiesI18n1 = M.PageView.design({
             value: 'Back',
             icon: 'arrow-l',
             anchorLocation: M.LEFT,
-            target: KitchenSink.UtilitiesI18nController,
-            action: 'here'
+            events: {
+                tap:{
+                    target: KitchenSink.UtilitiesI18nController,
+                    action: 'here'
+                }
+            }
         }),
 
         title: M.LabelView.design({

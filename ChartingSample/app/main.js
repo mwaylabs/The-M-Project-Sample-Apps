@@ -15,16 +15,13 @@ ChartingSample.app = M.Application.design({
 
         childViews: 'header content',
 
-        onLoad: {
-            target: ChartingSample.ChartingController,
-            action: 'init'
+        events: {
+            pageshow: {
+                target: ChartingSample.ChartingController,
+                action: 'init'
+            }
         },
-
-        onOrientationChange: {
-            target: ChartingSample.ChartingController,
-            action: 'resize'
-        },
-
+        
         header: M.ToolbarView.design({
     
             anchorLocation: M.TOP,

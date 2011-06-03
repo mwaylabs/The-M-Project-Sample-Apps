@@ -2,9 +2,12 @@ KitchenSink.ControlsTextFieldViewPageListItemTemplate = M.ListItemView.design({
 
     childViews: 'name',
 
-    target: KitchenSink.ControlsTextFieldViewController,
-
-    action: 'controlSelected',
+    events: {
+        tap: {
+            target:KitchenSink.ControlsTextFieldViewController,
+            action:'controlSelected'
+        }
+    },
 
     name: M.LabelView.design({
 

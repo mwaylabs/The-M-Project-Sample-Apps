@@ -18,9 +18,12 @@ KitchenSink.ControlsLabelViewPage3 = M.PageView.design({
 
             anchorLocation: M.LEFT,
 
-            target: KitchenSink.ControlsLabelViewController,
-
-            action: 'here'
+            events: {
+                tap:{
+                    target: KitchenSink.ControlsLabelViewController,
+                    action: 'here'
+                }
+            }
 
         }),
 
@@ -29,9 +32,9 @@ KitchenSink.ControlsLabelViewPage3 = M.PageView.design({
             value: 'Hyperlink label (internal)',
 
             anchorLocation: M.CENTER
-            
+
         }),
-        
+
         anchorLocation: M.TOP
 
     }),
@@ -44,9 +47,12 @@ KitchenSink.ControlsLabelViewPage3 = M.PageView.design({
 
             value: 'Click to open an alert dialog.',
 
-            target: KitchenSink.ControlsLabelViewController,
-
-            action: 'hyperlink1'
+            events: {
+                tap:{
+                    target: KitchenSink.ControlsLabelViewController,
+                    action: 'hyperlink1'
+                }
+            }
 
         }),
 

@@ -144,7 +144,6 @@ KitchenSink.ControlsController = M.Controller.extend({
     },
 
     controlSelected: function(id) {
-
         var controlName = M.ViewManager.getView(id, 'name').value;
         var control = _.detect(this.controlsList, function(control) {
             return control.name === controlName;

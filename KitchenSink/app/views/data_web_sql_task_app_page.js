@@ -14,10 +14,11 @@ m_require('app/views/data_local_storage_task_app_template.js');
 
 KitchenSink.DataWebSqlTaskAppPage = M.PageView.design({
 
-    onLoad : {
-        target: KitchenSink.DataWebSqlTaskAppController,
-        action: 'init'
-    },
+    events: {
+        pageshow:{
+            target: KitchenSink.DataWebSqlTaskAppController,
+            action: 'init'
+        }},
 
     childViews: 'header content tabBar',
 
@@ -37,15 +38,23 @@ KitchenSink.DataWebSqlTaskAppPage = M.PageView.design({
 
             button1: M.ButtonView.design({
                 value: 'Edit',
-                target: KitchenSink.DataWebSqlTaskAppController,
-                action: 'edit',
+                events: {
+                    tap: {
+                        target: KitchenSink.DataWebSqlTaskAppController,
+                        action: 'edit'
+                    }
+                },
                 icon: 'gear'
             }),
 
             button2: M.ButtonView.design({
                 value: 'Save',
-                target: KitchenSink.DataWebSqlTaskAppController,
-                action: 'edit',
+                events: {
+                    tap: {
+                        target: KitchenSink.DataWebSqlTaskAppController,
+                        action: 'edit'
+                    }
+                },
                 icon: 'check'
             })
         }),
@@ -54,8 +63,12 @@ KitchenSink.DataWebSqlTaskAppPage = M.PageView.design({
             value: 'Back',
             icon: 'arrow-l',
             anchorLocation: M.LEFT,
-            target: KitchenSink.DataController,
-            action: 'here'
+            events: {
+                tap:{
+                    target: KitchenSink.DataController,
+                    action: 'here'
+                }
+            }
         }),
 
         anchorLocation: M.TOP
@@ -79,15 +92,21 @@ KitchenSink.DataWebSqlTaskAppPage = M.PageView.design({
                 validators: [M.PresenceValidator.customize({
                     msg: 'Please enter a text describing your task!'
                 })],
-                target: KitchenSink.DataWebSqlTaskAppController,
-                action: 'addTask',
-                triggerActionOnEnter: YES
+                events: {
+                    enter: {
+                        target: KitchenSink.DataWebSqlTaskAppController,
+                        action: 'addTask'
+                    }
+                }
             })
         }),
 
         taskList: M.ListView.design({
             listItemTemplateView: KitchenSink.DataWebSqlTaskAppTemplate,
-            contentBinding: 'KitchenSink.DataWebSqlTaskAppController.tasks'
+            contentBinding: {
+                target: KitchenSink.DataWebSqlTaskAppController,
+                property: 'tasks'
+            }
         })
     }),
 

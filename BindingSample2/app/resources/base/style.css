@@ -1,0 +1,18 @@
+.label {
+    font-size: 12px;
+    font-family: 'Georgia';
+    color: #333333;
+    margin-top: 20px;
+}
+
+.value {
+    font-size: 14px;
+    font-family: 'Georgia';
+    color: #000000;
+}
+.image {
+    top: 0px;
+    right: 0px;
+    float: right;
+    width: 30%;
+}

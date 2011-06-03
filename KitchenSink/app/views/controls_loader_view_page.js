@@ -4,13 +4,14 @@ m_require('app/views/controls_loader_view_page_list_item_template.js');
 
 KitchenSink.ControlsLoaderViewPage = M.PageView.design({
 
-    onLoad : {
+    events: {
+        pageshow:{
 
-        target: KitchenSink.ControlsLoaderViewController,
+            target: KitchenSink.ControlsLoaderViewController,
 
-        action: 'init'
+            action: 'init'
 
-    },
+        }},
 
     childViews: 'header content tabBar',
 
@@ -26,9 +27,12 @@ KitchenSink.ControlsLoaderViewPage = M.PageView.design({
 
             anchorLocation: M.LEFT,
 
-            target: KitchenSink.ControlsLoaderViewController,
-
-            action: 'back'
+            events: {
+                tap:{
+                    target: KitchenSink.ControlsLoaderViewController,
+                    action: 'back'
+                }
+            }
 
         }),
 
@@ -37,9 +41,9 @@ KitchenSink.ControlsLoaderViewPage = M.PageView.design({
             value: 'M.LoaderView',
 
             anchorLocation: M.CENTER
-            
+
         }),
-        
+
         anchorLocation: M.TOP
 
     }),
@@ -52,7 +56,10 @@ KitchenSink.ControlsLoaderViewPage = M.PageView.design({
 
             listItemTemplateView: KitchenSink.ControlsLoaderViewPageListItemTemplate,
 
-            contentBinding: 'KitchenSink.ControlsLoaderViewController.controlsList'
+            contentBinding: {
+                target: KitchenSink.ControlsLoaderViewController,
+                property: 'controlsList'
+            }
 
         })
 

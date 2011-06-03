@@ -4,13 +4,14 @@ m_require('app/views/controls_textfield_view_page_list_item_template.js');
 
 KitchenSink.ControlsTextFieldViewPage = M.PageView.design({
 
-    onLoad : {
+    events: {
+        pageshow:{
 
-        target: KitchenSink.ControlsTextFieldViewController,
+            target: KitchenSink.ControlsTextFieldViewController,
 
-        action: 'init'
+            action: 'init'
 
-    },
+        }},
 
     childViews: 'header content tabBar',
 
@@ -26,9 +27,12 @@ KitchenSink.ControlsTextFieldViewPage = M.PageView.design({
 
             anchorLocation: M.LEFT,
 
-            target: KitchenSink.ControlsTextFieldViewController,
-
-            action: 'back'
+            events: {
+                tap:{
+                    target: KitchenSink.ControlsTextFieldViewController,
+                    action: 'back'
+                }
+            }
 
         }),
 
@@ -37,9 +41,9 @@ KitchenSink.ControlsTextFieldViewPage = M.PageView.design({
             value: 'M.TextFieldView',
 
             anchorLocation: M.CENTER
-            
+
         }),
-        
+
         anchorLocation: M.TOP
 
     }),
@@ -52,7 +56,10 @@ KitchenSink.ControlsTextFieldViewPage = M.PageView.design({
 
             listItemTemplateView: KitchenSink.ControlsTextFieldViewPageListItemTemplate,
 
-            contentBinding: 'KitchenSink.ControlsTextFieldViewController.controlsList'
+            contentBinding: {
+                target: KitchenSink.ControlsTextFieldViewController,
+                property: 'controlsList'
+            }
 
         })
 

@@ -1,11 +1,16 @@
 {
     "name" : "Twitter",
-    "version": "v0.0.1",
+    "version": "0.0.1",
     "minify": false,
-    "proxies":[
-        {"host":"search.twitter.com",
-        "proxyAlias": "twitter",
-        "requestMethod": "GET",
-        "hostPort": "80"}
-    ]             
+    "proxies": [
+        {
+            "baseUrl": "http://search.twitter.com:80",
+            "proxyAlias": "twitter"
+        }
+    ],
+    "htmlHeader": [
+        "<meta name=\"apple-mobile-web-app-capable\" content=\"yes\">",
+        "<meta name=\"apple-mobile-web-app-status-bar-style\" content=\"default\">",
+        "<link rel=\"apple-touch-icon\" href=\"/theme/images/apple-touch-icon.png\"/>"
+    ]
 }

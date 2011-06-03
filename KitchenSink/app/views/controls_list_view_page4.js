@@ -5,14 +5,15 @@ m_require('app/views/controls_list_view_page4_template.js');
 
 KitchenSink.ControlsListViewPage4 = M.PageView.design({
 
-    onLoad : {
+    events: {
+        pageshow:{
 
-        target: KitchenSink.ControlsListViewController,
+            target: KitchenSink.ControlsListViewController,
 
-        action: 'initPage4'
+            action: 'initPage4'
 
-    },
-    
+        }},
+
     childViews: 'header content tabBar',
 
     header: M.ToolbarView.design({
@@ -27,9 +28,12 @@ KitchenSink.ControlsListViewPage4 = M.PageView.design({
 
             anchorLocation: M.LEFT,
 
-            target: KitchenSink.ControlsListViewController,
-
-            action: 'here'
+            events: {
+                tap:{
+                    target: KitchenSink.ControlsListViewController,
+                    action: 'here'
+                }
+            }
 
         }),
 
@@ -38,9 +42,9 @@ KitchenSink.ControlsListViewPage4 = M.PageView.design({
             value: 'Counted list',
 
             anchorLocation: M.CENTER
-            
+
         }),
-        
+
         anchorLocation: M.TOP
 
     }),
@@ -53,7 +57,10 @@ KitchenSink.ControlsListViewPage4 = M.PageView.design({
 
             listItemTemplateView: KitchenSink.ControlsListViewPage4Template,
 
-            contentBinding: 'KitchenSink.ControlsListViewController.page4',
+            contentBinding: {
+                target: KitchenSink.ControlsListViewController,
+                property: 'page4'
+            },
 
             isCountedList: YES
 
@@ -68,7 +75,7 @@ KitchenSink.ControlsListViewPage4 = M.PageView.design({
 
         markup: M.LabelView.design({
 
-            value: 'MyApp.MyListTemplate = M.ListItemView.design({\n\n\tchildViews: \'name counter\',\n\n\tname: M.LabelView.design({\n\n\t\tvaluePattern: \'<%= name %>\'\n\n\t}),\n\n\tcounter: M.LabelView.design({\n\n\t\tvaluePattern: \'<%= number %>\',\n\n\t\tcssClass: \'ui-li-count\'\n\n\t})\n\n});',            
+            value: 'MyApp.MyListTemplate = M.ListItemView.design({\n\n\tchildViews: \'name counter\',\n\n\tname: M.LabelView.design({\n\n\t\tvaluePattern: \'<%= name %>\'\n\n\t}),\n\n\tcounter: M.LabelView.design({\n\n\t\tvaluePattern: \'<%= number %>\',\n\n\t\tcssClass: \'ui-li-count\'\n\n\t})\n\n});',
 
             cssClass: 'source'
 

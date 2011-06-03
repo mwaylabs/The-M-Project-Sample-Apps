@@ -13,9 +13,11 @@ DividedListSample.app = M.Application.design({
     
     page1: M.PageView.design({
 
-        onLoad: {
-            target: DividedListSample.ListController,
-            action: 'init'
+        events: {
+            pageshow: {
+                target: DividedListSample.ListController,
+                action: 'init'
+            }
         },
 
         childViews: 'header content',
@@ -31,26 +33,32 @@ DividedListSample.app = M.Application.design({
 
             contactList: M.ListView.design({
 
-                contentBinding: 'DividedListSample.ListController.contacts',
+                contentBinding: {
+                    target: DividedListSample.ListController,
+                    property: 'contacts'
+                },
                 items: '',
                 listItemTemplateView: DividedListSample.ContactList,
                 removeItemsOnUpdate: NO,
                 isInset: NO,
                 isDividedList: YES,
                 hasSearchBar: YES,
+                searchBarInitialText: 'Suchbegriff...',
 
                 /* comment this out to use a custom search bar (see below) */
-                usesDefaultSearchBehaviour: YES
+                //usesDefaultSearchBehaviour: YES
 
 
                 /* comment this in, to use a custom search bar (see controller) */
-                /*usesDefaultSearchBehaviour: NO,
+                usesDefaultSearchBehaviour: NO,
                 searchBar: {
-                    target: DividedListSample.ListController,
-                    action: 'searchStringDidChange',
-                    triggerActionOnChange: YES,
-                    triggerActionOnKeyUp: YES
-                }*/
+                    events: {
+                        keyup: {
+                            target: DividedListSample.ListController,
+                            action: 'searchStringDidChange'
+                        }
+                    }
+                }
 
             })
 

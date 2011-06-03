@@ -13,12 +13,11 @@ MapSample.app = M.Application.design({
 
     page: M.PageView.design({
 
-        onLoad: {
-
-            target: MapSample.MapController,
-
-            action: 'init'
-
+        events: {
+            pageshow: {
+                target: MapSample.MapController,
+                action: 'init'
+            }            
         },
 
         childViews: 'header content',
@@ -53,11 +52,17 @@ MapSample.app = M.Application.design({
 
                 isDraggable: YES,
 
-                contentBinding: 'MapSample.MapController.markers',
+                contentBinding: {
+                    target: MapSample.MapController,
+                    property: 'markers'
+                },
 
-                target: MapSample.MapController,
-
-                action: 'markerClicked'
+                events: {
+                    tap: {
+                        target: MapSample.MapController,
+                        action: 'markerClicked'
+                    }
+                }
 
             }),
 
@@ -71,9 +76,12 @@ MapSample.app = M.Application.design({
 
                     value: 'Find Me',
 
-                    target: MapSample.MapController,
-
-                    action: 'findMe'
+                    events: {
+                        tap: {
+                            target: MapSample.MapController,
+                            action: 'findMe'
+                        }
+                    }
 
                 }),
 
@@ -81,9 +89,12 @@ MapSample.app = M.Application.design({
 
                     value: 'Data Binding',
 
-                    target: MapSample.MapController,
-
-                    action: 'applyDB'
+                    events: {
+                        tap: {
+                            target: MapSample.MapController,
+                            action: 'applyDB'
+                        }
+                    }
 
                 })
 
@@ -95,7 +106,10 @@ MapSample.app = M.Application.design({
 
                 cssClass: 'textField',
 
-                contentBinding: 'MapSample.MapController.textFieldValue'
+                contentBinding: {
+                    target: MapSample.MapController,
+                    property: 'textFieldValue'
+                }
 
             }),
 
@@ -103,9 +117,12 @@ MapSample.app = M.Application.design({
 
                 value: 'Show Address on Map',
 
-                target: MapSample.MapController,
-
-                action: 'lookUp'
+                events: {
+                    tap: {
+                        target: MapSample.MapController,
+                        action: 'lookUp'
+                    }
+                }
 
             }),
 

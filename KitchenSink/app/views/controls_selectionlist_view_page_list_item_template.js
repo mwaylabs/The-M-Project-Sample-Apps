@@ -2,9 +2,12 @@ KitchenSink.ControlsSelectionListViewPageListItemTemplate = M.ListItemView.desig
 
     childViews: 'name',
 
-    target: KitchenSink.ControlsSelectionListViewController,
-
-    action: 'controlSelected',
+    events: {
+        tap: {
+            target:KitchenSink.ControlsSelectionListViewController,
+            action:'controlSelected'
+        }
+    },
 
     name: M.LabelView.design({
 

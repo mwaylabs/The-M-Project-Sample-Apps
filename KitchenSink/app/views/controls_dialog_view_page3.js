@@ -18,9 +18,12 @@ KitchenSink.ControlsDialogViewPage3 = M.PageView.design({
 
             anchorLocation: M.LEFT,
 
-            target: KitchenSink.ControlsDialogViewController,
-
-            action: 'here'
+            events: {
+                tap:{
+                    target: KitchenSink.ControlsDialogViewController,
+                    action: 'here'
+                }
+            }
 
         }),
 
@@ -29,9 +32,9 @@ KitchenSink.ControlsDialogViewPage3 = M.PageView.design({
             value: 'Actionsheet dialog (default)',
 
             anchorLocation: M.CENTER
-            
+
         }),
-        
+
         anchorLocation: M.TOP
 
     }),
@@ -44,9 +47,12 @@ KitchenSink.ControlsDialogViewPage3 = M.PageView.design({
 
             value: 'Open actionsheet dialog',
 
-            target: KitchenSink.ControlsDialogViewController,
-
-            action: 'openActionsheet'
+            events: {
+                tap:{
+                    target: KitchenSink.ControlsDialogViewController,
+                    action: 'openActionsheet'
+                }
+            }
 
         }),
 
@@ -59,7 +65,7 @@ KitchenSink.ControlsDialogViewPage3 = M.PageView.design({
 
         markup: M.LabelView.design({
 
-            value: 'M.DialogView.confirm({\n\n\ttitle: \'Confirm dialog\',\n\n\tmessage: \'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\'\n\n})',
+            value: 'M.DialogView.actionSheet({\n\n\ttitle: \'Actionsheet dialog\',\n\n\tmessage: \'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\',\n\n\tcancelButtonValue: \'Cancel\',\n\n\tdestructiveButtonValue: \'Destruct\'\n\n})',
 
             cssClass: 'source'
 

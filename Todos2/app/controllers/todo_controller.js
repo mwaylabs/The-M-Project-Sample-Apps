@@ -20,6 +20,8 @@ Todos2.TodoController = M.Controller.extend({
 
     selDate: null,
 
+    selDateFormat: null,
+
     counter: 0,
 
     noteToDelete: null,
@@ -73,13 +75,15 @@ Todos2.TodoController = M.Controller.extend({
         M.DialogView.confirm({
             title: 'Delete?',
             message: 'Do you really want to delete this item?',
-            onOk: {
-                target: this,
-                action: 'doDelete'
-            },
-            onCancel: {
-                target: this,
-                action: 'cancelDelete'
+            callbacks: {
+                confirm: {
+                    target: this,
+                    action: 'doDelete'
+                },
+                cancel: {
+                    target: this,
+                    action: 'cancelDelete'
+                }
             }
         });
     },
@@ -117,13 +121,15 @@ Todos2.TodoController = M.Controller.extend({
         M.DialogView.confirm({
             title: M.I18N.l('delete_'),
             message: M.I18N.l('confirm'),
-            onOk: {
-                target: this,
-                action: 'doDeleteFromSubView'
-            },
-            onCancel: {
-                target: this,
-                action: 'cancelDelete'
+            callbacks: {
+                confirm: {
+                    target: this,
+                    action: 'doDeleteFromSubView'
+                },
+                cancel: {
+                    target: this,
+                    action: 'cancelDelete'
+                }
             }
         });
     },

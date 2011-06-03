@@ -20,10 +20,14 @@ Twitter.TwitterController = M.Controller.extend({
         //var searchString = Twitter.app.page1.content.searchField.value;
         var searchString = M.ViewManager.getView('page1', 'searchField').value;
         if(!searchString) {
+            M.DialogView.alert({
+                title: 'Error',
+                message: 'Please enter a search string!'
+            });
             return;
         }
 
-        M.LoaderView.show();
+        M.LoaderView.show('looking for \'' + searchString + '\'');
 
         M.Request.init({
             url: '/twitter/search.json?q=' + searchString + '&rpp=10',
@@ -63,7 +67,7 @@ Twitter.TwitterController = M.Controller.extend({
             return;
         }
 
-        M.LoaderView.show();
+        M.LoaderView.show('loading tweets of \'' + username + '\'');
 
         M.Request.init({
             url: '/twitter/search.json?from=' + username + '&rpp=10',

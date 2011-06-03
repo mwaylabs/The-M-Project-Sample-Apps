@@ -3,14 +3,15 @@ m_require('app/views/controls_page_list_item_template.js');
 
 KitchenSink.PageControls = M.PageView.design({
 
-    onLoad : {
+    events: {
+        pageshow:{
 
-        target: KitchenSink.ControlsController,
+            target: KitchenSink.ControlsController,
 
-        action: 'init'
+            action: 'init'
 
-    },
-    
+        }},
+
     childViews: 'header content tabBar',
 
     header: M.ToolbarView.design({
@@ -28,8 +29,11 @@ KitchenSink.PageControls = M.PageView.design({
         controlsList: M.ListView.design({
 
             listItemTemplateView: KitchenSink.ControlsPageListItemTemplate,
-            
-            contentBinding: 'KitchenSink.ControlsController.controlsList'
+
+            contentBinding: {
+                target: KitchenSink.ControlsController,
+                property: 'controlsList'
+            }
 
         })
 

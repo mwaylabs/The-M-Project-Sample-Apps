@@ -13,8 +13,12 @@ KitchenSink.UtilitiesDate2 = M.PageView.design({
             value: 'Back',
             icon: 'arrow-l',
             anchorLocation: M.LEFT,
-            target: KitchenSink.UtilitiesDateController,
-            action: 'here'
+            events: {
+                tap:{
+                    target: KitchenSink.UtilitiesDateController,
+                    action: 'here'
+                }
+            }
         }),
 
         title: M.LabelView.design({
@@ -41,9 +45,12 @@ KitchenSink.UtilitiesDate2 = M.PageView.design({
 
             value: 'Format date',
 
-            target: KitchenSink.UtilitiesDateController,
-
-            action: 'formatDate1'
+            events: {
+                tap:{
+                    target: KitchenSink.UtilitiesDateController,
+                    action: 'formatDate1'
+                }
+            }
 
         }),
 
@@ -57,11 +64,14 @@ KitchenSink.UtilitiesDate2 = M.PageView.design({
 
                 value: '',
 
-                contentBinding: 'KitchenSink.UtilitiesDateController.date1',
+                contentBinding: {
+                    target: KitchenSink.UtilitiesDateController,
+                    property: 'date1'
+                },
 
                 operation: function(v) {
 
-                    if(!v || v === '' || v === null) {
+                    if (!v || v === '' || v === null) {
                         v = M.Date.now().format('mm/dd/yyyy HH:MM:ss')
                     }
 

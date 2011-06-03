@@ -2,9 +2,12 @@ KitchenSink.ControlsSearchBarViewPageListItemTemplate = M.ListItemView.design({
 
     childViews: 'name',
 
-    target: KitchenSink.ControlsSearchBarViewController,
-
-    action: 'controlSelected',
+    events: {
+        tap: {
+            target:KitchenSink.ControlsSearchBarViewController,
+            action:'controlSelected'
+        }
+    },
 
     name: M.LabelView.design({
 

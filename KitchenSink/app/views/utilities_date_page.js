@@ -14,10 +14,11 @@ m_require('app/views/utilities_date_list_item_template.js');
 
 KitchenSink.UtilitiesDatePage = M.PageView.design({
 
-    onLoad : {
-        target: KitchenSink.UtilitiesDateController,
-        action: 'init'
-    },
+    events: {
+        pageshow:{
+            target: KitchenSink.UtilitiesDateController,
+            action: 'init'
+        }},
 
     childViews: 'header content tabBar',
 
@@ -29,8 +30,12 @@ KitchenSink.UtilitiesDatePage = M.PageView.design({
             icon: 'arrow-l',
             anchorLocation: M.LEFT,
 
-            target: KitchenSink.UtilitiesController,
-            action: 'here'  
+            events: {
+                tap:{
+                    target: KitchenSink.UtilitiesController,
+                    action: 'here'
+                }
+            }
         }),
 
         title: M.LabelView.design({
@@ -46,7 +51,10 @@ KitchenSink.UtilitiesDatePage = M.PageView.design({
 
         dateList: M.ListView.design({
             listItemTemplateView: KitchenSink.UtilitiesDateListItemTemplate,
-            contentBinding: 'KitchenSink.UtilitiesDateController.dateList'
+            contentBinding: {
+                target: KitchenSink.UtilitiesDateController,
+                property: 'dateList'
+            }
         })
     }),
 

@@ -3,7 +3,7 @@ m_require('app/views/controls_page.js');
 m_require('app/views/controls_toggle_view_page.js');
 
 KitchenSink.ControlsToggleViewPage3 = M.PageView.design({
-    
+
     childViews: 'header toggle content tabBar',
 
     header: M.ToolbarView.design({
@@ -18,9 +18,12 @@ KitchenSink.ControlsToggleViewPage3 = M.PageView.design({
 
             anchorLocation: M.LEFT,
 
-            target: KitchenSink.ControlsToggleViewController,
-
-            action: 'here'
+            events: {
+                tap:{
+                    target: KitchenSink.ControlsToggleViewController,
+                    action: 'here'
+                }
+            }
 
         }),
 
@@ -29,9 +32,9 @@ KitchenSink.ControlsToggleViewPage3 = M.PageView.design({
             value: 'Toggle complex view',
 
             anchorLocation: M.CENTER
-            
+
         }),
-        
+
         anchorLocation: M.TOP
 
     }),
@@ -46,7 +49,7 @@ KitchenSink.ControlsToggleViewPage3 = M.PageView.design({
 
             label: M.LabelView.design({
 
-               value: 'I am the label of the first view.'
+                value: 'I am the label of the first view.'
 
             }),
 
@@ -66,7 +69,7 @@ KitchenSink.ControlsToggleViewPage3 = M.PageView.design({
 
                 button1: M.ButtonView.design({
 
-                    value: 'Button 1' 
+                    value: 'Button 1'
 
                 }),
 
@@ -86,9 +89,9 @@ KitchenSink.ControlsToggleViewPage3 = M.PageView.design({
 
             label: M.LabelView.design({
 
-               value: 'Now it\s all gone. I am all alone on the second view.'
+                value: 'Now it\s all gone. I am all alone on the second view.'
 
-            }) 
+            })
 
         })
 
@@ -102,9 +105,12 @@ KitchenSink.ControlsToggleViewPage3 = M.PageView.design({
 
             value: 'Toggle views',
 
-            target: KitchenSink.ControlsToggleViewController,
-
-            action: 'toggleViews'
+            events: {
+                tap:{
+                    target: KitchenSink.ControlsToggleViewController,
+                    action: 'toggleViews'
+                }
+            }
 
         }),
 

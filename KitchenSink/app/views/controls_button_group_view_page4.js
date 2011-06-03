@@ -18,9 +18,12 @@ KitchenSink.ControlsButtonGroupViewPage4 = M.PageView.design({
 
             anchorLocation: M.LEFT,
 
-            target: KitchenSink.ControlsButtonGroupViewController,
-
-            action: 'here'
+            events: {
+                tap:{
+                    target: KitchenSink.ControlsButtonGroupViewController,
+                    action: 'here'
+                }
+            }
 
         }),
 
@@ -29,9 +32,9 @@ KitchenSink.ControlsButtonGroupViewPage4 = M.PageView.design({
             value: 'Multi button gr. (not inset)',
 
             anchorLocation: M.CENTER
-            
+
         }),
-        
+
         anchorLocation: M.TOP
 
     }),

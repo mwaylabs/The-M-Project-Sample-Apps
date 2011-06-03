@@ -12,6 +12,13 @@ SelectionListSample.MultipleSelectionPage = M.PageView.design({
 
     childViews: 'header content tabBar',
 
+    events: {
+        pageshow: {
+            target: SelectionListSample.MultipleSelectionController,
+            action: 'init'
+        }
+    },
+
     header: M.ToolbarView.design({
 
         value: 'Multiple',
@@ -26,13 +33,38 @@ SelectionListSample.MultipleSelectionPage = M.PageView.design({
 
         selectionList: M.SelectionListView.design({
 
-            //applyTheme: NO,
-
-            childViews: 'optionGermany optionItaly optionUS optionSpain',
+            events: {
+                change: {
+                    action: function(selection, selectionObject) {
+                        var selectionString = '';
+                        for(var i in selection) {
+                            selectionString += (selectionString ? ', ' : '') + selection[i];
+                        }
+                        //console.log(selectionString);
+                    }
+                }
+            },
 
             selectionMode: M.MULTIPLE_SELECTION,
 
             label: 'Language',
+
+            /**
+             * This selection list uses content binding to dynamically define its child views. If you
+             * want to switch to a static way of doing this, comment these few lines and uncomment the
+             * code block below.
+             */
+            contentBinding: {
+                target: SelectionListSample.MultipleSelectionController,
+                property: 'items'
+            }
+
+            /**
+             * The following lines show how to statically assign items to a selection list. To use this,
+             * simply comment the lines where we set this view's content binding (right above).
+             */
+            /*
+            childViews: 'optionGermany optionItaly optionUS optionSpain',
 
             optionGermany: M.SelectionListItemView.design({
                 value: 'germany',
@@ -53,7 +85,7 @@ SelectionListSample.MultipleSelectionPage = M.PageView.design({
             optionSpain: M.SelectionListItemView.design({
                 value: 'spain',
                 label: 'Spain (spain)'
-            })
+            })*/
 
         }),
 
@@ -79,9 +111,12 @@ SelectionListSample.MultipleSelectionPage = M.PageView.design({
 
                 value: 'set selection',
 
-                target: SelectionListSample.MultipleSelectionController,
-
-                action: 'setSelection'
+                events: {
+                    tap: {
+                        target: SelectionListSample.MultipleSelectionController,
+                        action: 'setSelection'
+                    }
+                }
 
             }),
 
@@ -89,9 +124,12 @@ SelectionListSample.MultipleSelectionPage = M.PageView.design({
 
                 value: 'get selection',
 
-                target: SelectionListSample.MultipleSelectionController,
-
-                action: 'getSelection'
+                events: {
+                    tap: {
+                        target: SelectionListSample.MultipleSelectionController,
+                        action: 'getSelection'
+                    }
+                }
 
             })
 

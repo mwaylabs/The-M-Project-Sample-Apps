@@ -18,9 +18,12 @@ KitchenSink.ControlsButtonGroupViewPage7 = M.PageView.design({
 
             anchorLocation: M.LEFT,
 
-            target: KitchenSink.ControlsButtonGroupViewController,
-
-            action: 'here'
+            events: {
+                tap:{
+                    target: KitchenSink.ControlsButtonGroupViewController,
+                    action: 'here'
+                }
+            }
 
         }),
 
@@ -29,9 +32,9 @@ KitchenSink.ControlsButtonGroupViewPage7 = M.PageView.design({
             value: 'setActiveButton()',
 
             anchorLocation: M.CENTER
-            
+
         }),
-        
+
         anchorLocation: M.TOP
 
     }),
@@ -62,10 +65,13 @@ KitchenSink.ControlsButtonGroupViewPage7 = M.PageView.design({
 
             value: 'set active button (Button 1)',
 
-            target: KitchenSink.ControlsButtonGroupViewController,
+            events: {
+                tap:{
+                    target: KitchenSink.ControlsButtonGroupViewController,
+                    action: 'setActiveButton'
+                }
+            }
 
-            action: 'setActiveButton'
-            
         })
 
     }),

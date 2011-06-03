@@ -3,7 +3,7 @@ m_require('app/views/controls_page.js');
 m_require('app/views/controls_searchbar_view_page.js');
 
 KitchenSink.ControlsSearchBarViewPage3 = M.PageView.design({
-    
+
     childViews: 'header content tabBar',
 
     header: M.ToolbarView.design({
@@ -18,9 +18,12 @@ KitchenSink.ControlsSearchBarViewPage3 = M.PageView.design({
 
             anchorLocation: M.LEFT,
 
-            target: KitchenSink.ControlsSearchBarViewController,
-
-            action: 'here'
+            events: {
+                tap:{
+                    target: KitchenSink.ControlsSearchBarViewController,
+                    action: 'here'
+                }
+            }
 
         }),
 
@@ -29,9 +32,9 @@ KitchenSink.ControlsSearchBarViewPage3 = M.PageView.design({
             value: 'Get searchstring',
 
             anchorLocation: M.CENTER
-            
+
         }),
-        
+
         anchorLocation: M.TOP
 
     }),
@@ -46,9 +49,12 @@ KitchenSink.ControlsSearchBarViewPage3 = M.PageView.design({
 
             value: 'Get value',
 
-            target: KitchenSink.ControlsSearchBarViewController,
-
-            action: 'getValue'
+            events: {
+                tap:{
+                    target: KitchenSink.ControlsSearchBarViewController,
+                    action: 'getValue'
+                }
+            }
 
         }),
 
@@ -63,7 +69,10 @@ KitchenSink.ControlsSearchBarViewPage3 = M.PageView.design({
 
             value: '-',
 
-            contentBinding: 'KitchenSink.ControlsSearchBarViewController.output1',
+            contentBinding: {
+                target: KitchenSink.ControlsSearchBarViewController,
+                property: 'output1'
+            },
 
             cssClass: 'source'
 

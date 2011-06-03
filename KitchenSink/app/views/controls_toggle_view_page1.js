@@ -3,7 +3,7 @@ m_require('app/views/controls_page.js');
 m_require('app/views/controls_toggle_view_page.js');
 
 KitchenSink.ControlsToggleViewPage1 = M.PageView.design({
-    
+
     childViews: 'header content tabBar',
 
     header: M.ToolbarView.design({
@@ -18,9 +18,12 @@ KitchenSink.ControlsToggleViewPage1 = M.PageView.design({
 
             anchorLocation: M.LEFT,
 
-            target: KitchenSink.ControlsToggleViewController,
-
-            action: 'here'
+            events: {
+                tap:{
+                    target: KitchenSink.ControlsToggleViewController,
+                    action: 'here'
+                }
+            }
 
         }),
 
@@ -29,9 +32,9 @@ KitchenSink.ControlsToggleViewPage1 = M.PageView.design({
             value: 'Toggle buttons automatically',
 
             anchorLocation: M.CENTER
-            
+
         }),
-        
+
         anchorLocation: M.TOP
 
     }),
@@ -49,7 +52,7 @@ KitchenSink.ControlsToggleViewPage1 = M.PageView.design({
             button1: M.ButtonView.design({
 
                 value: 'Button 1'
-                
+
             }),
 
             button2: M.ButtonView.design({

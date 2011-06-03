@@ -4,10 +4,11 @@ m_require('app/views/utilities_i18n_page.js');
 
 KitchenSink.UtilitiesI18n3 = M.PageView.design({
 
-    onLoad : {
-        target: KitchenSink.UtilitiesI18nController,
-        action: 'getLanguage2'
-    },
+    events: {
+        pageshow:{
+            target: KitchenSink.UtilitiesI18nController,
+            action: 'getLanguage2'
+        }},
 
     childViews: 'header content tabBar',
 
@@ -18,8 +19,12 @@ KitchenSink.UtilitiesI18n3 = M.PageView.design({
             value: 'Back',
             icon: 'arrow-l',
             anchorLocation: M.LEFT,
-            target: KitchenSink.UtilitiesI18nController,
-            action: 'here'
+            events: {
+                tap:{
+                    target: KitchenSink.UtilitiesI18nController,
+                    action: 'here'
+                }
+            }
         }),
 
         title: M.LabelView.design({
@@ -48,7 +53,10 @@ KitchenSink.UtilitiesI18n3 = M.PageView.design({
 
             computedValue: {
 
-                contentBinding: 'KitchenSink.UtilitiesI18nController.language2',
+                contentBinding: {
+                    target: KitchenSink.UtilitiesI18nController,
+                    property: 'language2'
+                },
 
                 operation: function(v) {
 

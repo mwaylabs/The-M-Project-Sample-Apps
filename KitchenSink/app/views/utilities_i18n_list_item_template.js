@@ -11,8 +11,12 @@
 KitchenSink.UtilitiesI18nListItemTemplate = M.ListItemView.design({
     childViews: 'name',
 
-    target: KitchenSink.UtilitiesI18nController,
-    action: 'i18nSelected',
+    events: {
+        tap: {
+            target:KitchenSink.UtilitiesI18nController,
+            action:'i18nSelected'
+        }
+    },
 
     name: M.LabelView.design({
         valuePattern: '<%= name %>'

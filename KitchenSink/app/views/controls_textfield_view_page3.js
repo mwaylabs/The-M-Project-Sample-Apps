@@ -3,7 +3,7 @@ m_require('app/views/controls_page.js');
 m_require('app/views/controls_textfield_view_page.js');
 
 KitchenSink.ControlsTextFieldViewPage3 = M.PageView.design({
-    
+
     childViews: 'header content tabBar',
 
     header: M.ToolbarView.design({
@@ -18,9 +18,12 @@ KitchenSink.ControlsTextFieldViewPage3 = M.PageView.design({
 
             anchorLocation: M.LEFT,
 
-            target: KitchenSink.ControlsTextFieldViewController,
-
-            action: 'here'
+            events: {
+                tap:{
+                    target: KitchenSink.ControlsTextFieldViewController,
+                    action: 'here'
+                }
+            }
 
         }),
 
@@ -29,9 +32,9 @@ KitchenSink.ControlsTextFieldViewPage3 = M.PageView.design({
             value: 'Two linked textfields',
 
             anchorLocation: M.CENTER
-            
+
         }),
-        
+
         anchorLocation: M.TOP
 
     }),
@@ -44,9 +47,15 @@ KitchenSink.ControlsTextFieldViewPage3 = M.PageView.design({
 
             isGrouped: NO,
 
-            contentBinding: 'KitchenSink.ControlsTextFieldViewController.textfieldvalue',
+            contentBinding: {
+                target: KitchenSink.ControlsTextFieldViewController,
+                property: 'textfieldvalue'
+            },
 
-            contentBindingReverse: 'KitchenSink.ControlsTextFieldViewController.textfieldvalue'
+            contentBindingReverse: {
+                target: KitchenSink.ControlsTextFieldViewController,
+                property: 'textfieldvalue'
+            }
 
         }),
 
@@ -54,9 +63,15 @@ KitchenSink.ControlsTextFieldViewPage3 = M.PageView.design({
 
             isGrouped: NO,
 
-            contentBinding: 'KitchenSink.ControlsTextFieldViewController.textfieldvalue',
+            contentBinding: {
+                target: KitchenSink.ControlsTextFieldViewController,
+                property: 'textfieldvalue'
+            },
 
-            contentBindingReverse: 'KitchenSink.ControlsTextFieldViewController.textfieldvalue'
+            contentBindingReverse: {
+                target: KitchenSink.ControlsTextFieldViewController,
+                property: 'textfieldvalue'
+            }
 
         }),
 

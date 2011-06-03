@@ -4,13 +4,14 @@ m_require('app/views/controls_dialog_view_page_list_item_template.js');
 
 KitchenSink.ControlsDialogViewPage = M.PageView.design({
 
-    onLoad : {
+    events: {
+        pageshow:{
 
-        target: KitchenSink.ControlsDialogViewController,
+            target: KitchenSink.ControlsDialogViewController,
 
-        action: 'init'
+            action: 'init'
 
-    },
+        }},
 
     childViews: 'header content tabBar',
 
@@ -26,9 +27,12 @@ KitchenSink.ControlsDialogViewPage = M.PageView.design({
 
             anchorLocation: M.LEFT,
 
-            target: KitchenSink.ControlsDialogViewController,
-
-            action: 'back'
+            events: {
+                tap:{
+                    target: KitchenSink.ControlsDialogViewController,
+                    action: 'back'
+                }
+            }
 
         }),
 
@@ -37,9 +41,9 @@ KitchenSink.ControlsDialogViewPage = M.PageView.design({
             value: 'M.DialogView',
 
             anchorLocation: M.CENTER
-            
+
         }),
-        
+
         anchorLocation: M.TOP
 
     }),
@@ -52,7 +56,10 @@ KitchenSink.ControlsDialogViewPage = M.PageView.design({
 
             listItemTemplateView: KitchenSink.ControlsDialogViewPageListItemTemplate,
 
-            contentBinding: 'KitchenSink.ControlsDialogViewController.controlsList'
+            contentBinding: {
+                target: KitchenSink.ControlsDialogViewController,
+                property: 'controlsList'
+            }
 
         })
 

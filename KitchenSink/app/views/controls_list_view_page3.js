@@ -5,14 +5,15 @@ m_require('app/views/controls_list_view_page3_template.js');
 
 KitchenSink.ControlsListViewPage3 = M.PageView.design({
 
-    onLoad : {
+    events: {
+        pageshow:{
 
-        target: KitchenSink.ControlsListViewController,
+            target: KitchenSink.ControlsListViewController,
 
-        action: 'initPage3'
+            action: 'initPage3'
 
-    },
-    
+        }},
+
     childViews: 'header content tabBar',
 
     header: M.ToolbarView.design({
@@ -27,9 +28,12 @@ KitchenSink.ControlsListViewPage3 = M.PageView.design({
 
             anchorLocation: M.LEFT,
 
-            target: KitchenSink.ControlsListViewController,
-
-            action: 'here'
+            events: {
+                tap:{
+                    target: KitchenSink.ControlsListViewController,
+                    action: 'here'
+                }
+            }
 
         }),
 
@@ -38,9 +42,9 @@ KitchenSink.ControlsListViewPage3 = M.PageView.design({
             value: 'Complex list',
 
             anchorLocation: M.CENTER
-            
+
         }),
-        
+
         anchorLocation: M.TOP
 
     }),
@@ -53,7 +57,10 @@ KitchenSink.ControlsListViewPage3 = M.PageView.design({
 
             listItemTemplateView: KitchenSink.ControlsListViewPage3Template,
 
-            contentBinding: 'KitchenSink.ControlsListViewController.page3'
+            contentBinding: {
+                target: KitchenSink.ControlsListViewController,
+                property: 'page3'
+            }
 
         }),
 

@@ -18,9 +18,12 @@ KitchenSink.ControlsDialogViewPage2 = M.PageView.design({
 
             anchorLocation: M.LEFT,
 
-            target: KitchenSink.ControlsDialogViewController,
-
-            action: 'here'
+            events: {
+                tap:{
+                    target: KitchenSink.ControlsDialogViewController,
+                    action: 'here'
+                }
+            }
 
         }),
 
@@ -29,9 +32,9 @@ KitchenSink.ControlsDialogViewPage2 = M.PageView.design({
             value: 'Confirm dialog',
 
             anchorLocation: M.CENTER
-            
+
         }),
-        
+
         anchorLocation: M.TOP
 
     }),
@@ -44,9 +47,12 @@ KitchenSink.ControlsDialogViewPage2 = M.PageView.design({
 
             value: 'Open confirm dialog',
 
-            target: KitchenSink.ControlsDialogViewController,
-
-            action: 'openConfirm'
+            events: {
+                tap:{
+                    target: KitchenSink.ControlsDialogViewController,
+                    action: 'openConfirm'
+                }
+            }
 
         }),
 

@@ -8,10 +8,9 @@
 var BindingSample  = BindingSample || {};
 
 BindingSample.app = M.Application.design({
-	
+
 	entryPage: 'page',
-	
-	
+
     page: M.PageView.design({
 
         childViews: 'header content',
@@ -31,7 +30,10 @@ BindingSample.app = M.Application.design({
             }),
 
             label2: M.LabelView.design({
-                contentBinding: 'BindingSample.CountController.numberOfClicks',
+                contentBinding: {
+                    target: BindingSample.CountController,
+                    property: 'numberOfClicks'
+                },
                 value: '0',
                 isInline: YES
             }),
@@ -48,7 +50,10 @@ BindingSample.app = M.Application.design({
 
             label4: M.LabelView.design({
                 computedValue: {
-                    contentBinding: 'BindingSample.CountController.numberOfClicks',
+                    contentBinding: {
+                        target: BindingSample.CountController,
+                        property: 'numberOfClicks'
+                    },
                     value: 0,
                     operation: function(v, label) {
                         return M.Math.pow(v, 2);
@@ -59,8 +64,12 @@ BindingSample.app = M.Application.design({
 
             button1: M.ButtonView.design({
                 value: 'Click Me',
-                target: BindingSample.CountController,
-                action: 'addClick'
+                events: {
+                    tap: {
+                        target: BindingSample.CountController,
+                        action: 'addClick'
+                    }
+                }
             }),
 
             spacer: M.LabelView.design({

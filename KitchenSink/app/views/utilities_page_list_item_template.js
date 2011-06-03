@@ -21,8 +21,12 @@
 KitchenSink.UtilitiesPageListItemTemplate = M.ListItemView.design({
     childViews: 'name',
 
-    target: KitchenSink.UtilitiesController,
-    action: 'utilitySelected',
+    events: {
+        tap: {
+            target:KitchenSink.UtilitiesController,
+            action:'utilitySelected'
+        }
+    },
 
     name: M.LabelView.design({
         valuePattern: '<%= name %>'

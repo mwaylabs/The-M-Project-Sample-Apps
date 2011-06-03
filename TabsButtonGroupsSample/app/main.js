@@ -34,25 +34,56 @@ TabsButtonGroupsSample.app = M.Application.design({
 
                 childViews: 'button1 button2 button3 button4',
 
-                target: TabsButtonGroupsSample.Controller,
-
-                action: 'selChanged',
+                events: {
+                    change: {
+                        target: TabsButtonGroupsSample.Controller,
+                        action: 'selChanged'
+                    }
+                },
 
                 button1: M.ButtonView.design({
                     value: '#FF0000',
-                    isActive: YES
+                    isActive: YES,
+                    events: {
+                        tap: {
+                            action: function() {
+                                console.log('clicked button1 on page1!');
+                            }
+                        }
+                    }
                 }),
 
                 button2: M.ButtonView.design({
-                    value: '#AA0000'
+                    value: '#AA0000',
+                    events: {
+                        tap: {
+                            action: function() {
+                                console.log('clicked button2 on page1!');
+                            }
+                        }
+                    }
                 }),
 
                 button3: M.ButtonView.design({
-                    value: '#550000'
+                    value: '#550000',
+                    events: {
+                        tap: {
+                            action: function() {
+                                console.log('clicked button3 on page1!');
+                            }
+                        }
+                    }
                 }),
 
                 button4: M.ButtonView.design({
-                    value: '#000000'
+                    value: '#000000',
+                    events: {
+                        tap: {
+                            action: function() {
+                                console.log('clicked button4 on page1!');
+                            }
+                        }
+                    }
                 })
 
             })
@@ -84,9 +115,12 @@ TabsButtonGroupsSample.app = M.Application.design({
 
                 childViews: 'button1 button2 button3 button4',
 
-                target: TabsButtonGroupsSample.Controller,
-
-                action: 'selChanged',
+                events: {
+                    change: {
+                        target: TabsButtonGroupsSample.Controller,
+                        action: 'selChanged'
+                    }
+                },
 
                 direction: M.VERTICAL,
 
@@ -136,11 +170,14 @@ TabsButtonGroupsSample.app = M.Application.design({
 
                 childViews: 'button1 button2 button3 button4',
 
-                target: TabsButtonGroupsSample.Controller,
+                events: {
+                    change: {
+                        target: TabsButtonGroupsSample.Controller,
+                        action: 'selChanged'
+                    }
+                },
 
                 buttonsPerLine: 2,
-
-                action: 'selChanged',
 
                 button1: M.ButtonView.design({
                     value: '#0000FF',
@@ -188,13 +225,16 @@ TabsButtonGroupsSample.app = M.Application.design({
 
                 childViews: 'button1 button2 button3 button4',
 
+                events: {
+                    change: {
+                        target: TabsButtonGroupsSample.Controller,
+                        action: 'selChanged'
+                    }
+                },
+
                 buttonsPerLine: 2,
 
                 isCompact: NO,
-
-                target: TabsButtonGroupsSample.Controller,
-
-                action: 'selChanged',
 
                 button1: M.ButtonView.design({
                     value: '#FFFF00',
@@ -242,13 +282,16 @@ TabsButtonGroupsSample.app = M.Application.design({
 
                 childViews: 'button1 button2 button3 button4',
 
-                target: TabsButtonGroupsSample.Controller,
+                events: {
+                    change: {
+                        target: TabsButtonGroupsSample.Controller,
+                        action: 'selChanged'
+                    }
+                },
 
                 buttonsPerLine: 2,
 
                 isInset: NO,
-
-                action: 'selChanged',
 
                 button1: M.ButtonView.design({
                     value: '#FF00CC',

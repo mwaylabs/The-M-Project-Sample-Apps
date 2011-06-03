@@ -4,13 +4,14 @@ m_require('app/views/controls_tabbar_view_page_list_item_template.js');
 
 KitchenSink.ControlsTabBarViewPage = M.PageView.design({
 
-    onLoad : {
+    events: {
+        pageshow:{
 
-        target: KitchenSink.ControlsTabBarViewController,
+            target: KitchenSink.ControlsTabBarViewController,
 
-        action: 'init'
+            action: 'init'
 
-    },
+        }},
 
     childViews: 'header content tabBar',
 
@@ -26,9 +27,12 @@ KitchenSink.ControlsTabBarViewPage = M.PageView.design({
 
             anchorLocation: M.LEFT,
 
-            target: KitchenSink.ControlsTabBarViewController,
-
-            action: 'back'
+            events: {
+                tap:{
+                    target: KitchenSink.ControlsTabBarViewController,
+                    action: 'back'
+                }
+            }
 
         }),
 
@@ -37,9 +41,9 @@ KitchenSink.ControlsTabBarViewPage = M.PageView.design({
             value: 'M.TabBarView',
 
             anchorLocation: M.CENTER
-            
+
         }),
-        
+
         anchorLocation: M.TOP
 
     }),
@@ -52,7 +56,10 @@ KitchenSink.ControlsTabBarViewPage = M.PageView.design({
 
             listItemTemplateView: KitchenSink.ControlsTabBarViewPageListItemTemplate,
 
-            contentBinding: 'KitchenSink.ControlsTabBarViewController.controlsList'
+            contentBinding: {
+                target: KitchenSink.ControlsTabBarViewController,
+                property: 'controlsList'
+            }
 
         })
 

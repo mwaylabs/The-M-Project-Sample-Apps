@@ -4,13 +4,14 @@ m_require('app/views/controls_searchbar_view_page_list_item_template.js');
 
 KitchenSink.ControlsSearchBarViewPage = M.PageView.design({
 
-    onLoad : {
+    events: {
+        pageshow:{
 
-        target: KitchenSink.ControlsSearchBarViewController,
+            target: KitchenSink.ControlsSearchBarViewController,
 
-        action: 'init'
+            action: 'init'
 
-    },
+        }},
 
     childViews: 'header content tabBar',
 
@@ -26,9 +27,12 @@ KitchenSink.ControlsSearchBarViewPage = M.PageView.design({
 
             anchorLocation: M.LEFT,
 
-            target: KitchenSink.ControlsSearchBarViewController,
-
-            action: 'back'
+            events: {
+                tap:{
+                    target: KitchenSink.ControlsSearchBarViewController,
+                    action: 'back'
+                }
+            }
 
         }),
 
@@ -37,9 +41,9 @@ KitchenSink.ControlsSearchBarViewPage = M.PageView.design({
             value: 'M.SearchBarView',
 
             anchorLocation: M.CENTER
-            
+
         }),
-        
+
         anchorLocation: M.TOP
 
     }),
@@ -52,7 +56,10 @@ KitchenSink.ControlsSearchBarViewPage = M.PageView.design({
 
             listItemTemplateView: KitchenSink.ControlsSearchBarViewPageListItemTemplate,
 
-            contentBinding: 'KitchenSink.ControlsSearchBarViewController.controlsList'
+            contentBinding: {
+                target: KitchenSink.ControlsSearchBarViewController,
+                property: 'controlsList'
+            }
 
         })
 

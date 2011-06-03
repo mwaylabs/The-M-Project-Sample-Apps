@@ -11,8 +11,12 @@
 KitchenSink.UtilitiesDateListItemTemplate = M.ListItemView.design({
     childViews: 'name',
 
-    target: KitchenSink.UtilitiesDateController,
-    action: 'dateSelected',
+    events: {
+        tap: {
+            target:KitchenSink.UtilitiesDateController,
+            action:'dateSelected'
+        }
+    },
 
     name: M.LabelView.design({
         valuePattern: '<%= name %>'

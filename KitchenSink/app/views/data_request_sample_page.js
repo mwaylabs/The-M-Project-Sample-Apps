@@ -22,8 +22,12 @@ KitchenSink.DataRequestSamplePage = M.PageView.design({
             value: 'Back',
             icon: 'arrow-l',
             anchorLocation: M.LEFT,
-            target: KitchenSink.DataController,
-            action: 'here'
+            events: {
+                tap:{
+                    target: KitchenSink.DataController,
+                    action: 'here'
+                }
+            }
         }),
 
         title: M.LabelView.design({
@@ -41,27 +45,41 @@ KitchenSink.DataRequestSamplePage = M.PageView.design({
         keywordField: M.TextFieldView.design({
             name: 'keyword_field',
             initialText: 'Enter keyword for twitter search...',
-            target: KitchenSink.DataRequestSampleController,
-            action: 'getRequest',
+            events: {
+                enter: {
+                    target: KitchenSink.DataRequestSampleController,
+                    action: 'getRequest'
+                }
+            },
             triggerActionOnEnter: YES,
             cssClassOnInit: 'initialText'
         }),
 
         requestButton: M.ButtonView.design({
             value: 'Send Request',
-            target: KitchenSink.DataRequestSampleController,
-            action: 'getRequest'
+            events: {
+                tap:{
+                    target: KitchenSink.DataRequestSampleController,
+                    action: 'getRequest'
+                }
+            }
         }),
 
         markupTitle: M.LabelView.design({
             value: 'The latest tweets',
-            contentBinding: 'KitchenSink.DataRequestSampleController.titleValue',
+            contentBinding: {
+                target: KitchenSink.DataRequestSampleController,
+                property: 'titleValue'
+            },
             cssClass: 'titleSource'
         }),
 
         markup: M.LabelView.design({
             value: '-',
-            contentBinding: 'KitchenSink.DataRequestSampleController.markupValue',
+            contentBinding: {
+                target: KitchenSink.DataRequestSampleController,
+                property: 'markupValue'
+            },
             cssClass: 'source'
         })
 

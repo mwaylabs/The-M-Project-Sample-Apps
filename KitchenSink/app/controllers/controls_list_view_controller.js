@@ -18,6 +18,10 @@ KitchenSink.ControlsListViewController = M.Controller.extend({
 
     page4: null,
 
+    page5: null,
+
+    page6: null,
+
     callback: null,
 
     searchString: null,
@@ -414,7 +418,9 @@ KitchenSink.ControlsListViewController = M.Controller.extend({
 
     },
 
-    searchStringDidChange: function(str) {
+    searchStringDidChange: function(id) {
+
+        var str = M.ViewManager.getViewById(id).value;
 
         str = str ? str : '-';
 

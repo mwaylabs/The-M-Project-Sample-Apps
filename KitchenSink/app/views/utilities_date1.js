@@ -13,8 +13,12 @@ KitchenSink.UtilitiesDate1 = M.PageView.design({
             value: 'Back',
             icon: 'arrow-l',
             anchorLocation: M.LEFT,
-            target: KitchenSink.UtilitiesDateController,
-            action: 'here'
+            events: {
+                tap:{
+                    target: KitchenSink.UtilitiesDateController,
+                    action: 'here'
+                }
+            }
         }),
 
         title: M.LabelView.design({

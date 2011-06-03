@@ -8,6 +8,30 @@
 
 SelectionListSample.MultipleSelectionController = M.Controller.extend({
 
+    items: null,
+
+    init: function() {
+        this.set('items', [
+            {
+                value: 'germany',
+                label: 'Germany (germany)',
+                isSelected: YES
+            },
+            {
+                value: 'italy',
+                label: 'Italy (italy)'
+            },
+            {
+                value: 'us',
+                label: 'United States (us)'
+            },
+            {
+                value: 'spain',
+                label: 'Spain (spain)'
+            }
+        ]);
+    },
+
     setSelection: function() {
 
         var selectionList = M.ViewManager.getView('multipleSelection', 'selectionList');
@@ -43,8 +67,12 @@ SelectionListSample.MultipleSelectionController = M.Controller.extend({
         var selection = selectionList.getSelection(YES);
 
         var message = '';
-        for(var i in selection) {
-            message += selection[i].label + '<br />';
+        if(selection.length > 0) {
+            for(var i in selection) {
+                message += selection[i].label + '<br/>';
+            }
+        } else {
+            message = 'Nothing selected...';
         }
 
         M.DialogView.alert({

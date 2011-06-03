@@ -14,10 +14,11 @@ m_require('app/views/data_local_storage_task_app_template.js');
 
 KitchenSink.DataLocalStorageTaskAppPage = M.PageView.design({
 
-    onLoad : {
-        target: KitchenSink.DataLocalStorageTaskAppController,
-        action: 'init'
-    },
+    events: {
+        pageshow:{
+            target: KitchenSink.DataLocalStorageTaskAppController,
+            action: 'init'
+        }},
 
     childViews: 'header content tabBar',
 
@@ -37,15 +38,23 @@ KitchenSink.DataLocalStorageTaskAppPage = M.PageView.design({
 
             button1: M.ButtonView.design({
                 value: 'Edit',
-                target: KitchenSink.DataLocalStorageTaskAppController,
-                action: 'edit',
+                events: {
+                    tap: {
+                        target: KitchenSink.DataLocalStorageTaskAppController,
+                        action: 'edit'
+                    }
+                },
                 icon: 'gear'
             }),
 
             button2: M.ButtonView.design({
                 value: 'Save',
-                target: KitchenSink.DataLocalStorageTaskAppController,
-                action: 'edit',
+                events: {
+                    tap: {
+                        target: KitchenSink.DataLocalStorageTaskAppController,
+                        action: 'edit'
+                    }
+                },
                 icon: 'check'
             })
         }),
@@ -54,8 +63,12 @@ KitchenSink.DataLocalStorageTaskAppPage = M.PageView.design({
             value: 'Back',
             icon: 'arrow-l',
             anchorLocation: M.LEFT,
-            target: KitchenSink.DataController,
-            action: 'here'
+            events: {
+                tap:{
+                    target: KitchenSink.DataController,
+                    action: 'here'
+                }
+            }
         }),
 
         anchorLocation: M.TOP
@@ -76,15 +89,21 @@ KitchenSink.DataLocalStorageTaskAppPage = M.PageView.design({
                 validators: [M.PresenceValidator.customize({
                     msg: 'Please enter a text describing your task!'
                 })],
-                target: KitchenSink.DataLocalStorageTaskAppController,
-                action: 'addTask',
-                triggerActionOnEnter: YES
+                events: {
+                    enter:{
+                        target: KitchenSink.DataLocalStorageTaskAppController,
+                        action: 'addTask'
+                    }
+                }
             })
         }),
 
         taskList: M.ListView.design({
             listItemTemplateView: KitchenSink.DataLocalStorageTaskAppTemplate,
-            contentBinding: 'KitchenSink.DataLocalStorageTaskAppController.tasks'
+            contentBinding: {
+                target: KitchenSink.DataLocalStorageTaskAppController,
+                property: 'tasks'
+            }
         })
     }),
 

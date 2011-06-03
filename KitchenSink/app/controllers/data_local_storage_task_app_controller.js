@@ -38,7 +38,7 @@ KitchenSink.DataLocalStorageTaskAppController = M.Controller.extend({
         M.ViewManager.getView('dataLocalStorageTaskApp', 'taskField').setValue('');
     },
 
-    removeTodo: function(domId, modelId) {  
+    removeTodo: function(domId, modelId) {
         this.currentTask = KitchenSink.Task.recordManager.getRecordForId(modelId);
         
         /*M.DialogView.confirm({

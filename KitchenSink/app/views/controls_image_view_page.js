@@ -4,13 +4,14 @@ m_require('app/views/controls_grid_view_page_list_item_template.js');
 
 KitchenSink.ControlsImageViewPage = M.PageView.design({
 
-    onLoad : {
+    events: {
+        pageshow:{
 
-        target: KitchenSink.ControlsImageViewController,
+            target: KitchenSink.ControlsImageViewController,
 
-        action: 'init'
+            action: 'init'
 
-    },
+        }},
 
     childViews: 'header content tabBar',
 
@@ -26,9 +27,12 @@ KitchenSink.ControlsImageViewPage = M.PageView.design({
 
             anchorLocation: M.LEFT,
 
-            target: KitchenSink.ControlsImageViewController,
-
-            action: 'back'
+            events: {
+                tap:{
+                    target: KitchenSink.ControlsImageViewController,
+                    action: 'back'
+                }
+            }
 
         }),
 
@@ -37,9 +41,9 @@ KitchenSink.ControlsImageViewPage = M.PageView.design({
             value: 'M.ImageView',
 
             anchorLocation: M.CENTER
-            
+
         }),
-        
+
         anchorLocation: M.TOP
 
     }),
@@ -52,7 +56,10 @@ KitchenSink.ControlsImageViewPage = M.PageView.design({
 
             listItemTemplateView: KitchenSink.ControlsImageViewPageListItemTemplate,
 
-            contentBinding: 'KitchenSink.ControlsImageViewController.controlsList'
+            contentBinding: {
+                target: KitchenSink.ControlsImageViewController,
+                property: 'controlsList'
+            }
 
         })
 

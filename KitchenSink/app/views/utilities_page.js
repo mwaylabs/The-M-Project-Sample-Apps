@@ -3,10 +3,11 @@ m_require('app/views/utilities_page_list_item_template.js');
 
 KitchenSink.PageUtilities = M.PageView.design({
 
-    onLoad : {
-        target: KitchenSink.UtilitiesController,
-        action: 'init'
-    },
+    events: {
+        pageshow:{
+            target: KitchenSink.UtilitiesController,
+            action: 'init'
+        }},
 
     childViews: 'header content tabBar',
 
@@ -24,7 +25,10 @@ KitchenSink.PageUtilities = M.PageView.design({
 
         utilList: M.ListView.design({
             listItemTemplateView: KitchenSink.UtilitiesPageListItemTemplate,
-            contentBinding: 'KitchenSink.UtilitiesController.utilitiesList'
+            contentBinding: {
+                target: KitchenSink.UtilitiesController,
+                property: 'utilitiesList'
+            }
         })
 
     }),

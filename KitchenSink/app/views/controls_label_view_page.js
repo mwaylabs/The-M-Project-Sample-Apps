@@ -4,13 +4,14 @@ m_require('app/views/controls_label_view_page_list_item_template.js');
 
 KitchenSink.ControlsLabelViewPage = M.PageView.design({
 
-    onLoad : {
+    events: {
+        pageshow:{
 
-        target: KitchenSink.ControlsLabelViewController,
+            target: KitchenSink.ControlsLabelViewController,
 
-        action: 'init'
+            action: 'init'
 
-    },
+        }},
 
     childViews: 'header content tabBar',
 
@@ -26,9 +27,12 @@ KitchenSink.ControlsLabelViewPage = M.PageView.design({
 
             anchorLocation: M.LEFT,
 
-            target: KitchenSink.ControlsLabelViewController,
-
-            action: 'back'
+            events: {
+                tap:{
+                    target: KitchenSink.ControlsLabelViewController,
+                    action: 'back'
+                }
+            }
 
         }),
 
@@ -37,9 +41,9 @@ KitchenSink.ControlsLabelViewPage = M.PageView.design({
             value: 'M.LabelView',
 
             anchorLocation: M.CENTER
-            
+
         }),
-        
+
         anchorLocation: M.TOP
 
     }),
@@ -52,7 +56,10 @@ KitchenSink.ControlsLabelViewPage = M.PageView.design({
 
             listItemTemplateView: KitchenSink.ControlsLabelViewPageListItemTemplate,
 
-            contentBinding: 'KitchenSink.ControlsLabelViewController.controlsList'
+            contentBinding: {
+                target: KitchenSink.ControlsLabelViewController,
+                property: 'controlsList'
+            }
 
         })
 

@@ -16,9 +16,7 @@ DialogSample.app = M.Application.design({
         childViews: 'header content',
 
         header: M.ToolbarView.design({
-
             value: 'Dialog Sample',
-
             anchorLocation: M.TOP
         }),
 
@@ -27,33 +25,39 @@ DialogSample.app = M.Application.design({
             childViews: 'alertButton confirmButton actionSheetButton notification',
 
             alertButton: M.ButtonView.design({
-
-                value: 'Open alert dialog',
-                target: DialogSample.DialogController,
-                action: 'openAlert'
-
+                events: {
+                    tap: {
+                        target: DialogSample.DialogController,
+                        action: 'openAlert'
+                    }
+                },
+                value: 'Open alert dialog'
             }),
 
             confirmButton: M.ButtonView.design({
-
-                value: 'Open confirm dialog',
-                target: DialogSample.DialogController,
-                action: 'openConfirm'
-
-
+                events: {
+                    tap: {
+                        target: DialogSample.DialogController,
+                        action: 'openConfirm'
+                    }
+                },
+                value: 'Open confirm dialog'
             }),
 
             actionSheetButton: M.ButtonView.design({
-
-                value: 'Open actionSheet dialog',
-                target: DialogSample.DialogController,
-                action: 'openActionSheet'
-
-
+                events: {
+                    tap: {
+                        target: DialogSample.DialogController,
+                        action: 'openActionSheet'
+                    }
+                },
+                value: 'Open actionSheet dialog'
             }),
             notification: M.LabelView.design({
-
-                contentBinding: 'DialogSample.DialogController.notification',
+                contentBinding: {
+                    target: DialogSample.DialogController,
+                    property: 'notification'
+                },
                 value: '',
                 cssClass: 'notification'
 

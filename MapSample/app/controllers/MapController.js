@@ -131,9 +131,9 @@ MapSample.MapController = M.Controller.extend({
         });
     },
 
-    markerClicked: function(id, marker) {
+    markerClicked: function(marker) {
         if(marker) {
-            // do something with this marker...
+            /* do something with the marker */
         }
     }
 

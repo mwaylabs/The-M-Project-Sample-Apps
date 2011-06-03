@@ -18,9 +18,12 @@ KitchenSink.ControlsDialogViewPage4 = M.PageView.design({
 
             anchorLocation: M.LEFT,
 
-            target: KitchenSink.ControlsDialogViewController,
-
-            action: 'here'
+            events: {
+                tap:{
+                    target: KitchenSink.ControlsDialogViewController,
+                    action: 'here'
+                }
+            }
 
         }),
 
@@ -29,9 +32,9 @@ KitchenSink.ControlsDialogViewPage4 = M.PageView.design({
             value: 'Actionsheet dialog',
 
             anchorLocation: M.CENTER
-            
+
         }),
-        
+
         anchorLocation: M.TOP
 
     }),
@@ -44,9 +47,12 @@ KitchenSink.ControlsDialogViewPage4 = M.PageView.design({
 
             value: 'Open actionsheet dialog',
 
-            target: KitchenSink.ControlsDialogViewController,
-
-            action: 'openActionsheet2'
+            events: {
+                tap:{
+                    target: KitchenSink.ControlsDialogViewController,
+                    action: 'openActionsheet2'
+                }
+            }
 
         }),
 

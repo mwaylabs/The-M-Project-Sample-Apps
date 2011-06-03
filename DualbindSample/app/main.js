@@ -27,29 +27,53 @@ DualbindSample.app = M.Application.design({
 
             inputField1: M.TextFieldView.design({
                 name: 'input_field1',
-                contentBinding: 'DualbindSample.InputController.input',
-                contentBindingReverse: 'DualbindSample.InputController.input',
+                contentBinding: {
+                    target: DualbindSample.InputController,
+                    property: 'input'
+                },
+                contentBindingReverse: {
+                    target: DualbindSample.InputController,
+                    property: 'input'
+                },
                 initialText: 'Enter some text here ...'
             }),
 
             inputField2: M.TextFieldView.design({
                 name: 'input_field2',
-                contentBinding: 'DualbindSample.InputController.input',
-                contentBindingReverse: 'DualbindSample.InputController.input',
+                contentBinding: {
+                    target: DualbindSample.InputController,
+                    property: 'input'
+                },
+                contentBindingReverse: {
+                    target: DualbindSample.InputController,
+                    property: 'input'
+                },
                 initialText: '... or here ...'
             }),
 
             inputField3: M.TextFieldView.design({
                 name: 'input_field3',
-                contentBinding: 'DualbindSample.InputController.input',
-                contentBindingReverse: 'DualbindSample.InputController.input',
+                contentBinding: {
+                    target: DualbindSample.InputController,
+                    property: 'input'
+                },
+                contentBindingReverse: {
+                    target: DualbindSample.InputController,
+                    property: 'input'
+                },
                 initialText: '... or here ...'
             }),
 
             inputField4: M.TextFieldView.design({
                 name: 'input_field4',
-                contentBinding: 'DualbindSample.InputController.input',
-                contentBindingReverse: 'DualbindSample.InputController.input',
+                contentBinding: {
+                    target: DualbindSample.InputController,
+                    property: 'input'
+                },
+                contentBindingReverse: {
+                    target: DualbindSample.InputController,
+                    property: 'input'
+                },
                 initialText: '... or even here!'
             })
 

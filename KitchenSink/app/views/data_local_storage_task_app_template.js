@@ -10,7 +10,7 @@
 
 KitchenSink.DataLocalStorageTaskAppTemplate = M.ListItemView.design({
     childViews: 'text',
-    
+
     text: M.LabelView.design({
         valuePattern: '<%= text %>'
     })

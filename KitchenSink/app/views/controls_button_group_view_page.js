@@ -4,13 +4,14 @@ m_require('app/views/controls_button_group_view_page_list_item_template.js');
 
 KitchenSink.ControlsButtonGroupViewPage = M.PageView.design({
 
-    onLoad : {
+    events: {
+        pageshow:{
 
-        target: KitchenSink.ControlsButtonGroupViewController,
+            target: KitchenSink.ControlsButtonGroupViewController,
 
-        action: 'init'
+            action: 'init'
 
-    },
+        }},
 
     childViews: 'header content tabBar',
 
@@ -26,9 +27,12 @@ KitchenSink.ControlsButtonGroupViewPage = M.PageView.design({
 
             anchorLocation: M.LEFT,
 
-            target: KitchenSink.ControlsButtonViewController,
-
-            action: 'back'
+            events: {
+                tap:{
+                    target: KitchenSink.ControlsButtonViewController,
+                    action: 'back'
+                }
+            }
 
         }),
 
@@ -37,9 +41,9 @@ KitchenSink.ControlsButtonGroupViewPage = M.PageView.design({
             value: 'M.ButtonGroupView',
 
             anchorLocation: M.CENTER
-            
+
         }),
-        
+
         anchorLocation: M.TOP
 
     }),
@@ -52,7 +56,10 @@ KitchenSink.ControlsButtonGroupViewPage = M.PageView.design({
 
             listItemTemplateView: KitchenSink.ControlsButtonGroupViewPageListItemTemplate,
 
-            contentBinding: 'KitchenSink.ControlsButtonGroupViewController.controlsList'
+            contentBinding: {
+                target: KitchenSink.ControlsButtonGroupViewController,
+                property: 'controlsList'
+            }
 
         })
 

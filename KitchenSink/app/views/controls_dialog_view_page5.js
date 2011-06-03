@@ -18,9 +18,12 @@ KitchenSink.ControlsDialogViewPage5 = M.PageView.design({
 
             anchorLocation: M.LEFT,
 
-            target: KitchenSink.ControlsDialogViewController,
-
-            action: 'here'
+            events: {
+                tap:{
+                    target: KitchenSink.ControlsDialogViewController,
+                    action: 'here'
+                }
+            }
 
         }),
 
@@ -29,9 +32,9 @@ KitchenSink.ControlsDialogViewPage5 = M.PageView.design({
             value: 'Working with callbacks',
 
             anchorLocation: M.CENTER
-            
+
         }),
-        
+
         anchorLocation: M.TOP
 
     }),
@@ -44,16 +47,19 @@ KitchenSink.ControlsDialogViewPage5 = M.PageView.design({
 
             value: 'Open actionsheet dialog',
 
-            target: KitchenSink.ControlsDialogViewController,
-
-            action: 'openActionsheet3'
+            events: {
+                tap:{
+                    target: KitchenSink.ControlsDialogViewController,
+                    action: 'openActionsheet3'
+                }
+            }
 
         }),
 
         markupTitle: M.LabelView.design({
 
             value: 'Button clicked',
-            
+
             cssClass: 'titleSource'
 
         }),
@@ -62,7 +68,10 @@ KitchenSink.ControlsDialogViewPage5 = M.PageView.design({
 
             value: '-',
 
-            contentBinding: 'KitchenSink.ControlsDialogViewController.callback',
+            contentBinding: {
+                target: KitchenSink.ControlsDialogViewController,
+                property: 'callback'
+            },
 
             cssClass: 'source'
 

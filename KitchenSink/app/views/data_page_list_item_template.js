@@ -11,8 +11,12 @@
 KitchenSink.DataPageListItemTemplate = M.ListItemView.design({
     childViews: 'name',
 
-    target: KitchenSink.DataController,
-    action: 'dataSelected',
+    events: {
+        tap: {
+            target:KitchenSink.DataController,
+            action:'dataSelected'
+        }
+    },
 
     name: M.LabelView.design({
         valuePattern: '<%= name %>'

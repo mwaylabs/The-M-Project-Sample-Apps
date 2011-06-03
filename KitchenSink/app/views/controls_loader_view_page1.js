@@ -3,7 +3,7 @@ m_require('app/views/controls_page.js');
 m_require('app/views/controls_loader_view_page.js');
 
 KitchenSink.ControlsLoaderViewPage1 = M.PageView.design({
-    
+
     childViews: 'header content tabBar',
 
     header: M.ToolbarView.design({
@@ -18,9 +18,12 @@ KitchenSink.ControlsLoaderViewPage1 = M.PageView.design({
 
             anchorLocation: M.LEFT,
 
-            target: KitchenSink.ControlsLoaderViewController,
-
-            action: 'here'
+            events: {
+                tap:{
+                    target: KitchenSink.ControlsLoaderViewController,
+                    action: 'here'
+                }
+            }
 
         }),
 
@@ -29,9 +32,9 @@ KitchenSink.ControlsLoaderViewPage1 = M.PageView.design({
             value: 'Default loader',
 
             anchorLocation: M.CENTER
-            
+
         }),
-        
+
         anchorLocation: M.TOP
 
     }),
@@ -50,9 +53,12 @@ KitchenSink.ControlsLoaderViewPage1 = M.PageView.design({
 
                 value: 'Show',
 
-                target: KitchenSink.ControlsLoaderViewController,
-
-                action: 'showLoader'
+                events: {
+                    tap:{
+                        target: KitchenSink.ControlsLoaderViewController,
+                        action: 'showLoader'
+                    }
+                }
 
             }),
 
@@ -60,9 +66,12 @@ KitchenSink.ControlsLoaderViewPage1 = M.PageView.design({
 
                 value: 'Hide',
 
-                target: KitchenSink.ControlsLoaderViewController,
-
-                action: 'hideLoader'
+                events: {
+                    tap:{
+                        target: KitchenSink.ControlsLoaderViewController,
+                        action: 'hideLoader'
+                    }
+                }
 
             })
 

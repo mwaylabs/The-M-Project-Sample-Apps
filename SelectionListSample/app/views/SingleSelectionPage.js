@@ -12,6 +12,13 @@ SelectionListSample.SingleSelectionPage = M.PageView.design({
 
     childViews: 'header content tabBar',
 
+    events: {
+        pageshow: {
+            target: SelectionListSample.SingleSelectionController,
+            action: 'init'
+        }
+    },
+
     header: M.ToolbarView.design({
 
         value: 'Single',
@@ -26,12 +33,35 @@ SelectionListSample.SingleSelectionPage = M.PageView.design({
 
         selectionList: M.SelectionListView.design({
 
-            childViews: 'optionGermany optionItaly optionUS optionSpain',
-
             selectionMode: M.SINGLE_SELECTION,
 
             label: 'Language',
 
+            events: {
+                change: {
+                    action: function(selection, selectionObject) {
+                        //console.log(selection);
+                    }
+                }
+            },
+
+            /**
+             * This selection list uses content binding to dynamically define its child views. If you
+             * want to switch to a static way of doing this, comment these few lines and uncomment the
+             * code block below.
+             */
+            contentBinding: {
+                target: SelectionListSample.SingleSelectionController,
+                property: 'items'
+            }
+
+            /**
+             * The following lines show how to statically assign items to a selection list. To use this,
+             * simply comment the lines where we set this view's content binding (right above).
+             */
+            /*
+            childViews: 'optionGermany optionItaly optionUS optionSpain',
+            
             optionGermany: M.SelectionListItemView.design({
                 value: 'germany',
                 label: 'Germany (germany)',
@@ -51,7 +81,7 @@ SelectionListSample.SingleSelectionPage = M.PageView.design({
             optionSpain: M.SelectionListItemView.design({
                 value: 'spain',
                 label: 'Spain (spain)'
-            })
+            })*/
 
         }),
 
@@ -77,9 +107,12 @@ SelectionListSample.SingleSelectionPage = M.PageView.design({
 
                 value: 'set selection',
 
-                target: SelectionListSample.SingleSelectionController,
-
-                action: 'setSelection'
+                events: {
+                    tap: {
+                        target: SelectionListSample.SingleSelectionController,
+                        action: 'setSelection'
+                    }
+                }
 
             }),
 
@@ -87,9 +120,12 @@ SelectionListSample.SingleSelectionPage = M.PageView.design({
 
                 value: 'get selection',
 
-                target: SelectionListSample.SingleSelectionController,
-
-                action: 'getSelection'
+                events: {
+                    tap: {
+                        target: SelectionListSample.SingleSelectionController,
+                        action: 'getSelection'
+                    }
+                }
 
             })
 

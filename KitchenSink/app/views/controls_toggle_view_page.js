@@ -4,13 +4,14 @@ m_require('app/views/controls_toggle_view_page_list_item_template.js');
 
 KitchenSink.ControlsToggleViewPage = M.PageView.design({
 
-    onLoad : {
+    events: {
+        pageshow:{
 
-        target: KitchenSink.ControlsToggleViewController,
+            target: KitchenSink.ControlsToggleViewController,
 
-        action: 'init'
+            action: 'init'
 
-    },
+        }},
 
     childViews: 'header content tabBar',
 
@@ -26,9 +27,12 @@ KitchenSink.ControlsToggleViewPage = M.PageView.design({
 
             anchorLocation: M.LEFT,
 
-            target: KitchenSink.ControlsToggleViewController,
-
-            action: 'back'
+            events: {
+                tap:{
+                    target: KitchenSink.ControlsToggleViewController,
+                    action: 'back'
+                }
+            }
 
         }),
 
@@ -37,9 +41,9 @@ KitchenSink.ControlsToggleViewPage = M.PageView.design({
             value: 'M.ToggleView',
 
             anchorLocation: M.CENTER
-            
+
         }),
-        
+
         anchorLocation: M.TOP
 
     }),
@@ -52,7 +56,10 @@ KitchenSink.ControlsToggleViewPage = M.PageView.design({
 
             listItemTemplateView: KitchenSink.ControlsToggleViewPageListItemTemplate,
 
-            contentBinding: 'KitchenSink.ControlsToggleViewController.controlsList'
+            contentBinding: {
+                target: KitchenSink.ControlsToggleViewController,
+                property: 'controlsList'
+            }
 
         })
 

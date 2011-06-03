@@ -114,7 +114,11 @@ KitchenSink.ControlsDialogViewController = M.Controller.extend({
 
             title: 'Actionsheet dialog',
 
-            message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+            message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+
+            cancelButtonValue: 'Cancel',
+
+            destructiveButtonValue: 'Destruct'
 
         })
 
@@ -128,21 +132,11 @@ KitchenSink.ControlsDialogViewController = M.Controller.extend({
 
             message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 
-            buttons: {
+            cancelButtonValue: 'Cancel',
 
-                button1: {
-                    title: 'Button 1'
-                },
+            otherButtonValues: ['Button 1', 'Button 2', 'Button 3'],
 
-                button2: {
-                    title: 'Button 2'
-                },
-
-                button3: {
-                    title: 'Button 3'
-                }
-                
-            }
+            destructiveButtonValue: 'Destruct'
 
         })
 
@@ -156,46 +150,21 @@ KitchenSink.ControlsDialogViewController = M.Controller.extend({
 
             message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 
-            onCancel: {
+            cancelButtonValue: 'Cancel',
 
-                target: this,
+            otherButtonValues: ['Button 1', 'Button 2', 'Button 3'],
 
-                action: 'callbackCancel'
+            otherButtonTags: ['Button 1', 'Button 2', 'Button 3'],
 
-            },
-
-            buttons: {
-
-                button1: {
-
-                    title: 'Button 1',
-
+            callbacks: {
+                cancel: {
                     target: this,
-
-                    action: 'callbackButton1'
-
+                    action: 'callbackCancel'
                 },
-
-                button2: {
-
-                    title: 'Button 2',
-
+                other: {
                     target: this,
-
-                    action: 'callbackButton2'
-
-                },
-
-                button3: {
-
-                    title: 'Button 3',
-
-                    target: this,
-
-                    action: 'callbackButton3'
-
+                    action: 'callbackOtherButtons'
                 }
-                
             }
 
         })
@@ -208,21 +177,21 @@ KitchenSink.ControlsDialogViewController = M.Controller.extend({
 
     },
 
-    callbackButton1: function() {
+    callbackOtherButtons: function(tag) {
 
-        this.set('callback', 'Button 1');
+        this.set('callback', tag);
 
     },
 
     callbackButton2: function() {
 
-        this.set('callback', 'Button 2');
+        this.set('callback', tag);
 
     },
 
     callbackButton3: function() {
 
-        this.set('callback', 'Button 3');
+        this.set('callback', tag);
 
     }
 

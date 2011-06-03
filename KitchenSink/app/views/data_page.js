@@ -3,10 +3,11 @@ m_require('app/views/data_page_list_item_template.js');
 
 KitchenSink.PageData = M.PageView.design({
 
-    onLoad : {
-        target: KitchenSink.DataController,
-        action: 'init'
-    },
+    events: {
+        pageshow:{
+            target: KitchenSink.DataController,
+            action: 'init'
+        }},
 
     childViews: 'header content tabBar',
 
@@ -24,7 +25,10 @@ KitchenSink.PageData = M.PageView.design({
 
         dataList: M.ListView.design({
             listItemTemplateView: KitchenSink.DataPageListItemTemplate,
-            contentBinding: 'KitchenSink.DataController.dataList'
+            contentBinding: {
+                target: KitchenSink.DataController,
+                property: 'dataList'
+            }
         })
     }),
 
