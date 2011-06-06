@@ -19,8 +19,10 @@ BindingSample2.ApplicationController = M.Controller.extend({
                 firstname: 'Angela',
                 lastname: 'Merkel',
                 address: {
-                    street: 'Willy-Brandt-Straße',
-                    houseNumber: '1',
+                    street: {
+                        name: 'Willy-Brandt-Straße',
+                        houseNumber: '1'
+                    },
                     zip: 10557,
                     city: 'Berlin'
                 }
@@ -31,8 +33,10 @@ BindingSample2.ApplicationController = M.Controller.extend({
                 firstname: 'Barack',
                 lastname: 'Obama',
                 address: {
-                    street: 'Pennsylvania Avenue',
-                    houseNumber: '1600',
+                    street: {
+                        name: 'Pennsylvania Avenue',
+                        houseNumber: '1600'
+                    },
                     zip: 20500,
                     city: 'Washington, DC'
                 }
@@ -43,8 +47,10 @@ BindingSample2.ApplicationController = M.Controller.extend({
                 firstname: 'Nicolas',
                 lastname: 'Sarkozy',
                 address: {
-                    street: 'rue du faubourg Saint-Honoré',
-                    houseNumber: '55',
+                    street: {
+                        name: 'rue du faubourg Saint-Honoré',
+                        houseNumber: '55'
+                    },
                     zip: 75008,
                     city: 'Paris'
                 }
