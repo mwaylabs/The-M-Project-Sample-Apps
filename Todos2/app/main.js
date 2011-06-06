@@ -96,9 +96,19 @@ Todos2.app = M.Application.design({
         childViews: 'header content tabs',
 
         header: M.ToolbarView.design({
-            childViews: 'centerLabel toggleView',
+            childViews: 'backButton centerLabel toggleView',
 
-            showBackButton: YES,
+            backButton: M.ButtonView.design({
+                value: 'Back',
+                icon: 'arrow-l',
+                events: {
+                    tap: {
+                        target: Todos2.TodoController,
+                        action: 'goBack'
+                    }
+                },
+                anchorLocation: M.LEFT
+            }),
 
             toggleView: M.ToggleView.design({
                 childViews: 'button1 button2',
@@ -377,11 +387,13 @@ Todos2.app = M.Application.design({
 
                 childViews: 'item1 item2 item3 item4 item5 item6 item7 item8 item9 item10 item11 item12 item13',
 
-                selectionMode: M.SINGLE_SELECTION_DIALOG,
+                selectionMode: M.SINGLE_SELECTION,
 
                 label: M.I18N.l('language'),
 
                 name: 'language',
+
+                //applyTheme: NO,
 
                 events: {
                     change: {

@@ -40,6 +40,10 @@ Todos2.TodoController = M.Controller.extend({
         }
     },
 
+    goBack: function() {
+        history.back(-1);
+    },
+
     hide: function() {
         if(!M.ViewManager.getView('subpage1', 'toggleView').isInFirstState) {
             M.ViewManager.getView('subpage1', 'content').toggleView();
