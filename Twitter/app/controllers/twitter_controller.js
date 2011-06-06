@@ -32,6 +32,7 @@ Twitter.TwitterController = M.Controller.extend({
         M.Request.init({
             url: '/twitter/search.json?q=' + searchString + '&rpp=10',
             isJSON: YES,
+            timeout: 5000,
             beforeSend: function(req) {
                 //...
             },
@@ -53,7 +54,11 @@ Twitter.TwitterController = M.Controller.extend({
                    });
                 }
             },
-            onError: function(data){
+            onError: function(data, error){
+                M.DialogView.alert({
+                    title: 'Request failed',
+                    message: 'The search could not be performed! Please check your network status and try again.'
+                });
                 M.LoaderView.hide();
             }
         }).send();
