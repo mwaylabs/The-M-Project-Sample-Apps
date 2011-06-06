@@ -60,11 +60,15 @@ M.I18N.sk_sk = {
 
     "slovakian": "Slovenský",
 
+    "korean": "한국어",
+
+    "swedish": "Svenska",
+
     "days": "deň(dni)",
 
     "contact": "Kontakt",
 
-    "contactText": "Pre ďalšie informácie v súvislosti s touto aplikáciou alebo s ‘The-M-Project’ prosím kontaktujte M-Way Solutions GmbH.",
+    "contactText": "Pre ďalšie informácie v súvislosti s touto aplikáciou alebo s ‘The-M-Project’ prosím kontaktujte Panacoda GmbH.",
 
     "confirm": "Chceš skutočne zmazať túto položku ?",
 

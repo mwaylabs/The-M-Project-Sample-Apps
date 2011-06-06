@@ -60,11 +60,15 @@ M.I18N.en_us = {
 
     "slovakian": "Slovenský",
 
+    "korean": "한국어",
+
+    "swedish": "Svenska",
+
     "days": "day(s)",
 
     "contact": "Contact",
 
-    "contactText": "For further information concerning this app or 'The-M-Project' please contact the M-Way Solutions GmbH.",
+    "contactText": "For further information concerning this app or 'The-M-Project' please contact the Panacoda GmbH.",
 
     "confirm": "Do you really want to delete this item?"
 

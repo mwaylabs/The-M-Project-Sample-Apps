@@ -50,7 +50,6 @@ Todos2.TodoController = M.Controller.extend({
     addTodo: function() {
         if(!M.ViewManager.getView('page2', 'form1').validate()) {
             if(M.Validator.validationErrors) {
-                M.ViewManager.getView('page2', 'form1').showErrors();
                 return;
             }
         }
@@ -164,7 +163,6 @@ Todos2.TodoController = M.Controller.extend({
     saveTodo: function() {
         if(!M.ViewManager.getView('subpage1', 'form2').validate()) {
             if(M.Validator.validationErrors) {
-                M.ViewManager.getView('subpage1', 'form2').showErrors();
                 this.set('selDate', this.selDate);
                 this.set('selDateFormat', this.selDateFormat);
                 this.set('selText', this.selText);

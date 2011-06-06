@@ -58,11 +58,17 @@ M.I18N.zh_tw = {
 
     "dutch": "Nederlands",
 
+    "slovakian": "Slovenský",
+
+    "korean": "한국어",
+
+    "swedish": "Svenska",
+
     "days": "天數",
 
     "contact": "聯繫人",
 
-    "contactText": "關於此程序或者 'The-M-Project'的更多信息請聯係M-Way Solutions GmbH.",
+    "contactText": "關於此程序或者 'The-M-Project'的更多信息請聯係Panacoda GmbH.",
 
     "confirm": "確定刪除此條目?",
 

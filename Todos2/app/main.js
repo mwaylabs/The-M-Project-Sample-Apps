@@ -375,15 +375,13 @@ Todos2.app = M.Application.design({
 
             langSelection: M.SelectionListView.design({
 
-                childViews: 'item1 item2 item3 item4 item5 item6 item7 item8 item9 item10 item11',
+                childViews: 'item1 item2 item3 item4 item5 item6 item7 item8 item9 item10 item11 item12 item13',
 
-                selectionMode: M.SINGLE_SELECTION,
+                selectionMode: M.SINGLE_SELECTION_DIALOG,
 
                 label: M.I18N.l('language'),
 
                 name: 'language',
-
-                //applyTheme: NO,
 
                 events: {
                     change: {
@@ -467,6 +465,20 @@ Todos2.app = M.Application.design({
                     label: M.I18N.l('slovakian'),
                     value: 'sk_sk'
 
+                }),
+
+                item12: M.SelectionListItemView.design({
+
+                    label: M.I18N.l('korean'),
+                    value: 'ko_kr'
+
+                }),
+
+                item13: M.SelectionListItemView.design({
+
+                    label: M.I18N.l('swedish'),
+                    value: 'sv_sv'
+
                 })
 
             }),
@@ -489,21 +501,21 @@ Todos2.app = M.Application.design({
 
             contactMail: M.LabelView.design({
 
-                value: 'info@mwaysolutions.com',
+                value: 'info@panacoda.com',
 
                 hyperlinkType: M.HYPERLINK_EMAIL,
 
-                hyperlinkTarget: 'info@mwaysolutions.com'
+                hyperlinkTarget: 'info@panacoda.com'
 
             }),
 
             contactUrl: M.LabelView.design({
 
-                value: 'www.mwaysolutions.com',
+                value: 'www.panacoda.com',
 
                 hyperlinkType: M.HYPERLINK_WEBSITE,
 
-                hyperlinkTarget: 'http://www.mwaysolutions.com/'
+                hyperlinkTarget: 'http://www.panacoda.com/'
 
             })
 

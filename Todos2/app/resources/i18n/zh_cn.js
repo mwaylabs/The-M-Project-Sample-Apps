@@ -60,11 +60,15 @@ M.I18N.zh_cn = {
 
     "slovakian": "Slovenský",
 
+    "korean": "한국어",
+
+    "swedish": "Svenska",
+
     "days": "天数",
 
     "contact": "联系人",
 
-    "contactText": "关于这个程序或者 'The-M-Project'的更多信息请联系M-Way Solutions GmbH.",
+    "contactText": "关于这个程序或者 'The-M-Project'的更多信息请联系Panacoda GmbH.",
 
     "confirm": "確定刪除此条目?",
 

@@ -59,12 +59,16 @@ M.I18N.ru_ru = {
     "dutch": "Nederlands",
 
     "slovakian": "Slovenský",
+
+    "korean": "한국어",
+
+    "swedish": "Svenska",
     
     "days": "дней",
 
     "contact": "Контакты",
 
-    "contactText": "За дополнительной информацией, касающейся этого приложения или 'The-M-Project', пожалуйста, обращайтесь в M-Way Solutions GmbH.",
+    "contactText": "За дополнительной информацией, касающейся этого приложения или 'The-M-Project', пожалуйста, обращайтесь в Panacoda GmbH.",
 
     "confirm": "Вы действительно хотите удалить эту задачу?",
 

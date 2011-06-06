@@ -60,11 +60,15 @@ M.I18N.nl_nl = {
 
     "slovakian": "Slovenský",
 
+    "korean": "한국어",
+
+    "swedish": "Svenska",
+
     "days": "dag(en)",
 
     "contact": "Contact",
 
-    "contactText": "Voor meer informatie betreft deze app of ‘The-M-Project’ neem dan alstublieft contact op met M-Way Solutions GmbH.",
+    "contactText": "Voor meer informatie betreft deze app of ‘The-M-Project’ neem dan alstublieft contact op met Panacoda GmbH.",
 
     "confirm": "Weet u zeker dat u deze item wil verwijderen?",
 
