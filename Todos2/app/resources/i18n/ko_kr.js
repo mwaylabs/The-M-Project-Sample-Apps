@@ -63,6 +63,8 @@ M.I18N.ko_kr = {
     "korean": "한국어",
 
     "swedish": "Svenska",
+    
+    "finnish": "Suomi",
 
     "days": "일",
 

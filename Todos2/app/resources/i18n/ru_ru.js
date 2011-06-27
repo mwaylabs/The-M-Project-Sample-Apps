@@ -64,6 +64,8 @@ M.I18N.ru_ru = {
 
     "swedish": "Svenska",
     
+    "finnish": "Suomi",
+    
     "days": "дней",
 
     "contact": "Контакты",

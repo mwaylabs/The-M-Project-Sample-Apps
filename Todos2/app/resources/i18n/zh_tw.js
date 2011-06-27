@@ -63,6 +63,8 @@ M.I18N.zh_tw = {
     "korean": "한국어",
 
     "swedish": "Svenska",
+    
+    "finnish": "Suomi",
 
     "days": "天數",
 

@@ -67,6 +67,8 @@ M.I18N.de_de = {
     "days": "Tag(e)",
 
     "contact": "Kontakt",
+    
+    "finnish": "Suomi",
 
     "contactText": "Für weitere Informationen bezüglich dieser Anwendung oder 'The-M-Project' kontaktieren Sie bitte die Panacoda GmbH.",
 

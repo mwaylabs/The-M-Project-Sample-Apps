@@ -38,7 +38,6 @@ M.I18N.es_es = {
 
     "language": "Idioma",
 
-
     "german": "Deutsch",
 
     "english": "English",
@@ -64,6 +63,8 @@ M.I18N.es_es = {
     "korean": "한국어",
 
     "swedish": "Svenska",
+    
+    "finnish": "Suomi",
 
     "days": "dia(s)",
 

@@ -60,6 +60,8 @@ M.I18N.sv_sv = {
     "korean": "한국어",
 
     "swedish": "Svenska",
+    
+    "finnish": "Suomi",
 
     "days": "dagar",
 
