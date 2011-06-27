@@ -64,6 +64,8 @@ M.I18N.en_us = {
 
     "swedish": "Svenska",
 
+    "finnish": "Suomi",
+
     "days": "day(s)",
 
     "contact": "Contact",

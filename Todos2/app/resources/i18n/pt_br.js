@@ -63,6 +63,8 @@ M.I18N.pt_br = {
     "korean": "한국어",
 
     "swedish": "Svenska",
+    
+    "finnish": "Suomi",
 
     "days": "dia(s)",
 

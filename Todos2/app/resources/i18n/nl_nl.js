@@ -63,6 +63,8 @@ M.I18N.nl_nl = {
     "korean": "한국어",
 
     "swedish": "Svenska",
+    
+    "finnish": "Suomi",
 
     "days": "dag(en)",
 

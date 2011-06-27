@@ -63,6 +63,8 @@ M.I18N.sk_sk = {
     "korean": "한국어",
 
     "swedish": "Svenska",
+    
+    "finnish": "Suomi",
 
     "days": "deň(dni)",
 

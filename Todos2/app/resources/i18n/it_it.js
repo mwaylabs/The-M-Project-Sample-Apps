@@ -63,6 +63,8 @@ M.I18N.it_it = {
     "korean": "한국어",
 
     "swedish": "Svenska",
+    
+    "finnish": "Suomi",
 
     "days": "giorno(i)",
 
