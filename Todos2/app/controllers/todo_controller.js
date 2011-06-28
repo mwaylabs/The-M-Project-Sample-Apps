@@ -40,8 +40,8 @@ Todos2.TodoController = M.Controller.extend({
             });
             M.ViewManager.getView('page1', 'toggleView').toggleView();
         }
+//        set the current date as default value
         this.set('curDate', M.Date.now().format(M.I18N.l('due_date_format')));
-        console.log(this.selDate);
     },
 
     goBack: function() {
