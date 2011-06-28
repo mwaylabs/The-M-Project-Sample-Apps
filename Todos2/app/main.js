@@ -340,7 +340,11 @@ Todos2.app = M.Application.design({
                 date: M.TextFieldView.design({
                     name: 'date',
                     label: M.I18N.l('due_date'),
-                    initialText: M.I18N.l('due_date_format'),
+//                    initialText: M.I18N.l('due_date_format'),
+                    contentBinding: {
+                        target: Todos2.TodoController,
+                        property: 'curDate'
+                    },
                     cssClassOnInit: 'textfieldInit',
                     validators: [M.PresenceValidator.customize({
                         msg: M.I18N.l('due_date_req')
