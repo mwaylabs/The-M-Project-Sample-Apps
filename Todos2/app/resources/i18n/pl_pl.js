@@ -12,6 +12,8 @@ M.I18N.pl_pl = {
 
     "save": "Zapisz",
 
+    "back": "Wstecz",
+
     "title": "Tytuł",
 
     "details": "Szczegóły",

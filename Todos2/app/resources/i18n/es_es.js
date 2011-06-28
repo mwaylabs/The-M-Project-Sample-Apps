@@ -12,6 +12,8 @@ M.I18N.es_es = {
 
     "save": "Guardar",
 
+    "back": "Atrás",
+
     "title": "Titulo",
 
     "details": "Detalles",

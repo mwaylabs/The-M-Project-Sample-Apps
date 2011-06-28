@@ -12,6 +12,8 @@ M.I18N.pt_br = {
 
     "save": "Salvar",
 
+    "back": "Anterior",
+
     "title": "Título",
 
     "details": "Detalhes",

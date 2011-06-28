@@ -12,6 +12,8 @@ M.I18N.sk_sk = {
 
     "save": "Uložiť",
 
+    "back": "Staré",
+
     "title": "Titulok",
 
     "details": "Detaily",

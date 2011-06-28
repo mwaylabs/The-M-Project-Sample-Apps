@@ -99,7 +99,7 @@ Todos2.app = M.Application.design({
             childViews: 'backButton centerLabel toggleView',
 
             backButton: M.ButtonView.design({
-                value: 'Back',
+                value: M.I18N.l('back'),
                 icon: 'arrow-l',
                 events: {
                     tap: {
