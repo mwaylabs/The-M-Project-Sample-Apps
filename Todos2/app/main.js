@@ -11,6 +11,8 @@ Todos2.app = M.Application.design({
 
     entryPage: 'page1',
 
+    tabBar: Todos2.tabs,
+
     page1: M.PageView.design({
 
         cssClass: 'bg',
@@ -22,7 +24,7 @@ Todos2.app = M.Application.design({
             }
         },
 
-        childViews: 'header content tabs',
+        childViews: 'header content',
 
         header: M.ToolbarView.design({
             childViews: 'centerLabel toggleView',
@@ -76,9 +78,7 @@ Todos2.app = M.Application.design({
                 listItemTemplateView: Todos2.TodoItemView
             })
 
-        }),
-
-        tabs: Todos2.tabs
+        })
 
     }),
 
@@ -93,7 +93,7 @@ Todos2.app = M.Application.design({
             }
         },
 
-        childViews: 'header content tabs',
+        childViews: 'header content',
 
         header: M.ToolbarView.design({
             childViews: 'backButton centerLabel toggleView',
@@ -269,9 +269,7 @@ Todos2.app = M.Application.design({
 
             })
 
-        }),
-
-        tabs: Todos2.tabs
+        })
 
     }),
 
@@ -279,7 +277,7 @@ Todos2.app = M.Application.design({
 
         cssClass: 'bg',
 
-        childViews: 'header content tabs',
+        childViews: 'header content',
 
         header: M.ToolbarView.design({
             childViews: 'centerLabel addButton',
@@ -357,9 +355,7 @@ Todos2.app = M.Application.design({
 
             })
 
-        }),
-
-        tabs: Todos2.tabs
+        })
 
     }),
 
@@ -367,7 +363,7 @@ Todos2.app = M.Application.design({
 
         cssClass: 'bg',
 
-        childViews: 'header content tabs',
+        childViews: 'header content',
 
         events: {
             pageshow: {
@@ -542,9 +538,7 @@ Todos2.app = M.Application.design({
 
             })
 
-        }),
-
-        tabs: Todos2.tabs
+        })
 
     })
 
