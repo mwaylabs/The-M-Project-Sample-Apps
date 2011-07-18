@@ -1,6 +1,8 @@
 {
     "name" : "DialogSample",
-    "version": "v0.0.1",
+    "version": "0.0.1",
+    "mode": "debug",
+    "debugLevel": 1,
+    "eliminate": false,
     "minify": false
-             
 }

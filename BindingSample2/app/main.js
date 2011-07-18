@@ -62,7 +62,7 @@ BindingSample2.app = M.Application.design({
                     },
                     operation: function(v) {
                         if(v && typeof(v) === 'object') {
-                            return 'theme/images/' + v.firstname.toLocaleLowerCase() + '_' + v.lastname.toLocaleLowerCase() + '.png';
+                            return 'theme/images/' + v.firstname.toLowerCase() + '_' + v.lastname.toLowerCase() + '.png';
                         } else {
                             return null;
                         }
@@ -109,11 +109,11 @@ BindingSample2.app = M.Application.design({
                 computedValue: {
                     contentBinding: {
                         target: BindingSample2.ApplicationController,
-                        property: 'person.address'
+                        property: 'person.address.street'
                     },
                     operation: function(v) {
                         if(v && typeof(v) === 'object') {
-                            return v.street + ' ' + v.houseNumber;
+                            return v.name + ' ' + v.houseNumber;
                         } else {
                             return '-';
                         }
