@@ -1,6 +1,7 @@
 // ==========================================================================
 // Project:   The M-Project - Mobile HTML5 Application Framework
 // Copyright: (c) 2010 M-Way Solutions GmbH. All rights reserved.
+//            (c) 2011 panacoda GmbH. All rights reserved.
 // Creator:   Sebastian
 // Date:      28.10.2010
 // License:   Dual licensed under the MIT or GPL Version 2 licenses.
@@ -8,16 +9,16 @@
 //            http://github.com/mwaylabs/The-M-Project/blob/master/GPL-LICENSE
 // ==========================================================================
 
-M.STATE_UNDEFINED = 'state_undefined';
 M.STATE_NEW = 'state_new';
-M.STATE_INSYNCPOS = 'state_insyncpos';
-M.STATE_INSYNCNEG = 'state_insyncneg';
-M.STATE_LOCALCHANGED = 'state_localchange';
-M.STATE_VALID = 'state_valid';
-M.STATE_INVALID = 'state_invalid';
+M.STATE_NEW_VALID = 'state_new_valid';
+M.STATE_NEW_INVALID = 'state_new_invalid';
+M.STATE_DIRTY = 'state_dirty';
+M.STATE_DIRTY_VALID = 'state_dirty_valid';
+M.STATE_DIRTY_INVALID = 'state_dirty_invalid';
+M.STATE_INSYNC = 'state_insync';
 M.STATE_DELETED = 'state_deleted';
 
-m_require('core/foundation/model_registry.js');
+m_require('core/data/model_registry.js');
 
 /*
     TODO: make model customizable regarding performance killing features. means configurable activation of certain features:
@@ -28,15 +29,15 @@ m_require('core/foundation/model_registry.js');
 
 /**
  * @class
- * 
+ *
  * M.Model is the prototype for every model and for every model record (a model itself is the blueprint for a model record).
  * Models hold the business data of an application respectively the application's state. It's usually the part of an application that is persisted to storage.
  * M.Model acts as the gatekeeper to storage. It uses data provider for persistence and validators to validate its records.
- * 
+ *
  * @extends M.Object
  */
 M.Model = M.Object.extend(
-/** @scope M.Model.prototype */ { 
+/** @scope M.Model.prototype */ {
     /**
      * The type of this object.
      *
@@ -62,12 +63,12 @@ M.Model = M.Object.extend(
     m_id: null,
 
     /**
-     * The model's record defines the properties that are semantically bound to this model:
-     * e.g. a person's record is (in simplest case): firstname, lastname, age.
+     * The model's data defines the properties that are semantically bound to this model:
+     * e.g. a person's data is (in simplest case): firstname, lastname, age.
      *
-     * @type Object record
+     * @type Object data
      */
-    record: null,
+    data: null,
 
     /**
      * Object containing all meta information for the object's properties
@@ -118,10 +119,10 @@ M.Model = M.Object.extend(
      * from storage then state is M.STATE_NEW or 'state_new', if fetched from database then it is M.STATE_VALID or 'state_valid'
      */
     createRecord: function(obj) {
-        
+
         var rec = this.extend({
-            m_id: obj.m_id ? obj.m_id : M.Application.modelRegistry.getNextId(this.name),
-            record: obj /* properties that are added to record here, but are not part of __meta, are deleted later (see below) */
+            m_id: obj.m_id ? obj.m_id : M.ModelRegistry.getNextId(this.name),
+            data: obj /* properties that are added to data here, but are not part of __meta, are deleted later (see below) */
         });
         delete obj.m_id;
         rec.state = obj.state ? obj.state : M.STATE_NEW;
@@ -129,51 +130,50 @@ M.Model = M.Object.extend(
 
         /* set timestamps if new */
         if(rec.state === M.STATE_NEW) {
-            rec.record[M.META_CREATED_AT] = M.Date.now().format('yyyy/mm/dd HH:MM:ss');
-            rec.record[M.META_UPDATED_AT] = M.Date.now().format('yyyy/mm/dd HH:MM:ss');
+            rec.data[M.Application.getConfig('timeStampCreated')] = +new Date();//M.Date.now().format('yyyy/mm/dd HH:MM:ss');
+            rec.data[M.Application.getConfig('timeStampUpdated')] = +new Date();//M.Date.now().format('yyyy/mm/dd HH:MM:ss');
         }
 
-        for(var i in rec.record) {
+        for(var i in rec.data) {
 
-            if(i === 'ID' || i === M.META_CREATED_AT || i === M.META_UPDATED_AT) {
+            if(i === 'ID' || i === M.Application.getConfig('timeStampCreated') || i === M.Application.getConfig('timeStampUpdated')) {
                 continue;
             }
 
-            /* if record contains properties that are not part of __meta (means that are not defined in the model blueprint) delete them */
+            /* if data contains properties that are not part of __meta (means that are not defined in the model blueprint) delete them */
             if(!rec.__meta.hasOwnProperty(i)) {
-                delete rec.record[i];
+                M.Logger.log('Model ' + this.name + ' has no property called ' + i, M.WARN);
+                delete rec.data[i];
                 continue;
             }
 
-            /* if reference to a record entity is in param obj, assign it like in set. */
-            if(rec.__meta[i].dataType === 'Reference' && rec.record[i] && rec.record[i].type && rec.record[i].type === 'M.Model') {
+            /* if reference to a data entity is in param obj, assign it like in set. */
+            if(rec.__meta[i].dataType === 'Reference' && rec.data[i] && rec.data[i].type && rec.data[i].type === 'M.Model') {
                 // call set of model
-                rec.set(i, rec.record[i]);
+                rec.set(i, rec.data[i]);
             }
-            
+
             if(rec.__meta[i]) {
-                rec.__meta[i].isUpdated = NO;    
+                rec.__meta[i].isUpdated = NO;
             }
         }
 
-        this.recordManager.add(rec);
+        //this.recordManager.add(rec);
         return rec;
     },
 
-    /** 
+    /**
      * Create defines a new model blueprint. It is passed an object with the model's attributes and the model's business logic
      * and after it the type of data provider to use.
      *
-     * @param {Object} obj An object defining the model's  
+     * @param {Object} obj An object defining the model's
      * @param {Object} dp The data provider to use, e. g. M.LocalStorageProvider
      * @returns {Object} The model blueprint: acts as blueprint to all records created with @link M.Model#createRecord
      */
-    create: function(obj, dp) {
+    create: function(obj) {
         var model = M.Model.extend({
             __meta: {},
             name: obj.__name__,
-            dataProvider: dp,
-            recordManager: {},
             usesValidation: obj.usesValidation === null || obj.usesValidation === undefined ? this.usesValidation : obj.usesValidation
         });
         delete obj.__name__;
@@ -183,7 +183,7 @@ M.Model = M.Object.extend(
             if(typeof(obj[prop]) === 'function') {
                 model[prop] = obj[prop];
             } else if(obj[prop].type === 'M.ModelAttribute') {
-                model.__meta[prop] = obj[prop];    
+                model.__meta[prop] = obj[prop];
             }
         }
 
@@ -191,38 +191,38 @@ M.Model = M.Object.extend(
         model.__meta['ID'] = this.attr('Integer', {
             isRequired:NO
         });
-        model.__meta[M.META_CREATED_AT] = this.attr('String', { // could be 'Date', too
+        model.__meta[M.Application.getConfig('timeStampCreated')] = this.attr('String', { // could be 'Date', too
             isRequired:YES
         });
-        model.__meta[M.META_UPDATED_AT] = this.attr('String', { // could be 'Date', too
+        model.__meta[M.Application.getConfig('timeStampUpdated')] = this.attr('String', { // could be 'Date', too
             isRequired:YES
         });
 
         /* CouchDB documents have a rev property for managing versions*/
-        if(model.dataProvider.type === 'M.DataProviderCouchDb') {
+        /*if(model.dataProvider.type === 'M.DataProviderCouchDb') {
             model.__meta['rev'] = this.attr('String', {
                 isRequired:NO
-            });     
+            });
         }
 
         model.recordManager = M.RecordManager.extend({records:[]});
 
-        /* if dataprovider is WebSqlProvider, create table for this model and add ID ModelAttribute Object to __meta */
-        if(model.dataProvider.type === 'M.DataProviderWebSql') {
+         if dataprovider is WebSqlProvider, create table for this model and add ID ModelAttribute Object to __meta */
+        /*if(model.dataProvider.type === 'M.DataProviderWebSql') {
             model.dataProvider.init({model: model, onError:function(err){M.Logger.log(err, M.ERR);}}, function() {});
             model.dataProvider.isInitialized = YES;
-        }
+        }*/
 
-        M.Application.modelRegistry.register(model.name);
+        M.ModelRegistry.register(model.name);
 
         /* save model in modelList with model name as key */
         this.modelList[model.name] = model;
 
         /* Re-set the just registered model's id, if there is a value stored */
         /* Model Registry stores the current id of a model type into localStorage */
-        var m_id = localStorage.getItem(M.LOCAL_STORAGE_PREFIX + M.Application.name + M.LOCAL_STORAGE_SUFFIX + model.name);
+        var m_id = localStorage.getItem(M.Application.getConfig('keyPrefix') + M.Application.name + M.Application.getConfig('keySuffix') + model.name);
         if(m_id) {
-            M.Application.modelRegistry.setId(model.name, parseInt(m_id));
+            M.ModelRegistry.setId(model.name, parseInt(m_id));
         }
         return model;
     },
@@ -264,7 +264,7 @@ M.Model = M.Object.extend(
      * @returns {Object} An M.ModelAttribute object configured with the type and options passed to the function.
      */
     attr: function(type, opts) {
-        return M.ModelAttribute.attr(type, opts); 
+        return M.ModelAttribute.attr(type, opts);
     },
 
     /*
@@ -284,14 +284,14 @@ M.Model = M.Object.extend(
      */
     get: function(propName, obj) {
         var metaProp = this.__meta[propName];
-        var recProp = this.record[propName];
+        var recProp = this.data[propName];
         /* return ref entity if property is a reference */
         if(metaProp && metaProp.dataType === 'Reference') {
-            if(metaProp.refEntity) {// if entity is already loaded and assigned here in model record
+            if(metaProp.refEntity) {// if entity is already loaded and assigned here in model data
                 return metaProp.refEntity;
-            } else if(recProp) { // if model record has a reference set, but it is not loaded yet
+            } else if(recProp) { // if model data has a reference set, but it is not loaded yet
                 if(obj && obj.force) { // if force flag was set
-                    /* custom call to deepFind with record passed only being the one property that needs to be filled, type of dp checked in deepFind */
+                    /* custom call to deepFind with data passed only being the one property that needs to be filled, type of dp checked in deepFind */
                     var callback = this.dataProvider.isAsync ? obj.onSuccess : null
                     this.deepFind([{
                         prop: propName,
@@ -330,21 +330,25 @@ M.Model = M.Object.extend(
         /* TODO: implement hasMany... */
         /* TODO: evaluate whether to save m_id in record and entity reference in __meta or other way round */
         if(this.__meta[propName].dataType === 'Reference' && val.type && val.type === 'M.Model') {    // reference set
-            /* first check if new value is passed */ 
-            if(this.record[propName] !== val.m_id) {
-                /* set m_id of reference in record */
-                this.record[propName] = val.m_id;
+            /* first check if new value is passed */
+            if(this.data[propName] !== val.m_id) {
+                /* set m_id of reference in data */
+                this.data[propName] = val.m_id;
                 this.__meta[propName].refEntity = val;
             }
             return;
         }
 
-        if(this.record[propName] !== val) {
-            this.record[propName] = val;
+        if(this.data[propName] !== val) {
+            this.data[propName] = val;
             this.__meta[propName].isUpdated = YES;
-            /* mark record as updated with new timestamp*/
-            this.record[M.META_UPDATED_AT] = M.Date.now().format('yyyy/mm/dd HH:MM:ss');
-        }        
+
+            /* now set the record's state to dirty */
+            this.state = M.STATE_DIRTY;
+
+            /* mark data as updated with new timestamp*/
+            this.data[M.Application.getConfig('timeStampUpdated')] = M.Date.now().format('yyyy/mm/dd HH:MM:ss');
+        }
     },
 
     /**
@@ -394,7 +398,7 @@ M.Model = M.Object.extend(
         /*if(!isValid) {
             this.state = M.STATE_INVALID;
         } else {
-            this.state = M.STATE_VALID;   
+            this.state = M.STATE_VALID;
         }*/
         return isValid;
     },
@@ -407,20 +411,19 @@ M.Model = M.Object.extend(
      * @returns {Boolean|Object} Depends on data provider used. When WebSQL used, a boolean is returned, the find result is returned asynchronously,
      * because the call itself is asynchronous. If LocalStorage is used, the result of the query is returned.
      */
+    // MOVE TO STORE
     find: function(obj){
         if(!this.dataProvider) {
-            M.Logger.log('No data provider given.', M.ERR);
+            M.Logger.log('No data provider given for this store.', M.ERR);
+            return;
         }
         obj = obj ? obj : {};
         /* check if the record list shall be cleared (default) before new found model records are appended to the record list */
-        /* TODO: needs to be placed in callback */
+        /* TODO: handle in store / DP
         obj['deleteRecordList'] = obj['deleteRecordList'] ? obj.deleteRecordList : YES;
         if(obj.deleteRecordList) {
             this.recordManager.removeAll();
-        }
-        if(!this.dataProvider) {
-            M.Logger.log('No data provider given.', M.ERR);
-        }
+        }*/
 
         /* extends the given obj with self as model property in obj */
         return this.dataProvider.find( $.extend(obj, {model: this}) );
@@ -433,8 +436,9 @@ M.Model = M.Object.extend(
      * @param {Object} obj The param object with query, cascade flag and callbacks.
      * @returns {Boolean} The result of the data provider function call. Is a boolean. With LocalStorage used, it indicates if the save operation was successful.
      * When WebSQL is used, the result of the save operation returns asynchronously. The result then is just the standard result returned by the web sql provider's save method
-     * which does not necessarily indicate whether the operation was successful, because the operation is asynchronous, means the operation's result is not predictable. 
+     * which does not necessarily indicate whether the operation was successful, because the operation is asynchronous, means the operation's result is not predictable.
      */
+    // MOVE TO STORE
     save: function(obj) {
         if(!this.dataProvider) {
             M.Logger.log('No data provider given.', M.ERR);
@@ -462,7 +466,8 @@ M.Model = M.Object.extend(
         }
     },
 
-    
+
+    // MOVE TO STORE
     bulkImport: function(obj){
         if(!this.dataProvider) {
             M.Logger.log('No data provider given.', M.ERR);
@@ -492,6 +497,7 @@ M.Model = M.Object.extend(
      * @returns {Boolean} Indicating whether deletion was successful or not (only with synchronous data providers, e.g. LocalStorage). When asynchronous data providers
      * are used, e.g. WebSQL provider the real result comes asynchronous and here just the result of the del() function call of the @link M.WebSqlProvider is used.
      */
+    // MOVE TO STORE
     del: function(obj) {
         if(!this.dataProvider) {
             M.Logger.log('No data provider given.', M.ERR);
@@ -506,7 +512,7 @@ M.Model = M.Object.extend(
             this.state = M.STATE_DELETED;
             return YES
         }
-        
+
     },
 
     /**
@@ -532,6 +538,7 @@ M.Model = M.Object.extend(
     },
 
     // TODO: handle onSuccess AND onError
+    // MOVE TO STORE
     deepFind: function(records, callback) {
         //console.log('deepFind...');
         //console.log('### records.length: ' + records.length);
@@ -577,7 +584,7 @@ M.Model = M.Object.extend(
                 break;
 
             default:
-                    
+
                 break;
         }
     },
@@ -590,6 +597,7 @@ M.Model = M.Object.extend(
     /**
      * sync model with storage (only websql)
      */
+    // MOVE TO STORE
     schemaSync: function() {
 
     }
