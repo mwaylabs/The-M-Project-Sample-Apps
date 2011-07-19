@@ -11,8 +11,6 @@ Todos2.app = M.Application.design({
 
     entryPage: 'page1',
 
-    tabBar: Todos2.tabs,
-
     page1: M.PageView.design({
 
         cssClass: 'bg',
@@ -24,7 +22,7 @@ Todos2.app = M.Application.design({
             }
         },
 
-        childViews: 'header content',
+        childViews: 'header content tabs',
 
         header: M.ToolbarView.design({
             childViews: 'centerLabel toggleView',
@@ -78,7 +76,9 @@ Todos2.app = M.Application.design({
                 listItemTemplateView: Todos2.TodoItemView
             })
 
-        })
+        }),
+
+        tabs: Todos2.tabs
 
     }),
 
@@ -93,13 +93,13 @@ Todos2.app = M.Application.design({
             }
         },
 
-        childViews: 'header content',
+        childViews: 'header content tabs',
 
         header: M.ToolbarView.design({
             childViews: 'backButton centerLabel toggleView',
 
             backButton: M.ButtonView.design({
-                value: M.I18N.l('back'),
+                value: 'Back',
                 icon: 'arrow-l',
                 events: {
                     tap: {
@@ -269,7 +269,9 @@ Todos2.app = M.Application.design({
 
             })
 
-        })
+        }),
+
+        tabs: Todos2.tabs
 
     }),
 
@@ -277,7 +279,7 @@ Todos2.app = M.Application.design({
 
         cssClass: 'bg',
 
-        childViews: 'header content',
+        childViews: 'header content tabs',
 
         header: M.ToolbarView.design({
             childViews: 'centerLabel addButton',
@@ -338,11 +340,7 @@ Todos2.app = M.Application.design({
                 date: M.TextFieldView.design({
                     name: 'date',
                     label: M.I18N.l('due_date'),
-//                    initialText: M.I18N.l('due_date_format'),
-                    contentBinding: {
-                        target: Todos2.TodoController,
-                        property: 'curDate'
-                    },
+                    initialText: M.I18N.l('due_date_format'),
                     cssClassOnInit: 'textfieldInit',
                     validators: [M.PresenceValidator.customize({
                         msg: M.I18N.l('due_date_req')
@@ -355,7 +353,9 @@ Todos2.app = M.Application.design({
 
             })
 
-        })
+        }),
+
+        tabs: Todos2.tabs
 
     }),
 
@@ -363,7 +363,7 @@ Todos2.app = M.Application.design({
 
         cssClass: 'bg',
 
-        childViews: 'header content',
+        childViews: 'header content tabs',
 
         events: {
             pageshow: {
@@ -538,7 +538,9 @@ Todos2.app = M.Application.design({
 
             })
 
-        })
+        }),
+
+        tabs: Todos2.tabs
 
     })
 
