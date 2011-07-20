@@ -1,6 +1,7 @@
 // ==========================================================================
 // Project:   The M-Project - Mobile HTML5 Application Framework
 // Copyright: (c) 2010 M-Way Solutions GmbH. All rights reserved.
+//            (c) 2011 panacoda GmbH. All rights reserved.
 // Creator:   Dominik
 // Date:      09.11.2010
 // License:   Dual licensed under the MIT or GPL Version 2 licenses.
@@ -89,7 +90,6 @@ M.ToggleView = M.View.extend(
                                 }
                             }
                         }
-                        this.currentView = this[childViews[i]];
                         this[childViews[i]]._name = childViews[i];
                         
                         this.html += '<div id="' + this.id + '_' + i + '">';
@@ -97,6 +97,7 @@ M.ToggleView = M.View.extend(
                         this.html += '</div>';
                     }
                 }
+                this.currentView = this[childViews[0]];
             }
         }
     },

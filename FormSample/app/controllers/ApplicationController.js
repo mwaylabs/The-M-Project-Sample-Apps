@@ -20,7 +20,6 @@ FormSample.ApplicationController = M.Controller.extend({
         form.validate();
 
         var values = form.getFormValues();
-        console.log(values);
         var n = FormSample.Name.createRecord({
             firstName: values['firstname'] ? values['firstname'] : '',
             lastName: values['lastname'] ? values['lastname'] : ''
