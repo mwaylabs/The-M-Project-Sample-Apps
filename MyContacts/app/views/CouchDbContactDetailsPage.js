@@ -30,7 +30,10 @@ MyContacts.CouchDbContactDetailsPage = M.PageView.design({
 
             nameLabel: M.LabelView.design({
                 label: '',
-                contentBinding: 'MyContacts.CouchDbController.currentContactName',
+                contentBinding: {
+                    target: MyContacts.CouchDbController,
+                    property: 'currentContactName'
+                },
                 anchorLocation: M.CENTER
             }),
 
@@ -75,15 +78,23 @@ MyContacts.CouchDbContactDetailsPage = M.PageView.design({
             updateButton: M.ButtonView.design({
                 value: 'Update Contact',
                 cssClass: 'e',
-                target: MyContacts.CouchDbController,
-                action: 'updateContact'
+                events: {
+                    tap: {
+                        target: MyContacts.CouchDbController,
+                        action: 'updateContact'
+                    }
+                }
             }),
 
             delButton: M.ButtonView.design({
                 value: 'Delete Contact',
                 cssClass: 'b',
-                target: MyContacts.CouchDbController,
-                action: 'deleteContact'
+                events: {
+                    tap: {
+                        target: MyContacts.CouchDbController,
+                        action: 'deleteContact'
+                    }
+                }
             })
 
         })

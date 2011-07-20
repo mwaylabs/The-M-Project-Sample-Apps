@@ -18,7 +18,10 @@ MyContacts.LocalStorageContactDetailsPage = M.PageView.design({
 
             nameLabel: M.LabelView.design({
                 label: '',
-                contentBinding: 'MyContacts.LocalStorageController.currentContactName',
+                contentBinding: {
+                    target: MyContacts.LocalStorageController,
+                    property: 'currentContactName'
+                },
                 anchorLocation: M.CENTER
             }),
 
@@ -63,15 +66,23 @@ MyContacts.LocalStorageContactDetailsPage = M.PageView.design({
             updateButton: M.ButtonView.design({
                 value: 'Update Contact',
                 cssClass: 'e',
-                target: MyContacts.LocalStorageController,
-                action: 'updateContact'
+                events: {
+                    tap: {
+                        target: MyContacts.LocalStorageController,
+                        action: 'updateContact'
+                    }
+                }
             }),
 
             delButton: M.ButtonView.design({
                 value: 'Delete Contact',
                 cssClass: 'b',
-                target: MyContacts.LocalStorageController,
-                action: 'deleteContact'
+                events: {
+                    tap: {
+                        target: MyContacts.LocalStorageController,
+                        action: 'deleteContact'
+                    }
+                }
             })
 
         }),

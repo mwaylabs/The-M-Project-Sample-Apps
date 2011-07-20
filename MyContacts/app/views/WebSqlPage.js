@@ -11,9 +11,11 @@ m_require('app/views/Tabs.js');
 
 MyContacts.WebSqlPage = M.PageView.design({
 
-    onLoad: {
-        target: MyContacts.WebSqlController,
-        action: 'init'
+    events: {
+        pageshow: {
+            target: MyContacts.WebSqlController,
+            action: 'init'
+        }
     },
 
     childViews: 'header content tabs',
@@ -30,8 +32,12 @@ MyContacts.WebSqlPage = M.PageView.design({
         addButton: M.ButtonView.design({
             value: 'new',
             icon: 'plus',
-            target: MyContacts.WebSqlController,
-            action: 'newContact',
+            events: {
+                tap: {
+                    target: MyContacts.WebSqlController,
+                    action: 'newContact'
+                }
+            },
             anchorLocation: M.RIGHT
         }),
 
@@ -45,7 +51,10 @@ MyContacts.WebSqlPage = M.PageView.design({
         childViews: 'contactList',
 
         contactList: M.ListView.design({
-            contentBinding: 'MyContacts.WebSqlController.contacts',
+            contentBinding: {
+                target: MyContacts.WebSqlController,
+                property: 'contacts'
+            },
             listItemTemplateView: MyContacts.ContactItemView
         })
     }),

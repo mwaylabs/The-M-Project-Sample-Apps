@@ -11,9 +11,11 @@ m_require('app/views/Tabs.js');
 
 MyContacts.RemotePage = M.PageView.design({
 
-    onLoad: {
-        target: MyContacts.RemoteStorageController,
-        action: 'init'
+    events: {
+        pageshow: {
+            target: MyContacts.RemoteStorageController,
+            action: 'init'
+        }
     },
 
     childViews: 'header content tabs',
@@ -30,8 +32,12 @@ MyContacts.RemotePage = M.PageView.design({
         addButton: M.ButtonView.design({
             value: 'new',
             icon: 'plus',
-            target: MyContacts.RemoteStorageController,
-            action: 'newContact',
+            events: {
+                tap: {
+                    target: MyContacts.RemoteStorageController,
+                    action: 'newContact'
+                }
+            },
             anchorLocation: M.RIGHT
         }),
 
@@ -45,7 +51,10 @@ MyContacts.RemotePage = M.PageView.design({
         childViews: 'contactList',
 
         contactList: M.ListView.design({
-            contentBinding: 'MyContacts.RemoteStorageController.contacts',
+            contentBinding: {
+                target: MyContacts.RemoteStorageController,
+                property: 'contacts'
+            },
             listItemTemplateView: MyContacts.ContactItemView
         })
     }),

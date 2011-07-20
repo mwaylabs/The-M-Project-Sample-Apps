@@ -69,8 +69,12 @@ MyContacts.CouchDbAddContactPage = M.PageView.design({
         addButton: M.ButtonView.design({
             value: 'Add contact',
             icon: '+',
-            target: MyContacts.CouchDbController,
-            action: 'addContact'
+            events: {
+                tap: {
+                    target: MyContacts.CouchDbController,
+                    action: 'addContact'
+                }
+            }
         }),
 
         l: M.LabelView.design({

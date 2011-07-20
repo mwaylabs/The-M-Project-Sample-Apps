@@ -11,9 +11,11 @@ m_require('app/views/Tabs.js');
 
 MyContacts.LocalStoragePage = M.PageView.design({
 
-	onLoad: {
-        target: MyContacts.LocalStorageController,
-        action: 'init'
+	events: {
+        pageshow: {
+            target: MyContacts.LocalStorageController,
+            action: 'init'
+        }
     },
 
     childViews: 'header content tabs',
@@ -30,9 +32,13 @@ MyContacts.LocalStoragePage = M.PageView.design({
         addButton: M.ButtonView.design({
             value: 'new',
             icon: 'plus',
-            target: MyContacts.LocalStorageController,
-            action: 'newContact',
-            anchorLocation: M.RIGHT
+            anchorLocation: M.RIGHT,
+            events: {
+                tap: {
+                    target: MyContacts.LocalStorageController,
+                    action: 'newContact'
+                }
+            }
         }),
         
         anchorLocation: M.TOP
@@ -42,7 +48,10 @@ MyContacts.LocalStoragePage = M.PageView.design({
         childViews: 'contactList',
 
         contactList: M.ListView.design({
-            contentBinding: 'MyContacts.LocalStorageController.contacts',
+            contentBinding: {
+                target: MyContacts.LocalStorageController,
+                property: 'contacts'
+            },
             listItemTemplateView: MyContacts.ContactItemView
         })
     }),
