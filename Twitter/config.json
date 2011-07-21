@@ -19,25 +19,7 @@
         "<link rel=\"apple-touch-icon\" href=\"theme/images/Icon@2x.png\" />"
     ],
     "application": {
-        "version": "0.0.1"
-    },
-    "deploy": {
-        "panacoda": {
-            "method": "ftp",
-            "ftp": {
-                "host": "www.panacoda.de",
-                "port": 21,
-                "username": "f0055b77",
-                "password": "rwQkF8yXoJut4YrH",
-                "targetPath": "/twitter"
-            },
-            "ssh": {
-                "host": "server.panacoda",
-                "port": 22,
-                "username": "test",
-                "targetPath": "baar/frob",
-                "debugLevel": 0
-            }
-        }
+        "version": "0.0.1",
+        "debugMode": "true"
     }
 }

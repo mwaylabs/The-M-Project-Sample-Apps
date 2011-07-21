@@ -30,6 +30,7 @@
         "fi_fi"
     ],
     "application": {
-        "version": "0.0.1"
+        "version": "0.0.1",
+        "debugMode": "true"
     }
 }
