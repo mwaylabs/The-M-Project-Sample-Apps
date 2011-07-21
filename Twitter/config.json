@@ -21,16 +21,23 @@
     "application": {
         "version": "0.0.1"
     },
-   "deploy": {
-     "panacoda": {
-       "method": "ftp",
-       "ftp": {
-         "host": "www.panacoda.de",
-         "port": 21,
-         "username": "f0055b77",
-         "password": "rwQkF8yXoJut4YrH",
-         "targetPath": "/twitter/abc/test"
-       }
-     }
-   }
+    "deploy": {
+        "panacoda": {
+            "method": "ftp",
+            "ftp": {
+                "host": "www.panacoda.de",
+                "port": 21,
+                "username": "f0055b77",
+                "password": "rwQkF8yXoJut4YrH",
+                "targetPath": "/twitter"
+            },
+            "ssh": {
+                "host": "server.panacoda",
+                "port": 22,
+                "username": "test",
+                "targetPath": "baar/frob",
+                "debugLevel": 0
+            }
+        }
+    }
 }

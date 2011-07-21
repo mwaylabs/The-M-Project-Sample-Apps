@@ -10,6 +10,8 @@ DividedListSample.ContactList = M.ListItemView.design({
 
     childViews: 'firstName lastName',
 
+    isSelectable: NO,
+
     firstName : M.LabelView.design({
         computedValue: {
             valuePattern: '<%= firstName %>',

@@ -22,6 +22,8 @@ KitchenSink.ControlsListViewController = M.Controller.extend({
 
     page6: null,
 
+    page7: null,
+
     callback: null,
 
     searchString: null,
@@ -71,6 +73,13 @@ KitchenSink.ControlsListViewController = M.Controller.extend({
 
                     name: "Custom searchbar list",
                     page: "controlsListView6"
+
+                },
+
+                {
+
+                    name: "Non-selectable list",
+                    page: "controlsListView7"
 
                 }
 
@@ -390,6 +399,50 @@ KitchenSink.ControlsListViewController = M.Controller.extend({
             ];
 
             this.set('page6', page6);
+
+        }
+
+    },
+
+    initPage7: function(isFirstLoad) {
+
+        if(isFirstLoad) {
+
+            var page7 = [
+
+                {
+
+                    name: "Item 1"
+
+                },
+
+                {
+
+                    name: "Item 2"
+
+                },
+
+                {
+
+                    name: "Item 3"
+
+                },
+
+                {
+
+                    name: "Item 4"
+
+                },
+
+                {
+
+                    name: "Item 5"
+
+                }
+
+            ];
+
+            this.set('page7', page7);
 
         }
 
