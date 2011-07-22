@@ -12,8 +12,6 @@ M.I18N.de_de = {
 
     "save": "Speichern",
 
-    "back": "Zurück",
-
     "title": "Titel",
 
     "details": "Details",

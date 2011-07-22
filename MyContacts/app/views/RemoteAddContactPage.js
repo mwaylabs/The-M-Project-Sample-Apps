@@ -69,8 +69,12 @@ MyContacts.RemoteAddContactPage = M.PageView.design({
         addButton: M.ButtonView.design({
             value: 'Add contact',
             icon: '+',
-            target: MyContacts.RemoteStorageController,
-            action: 'addContact'
+            events: {
+                tap: {
+                    target: MyContacts.RemoteStorageController,
+                    action: 'addContact'
+                }
+            }
         }),
 
         l: M.LabelView.design({

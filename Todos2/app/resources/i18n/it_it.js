@@ -11,8 +11,6 @@ M.I18N.it_it = {
     "add": "Aggiungi",
 
     "save": "Salva",
-
-    "back": "Indietro",
     
     "title": "Titolo",
 

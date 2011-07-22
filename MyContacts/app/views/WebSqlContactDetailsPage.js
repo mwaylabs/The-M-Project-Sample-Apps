@@ -30,7 +30,10 @@ MyContacts.WebSqlContactDetailsPage = M.PageView.design({
 
             nameLabel: M.LabelView.design({
                 label: '',
-                contentBinding: 'MyContacts.WebSqlController.currentContactName',
+                contentBinding: {
+                    target: MyContacts.WebSqlController,
+                    property: 'currentContactName'
+                },
                 anchorLocation: M.CENTER
             }),
 
@@ -75,15 +78,23 @@ MyContacts.WebSqlContactDetailsPage = M.PageView.design({
             updateButton: M.ButtonView.design({
                 value: 'Update Contact',
                 cssClass: 'e',
-                target: MyContacts.WebSqlController,
-                action: 'updateContact'
+                events: {
+                    tap: {
+                        target: MyContacts.WebSqlController,
+                        action: 'updateContact'
+                    }
+                }
             }),
 
             delButton: M.ButtonView.design({
                 value: 'Delete Contact',
                 cssClass: 'b',
-                target: MyContacts.WebSqlController,
-                action: 'deleteContact'
+                events: {
+                    tap: {
+                        target: MyContacts.WebSqlController,
+                        action: 'deleteContact'
+                    }
+                }
             })
 
         })

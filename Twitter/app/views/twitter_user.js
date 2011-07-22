@@ -11,7 +11,9 @@ Twitter.TwitterUserView = M.ListItemView.design({
     childViews: 'date label1',
 
     items: 'results',
-    
+
+    isSelectable: NO,
+
     date : M.LabelView.design({
         computedValue: {
             valuePattern: '<%= created_at %>',

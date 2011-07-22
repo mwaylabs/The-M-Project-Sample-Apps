@@ -11,8 +11,6 @@ M.I18N.sv_sv = {
 
     "save": "Spara",
 
-    "back": "Bakåt",
-
     "title": "Rubrik",
 
     "details": "Detalj/er",

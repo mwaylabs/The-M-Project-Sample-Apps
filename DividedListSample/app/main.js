@@ -46,11 +46,11 @@ DividedListSample.app = M.Application.design({
                 searchBarInitialText: 'Suchbegriff...',
 
                 /* comment this out to use a custom search bar (see below) */
-                //usesDefaultSearchBehaviour: YES
+                usesDefaultSearchBehaviour: YES
 
 
                 /* comment this in, to use a custom search bar (see controller) */
-                usesDefaultSearchBehaviour: NO,
+                /*usesDefaultSearchBehaviour: NO,
                 searchBar: {
                     events: {
                         keyup: {
@@ -58,7 +58,7 @@ DividedListSample.app = M.Application.design({
                             action: 'searchStringDidChange'
                         }
                     }
-                }
+                }*/
 
             })
 

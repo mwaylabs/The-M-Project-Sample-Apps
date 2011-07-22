@@ -1,6 +1,7 @@
 // ==========================================================================
 // Project:   The M-Project - Mobile HTML5 Application Framework
 // Copyright: (c) 2010 M-Way Solutions GmbH. All rights reserved.
+//            (c) 2011 panacoda GmbH. All rights reserved.
 // Creator:   Sebastian
 // Date:      18.11.2010
 // License:   Dual licensed under the MIT or GPL Version 2 licenses.
@@ -485,7 +486,7 @@ M.DataProviderWebSql = M.DataProvider.extend(
      * @param {Number} transactionSize
      */
     bulkImport: function(obj) {
-                
+
         if(!this.isInitialized) {
             this.internalCallback = this.bulkImport;
             this.init(obj);

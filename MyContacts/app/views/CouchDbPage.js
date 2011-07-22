@@ -4,9 +4,11 @@ m_require('app/views/Tabs.js');
 
 MyContacts.CouchDbPage = M.PageView.design({
 
-    onLoad: {
-        target: MyContacts.CouchDbController,
-        action: 'init'
+    events: {
+        pageshow: {
+            target: MyContacts.CouchDbController,
+            action: 'init'
+        }
     },
 
     childViews: 'header content tabs',
@@ -23,8 +25,12 @@ MyContacts.CouchDbPage = M.PageView.design({
         addButton: M.ButtonView.design({
             value: 'new',
             icon: 'plus',
-            target: MyContacts.CouchDbController,
-            action: 'newContact',
+            events: {
+                tap: {
+                    target: MyContacts.CouchDbController,
+                    action: 'newContact'
+                }
+            },
             anchorLocation: M.RIGHT
         }),
 
@@ -36,7 +42,10 @@ MyContacts.CouchDbPage = M.PageView.design({
         childViews: 'contactList',
 
         contactList: M.ListView.design({
-            contentBinding: 'MyContacts.CouchDbController.contacts',
+            contentBinding: {
+                target: MyContacts.CouchDbController,
+                property: 'contacts'
+            },
             listItemTemplateView: MyContacts.ContactItemView
         })
     }),

@@ -1,6 +1,6 @@
 // ==========================================================================
 // Project:   The M-Project - Mobile HTML5 Application Framework
-// Copyright: ï¿½2010 M-Way Solutions GmbH. All rights reserved.
+// Copyright: ©2010 M-Way Solutions GmbH. All rights reserved.
 // Creator:   Sebastian
 // Date:      04.11.2010
 // License:   Dual licensed under the MIT or GPL Version 2 licenses.
@@ -20,8 +20,6 @@ Todos2.TodoController = M.Controller.extend({
 
     selDate: null,
 
-    curDate: null,
-
     selDateFormat: null,
 
     counter: 0,
@@ -40,8 +38,6 @@ Todos2.TodoController = M.Controller.extend({
             });
             M.ViewManager.getView('page1', 'toggleView').toggleView();
         }
-//        set the current date as default value
-        this.set('curDate', M.Date.now().format(M.I18N.l('due_date_format')));
     },
 
     goBack: function() {

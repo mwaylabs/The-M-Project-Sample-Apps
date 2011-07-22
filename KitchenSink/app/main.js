@@ -97,6 +97,8 @@ KitchenSink.app = M.Application.design({
 
     controlsListView6: KitchenSink.ControlsListViewPage6,
 
+    controlsListView7: KitchenSink.ControlsListViewPage7,
+
     controlsLoaderView: KitchenSink.ControlsLoaderViewPage,
 
     controlsLoaderView1: KitchenSink.ControlsLoaderViewPage1,

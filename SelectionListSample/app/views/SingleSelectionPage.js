@@ -61,7 +61,7 @@ SelectionListSample.SingleSelectionPage = M.PageView.design({
              */
             /*
             childViews: 'optionGermany optionItaly optionUS optionSpain',
-
+            
             optionGermany: M.SelectionListItemView.design({
                 value: 'germany',
                 label: 'Germany (germany)',

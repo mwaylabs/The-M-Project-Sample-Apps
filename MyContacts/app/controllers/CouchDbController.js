@@ -113,14 +113,15 @@ MyContacts.CouchDbController = M.Controller.extend({
         M.DialogView.confirm({
             title: 'Delete?',
             message: 'Do you really want to delete this contact?',
-            onOk: {
-                target: this,
-                action: 'doDelete'
-            },
-
-            onCancel: {
-                target:this,
-                action: 'doNotDelete'
+            callbacks: {
+                confirm: {
+                    target: this,
+                    action: 'doDelete'
+                },
+                cancel: {
+                    target:this,
+                    action: 'doNotDelete'
+                }
             }
         });
     },

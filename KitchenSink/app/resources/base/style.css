@@ -3,6 +3,9 @@
     height:30px;
     margin-left:-14px !important;
     margin-top:-4px !important;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
 }
 
 [data-icon=core] .ui-icon {
