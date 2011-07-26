@@ -89,7 +89,7 @@ M.DataProviderWebStorage = M.DataProvider.extend(
                         /* error callback for single operation */
                         this.handleCallback(obj.callbacks, 'errorOp', [obj.opId, {
                             operationType: 'save',
-                            error: e
+                            error: 'Error saving record to localStorage with key: ' + this.keyPrefix + M.Application.name + this.keySuffix + obj.record[op].name + '_' + obj.record[op].m_id
                         }]);
                         break;
                     }
@@ -111,7 +111,8 @@ M.DataProviderWebStorage = M.DataProvider.extend(
                 /* if flag is set to NO, something went wrong, so call error-callback of this transaction and leave transaction loop */
                 } else {
                     this.handleCallback(obj.callbacks, 'errorTx', [obj.opId, {
-                        operationType: 'save'
+                        operationType: 'save',
+                        error: 'Error saving record to localStorage with key: ' + this.keyPrefix + M.Application.name + this.keySuffix + obj.record[op].name + '_' + obj.record[op].m_id + '. Transaction #' + (tx + 1) + ' terminated.'
                     }]);
                     break;
                 }
@@ -124,10 +125,11 @@ M.DataProviderWebStorage = M.DataProvider.extend(
                     operationType: 'save',
                     records: obj.record
                 }]);
-            /* if flag is set to NO, something went wrong during the save process, so call global success-callback */
+            /* if flag is set to NO, something went wrong during the save process, so call global error-callback */
             } else {
                 this.handleCallback(obj.callbacks, 'error', [obj.opId, {
-                    operationType: 'save'
+                    operationType: 'save',
+                    error: 'Error saving record to localStorage with key: ' + this.keyPrefix + M.Application.name + this.keySuffix + obj.record[op].name + '_' + obj.record[op].m_id + '. Transaction #' + (tx + 1) + ' terminated and whole save process terminated.'
                 }]);
             }
         /* if only a single record is passed, save it */
@@ -147,7 +149,7 @@ M.DataProviderWebStorage = M.DataProvider.extend(
                 M.Logger.log('Error saving record to localStorage with key: ' + this.keyPrefix + M.Application.name + this.keySuffix + obj.record.name + '_' + obj.record.m_id, M.WARN);
                 this.handleCallback(obj.callbacks, 'error', [obj.opId, {
                     operationType: 'save',
-                    error: e
+                    error: 'Error saving record to localStorage with key: ' + this.keyPrefix + M.Application.name + this.keySuffix + obj.record.name + '_' + obj.record.m_id
                 }]);
             }
         }
@@ -201,7 +203,7 @@ M.DataProviderWebStorage = M.DataProvider.extend(
                         /* error callback for single operation */
                         this.handleCallback(obj.callbacks, 'errorOp', [obj.opId, {
                             operationType: 'del',
-                            error: e
+                            error: 'Error deleting record from localStorage with key: ' + this.keyPrefix + M.Application.name + this.keySuffix + obj.record[op].name + '_' + obj.record[op].m_id
                         }]);
                         break;
                     }
@@ -230,7 +232,8 @@ M.DataProviderWebStorage = M.DataProvider.extend(
                         }
                     }
                     this.handleCallback(obj.callbacks, 'errorTx', [obj.opId, {
-                        operationType: 'del'
+                        operationType: 'del',
+                        error: 'Error deleting record from localStorage with key: ' + this.keyPrefix + M.Application.name + this.keySuffix + obj.record[invalidOp].name + '_' + obj.record[invalidOp].m_id + '. Transaction #' + (tx + 1) + ' terminated.'
                     }]);
                     break;
                 }
@@ -250,7 +253,8 @@ M.DataProviderWebStorage = M.DataProvider.extend(
                     obj.record[op].state = M.STATE_DELETED;
                 }
                 this.handleCallback(obj.callbacks, 'error', [obj.opId, {
-                    operationType: 'del'
+                    operationType: 'del',
+                    error: 'Error deleting record from localStorage with key: ' + this.keyPrefix + M.Application.name + this.keySuffix + obj.record[invalidOp].name + '_' + obj.record[invalidOp].m_id + '. Transaction #' + (tx + 1) + ' terminated and whole save process terminated.'
                 }]);
             }
         /* if only a single record is passed, save it */
@@ -269,7 +273,7 @@ M.DataProviderWebStorage = M.DataProvider.extend(
                 M.Logger.log('Error deleting record from localStorage with key: ' + this.keyPrefix + M.Application.name + this.keySuffix + obj.record.name + '_' + obj.record.m_id, M.WARN);
                 this.handleCallback(obj.callbacks, 'error', [obj.opId, {
                     operationType: 'del',
-                    error: e
+                    error: 'Error deleting record from localStorage with key: ' + this.keyPrefix + M.Application.name + this.keySuffix + obj.record.name + '_' + obj.record.m_id
                 }]);
             }
         }
@@ -288,7 +292,7 @@ M.DataProviderWebStorage = M.DataProvider.extend(
     find: function(obj) {
         // map id property to key property --> refactor data provider and use 'id' instead of 'key'
         obj.key = obj.id;
-        
+
         if(obj.key) {
             var record = this.findByKey(obj);
             if(!record) {
@@ -299,7 +303,7 @@ M.DataProviderWebStorage = M.DataProvider.extend(
                 return NO;
             }
             /*construct new model record with the saved id*/
-            var reg = new RegExp('^' + this.keyPrefix + M.Application.name + this.keySuffix + obj.record.name + '_([0-9]+)').exec(obj.key);
+            var reg = new RegExp('^' + this.keyPrefix + M.Application.name + this.keySuffix + obj.model.name + '_([0-9]+)').exec(obj.key);
             var m_id = reg && reg[1] ? reg[1] : null;
             if (!m_id) {
                 this.handleCallback(obj.callbacks, 'error', [obj.opId, {
@@ -309,7 +313,7 @@ M.DataProviderWebStorage = M.DataProvider.extend(
                 M.Logger.log('retrieved model has no valid key: ' + obj.key, M.ERR);
                 return NO;
             }
-            var rec = obj.record.createRecord($.extend(record, {m_id: parseInt(m_id), state: M.STATE_INSYNC}));
+            var rec = obj.model.createRecord($.extend(record, {m_id: parseInt(m_id), state: M.STATE_INSYNC}));
 
             this.handleCallback(obj.callbacks, 'success', [obj.opId, {
                 operationType: 'find',
@@ -332,41 +336,45 @@ M.DataProviderWebStorage = M.DataProvider.extend(
                 var ident = regexec[1];
                 var op = regexec[2];
                 var val = regexec[3].replace(/['"]/g, "");/* delete quotes from captured string, needs to be done in regex*/
-                var res = this.findAll(obj, YES);
+                var records = this.findAll(obj, YES);
                 switch(op) {
                     case '=':
-                        res = _.select(res, function(o){
-                            return o.record[ident] === val;
+                        records = _.select(records, function(record){
+                            return record.data[ident] === val;
                         });
                         break;
                     case '!=':
-                        res = _.select(res, function(o){
-                            return o.record[ident] !== val;
+                        records = _.select(records, function(o){
+                            return o.data[ident] !== val;
                         });
                         break;
                     case '<':
-                        res = _.select(res, function(o){
-                            return o.record[ident] < val;
+                        records = _.select(records, function(o){
+                            return o.data[ident] < val;
                         });
                         break;
                     case '>':
-                        res = _.select(res, function(o){
-                            return o.record[ident] > val;
+                        records = _.select(records, function(o){
+                            return o.data[ident] > val;
                         });
                         break;
                     case '<=':
-                        res = _.select(res, function(o){
-                            return o.record[ident] <= val;
+                        records = _.select(records, function(o){
+                            return o.data[ident] <= val;
                         });
                         break;
                     case '>=':
-                        res = _.select(res, function(o){
-                            return o.record[ident] >= val;
+                        records = _.select(records, function(o){
+                            return o.data[ident] >= val;
                         });
                         break;
                     default:
+                        this.handleCallback(obj.callbacks, 'error', [obj.opId, {
+                            operationType: 'find',
+                            error: 'Unknown operator in query: ' + op
+                        }]);
+                        records = null;
                         M.Logger.log('Unknown operator in query: ' + op, M.WARN);
-                        res = [];
                         break;
                 }
             } else {
@@ -377,11 +385,12 @@ M.DataProviderWebStorage = M.DataProvider.extend(
                 M.Logger.log('Query does not satisfy query grammar.', M.WARN);
                 return NO;
             }
-            this.handleCallback(obj.callbacks, 'success', [obj.opId, {
-                operationType: 'find',
-                records: res
-            }]);
-            
+            if(records) {
+                this.handleCallback(obj.callbacks, 'success', [obj.opId, {
+                    operationType: 'find',
+                    records: records
+                }]);
+            }
         } else { /* if no query is passed, all models for modelName shall be returned */
             this.findAll(obj);
         }
@@ -398,7 +407,7 @@ M.DataProviderWebStorage = M.DataProvider.extend(
     findByKey: function(obj) {
         var reg = new RegExp('^' + this.keyPrefix + M.Application.name + this.keySuffix);
         /* assume that if key starts with local storage prefix, correct key is given, other wise construct it and key might be m_id */
-        obj.key = reg.test(obj.key) ? obj.key : this.keyPrefix + M.Application.name + this.keySuffix + obj.record.name + '_' + obj.key;
+        obj.key = reg.test(obj.key) ? obj.key : this.keyPrefix + M.Application.name + this.keySuffix + obj.model.name + '_' + obj.key;
 
         // if key is available
         if(this.storage.getItem(obj.key)) {
@@ -448,6 +457,7 @@ M.DataProviderWebStorage = M.DataProvider.extend(
         var txResult = [];
         var txTotal = Math.ceil(result.length/obj.transactionSize);
 
+        // TODO: ADD PSEUDO ERROR-CALLBACKS
         for(var tx = 0; tx < txTotal; tx++) {
             for(var op = 0 + tx * obj.transactionSize; op < (tx + 1) * obj.transactionSize; op++) {
                 txResult.push(result[op]);

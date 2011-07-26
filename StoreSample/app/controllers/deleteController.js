@@ -31,6 +31,11 @@ StoreSample.DeleteController = M.Controller.extend({
                         StoreSample.ListController.remove(record[0], this.filterState(record[0].state));
                         StoreSample.ListController.add(record[0], 'deleted_permanently');
                     }
+                },
+                error: {
+                    action: function(error) {
+                        alert(error);
+                    }
                 }
             }
         });
@@ -74,6 +79,21 @@ StoreSample.DeleteController = M.Controller.extend({
                                 message: 'Record(s) successfully deleted!'
                             })
                         }
+                    }
+                },
+                error: {
+                    action: function(error) {
+                        alert(error);
+                    }
+                },
+                errorOp: {
+                    action: function(error) {
+                        alert(error);
+                    }
+                },
+                errorTx: {
+                    action: function(error) {
+                        alert(error);
                     }
                 }
             }

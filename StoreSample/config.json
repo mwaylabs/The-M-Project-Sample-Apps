@@ -7,12 +7,8 @@
     "minify": false,
     "proxies": [
         {
-            "baseUrl": "http://your.server.com",
-            "proxyAlias": "myServer"
-        },
-        {
-            "baseUrl": "http://your.server2.com",
-            "proxyAlias": "myServer2"
+            "baseUrl": "http://search.twitter.com:80",
+            "proxyAlias": "twitter"
         }
     ],
     "htmlHeader": [

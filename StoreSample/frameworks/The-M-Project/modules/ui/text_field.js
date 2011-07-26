@@ -31,6 +31,8 @@ M.INPUT_PASSWORD = 'password';
 M.INPUT_NUMBER = 'number';
 
 /**
+<<<<<<< HEAD
+=======
  * A constant value for input type: tel
  *
  * @type String
@@ -52,6 +54,7 @@ M.INPUT_URL = 'url';
 M.INPUT_EMAIL = 'email';
 
 /**
+>>>>>>> detox
  * @class
  *
  * M.TextFieldView is the prototype of any text field input view. It can be rendered as both
@@ -144,6 +147,7 @@ M.TextFieldView = M.View.extend(
      * @returns {String} The text field view's html representation.
      */
     render: function() {
+        this.computeValue();
         this.html += '<div';
 
         if(this.label && this.isGrouped) {
@@ -224,6 +228,7 @@ M.TextFieldView = M.View.extend(
      * @private
      */
     renderUpdate: function() {
+        this.computeValue();
         $('#' + this.id).val(this.value);
         this.styleUpdate();
     },

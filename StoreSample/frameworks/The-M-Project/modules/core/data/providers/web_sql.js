@@ -124,79 +124,83 @@ M.DataProviderWebSql = M.DataProvider.extend(
      * * the model
      */
      save: function(obj) {
-        //console.log('save() called.');
+        /* if more that one record is passed, bulk-save them */
+        if(_.isArray(obj.record)) {
+            this.bulkImport(obj);
+        /* if only a single record is passed, save it */
+        } else {
+            this.onSuccess = obj.onSuccess;
+            this.onError = obj.onError;
 
-        this.onSuccess = obj.onSuccess;
-        this.onError = obj.onError;
-
-        /**
-         * if not already done, initialize db/table first
-         */
-        if(!this.isInitialized) {
-            this.internalCallback = this.save;
-            this.init(obj);
-            return;
-        }
-
-        var pre_suffix = '';
-
-        if(obj.record.state === M.STATE_NEW) { // perform an INSERT
-
-            var sql = 'INSERT INTO ' + obj.record.name + ' (';
-            this.getKeys(obj).join(',')
-            /* now name m_id column */
-            sql += M.META_M_ID + ') ';
-
-            /* VALUES(12, 'Test', ... ) */
-            sql += 'VALUES (';
-
-            for(var prop2 in obj.record.data) {
-                //console.log(obj.record.data[prop2]);
-                var propDataType = obj.record.__meta[prop2].dataType;
-                /* if property is string or text write value in quotes */
-                pre_suffix = propDataType === 'String' || propDataType === 'Text' || propDataType === 'Date' ? '"' : '';
-                /* if property is date object, convert to string by calling toJSON */
-                recordPropValue = (obj.record.data[prop2].type === 'M.Date') ? obj.record.data[prop2].toJSON() : obj.record.data[prop2];
-                sql += pre_suffix + recordPropValue + pre_suffix + ', ';
+            /**
+             * if not already done, initialize db/table first
+             */
+            if(!this.isInitialized) {
+                this.internalCallback = this.save;
+                this.init(obj);
+                return;
             }
 
-            sql += obj.record.m_id + ')';
+            var pre_suffix = '';
 
-            this.performOp(sql, obj, 'INSERT');
+            if(obj.record.state === M.STATE_NEW) { // perform an INSERT
 
-        } else { // perform an UPDATE with id of model
+                var sql = 'INSERT INTO ' + obj.record.name + ' (';
+                this.getKeys(obj).join(',')
+                /* now name m_id column */
+                sql += M.META_M_ID + ') ';
 
-            var sql = 'UPDATE ' + obj.record.name + ' SET ';
+                /* VALUES(12, 'Test', ... ) */
+                sql += 'VALUES (';
 
-            var nrOfUpdates = 0;
-
-            for(var p in obj.record.data) {
-
-                if(p === 'ID' || !obj.record.__meta[p].isUpdated) { /* if property has not been updated, then exclude from update call */
-                    continue;
+                for(var prop2 in obj.record.data) {
+                    //console.log(obj.record.data[prop2]);
+                    var propDataType = obj.record.__meta[prop2].dataType;
+                    /* if property is string or text write value in quotes */
+                    pre_suffix = propDataType === 'String' || propDataType === 'Text' || propDataType === 'Date' ? '"' : '';
+                    /* if property is date object, convert to string by calling toJSON */
+                    recordPropValue = (obj.record.data[prop2].type === 'M.Date') ? obj.record.data[prop2].toJSON() : obj.record.data[prop2];
+                    sql += pre_suffix + recordPropValue + pre_suffix + ', ';
                 }
-                nrOfUpdates = nrOfUpdates + 1;
 
-                pre_suffix = obj.record.__meta[p].dataType === 'String' || obj.record.__meta[p].dataType === 'Text' || obj.record.__meta[p].dataType === 'Date' ? '"' : '';
+                sql += obj.record.m_id + ')';
 
-                /* if property is date object, convert to string by calling toJSON */
-                recordPropValue = obj.record.__meta[p].dataType === 'Date' ? obj.record.data[p].toJSON() : obj.record.data[p];
+                this.performOp(sql, obj, 'INSERT');
 
-                sql += p + '=' + pre_suffix + recordPropValue + pre_suffix + ', ';
-            }
-            sql = sql.substring(0, sql.lastIndexOf(','));
-            sql += ' WHERE ' + 'ID=' + obj.record.data.ID + ';';
+            } else { // perform an UPDATE with id of model
 
-            /* if no properties updated, do nothing, just return by calling onSuccess callback */
-            if(nrOfUpdates === 0) {
-                if (obj.onSuccess && obj.onSuccess.target && obj.onSuccess.action) {
-                    obj.onSuccess = this.bindToCaller(obj.onSuccess.target, obj.onSuccess.target[obj.onSuccess.action], null, obj, this);
-                    obj.onSuccess();
-                }else if(obj.onSuccess && typeof(obj.onSuccess) === 'function') {
-                    obj.onSuccess(result);
+                var sql = 'UPDATE ' + obj.record.name + ' SET ';
+
+                var nrOfUpdates = 0;
+
+                for(var p in obj.record.data) {
+
+                    if(p === 'ID' || !obj.record.__meta[p].isUpdated) { /* if property has not been updated, then exclude from update call */
+                        continue;
+                    }
+                    nrOfUpdates = nrOfUpdates + 1;
+
+                    pre_suffix = obj.record.__meta[p].dataType === 'String' || obj.record.__meta[p].dataType === 'Text' || obj.record.__meta[p].dataType === 'Date' ? '"' : '';
+
+                    /* if property is date object, convert to string by calling toJSON */
+                    recordPropValue = obj.record.__meta[p].dataType === 'Date' ? obj.record.data[p].toJSON() : obj.record.data[p];
+
+                    sql += p + '=' + pre_suffix + recordPropValue + pre_suffix + ', ';
                 }
-            } else {
-                this.performOp(sql, obj, 'UPDATE');
+                sql = sql.substring(0, sql.lastIndexOf(','));
+                sql += ' WHERE ' + 'ID=' + obj.record.data.ID + ';';
+
+                /* if no properties updated, do nothing, just return by calling onSuccess callback */
+                if(nrOfUpdates === 0) {
+                    if (obj.onSuccess && obj.onSuccess.target && obj.onSuccess.action) {
+                        obj.onSuccess = this.bindToCaller(obj.onSuccess.target, obj.onSuccess.target[obj.onSuccess.action], null, obj, this);
+                        obj.onSuccess();
+                    }else if(obj.onSuccess && typeof(obj.onSuccess) === 'function') {
+                        obj.onSuccess(result);
+                    }
+                } else {
+                    this.performOp(sql, obj, 'UPDATE');
+                }
             }
         }
     },
@@ -432,8 +436,6 @@ M.DataProviderWebSql = M.DataProvider.extend(
 
     },
 
-
-
     /**
      * Creates the table corresponding to the model record.
      * @private
@@ -502,7 +504,7 @@ M.DataProviderWebSql = M.DataProvider.extend(
             this.handleErrorCallback(obj, err);
         }
         /* if no transactionSize was passed, make one transaction for all */
-        var transactionSize = !obj.transactionSize || typeof(transactionSize) !== 'number' ? records.length : obj.transactionSize;
+        var transactionSize = !obj.transactionSize || typeof(obj.transactionSize) !== 'number' ? records.length : obj.transactionSize;
 
         var transactions = [];
 

@@ -32,6 +32,11 @@ StoreSample.ReadController = M.Controller.extend({
                             })
                         }
                     }
+                },
+                error: {
+                    action: function(error) {
+                        alert(error);
+                    }
                 }
             }
         });

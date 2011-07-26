@@ -55,6 +55,21 @@ StoreSample.CreateController = M.Controller.extend({
                             })
                         }
                     }
+                },
+                error: {
+                    action: function(error) {
+                        alert(error);
+                    }
+                },
+                errorOp: {
+                    action: function(error) {
+                        alert(error);
+                    }
+                },
+                errorTx: {
+                    action: function(error) {
+                        alert(error);
+                    }
                 }
             }
         });
