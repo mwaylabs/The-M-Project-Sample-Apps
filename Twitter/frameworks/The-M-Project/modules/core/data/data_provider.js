@@ -69,6 +69,20 @@ M.DataProvider = M.Object.extend(
      */
     check: function(obj, prop) {
        return obj[prop] ? YES : NO;
+    },
+
+
+    /**
+     * Handles Callbacks for data providers. Checks if callbacks are passed to the provider and calls them with
+     * the right parameters.
+     * @param obj
+     * @param callbackName
+     * @param callbackArgs
+     */
+    handleCallback: function(callbacks, callbackName, callbackArgs) {
+        if(callbacks && callbacks[callbackName] && M.EventDispatcher.checkHandler(callbacks[callbackName])) {
+            this.bindToCaller(callbacks[callbackName].target, callbacks[callbackName].action, callbackArgs)();
+        }
     }
 
 });

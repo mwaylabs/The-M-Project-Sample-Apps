@@ -340,8 +340,8 @@ M.ListView = M.View.extend(
             /* Get the child views as an array of strings */
             var childViewsArray = obj.getChildViewsAsArray();
 
-            /* If the item is a model, read the values from the 'record' property instead */
-            var record = item.type === 'M.Model' ? item.record : item;
+            /* If the item is a model record, read the values from the 'data' property instead */
+            var data = item.type === 'M.Model' ? item.data : item;
 
             /* Iterate through all views defined in the template view */
             for(var i in childViewsArray) {
@@ -356,13 +356,13 @@ M.ListView = M.View.extend(
                     regexResult = /^<%=\s+([.|_|-|$|�|a-zA-Z]+[0-9]*[.|_|-|$|�|a-zA-Z]*)\s*%>$/.exec(obj[childViewsArray[i]].valuePattern);
                 }
 
-                /* ... if a match was found, the variable is replaced by the corresponding value inside the record */
+                /* ... if a match was found, the variable is replaced by the corresponding value inside the data */
                 if(regexResult) {
                     switch (obj[childViewsArray[i]].type) {
                         case 'M.LabelView':
                         case 'M.ButtonView':
                         case 'M.ImageView':
-                            obj[childViewsArray[i]].value = record[regexResult[1]];
+                            obj[childViewsArray[i]].value = data[regexResult[1]];
                             break;
                     }
                 }

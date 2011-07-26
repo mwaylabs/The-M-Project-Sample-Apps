@@ -9,58 +9,60 @@
 //            http://github.com/mwaylabs/The-M-Project/blob/master/GPL-LICENSE
 // ==========================================================================
 
-m_require('core/datastore/validator.js')
+m_require('core/data/validator.js')
 
 /**
  * @class
  *
- * Validates if passed value is a number. Works with Strings and Numbers. Strings are parsed into numbers and then checked.
+ * Validates if value represents a valid URL.
  *
  * @extends M.Validator
  */
-M.NumberValidator = M.Validator.extend(
-/** @scope M.NumberValidator.prototype */ {
+M.UrlValidator = M.Validator.extend(
+/** @scope M.UrlValidator.prototype */ {
 
     /**
      * The type of this object.
      *
      * @type String
      */
-    type: 'M.NumberValidator',
+    type: 'M.UrlValidator',
 
     /**
-     * Validation method. If value's type is not "number" but a string, the value is parsed into an integer or float and checked versus the string value with '=='.
-     * The '==' operator makes an implicit conversion of the value. '===' would return false.
+     * @type {RegExp} The regular expression for a valid web URL
+     */
+    pattern: /^(http[s]\:\/\/)?[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?$/,
+
+    /**
+     * Validation method. Executes url regex pattern to string.
      *
      * @param {Object} obj Parameter object. Contains the value to be validated, the {@link M.ModelAttribute} object of the property and the model record's id.
      * @returns {Boolean} Indicating whether validation passed (YES|true) or not (NO|false).
      */
     validate: function(obj) {
-        if(typeof(obj.value) === 'number') {
+        if (typeof(obj.value !== 'string')) {
+            return NO;
+        }
+
+        if (this.pattern.exec(obj.value)) {
             return YES;
         }
-
-        /* == makes implicit conversion */ 
-        if(typeof(obj.value) === 'string' && (parseInt(obj.value) == obj.value || parseFloat(obj.value) == obj.value)) {
-            return YES;        
-        }
-
+        
         var err = M.Error.extend({
-            msg: this.msg ? this.msg : obj.value + ' is not a number.',
-            code: M.ERR_VALIDATION_NUMBER,
+            msg: this.msg ? this.msg : obj.value + ' is not a valid url.',
+            code: M.ERR_VALIDATION_URL,
             errObj: {
-                msg: obj.value + ' is not a number.',
+                msg: obj.value + ' is not a valid url.',
                 modelId: obj.modelId,
                 property: obj.property,
                 viewId: obj.viewId,
-                validator: 'NUMBER',
+                validator: 'PHONE',
                 onSuccess: obj.onSuccess,
                 onError: obj.onError
             }
         });
-
         this.validationErrors.push(err);
-
         return NO;
     }
+    
 });

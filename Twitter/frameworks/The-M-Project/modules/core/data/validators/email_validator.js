@@ -9,62 +9,60 @@
 //            http://github.com/mwaylabs/The-M-Project/blob/master/GPL-LICENSE
 // ==========================================================================
 
-m_require('core/datastore/validator.js')
+m_require('core/data/validator.js')
 
 /**
  * @class
  *
- * Validates a string if it matches a phone number pattern.
+ * Validates a String if it represents a valid e-mail adress.
  *
  * @extends M.Validator
  */
-M.PhoneValidator = M.Validator.extend(
-/** @scope M.PhoneValidator.prototype */ {
+M.EmailValidator = M.Validator.extend(
+/** @scope M.EmailValidator.prototype */ {
 
     /**
      * The type of this object.
      *
      * @type String
      */
-    type: 'M.PhoneValidator',
+    type: 'M.EmailValidator',
 
     /**
-     * It is assumed that phone numbers consist only of: 0-9, -, /, (), .
-     * @type {RegExp} The regular expression detecting a phone adress.
+     * @type {RegExp} The regular expression for a valid e-mail address
      */
-    pattern: /^[0-9-\/()+\.\s]+$/,
+    pattern: /^((?:(?:(?:\w[\.\-\+]?)*)\w)+)\@((?:(?:(?:\w[\.\-\+]?){0,62})\w)+)\.(\w{2,6})$/,
 
     /**
      * Validation method. Executes e-mail regex pattern to string. 
      *
-     * @param {Object} obj Parameter object. Contains the value to be validated, the {@link M.ModelAttribute} object of the property and the model record's id.
+     * @param obj Parameter object. Contains the value to be validated, the {@link M.ModelAttribute} object of the property and the model record's id.
      * @returns {Boolean} Indicating whether validation passed (YES|true) or not (NO|false).
      */
     validate: function(obj) {
         if (typeof(obj.value !== 'string')) {
             return NO;
         }
-
+        
         if (this.pattern.exec(obj.value)) {
             return YES;
         }
 
-
         var err = M.Error.extend({
-            msg: this.msg ? this.msg : obj.value + ' is not a phone number.',
-            code: M.ERR_VALIDATION_PHONE,
+            msg: this.msg ? this.msg : obj.value + ' is not a valid email adress.',
+            code: M.ERR_VALIDATION_EMAIL,
             errObj: {
-                msg: obj.value + ' is not a phone number.',
+                msg: obj.value + ' is not a valid email adress.',
                 modelId: obj.modelId,
                 property: obj.property,
                 viewId: obj.viewId,
-                validator: 'PHONE',
+                validator: 'EMAIL',
                 onSuccess: obj.onSuccess,
                 onError: obj.onError
             }
         });
-
         this.validationErrors.push(err);
+        
         return NO;
     }
     

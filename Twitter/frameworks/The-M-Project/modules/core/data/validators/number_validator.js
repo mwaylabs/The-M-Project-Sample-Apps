@@ -9,61 +9,58 @@
 //            http://github.com/mwaylabs/The-M-Project/blob/master/GPL-LICENSE
 // ==========================================================================
 
-m_require('core/datastore/validator.js')
+m_require('core/data/validator.js')
 
 /**
  * @class
  *
- * Validates a String if it represents a valid e-mail adress.
+ * Validates if passed value is a number. Works with Strings and Numbers. Strings are parsed into numbers and then checked.
  *
  * @extends M.Validator
  */
-M.EmailValidator = M.Validator.extend(
-/** @scope M.EmailValidator.prototype */ {
+M.NumberValidator = M.Validator.extend(
+/** @scope M.NumberValidator.prototype */ {
 
     /**
      * The type of this object.
      *
      * @type String
      */
-    type: 'M.EmailValidator',
+    type: 'M.NumberValidator',
 
     /**
-     * @type {RegExp} The regular expression for a valid e-mail address
-     */
-    pattern: /^((?:(?:(?:\w[\.\-\+]?)*)\w)+)\@((?:(?:(?:\w[\.\-\+]?){0,62})\w)+)\.(\w{2,6})$/,
-
-    /**
-     * Validation method. Executes e-mail regex pattern to string. 
+     * Validation method. If value's type is not "number" but a string, the value is parsed into an integer or float and checked versus the string value with '=='.
+     * The '==' operator makes an implicit conversion of the value. '===' would return false.
      *
-     * @param obj Parameter object. Contains the value to be validated, the {@link M.ModelAttribute} object of the property and the model record's id.
+     * @param {Object} obj Parameter object. Contains the value to be validated, the {@link M.ModelAttribute} object of the property and the model record's id.
      * @returns {Boolean} Indicating whether validation passed (YES|true) or not (NO|false).
      */
     validate: function(obj) {
-        if (typeof(obj.value !== 'string')) {
-            return NO;
-        }
-        
-        if (this.pattern.exec(obj.value)) {
+        if(typeof(obj.value) === 'number') {
             return YES;
         }
 
+        /* == makes implicit conversion */ 
+        if(typeof(obj.value) === 'string' && (parseInt(obj.value) == obj.value || parseFloat(obj.value) == obj.value)) {
+            return YES;        
+        }
+
         var err = M.Error.extend({
-            msg: this.msg ? this.msg : obj.value + ' is not a valid email adress.',
-            code: M.ERR_VALIDATION_EMAIL,
+            msg: this.msg ? this.msg : obj.value + ' is not a number.',
+            code: M.ERR_VALIDATION_NUMBER,
             errObj: {
-                msg: obj.value + ' is not a valid email adress.',
+                msg: obj.value + ' is not a number.',
                 modelId: obj.modelId,
                 property: obj.property,
                 viewId: obj.viewId,
-                validator: 'EMAIL',
+                validator: 'NUMBER',
                 onSuccess: obj.onSuccess,
                 onError: obj.onError
             }
         });
+
         this.validationErrors.push(err);
-        
+
         return NO;
     }
-    
 });

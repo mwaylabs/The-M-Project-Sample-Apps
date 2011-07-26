@@ -35,23 +35,22 @@ M.ModelRegistry = M.Object.extend(
     /**
      * An array containing objects that save the model's name and their next GUId.
      * Acts globally.
-     * @type Array|Object
+     *
+     * @type Object
      */
-    registry: [],
+    registry: {},
 
     /**
-     * Calculates the next ID for a model named by modelName.
+     * Calculates the next ID for a model named by 'modelName'.
      *
      * @param {String} modelName The name of the model, e.g. 'Person'.
      * @returns {Number} The next internal model id for the model identified by modelName parameter.
      */
     getNextId: function(modelName) {
-        for(i in this.registry){
-            if(this.registry[i].modelName === modelName){
-                this.registry[i].m_id = this.registry[i].m_id + 1;
-                localStorage.setItem(M.LOCAL_STORAGE_PREFIX + M.Application.name + M.LOCAL_STORAGE_SUFFIX + modelName, this.registry[i].m_id);
-                return this.registry[i].m_id;
-            }
+        if(this.registry[modelName] !== undefined && this.registry[modelName] !== null && typeof(this.registry[modelName] === 'number')) {
+            this.registry[modelName] = this.registry[modelName] + 1;
+            localStorage.setItem(M.Application.getConfig('keyPrefix') + M.Application.name + M.Application.getConfig('keySuffix') + modelName, this.registry[modelName]);
+            return this.registry[modelName];
         }
         return null;
     },
@@ -63,31 +62,21 @@ M.ModelRegistry = M.Object.extend(
      * @param {Number} m_id The id of the model, e.g. 1.
      */
     setId: function(modelName, m_id) {
-        for(i in this.registry){
-            if(this.registry[i].modelName === modelName){
-                this.registry[i].m_id = m_id;
-            }
+        if(this.registry[modelName] !== undefined && this.registry[modelName] !== null && typeof(this.registry[modelName] === 'number')) {
+            this.registry[modelName] = m_id;
         }
     },
 
     /**
      * Register a model in the registry.
      * Set nextGUId for this model to initial value 0.
-     * 
+     *
      * @param {String} modelName The name of the model, e.g. 'Person'.
      */
     register: function(modelName) {
-
-        if(_.detect(this.registry, function(m){ return m.modelName === modelName })) {
-            return;
+        if(!this.registry[modelName]) {
+            this.registry[modelName] = 0;
         }
-
-        var obj = {
-            modelName: modelName,
-            m_id: 0
-        };
-        this.registry.push(obj);
-        
     }
 
 });
