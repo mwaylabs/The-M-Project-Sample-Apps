@@ -70,7 +70,7 @@ MapSample.MapController = M.Controller.extend({
         M.LocationManager.getLocation(this, this.onSuccess, this.onError, {
             maximumAge: 0,
             timeout: 10000,
-            accuracy: 200
+            accuracy: 500
         });
     },
 
