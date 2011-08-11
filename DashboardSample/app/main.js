@@ -28,22 +28,38 @@ DashboardSample.app = M.Application.design({
         }),
 
         content: M.ScrollView.design({
-            childViews: 'dashboard',
+            childViews: 'dashboard title list',
 
             dashboard: M.DashboardView.design({
                 events: {
                     tap: {
-                        action: function() {
-                            alert('TAPPED');
+                        target: DashboardSample.ApplicationController,
+                        action: function(id) {
+                            this.events.unshift({
+                                label: (this.events.length + 1) + ') ' + M.ViewManager.getViewById(id).label + ' (global)'
+                            });
+                            this.set('events', this.events);
                         }
                     }
                 },
-
                 itemsPerLine: 3,
-
+                isEditable: YES,
                 contentBinding: {
                     target: DashboardSample.ApplicationController,
                     property: 'items'
+                }
+            }),
+
+            title: M.ToolbarView.design({
+                value: 'Event-Tracker',
+                cssClass: 'toolbar'
+            }),
+
+            list: M.ListView.design({
+                listItemTemplateView: DashboardSample.TemplateView,
+                contentBinding: {
+                    target: DashboardSample.ApplicationController,
+                    property: 'events'
                 }
             })
         })

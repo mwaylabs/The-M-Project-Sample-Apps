@@ -10,6 +10,8 @@ DashboardSample.ApplicationController = M.Controller.extend({
 
     items: null,
 
+    events: [],
+
     init: function() {
         var items = [{
             icon: 'theme/images/icon_settings.png',
@@ -32,8 +34,12 @@ DashboardSample.ApplicationController = M.Controller.extend({
             value: 'clock',
             events: {
                 tap: {
-                    action: function() {
-                        alert('tapped');
+                    target: this,
+                    action: function(id) {
+                        this.events.unshift({
+                            label: (this.events.length + 1) + ') ' + M.ViewManager.getViewById(id).label + ' (local)'
+                        });
+                        this.set('events', this.events);
                     }
                 }
             }
