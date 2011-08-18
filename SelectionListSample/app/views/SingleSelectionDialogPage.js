@@ -29,87 +29,75 @@ SelectionListSample.SingleSelectionDialogPage = M.PageView.design({
 
     content: M.ScrollView.design({
 
-        childViews: 'grid buttonGroup',
+        childViews: 'selectionList textField buttonGroup',
 
-        grid: M.GridView.design({
+        selectionList: M.SelectionListView.design({
 
-            childViews: 'selectionList textField ',
-            layout: {
-                    cssClass: 'newActivityGrid',
-                    columns: {
-                        0: 'leftColumnNewActivity',
-                        1: 'rightColumnNewActivity'
+            events: {
+                change: {
+                    action: function(selection, selectionObject) {
+                        //console.log(selection);
                     }
-                },
-
-            selectionList: M.SelectionListView.design({
-                events: {
-                    change: {
-                        action: function(selection, selectionObject) {
-                            //console.log(selection);
-                        }
-                    }
-                },
-
-                selectionMode: M.SINGLE_SELECTION_DIALOG,
-
-                label: 'Language',
-
-                cssClass: 'singleSelectionDialog',
-
-                initialText: 'Please choose...',
-
-                /**
-                 * This selection list uses content binding to dynamically define its child views. If you
-                 * want to switch to a static way of doing this, comment these few lines and uncomment the
-                 * code block below.
-                 */
-                contentBinding: {
-                    target: SelectionListSample.SingleSelectionDialogController,
-                    property: 'items'
                 }
+            },
 
-                /**
-                 * The following lines show how to statically assign items to a selection list. To use this,
-                 * simply comment the lines where we set this view's content binding (right above).
-                 */
-                /*
-                childViews: 'optionGermany optionItaly optionUS optionSpain',
+            selectionMode: M.SINGLE_SELECTION_DIALOG,
 
-                optionGermany: M.SelectionListItemView.design({
-                    value: 'germany',
-                    label: 'Germany (germany)',
-                    isSelected: YES
-                }),
+            label: 'Language',
 
-                optionItaly: M.SelectionListItemView.design({
-                    value: 'italy',
-                    label: 'Italy (italy)'
-                }),
+            cssClass: 'singleSelectionDialog',
 
-                optionUS: M.SelectionListItemView.design({
-                    value: 'us',
-                    label: 'United States (us)'
-                }),
+            initialText: 'Please choose...',
 
-                optionSpain: M.SelectionListItemView.design({
-                    value: 'spain',
-                    label: 'Spain (spain)'
-                })*/
+            /**
+             * This selection list uses content binding to dynamically define its child views. If you
+             * want to switch to a static way of doing this, comment these few lines and uncomment the
+             * code block below.
+             */
+            contentBinding: {
+                target: SelectionListSample.SingleSelectionDialogController,
+                property: 'items'
+            }
 
+            /**
+             * The following lines show how to statically assign items to a selection list. To use this,
+             * simply comment the lines where we set this view's content binding (right above).
+             */
+            /*
+            childViews: 'optionGermany optionItaly optionUS optionSpain',
+
+            optionGermany: M.SelectionListItemView.design({
+                value: 'germany',
+                label: 'Germany (germany)',
+                isSelected: YES
             }),
 
-            textField: M.TextFieldView.design({
+            optionItaly: M.SelectionListItemView.design({
+                value: 'italy',
+                label: 'Italy (italy)'
+            }),
 
-                isGrouped: NO,
+            optionUS: M.SelectionListItemView.design({
+                value: 'us',
+                label: 'United States (us)'
+            }),
 
-                cssClass: 'textField',
+            optionSpain: M.SelectionListItemView.design({
+                value: 'spain',
+                label: 'Spain (spain)'
+            })*/
 
-                cssClassOnInit: 'textFieldInit',
+        }),
 
-                initialText: 'e.g.: germany'
+        textField: M.TextFieldView.design({
 
-            })
+            isGrouped: NO,
+
+            cssClass: 'textField',
+
+            cssClassOnInit: 'textFieldInit',
+
+            initialText: 'e.g.: germany'
 
         }),
 

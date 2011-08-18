@@ -99,7 +99,7 @@ Todos2.app = M.Application.design({
             childViews: 'backButton centerLabel toggleView',
 
             backButton: M.ButtonView.design({
-                value: M.I18N.l('back'),
+                value: 'Back',
                 icon: 'arrow-l',
                 events: {
                     tap: {
@@ -340,11 +340,7 @@ Todos2.app = M.Application.design({
                 date: M.TextFieldView.design({
                     name: 'date',
                     label: M.I18N.l('due_date'),
-//                    initialText: M.I18N.l('due_date_format'),
-                    contentBinding: {
-                        target: Todos2.TodoController,
-                        property: 'curDate'
-                    },
+                    initialText: M.I18N.l('due_date_format'),
                     cssClassOnInit: 'textfieldInit',
                     validators: [M.PresenceValidator.customize({
                         msg: M.I18N.l('due_date_req')

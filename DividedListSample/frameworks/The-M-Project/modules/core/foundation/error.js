@@ -1,6 +1,7 @@
 // ==========================================================================
 // Project:   The M-Project - Mobile HTML5 Application Framework
 // Copyright: (c) 2010 M-Way Solutions GmbH. All rights reserved.
+//            (c) 2011 panacoda GmbH. All rights reserved.
 // Creator:   Sebastian
 // Date:      11.02.2011
 // License:   Dual licensed under the MIT or GPL Version 2 licenses.
@@ -13,7 +14,7 @@ m_require('core/utility/logger.js');
 
 /**
  * @class
- * 
+ *
  * The root object for Error objects
  *
  * M.Error encapsulates errors in The-M-Project.
@@ -215,7 +216,7 @@ M.ERR_WEBSQL_TIMEOUT = 207;
 /**
  * A constant value for an error occuring when dbHandler does not exist in
  * data provider. Reason: Initialization did not take place or failed.
- * 
+ *
  * @type Number
  */
 M.ERR_WEBSQL_PROVIDER_NO_DBHANDLER = 208;

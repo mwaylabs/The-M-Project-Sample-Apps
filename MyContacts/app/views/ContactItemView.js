@@ -12,8 +12,12 @@ MyContacts.ContactItemView = M.ListItemView.design({
 
     cssClass: 'contactItem',
 
-    target: MyContacts.ApplicationController,
-    action: 'showDetails',
+    events: {
+        tap: {
+            target: MyContacts.ApplicationController,
+            action: 'showDetails'
+        }
+    },
 
     firstName : M.LabelView.design({
         computedValue: {

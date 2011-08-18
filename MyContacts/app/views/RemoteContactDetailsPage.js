@@ -30,7 +30,10 @@ MyContacts.RemoteContactDetailsPage = M.PageView.design({
 
             nameLabel: M.LabelView.design({
                 label: '',
-                contentBinding: 'MyContacts.RemoteStorageController.currentContactName',
+                contentBinding: {
+                    target: MyContacts.RemoteStorageController,
+                    property: 'currentContactName'
+                },
                 anchorLocation: M.CENTER
             }),
 
@@ -75,15 +78,23 @@ MyContacts.RemoteContactDetailsPage = M.PageView.design({
             updateButton: M.ButtonView.design({
                 value: 'Update Contact',
                 cssClass: 'e',
-                target: MyContacts.RemoteStorageController,
-                action: 'updateContact'
+                events: {
+                    tap: {
+                        target: MyContacts.RemoteStorageController,
+                        action: 'updateContact'
+                    }
+                }
             }),
 
             delButton: M.ButtonView.design({
                 value: 'Delete Contact',
                 cssClass: 'b',
-                target: MyContacts.RemoteStorageController,
-                action: 'deleteContact'
+                events: {
+                    tap: {
+                        target: MyContacts.RemoteStorageController,
+                        action: 'deleteContact'
+                    }
+                }
             })
 
         })

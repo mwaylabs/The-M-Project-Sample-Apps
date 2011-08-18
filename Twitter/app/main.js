@@ -77,7 +77,6 @@ Twitter.app = M.Application.design({
                     target: Twitter.TwitterController,
                     property: 'results'
                 },
-                items: 'results',
                 listItemTemplateView: Twitter.TwitterResultsView,
                 removeItemsOnUpdate: YES
             })
@@ -105,7 +104,6 @@ Twitter.app = M.Application.design({
                     target: Twitter.TwitterController,
                     property: 'userResults'
                 },
-                items: 'results',
                 listItemTemplateView: Twitter.TwitterUserView,
                 removeItemsOnUpdate: YES
             })

@@ -12,8 +12,6 @@ M.I18N.ko_kr = {
 
     "save": "저장",
 
-    "back": "뒤로",
-
     "title": "제목",
 
     "details": "세부내용",

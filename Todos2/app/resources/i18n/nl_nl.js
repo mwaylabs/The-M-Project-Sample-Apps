@@ -12,8 +12,6 @@ M.I18N.nl_nl = {
 
     "save": "Opslaan",
 
-    "back": "Vorige",
-
     "title": "Titel",
 
     "details": "Details",

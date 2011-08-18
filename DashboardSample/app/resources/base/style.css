@@ -1,0 +1,9 @@
+/* Put you custom stylings here! */
+.ui-listview {
+    margin-top: 15px !important;
+}
+
+.toolbar {
+    margin: 15px -15px -15px -15px;
+    width: auto;
+}

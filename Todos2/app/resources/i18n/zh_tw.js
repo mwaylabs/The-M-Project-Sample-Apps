@@ -12,8 +12,6 @@ M.I18N.zh_tw = {
 
     "save": "保存",
 
-    "back": "回",
-
     "title": "標題",
 
     "details": "詳細",

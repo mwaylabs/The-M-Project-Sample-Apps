@@ -68,8 +68,12 @@ MyContacts.LocalStorageAddContactPage = M.PageView.design({
         addButton: M.ButtonView.design({
             value: 'Add contact',
             icon: '+',
-            target: MyContacts.LocalStorageController,
-            action: 'addContact'
+            events: {
+                tap: {
+                    target: MyContacts.LocalStorageController,
+                    action: 'addContact'
+                }
+            }
         }),
 
         l: M.LabelView.design({

@@ -11,8 +11,6 @@ M.I18N.fi_fi = {
 
     "save": "Tallenna",
 
-    "back": "Edellinen",
-
     "title": "Otsikko",
 
     "details": "Yksityiskohdat",
