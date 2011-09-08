@@ -25,7 +25,7 @@ memory.app = M.Application.design({
 
         content: M.ScrollView.design({
 
-            childViews: 'moves moveCounter pitch',
+            childViews: 'moves moveCounter timer timerCounter pitch',
 
             moves: M.LabelView.design({
                 value: 'Moves: ',
@@ -39,6 +39,21 @@ memory.app = M.Application.design({
                 contentBinding: {
                     target: memory.ApplicationController,
                     property: 'moves'
+                }
+            }),
+
+            timer: M.LabelView.design({
+                value: 'Time: ',
+                isInline: YES
+            })
+
+            ,timerCounter: M.LabelView.design({
+
+                value: '',
+                isInline: YES,
+                contentBinding: {
+                    target: memory.ApplicationController,
+                    property: 'timer'
                 }
             }),
 
