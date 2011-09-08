@@ -16,14 +16,12 @@ body{
 }
 
 .tmp-dashboard-item{
-    background: url('images/Icon.png') no-repeat center center;
     margin: 5px 0;
 }
 
 .tmp-dashboard-item img{
     height: 26px !important;
     width: 26px !important;
-    visibility: hidden;
     border: 1px solid #151515;
 }
 
@@ -33,6 +31,18 @@ body{
 
 .tmp-dashboard-item img.active{
     visibility: visible;
+}
+
+.rotation{
+    -webkit-transform-style: preserve-3d;
+	-webkit-transition: 0.5s;
+    -webkit-transform: rotateY(180deg);
+}
+
+.rotation_back{
+    -webkit-transform-style: preserve-3d;
+	-webkit-transition: 0.5s;
+    -webkit-transform: rotateY(180deg);
 }
 
 .tmp-dashboard-item.correct{

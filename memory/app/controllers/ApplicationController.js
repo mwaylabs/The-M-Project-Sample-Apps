@@ -24,11 +24,11 @@ memory.ApplicationController = M.Controller.extend({
 //        Array.prototype.shuffle = memory.ApplicationController.arrayShuffle;
 
         var cards = [
-            {
-                icon: 'theme/images/applications.png',
-                label: 'applications',
-                value: 'applications'
-            },
+//            {
+//                icon: 'theme/images/applications.png',
+//                label: 'applications',
+//                value: 'applications'
+//            },
             {
                 icon: 'theme/images/chrome-canary.png',
                 label: 'chrome-canary',
@@ -49,16 +49,16 @@ memory.ApplicationController = M.Controller.extend({
              label: 'dictonary',
              value: 'dictonary'
              },
-             {
-             icon: 'theme/images/documents.png',
-             label: 'documents',
-             value: 'documents'
-             },
-             {
-             icon: 'theme/images/downloads.png',
-             label: 'downloads',
-             value: 'downloads'
-             },
+//             {
+//             icon: 'theme/images/documents.png',
+//             label: 'documents',
+//             value: 'documents'
+//             },
+//             {
+//             icon: 'theme/images/downloads.png',
+//             label: 'downloads',
+//             value: 'downloads'
+//             },
              {
              icon: 'theme/images/finder.png',
              label: 'finder',
@@ -83,32 +83,32 @@ memory.ApplicationController = M.Controller.extend({
              icon: 'theme/images/opera.png',
              label: 'opera',
              value: 'opera'
-             }/*,
-             {
-             icon: 'theme/images/safari.png',
-             label: 'safari',
-             value: 'safari'
              },
-             {
-             icon: 'theme/images/skype.png',
-             label: 'skype',
-             value: 'skype'
-             },
+//             {
+//             icon: 'theme/images/safari.png',
+//             label: 'safari',
+//             value: 'safari'
+//             },
+//             {
+//             icon: 'theme/images/skype.png',
+//             label: 'skype',
+//             value: 'skype'
+//             },
              {
              icon: 'theme/images/smultron.png',
              label: 'smultron',
              value: 'smultron'
              },
-             {
-             icon: 'theme/images/systemeinstellungen.png',
-             label: 'systemeinstellungen',
-             value: 'systemeinstellungen'
-             },
-             {
-             icon: 'theme/images/terminal.png',
-             label: 'terminal',
-             value: 'terminal'
-             },
+//             {
+//             icon: 'theme/images/syspref.png',
+//             label: 'systemeinstellungen',
+//             value: 'systemeinstellungen'
+//             },
+//             {
+//             icon: 'theme/images/terminal.png',
+//             label: 'terminal',
+//             value: 'terminal'
+//             },
              {
              icon: 'theme/images/trash.png',
              label: 'trash',
@@ -118,13 +118,13 @@ memory.ApplicationController = M.Controller.extend({
              icon: 'theme/images/twitter.png',
              label: 'twitter',
              value: 'twitter'
-             },
-             ,
-             {
-             icon: 'theme/images/webstorm.png',
-             label: 'webstorm',
-             value: 'webstorm'
-             }*/
+             }
+//             ,
+//             {
+//             icon: 'theme/images/webstorm.png',
+//             label: 'webstorm',
+//             value: 'webstorm'
+//             }
 
         ];
 
@@ -136,12 +136,17 @@ memory.ApplicationController = M.Controller.extend({
                 cards.push(cards[i]);
             }
             this.set('cards', this.arrayShuffle(cards));
+
+            $('.tmp-dashboard-item img').each(function(){
+                $(this).attr('alt', $(this).attr('src'));
+                $(this).attr('src', 'theme/images/Icon.png');
+            });
         }
     },
 
     itemClicked: function(objId) {
         if($('#' + objId).hasClass('correct')){ return }
-        
+
         if (this.first) {
             this.reset();
 //            console.log('first');
@@ -157,7 +162,9 @@ memory.ApplicationController = M.Controller.extend({
     },
 
     show: function(objId) {
+        $('#' + objId + ' img').attr('src', $('#' + objId + ' img').attr('alt'));
         $('#' + objId + ' img').addClass('active');
+        $('#' + objId + ' img').addClass('rotation');
         $('#' + objId).addClass('active');
     },
 
@@ -185,10 +192,24 @@ memory.ApplicationController = M.Controller.extend({
                 });
             }
         }
+        $('.active.correct').animate({
+            opacity: 0
+        }, 1000, function(){
+            $('.active.correct').css('visibility', 'hidden');
+        });
     },
 
     reset: function() {
+        $('.active img').each(function(){
+                $(this).attr('alt', $(this).attr('src'));
+                $(this).attr('src', 'theme/images/Icon.png');
+            });
+        $('.active').addClass('rotation_back');
+        $('.active').removeClass('rotation');
         $('.active').removeClass('active');
+        setTimeout(function(){
+            $('.rotation_back').removeClass('rotation_back');
+        },500);
     },
 
     arrayShuffle: function(array) {
