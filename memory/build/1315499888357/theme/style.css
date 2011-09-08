@@ -20,9 +20,8 @@ body{
 }
 
 .tmp-dashboard-item img{
-    /*height: 26px !important;*/
-    /*width: 26px !important;*/
-    width: 50%;
+    height: 26px !important;
+    width: 26px !important;
     border: 1px solid #151515;
 }
 
