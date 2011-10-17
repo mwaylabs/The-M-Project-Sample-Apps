@@ -11,7 +11,7 @@ DatepickerSample.ApplicationController = M.Controller.extend({
     getDate: function() {
         M.DatePickerView.show({
             source: M.ViewManager.getView('page1', 'text'),
-            useSourceDateAsInitialDate: NO,
+            useSourceDateAsInitialDate: YES,
             showTimePicker: NO,
             callbacks: {
                 before: {
@@ -45,7 +45,7 @@ DatepickerSample.ApplicationController = M.Controller.extend({
     getTime: function() {
         M.DatePickerView.show({
             source: M.ViewManager.getView('page1', 'text'),
-            useSourceDateAsInitialDate: NO,
+            useSourceDateAsInitialDate: YES,
             showDatePicker: NO,
             callbacks: {
                 before: {
@@ -79,7 +79,7 @@ DatepickerSample.ApplicationController = M.Controller.extend({
     getDatetime: function() {
         M.DatePickerView.show({
             source: M.ViewManager.getView('page1', 'text'),
-            useSourceDateAsInitialDate: NO,
+            useSourceDateAsInitialDate: YES,
             callbacks: {
                 before: {
                     action: function(value, date) {
