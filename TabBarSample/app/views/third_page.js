@@ -2,11 +2,14 @@ m_require('app/views/tab_bar.js');
 
 TabBarSample.ThirdPageView = M.PageView.design({
 
-    onLoad: {
+    events: {
 
-        target: TabBarSample.ThirdPageController,
+        pageshow: {
 
-        action: 'init'
+            target: TabBarSample.ThirdPageController,
+
+            action: 'init'
+        }
 
     },
 

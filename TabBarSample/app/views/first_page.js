@@ -2,11 +2,14 @@ m_require('app/views/tab_bar.js');
 
 TabBarSample.FirstPageView = M.PageView.design({
 
-    onLoad: {
+    events: {
 
-        target: TabBarSample.FirstPageController,
+        pageshow: {
 
-        action: 'init'
+            target: TabBarSample.FirstPageController,
+
+            action: 'init'
+        }
 
     },
 
