@@ -1,6 +1,5 @@
 {
     "name" : "StoreSample",
-    "version": "0.0.1",
     "mode": "debug",
     "debugLevel": 1,
     "eliminate": false,
@@ -16,5 +15,15 @@
         "<meta name=\"apple-mobile-web-app-capable\" content=\"yes\">",
         "<meta name=\"apple-mobile-web-app-status-bar-style\" content=\"default\">",
         "<link rel=\"apple-touch-icon\" href=\"/theme/images/apple-touch-icon.png\"/>"
-    ]
+    ],
+    "application": {
+        "version": "1.0",
+        "debugMode": "true",
+        "keyPrefix": "#m#",
+        "keySuffix": "_",
+        "timeStampCreated": "created_at",
+        "timeStampUpdated": "updated_at",
+        "m_id": "m_id",
+        "useTransitions": true
+    }
 }
