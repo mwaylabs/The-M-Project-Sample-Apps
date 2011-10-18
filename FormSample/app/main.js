@@ -13,6 +13,13 @@ FormSample.app = M.Application.design({
 
     page1: M.PageView.design({
 
+        events: {
+            pageshow: {
+                target: FormSample.ApplicationController,
+                action: 'init'
+            }
+        },
+
         childViews: 'header content',
 
         header: M.ToolbarView.design({
@@ -22,7 +29,7 @@ FormSample.app = M.Application.design({
         content: M.ScrollView.design({
             childViews: 'form buttonGrid clearLSButton',
             form: M.FormView.design({
-                childViews: 'grid ',
+                childViews: 'grid',
 
                 showAlertDialogOnError: YES,
 
@@ -49,6 +56,7 @@ FormSample.app = M.Application.design({
                         })
                     })
                 })
+                
             }),
 
 
