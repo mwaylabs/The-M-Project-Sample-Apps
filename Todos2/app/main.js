@@ -241,17 +241,22 @@ Todos2.app = M.Application.design({
                     date: M.TextFieldView.design({
                         name: 'date',
                         label: M.I18N.l('due_date'),
+                        isEnabled: NO,
                         validators: [M.PresenceValidator.customize({
                             msg: M.I18N.l('due_date_req')
-                        }), M.DateValidator.customize({
-                            msg: M.I18N.l('due_date_invalid')
                         })],
                         cssClassOnError: 'error',
                         contentBinding: {
                             target: Todos2.TodoController,
                             property: 'selDate'
                         },
-                        cssClass: 'todos_form'
+                        cssClass: 'todos_form',
+                        events: {
+                            tap: {
+                                target: Todos2.TodoController,
+                                action: 'getDate'
+                            }
+                        }
                     })
 
                 }),
@@ -340,15 +345,19 @@ Todos2.app = M.Application.design({
                 date: M.TextFieldView.design({
                     name: 'date',
                     label: M.I18N.l('due_date'),
-                    initialText: M.I18N.l('due_date_format'),
-                    cssClassOnInit: 'textfieldInit',
+                    initialText: D8.now().format('mm/dd/yyyy HH:MM'),
+                    isEnabled: NO,
                     validators: [M.PresenceValidator.customize({
                         msg: M.I18N.l('due_date_req')
-                    }), M.DateValidator.customize({
-                        msg: M.I18N.l('due_date_invalid')
                     })],
                     cssClassOnError: 'error',
-                    cssClass: 'todos_form'
+                    cssClass: 'todos_form',
+                    events: {
+                        tap: {
+                            target: Todos2.TodoController,
+                            action: 'getDate'
+                        }
+                    }
                 })
 
             })
