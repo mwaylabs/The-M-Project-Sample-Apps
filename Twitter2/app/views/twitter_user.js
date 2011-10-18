@@ -6,7 +6,7 @@
 // Page: TwitterUserView
 // ==========================================================================
 
-Twitter.TwitterUserView = M.ListItemView.design({
+Twitter2.TwitterUserView = M.ListItemView.design({
 
     childViews: 'date label1',
 

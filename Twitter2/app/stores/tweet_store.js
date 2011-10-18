@@ -2,13 +2,13 @@
 // The M-Project - Mobile HTML5 Application Framework
 // Generated with: Espresso
 //
-// Project: Twitter
+// Project: Twitter2
 // Model: TweetStore
 // ==========================================================================
 
-Twitter.TweetStore = M.Store.create({
+Twitter2.TweetStore = M.Store.create({
 
-    model: Twitter.TweetModel,
+    model: Twitter2.TweetModel,
 
     dataConsumer: M.DataConsumer.configure({
 

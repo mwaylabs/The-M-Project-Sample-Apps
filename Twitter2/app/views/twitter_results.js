@@ -6,13 +6,13 @@
 // Page: TwitterResultsView
 // ==========================================================================
 
-Twitter.TwitterResultsView = M.ListItemView.design({
+Twitter2.TwitterResultsView = M.ListItemView.design({
 
     childViews: 'image1 label1 label2 text',
 
     events: {
         tap: {
-            target: Twitter.TwitterController,
+            target: Twitter2.TwitterController,
             action: 'showUser'
         }
     },

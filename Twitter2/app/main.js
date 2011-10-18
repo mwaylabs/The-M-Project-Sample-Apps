@@ -2,12 +2,12 @@
 // The M-Project - Mobile HTML5 Application Framework
 // Generated with: Espresso 0.0.6
 //
-// Project: Twitter 
+// Project: Twitter2
 // ==========================================================================
 
-var Twitter  = Twitter || {};
+var Twitter2  = Twitter2 || {};
 
-Twitter.app = M.Application.design({
+Twitter2.app = M.Application.design({
 
     entryPage: 'page1',
 
@@ -16,7 +16,7 @@ Twitter.app = M.Application.design({
             childViews: 'header content',
     
             header: M.ToolbarView.design({
-                value: 'Twitter Demo',
+                value: 'Twitter Demo 2',
                 anchorLocation : M.TOP
             }),
 
@@ -30,7 +30,7 @@ Twitter.app = M.Application.design({
                     isGrouped: NO,
                     events: {
                         enter: {
-                            target: Twitter.TwitterController,
+                            target: Twitter2.TwitterController,
                             action: 'search'
                         }
                     }
@@ -40,7 +40,7 @@ Twitter.app = M.Application.design({
                     value: 'Search',
                     events: {
                         tap: {
-                            target: Twitter.TwitterController,
+                            target: Twitter2.TwitterController,
                             action: 'search'
                         }
                     }
@@ -60,9 +60,9 @@ Twitter.app = M.Application.design({
         childViews: 'header content',
 
         header: M.ToolbarView.design({
-            value: 'Twitter Demo',
+            value: 'Twitter Demo 2',
             contentBinding: {
-                target: Twitter.TwitterController,
+                target: Twitter2.TwitterController,
                 property: 'searchString'
             },
             anchorLocation : M.TOP,
@@ -74,10 +74,10 @@ Twitter.app = M.Application.design({
 
             list1: M.ListView.design({
                 contentBinding: {
-                    target: Twitter.TwitterController,
+                    target: Twitter2.TwitterController,
                     property: 'results'
                 },
-                listItemTemplateView: Twitter.TwitterResultsView,
+                listItemTemplateView: Twitter2.TwitterResultsView,
                 removeItemsOnUpdate: YES
             })
         })
@@ -87,9 +87,9 @@ Twitter.app = M.Application.design({
         childViews: 'header content',
 
         header: M.ToolbarView.design({
-            value: 'Twitter Demo',
+            value: 'Twitter Demo 2',
             contentBinding: {
-                target: Twitter.TwitterController,
+                target: Twitter2.TwitterController,
                 property: 'username'
             },
             anchorLocation : M.TOP,
@@ -101,10 +101,10 @@ Twitter.app = M.Application.design({
 
             list1: M.ListView.design({
                 contentBinding: {
-                    target: Twitter.TwitterController,
+                    target: Twitter2.TwitterController,
                     property: 'userResults'
                 },
-                listItemTemplateView: Twitter.TwitterUserView,
+                listItemTemplateView: Twitter2.TwitterUserView,
                 removeItemsOnUpdate: YES
             })
         })

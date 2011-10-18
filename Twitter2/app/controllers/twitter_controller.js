@@ -6,7 +6,7 @@
 // Controller: TwitterController
 // ==========================================================================
 
-Twitter.TwitterController = M.Controller.extend({
+Twitter2.TwitterController = M.Controller.extend({
 
     results: null,
 
@@ -28,7 +28,7 @@ Twitter.TwitterController = M.Controller.extend({
         
         M.LoaderView.show('looking for \'' + searchString + '\'');
 
-        Twitter.TweetStore.find({
+        Twitter2.TweetStore.find({
             urlParams: {
                 query: 'q=' + searchString,
                 rpp: 10
@@ -44,8 +44,8 @@ Twitter.TwitterController = M.Controller.extend({
                                message: 'Your search for \'' + searchString + '\' didn\'t bring up any results. Please try something else.'
                            });
                         } else {
-                            Twitter.TwitterController.set('results', records);
-                            Twitter.TwitterController.set('searchString', 'Results for \'' + searchString + '\'');
+                            Twitter2.TwitterController.set('results', records);
+                            Twitter2.TwitterController.set('searchString', 'Results for \'' + searchString + '\'');
                             M.Controller.switchToPage(M.ViewManager.getPage('page2'));
                         }
                     }
@@ -73,7 +73,7 @@ Twitter.TwitterController = M.Controller.extend({
 
         M.LoaderView.show('loading tweets of \'' + username + '\'');
 
-        Twitter.TweetStore.find({
+        Twitter2.TweetStore.find({
             urlParams: {
                 query: 'from=' + username,
                 rpp: 10
@@ -89,8 +89,8 @@ Twitter.TwitterController = M.Controller.extend({
                                message: 'Your search for tweets of \'' + username + '\' didn\'t bring up any results. Sorry.'
                            });
                         } else {
-                            Twitter.TwitterController.set('userResults', records);
-                            Twitter.TwitterController.set('username', username);
+                            Twitter2.TwitterController.set('userResults', records);
+                            Twitter2.TwitterController.set('username', username);
                             M.Controller.switchToPage(M.ViewManager.getPage('page3'));
                         }
                     }

@@ -2,11 +2,11 @@
 // The M-Project - Mobile HTML5 Application Framework
 // Generated with: Espresso
 //
-// Project: Twitter
+// Project: Twitter2
 // Model: TweetModel
 // ==========================================================================
 
-Twitter.TweetModel = M.Model.create({
+Twitter2.TweetModel = M.Model.create({
     
     __name__: 'TweetModel',
 
