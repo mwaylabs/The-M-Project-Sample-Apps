@@ -1,6 +1,5 @@
 {
     "name" : "Todos",
-    "version": "0.0.1",
     "mode": "debug",
     "debugLevel": 1,
     "eliminate": false,
