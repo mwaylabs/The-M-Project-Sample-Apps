@@ -23,7 +23,13 @@
         "de_de"
     ],
     "application": {
-        "version": "0.0.1",
-        "debugMode": "true"
+        "version": "1.0",
+        "debugMode": "true",
+        "keyPrefix": "#m#",
+        "keySuffix": "_",
+        "timeStampCreated": "created_at",
+        "timeStampUpdated": "updated_at",
+        "m_id": "m_id",
+        "useTransitions": true
     }
 }

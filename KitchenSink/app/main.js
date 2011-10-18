@@ -103,6 +103,8 @@ KitchenSink.app = M.Application.design({
 
     controlsLoaderView1: KitchenSink.ControlsLoaderViewPage1,
 
+    controlsLoaderView2: KitchenSink.ControlsLoaderViewPage2,
+
     controlsSearchBarView: KitchenSink.ControlsSearchBarViewPage,
 
     controlsSearchBarView1: KitchenSink.ControlsSearchBarViewPage1,
