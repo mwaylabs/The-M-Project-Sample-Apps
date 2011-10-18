@@ -1,3 +1,11 @@
 .initialText {
     color: #999;
 }
+
+.ui-grid-a input {
+    width: 90%;
+}
+
+ul[data-role="listview"].ui-listview {
+    margin-top: 15px;
+}

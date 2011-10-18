@@ -27,7 +27,7 @@ FormSample.app = M.Application.design({
         }),
 
         content: M.ScrollView.design({
-            childViews: 'form buttonGrid clearLSButton',
+            childViews: 'form buttonGrid clearLSButton list',
             form: M.FormView.design({
                 childViews: 'grid',
 
@@ -76,7 +76,7 @@ FormSample.app = M.Application.design({
                 }),
 
                 saveButton: M.ButtonView.design({
-                    value: 'Save To Local Storage',
+                    value: 'Save',
                     events : {
                         tap: {
                             target: FormSample.ApplicationController,
@@ -95,6 +95,15 @@ FormSample.app = M.Application.design({
                     }
                 },
                 cssClass: 'a tmp-actionsheet-destructive-button'
+            }),
+
+            list: M.ListView.design({
+                contentBinding: {
+                    target: FormSample.ApplicationController,
+                    property: 'items'
+                },
+                listItemTemplateView: FormSample.Template,
+
             })
             
         })
