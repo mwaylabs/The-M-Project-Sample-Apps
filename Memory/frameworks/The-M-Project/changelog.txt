@@ -1,0 +1,85 @@
+** Version 0.7 - Date 18.10.2011 **
+
+  * Added D8 as the next generation date object in JavaScript (M.Date remains, but will no longer be maintained)
+  * Fixed a bug in M.LocationManager
+  * Added changeTitle() to M.LoaderView
+  * Fixed a bug in style() with the disabled-property
+  * Fixed a bug in styleUpdate(), since disabled-property lead to problems with autogrow mechanism
+  * Fixed a bug in M.EventDispatcher (no unbind of jqm-based events)
+  * ContentDidChange Event for values which are an empty string
+  * Refactored M.SelectionListView to use this.value in renderUpdate() since it was automatically set by contentDidChange() of M.View
+  * Added M.DashboardView / M.DashboardItemView
+  * Added disable() / enable() to M.ButtonView (also usable within a button group)
+  * Extended dashboard's editable support for dektop browser
+  * Refactored extend() in M.Object to correctly differenciate between object and prototype properties.
+  * Implemented the all new M.DatepickerView (based on mobiscroll)
+  * Fixed a bug in the form view's getFormValues()
+  * Added check and error message to M.ListView if there is a invalid template
+  * Updated Underscore to v1.1.7
+  * Updated JQM to 1.0RC1
+  * Added 'enableTouchOverflow' and 'useTransitions' properties to the config.json's application section
+  * Updated jQuery to 1.6.4
+  * Added cssClass property support to M.DashboardView
+  * Fixed a bug in email validator
+  * Fixed some stuff in M.SelectionListView and extended support for boolean/numerical values when using content binding
+  * Finalized v0.7
+
+** Version 0.6 - Date 21.07.2011 **
+
+  * Refactored content binding (3): set() now can set single values of a chain like 'person.address.street'
+  * Added 'orientationchange' event to M.PageView
+  * Fixed M.LoaderView
+  * Removed useless properties of M.Application (viewManager, modelRegistry, ...)
+  * Refactored M.MapView: Load google maps api only if connection available (this fixes a bug with the cache manifest)
+  * Added unregisterEvents() to M.EventDispatcher
+  * Renamed remove() to unregister() in M.ViewManager
+  * Refactored destroy() in M.Application: Additionally unregister a view from both the event dispatcher and the view manager
+  * Added setActiveButtonAtIndex() to M.ButtonGroupView
+  * Removed applyTheme property
+  * Fixed a bug in renderUpdate() of M.ButtonView
+  * Added resetSelection() to M.SelectionListView
+  * Updated jQuery Mobile to 1.0b1 (and adjusted some parts of TMP to work with this new version properly)
+  * Updated underscore.js to 1.1.6
+  * Removed the VERSION file, since we maintain the version in m.js -> M.version
+  * Refactored alert and confirm dialog to have position dynamically calculated => always in center of the screen, even if page is scrolled. Semi-transparent background now has full page size.
+  * Added getTotalSize, getTotalHeight and getTotalWidth to M.Environment to get total size of document
+  * Auto-center M.Loader view when show() is called and the loader was hidden before
+  * Fixed a bug in M.FormView's showErrors()
+  * Added Dynamic Value Computing to M.TextFieldView
+  * Added config property and getConfig() to M.Application to access properties of config.json within an application
+  * Added isSelectable property to M.ListItemView
+  * Added setView() to M.ToggleView
+  * Use debugMode property of config.json to only log if we are not in production mode
+
+** Version 0.5 - Date 03.06.2011 **
+
+  * Fixed a bug in M.I18N
+  * Added setValue() to M.LabelView
+  * Added autogrow-mechanism to M.TextFieldView in combination with content binding
+  * Refactored event handling (all over and over all)
+  * Refactored childViews property (it's way more robust now)
+  * Updated jQuery to 1.6.1
+  * Updated jQuery Mobile to 1.0b1
+  * Refactored content binding (1): It now uses target/property (same as events)
+  * Refactored content binding (2): Added recursion, so now something like 'person.address.street' is possible
+  * Added method to remove a view's child views (e.g. used in toggle view)
+  * Refactored dialogs: no more rendered as page but as an overlay animated with CSS3
+  * Refactored toggle view: do show/hide instead of add/remove
+
+** Version 0.4 - Date 19.04.2011 **
+
+  * Updated jQuery to 1.5.2
+  * Updated jQuery Mobile to 1.0a4.1
+  * Updated M.DatePickerView to work with latest version of JQM
+  * Updated M.SelectionListView to work with latest version of JQM
+  * Fixed a bug in M.ToggleView
+
+** Version 0.3 - Date 22.02.2011 **
+
+  * Added M.DatePickerView.
+  * Added 'entryPage' property to M.Application and refactored the process of launching this first page.
+  * Added bootstrapping directory (needed for some startup scripts).
+  * Added jquery_mobile_plugins directory for jQM based plugins.
+  * Fixed a bug with M.ListView: ID 0 of a model record was ignored due to an invalid constraint.
+  * Added CouchDB Data Provider
+  * Bugfixes in M.Model
