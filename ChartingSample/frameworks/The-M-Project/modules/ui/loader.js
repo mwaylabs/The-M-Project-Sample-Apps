@@ -70,9 +70,9 @@ M.LoaderView = M.View.extend(
     show: function(title) {
         this.refCount++;
         var title = title && typeof(title) === 'string' ? title : this.defaultTitle;
-        $.mobile.loadingMessage = title;
         if(this.refCount == 1){
-            $.mobile.pageLoading();
+            $.mobile.showPageLoadingMsg();
+            this.changeTitle(title);
 
             /* position alert in the center of the possibly scrolled viewport */
             var loader = $('.ui-loader');
@@ -87,6 +87,16 @@ M.LoaderView = M.View.extend(
     },
 
     /**
+     * This method changes the current title.
+     *
+     * @param {String} title The title for this loader.
+     */
+
+    changeTitle: function(title){
+        $('.ui-loader h1').html(title);
+    },
+
+    /**
      * This method hides the loader.
      *
      * @param {Boolean} force Determines whether to force the hide of the loader.
@@ -98,7 +108,7 @@ M.LoaderView = M.View.extend(
             this.refCount--;
         }
         if(this.refCount == 0){
-            $.mobile.pageLoading(true);
+            $.mobile.hidePageLoadingMsg();
         }
     }
     
