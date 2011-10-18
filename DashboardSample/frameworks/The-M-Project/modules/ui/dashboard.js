@@ -101,7 +101,7 @@ M.DashboardView = M.View.extend(
      * @returns {String} The dashboard view's html representation.
      */
     render: function() {
-        this.html += '<div id="' + this.id + '" class="tmp-dashboard">';
+        this.html += '<div id="' + this.id + '"' + this.style() + '>';
         this.renderChildViews();
         this.html += '</div>';
 
@@ -137,8 +137,9 @@ M.DashboardView = M.View.extend(
             var values = localStorage.getItem(M.LOCAL_STORAGE_PREFIX + M.Application.name + M.LOCAL_STORAGE_SUFFIX + 'dashboard');
             values = values ? JSON.parse(values) : null;
 
+            /* get the items (if there is something in the LS and it fits the content bound values, use them) */
             this.items = [];
-            var items = values ? this.sortItemsByValues(this.value, values) : this.value;
+            var items = (values && this.value && values.length == this.value.length) ? this.sortItemsByValues(this.value, values) : this.value;
             var html = '';
 
             /* lets gather the html together */
@@ -516,6 +517,20 @@ M.DashboardView = M.View.extend(
                 this.editDashboard();
             }
         }
+    },
+
+    /**
+     * Applies some style-attributes to the dashboard view.
+     *
+     * @private
+     * @returns {String} The dashboard's styling as html representation.
+     */
+    style: function() {
+        var html = '';
+        if(this.cssClass) {
+            html += ' class="tmp-dashboard ' + this.cssClass + '"';
+        }
+        return html;
     }
 
 });
