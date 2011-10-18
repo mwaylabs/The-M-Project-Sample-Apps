@@ -26,7 +26,7 @@ MyContacts.RemoteContactDetailsPage = M.PageView.design({
 
         header: M.ToolbarView.design({
 
-            childViews: 'nameLabel',
+            childViews: 'back nameLabel',
 
             nameLabel: M.LabelView.design({
                 label: '',
@@ -37,7 +37,19 @@ MyContacts.RemoteContactDetailsPage = M.PageView.design({
                 anchorLocation: M.CENTER
             }),
 
-            showBackButton: YES,
+            back: M.ButtonView.design({
+                value: 'back',
+                icon: 'arrow-l',
+                anchorLocation: M.LEFT,
+                events: {
+                    tap: {
+                        target: MyContacts.LocalStorageController,
+                        action: function() {
+                            this.switchToPage('remoteContacts', null, YES);
+                        }
+                    }
+                }
+            }),
 
             anchorLocation: M.TOP
 
