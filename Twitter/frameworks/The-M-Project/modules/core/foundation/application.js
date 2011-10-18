@@ -85,33 +85,6 @@ M.Application = M.Object.extend(
     config: {},
 
     /**
-     * This property contains the application-specific configurations. It is automatically set by Espresso
-     * during the build process. To access these properties within the application, use the getConfig()
-     * method of M.Application.
-     */
-    config: {
-        keyPrefix: "#m#",
-        keySuffix: "_",
-        timeStampCreated: "created_at",
-        timeStampUpdated: "updated_at",
-        m_id: "m_id"
-    },
-
-    /**
-     * This property is used internally as a backup for configuration stuff if there were some changes made to
-     * the configuration property by an invalid config.json.
-     *
-     * @private
-     */
-    configBackup: {
-        keyPrefix: "#m#",
-        keySuffix: "_",
-        timeStampCreated: "created_at",
-        timeStampUpdated: "updated_at",
-        m_id: "m_id"
-    },
-
-    /**
      * This method encapsulates the 'include' method of M.Object for better reading of code syntax.
      * Basically it integrates the defined pages within the application into M.Application and sets
      * some basic configuration properties, e.g. the default language.
@@ -128,6 +101,9 @@ M.Application = M.Object.extend(
         this.include({
             pages: pages
         });
+
+        /* set some properties */
+        this.useTransitions = this.getConfig('useTransitions') !== undefined ? this.getConfig('useTransitions') : this.useTransitions;
 
         this.entryPage = ((obj.entryPage && typeof(obj.entryPage) === 'string') ? obj.entryPage : null);
 
@@ -172,8 +148,6 @@ M.Application = M.Object.extend(
     getConfig: function(key) {
         if(this.config[key]) {
             return this.config[key];
-        } else if(this.configBackup[key]) {
-            return this.configBackup[key];
         }
         return null;
     }

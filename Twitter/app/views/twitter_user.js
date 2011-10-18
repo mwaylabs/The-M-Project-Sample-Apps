@@ -16,7 +16,7 @@ Twitter.TwitterUserView = M.ListItemView.design({
 
     date : M.LabelView.design({
         computedValue: {
-            valuePattern: '<%= createdAr %>',
+            valuePattern: '<%= created_at %>',
             operation: function(v) {
                 var date = M.Date.create(v);
                 return date.format('mm/dd/yyyy HH:MM');
@@ -26,7 +26,7 @@ Twitter.TwitterUserView = M.ListItemView.design({
     }),
 
     label1 : M.LabelView.design({
-        valuePattern: '<%= tweet %>',
+        valuePattern: '<%= text %>',
         cssClass: 'text'
     })
 

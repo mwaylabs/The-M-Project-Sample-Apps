@@ -17,6 +17,7 @@ Twitter.TwitterController = M.Controller.extend({
     username: null,
 
     search: function() {
+        //var searchString = Twitter.app.page1.content.searchField.value;
         var searchString = M.ViewManager.getView('page1', 'searchField').value;
         if(!searchString) {
             M.DialogView.alert({
@@ -25,42 +26,42 @@ Twitter.TwitterController = M.Controller.extend({
             });
             return;
         }
-        
+
         M.LoaderView.show('looking for \'' + searchString + '\'');
 
-        Twitter.TweetStore.find({
-            urlParams: {
-                query: 'q=' + searchString,
-                rpp: 10
+        M.Request.init({
+            url: '/twitter/search.json?q=' + searchString + '&rpp=10',
+            isJSON: YES,
+            timeout: 5000,
+            beforeSend: function(req) {
+                //...
             },
-            appendRecords: NO,
-            callbacks: {
-                success: {
-                    action: function(records) {
-                        M.LoaderView.hide();
-                        if(records && records.length === 0) {
-                           M.DialogView.alert({
-                               title: 'Nothing found...',
-                               message: 'Your search for \'' + searchString + '\' didn\'t bring up any results. Please try something else.'
-                           });
-                        } else {
-                            Twitter.TwitterController.set('results', records);
-                            Twitter.TwitterController.set('searchString', 'Results for \'' + searchString + '\'');
-                            M.Controller.switchToPage(M.ViewManager.getPage('page2'));
-                        }
-                    }
-                },
-                error: {
-                    action: function(request, error) {
-                        M.LoaderView.hide();
-                        M.DialogView.alert({
-                            title: 'Request failed',
-                            message: 'The search could not be performed! Please check your network status, enter a valid search string and try again.'
-                        });
-                    }
+            onSuccess: function(data){
+                M.LoaderView.hide();
+                if(data && data.results && data.results.length > 0) {
+                    Twitter.TwitterController.set('results', data);
+                    Twitter.TwitterController.set('searchString', 'Results for \'' + searchString + '\'');
+                    M.Controller.switchToPage(M.ViewManager.getPage('page2'));
+                } else if (data && data.results) {
+                   M.DialogView.alert({
+                       title: 'Nothing found...',
+                       message: 'Your search for \'' + searchString + '\' didn\'t bring up any results. Please try something else.'
+                   });
+                } else {
+                   M.DialogView.alert({
+                       title: 'Connection Error',
+                       message: 'No connection could be established! Please check your connection status and try again. If this message keeps coming up, you probably didn\'t add the necessary proxy to your server.'
+                   });
                 }
+            },
+            onError: function(data, error){
+                M.DialogView.alert({
+                    title: 'Request failed',
+                    message: 'The search could not be performed! Please check your network status and try again.'
+                });
+                M.LoaderView.hide();
             }
-        });
+        }).send();
     },
 
     showUser: function(id) {
@@ -73,39 +74,22 @@ Twitter.TwitterController = M.Controller.extend({
 
         M.LoaderView.show('loading tweets of \'' + username + '\'');
 
-        Twitter.TweetStore.find({
-            urlParams: {
-                query: 'from=' + username,
-                rpp: 10
+        M.Request.init({
+            url: '/twitter/search.json?from=' + username + '&rpp=10',
+            isJSON: YES,
+            beforeSend: function(req) {
+                //...
             },
-            appendRecords: NO,
-            callbacks: {
-                success: {
-                    action: function(records) {
-                        M.LoaderView.hide();
-                        if(records && records.length === 0) {
-                           M.DialogView.alert({
-                               title: 'Nothing found...',
-                               message: 'Your search for tweets of \'' + username + '\' didn\'t bring up any results. Sorry.'
-                           });
-                        } else {
-                            Twitter.TwitterController.set('userResults', records);
-                            Twitter.TwitterController.set('username', username);
-                            M.Controller.switchToPage(M.ViewManager.getPage('page3'));
-                        }
-                    }
-                },
-                error: {
-                    action: function(request, error) {
-                        M.LoaderView.hide();
-                        M.DialogView.alert({
-                            title: 'Request failed',
-                            message: 'The search could not be performed! Please check your network status and try again.'
-                        });
-                    }
-                }
+            onSuccess: function(data){
+                M.LoaderView.hide();
+                Twitter.TwitterController.set('userResults', data);
+                Twitter.TwitterController.set('username', username);
+                M.Controller.switchToPage(M.ViewManager.getPage('page3'));
+            },
+            onError: function(data){
+                M.LoaderView.hide();
             }
-        });
+        }).send();
     }
 
 });
