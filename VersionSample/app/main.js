@@ -25,7 +25,7 @@ VersionSample.app = M.Application.design({
             label: M.LabelView.design({
                 computedValue: {
                     operation: function(v) {
-                        return M.version
+                        return 'Version ' + M.Application.getConfig('version');
                     }
                 }
             })

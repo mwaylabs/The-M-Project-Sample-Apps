@@ -78,14 +78,11 @@ M.Application = M.Object.extend(
     entryPage: null,
 
     /**
-     * This property is specify whether the app is in production or development mode. This affects the
-     * logger, since we do not write to the console in production mode.
-     *
-     * Note: JavaScript errors, that are not catched by the framework might write to the console anyway!
-     *
-     * @type Boolean
+     * This property contains the application-specific configurations. It is automatically set by Espresso
+     * during the init process of an application. To access these properties within the application, use the
+     * getConfig() method of M.Application.
      */
-    isInProduction: NO,
+    config: {},
 
     /**
      * This method encapsulates the 'include' method of M.Object for better reading of code syntax.
@@ -104,6 +101,9 @@ M.Application = M.Object.extend(
         this.include({
             pages: pages
         });
+
+        /* set some properties */
+        this.useTransitions = this.getConfig('useTransitions') !== undefined ? this.getConfig('useTransitions') : this.useTransitions;
 
         this.entryPage = ((obj.entryPage && typeof(obj.entryPage) === 'string') ? obj.entryPage : null);
 
@@ -138,6 +138,18 @@ M.Application = M.Object.extend(
         /* finally add entry page back to pagelist and view list, but with new key 'm_entryPage' */
         M.ViewManager.viewList['m_entryPage'] = entryPage;
         M.ViewManager.pageList['m_entryPage'] = entryPage;
+    },
+
+    /**
+     *
+     * @param {String} key The key of the configuration value to want to retrieve.
+     * @returns {String} The value in the application's config object with the key 'key'.
+     */
+    getConfig: function(key) {
+        if(this.config[key]) {
+            return this.config[key];
+        }
+        return null;
     }
 
 });
