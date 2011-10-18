@@ -304,21 +304,19 @@ M.SelectionListView = M.View.extend(
                 //this.addItem('<select id="' + this.id + '" onchange="M.EventDispatcher.onClickEventDidHappen(\'click\', \'' + this.id + '\');"></select>');
             }
         }
-        
+
+        /* remove selection before applying new content */
+        this.removeSelection();
+
         if(this.contentBinding) {
-            var items = null;
-            if(this.contentBinding && typeof(this.contentBinding.target) === 'object' && typeof(this.contentBinding.property) === 'string' && this.contentBinding.target[this.contentBinding.property]) {
-                items = this.contentBinding.target[this.contentBinding.property];
-            } else {
-                M.Logger.log('The specified content binding for the selection list view (' + this.id + ') is invalid!', M.WARN);
-                return;
-            }
+            /* assign the value property to 'items' since this was automatically set by contentDidChange of M.View */
+            var items = this.value;
             for(var i in items) {
                 var item  = items[i];
                 var obj = null;
                 obj = M.SelectionListItemView.design({
-                    value: item.value ? item.value : '',
-                    label: item.label ? item.label : (item.value ? item.value : ''),
+                    value: (item.value !== undefined && item.value !== null) ? item.value : '',
+                    label: item.label ? item.label : ((item.value !== undefined && item.value !== null) ? item.value : ''),
                     parentView: this,
                     isSelected: item.isSelected
                 });
@@ -470,10 +468,10 @@ M.SelectionListView = M.View.extend(
      */
     setSelection: function(selection) {
         var that = this;
-        if(this.selectionMode === M.SINGLE_SELECTION && typeof(selection) === 'string') {
+        if(this.selectionMode === M.SINGLE_SELECTION && (typeof(selection) === 'string' || typeof(selection) === 'number' || typeof(selection) === 'boolean')) {
             $('#' + this.id).find('input').each(function() {
                 var item = M.ViewManager.getViewById($(this).attr('id'));
-                if(item.value === selection) {
+                if(item.value == selection) {
                     that.removeSelection();
                     item.isSelected = YES;
                     that.selection = item;
@@ -484,10 +482,11 @@ M.SelectionListView = M.View.extend(
                     $(this).siblings('label:first').find('span .ui-icon-radio-off').removeClass('ui-icon-radio-off');
                 }
             });
-        } else if(this.selectionMode === M.SINGLE_SELECTION_DIALOG && typeof(selection) === 'string') {
+        } else if(this.selectionMode === M.SINGLE_SELECTION_DIALOG && (typeof(selection) === 'string' || typeof(selection) === 'number' || typeof(selection) === 'boolean')) {
+            var didSetSelection = NO;
             $('#' + this.id).find('option').each(function() {
                 var item = M.ViewManager.getViewById($(this).attr('id'));
-                if(item.value === selection) {
+                if(item.value == selection) {
                     that.removeSelection();
                     item.isSelected = YES;
                     that.selection = item;
@@ -495,17 +494,20 @@ M.SelectionListView = M.View.extend(
                     if(that.initialText && $('#' + that.id + '-button').find('span.ui-btn-text').html() === that.initialText) {
                         $('#' + that.id + '-button').find('span.ui-btn-text').html(item.label ? item.label : item.value);
                     }
+                    didSetSelection = YES;
                 }
             });
-            this.initialText = null;
-            $('#' + this.id).selectmenu('refresh');
+            if(didSetSelection) {
+                this.initialText = null;
+                $('#' + this.id).selectmenu('refresh');
+            }
         } else if(typeof(selection) === 'object') {
             var removedItems = NO;
             $('#' + this.id).find('input').each(function() {
                 var item = M.ViewManager.getViewById($(this).attr('id'));
                 for(var i in selection) {
                     var selectionItem = selection[i];
-                    if(item.value === selectionItem) {
+                    if(item.value == selectionItem) {
                         if(!removedItems) {
                             that.removeSelection();
                             removedItems = YES;
@@ -581,6 +583,22 @@ M.SelectionListView = M.View.extend(
             this.renderUpdate();
             this.contentBinding = null;
         }
+    },
+
+    /**
+     *  We use this as alias for the form reset function view.clearValues() to reset the selection to its initial state
+     */
+    clearValue: function(){
+        this.resetSelection();
+    },
+
+    /**
+     * This method returns the selection list view's value.
+     *
+     * @returns {String|Array} The selected item's value(s).
+     */
+    getValue: function() {
+        return this.getSelection();
     }
 
 });

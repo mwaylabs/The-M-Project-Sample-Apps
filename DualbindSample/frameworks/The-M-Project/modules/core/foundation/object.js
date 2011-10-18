@@ -31,42 +31,43 @@ M.Object =
     type: 'M.Object',
 
     /**
-     * Creates an object.
-     * 
-     * @param obj
+     * Creates an object based on a passed prototype.
+     *
+     * @param {Object} proto The prototype of the new object.
      */
-    create: function(obj) {
+    create: function(proto) {
         var f = function(){};
-        f.prototype = obj;
+        f.prototype = proto;
         return new f();
+    },
+
+    /**
+     * Includes passed properties into a given object.
+     *
+     * @param {Object} properties The properties to be included into the given object.
+     */
+    include: function(properties) {
+        for(var prop in properties) {
+            this[prop] = properties[prop];
+        }
     },
 
     /**
      * Creates a new class and extends it with all functions of the defined super class
      * The function takes multiple input arguments. Each argument serves as additional
      * super classes - see mixins.
+     *
+     * @param {Object} properties The properties to be included into the given object.
      */
-    extend: function(){
-        var f = function(){};
-        for(prop in this) {
-            f.prototype[prop] = this[prop];
-        }
-        for(var i = 0; i < arguments.length; i++) {
-            var obj = arguments[i];
-            for(prop in obj) {
-                f.prototype[prop] = obj[prop];
-            }
-        }
-        return new f();
-    },
+    extend: function(properties){
+        /* create the new object */
+        var obj = M.Object.create(this);
 
-    include: function() {
-        for(var i = 0; i < arguments.length; i++) {
-            var obj = arguments[i];
-            for(prop in obj) {
-                this[prop] = obj[prop];
-            }
-        }
+        /* assign the properties passed with the arguments array */
+        obj.include(properties);
+
+        /* return the new object */
+        return obj;
     },
 
     /**
