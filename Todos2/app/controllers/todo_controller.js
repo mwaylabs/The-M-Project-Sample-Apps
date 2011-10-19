@@ -40,8 +40,8 @@ Todos2.TodoController = M.Controller.extend({
         }
     },
 
-    goBack: function() {
-        history.back(-1);
+    gotoToDoList: function(){
+        this.switchToPage('page1');
     },
 
     hide: function() {

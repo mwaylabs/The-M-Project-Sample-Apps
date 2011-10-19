@@ -104,7 +104,7 @@ Todos2.app = M.Application.design({
                 events: {
                     tap: {
                         target: Todos2.TodoController,
-                        action: 'goBack'
+                        action: 'gotoToDoList'
                     }
                 },
                 anchorLocation: M.LEFT
