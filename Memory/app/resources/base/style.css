@@ -1,0 +1,56 @@
+/* Put you custom stylings here! */
+body{
+    background: #151515;
+}
+
+.ui-content{
+    color: white;
+}
+
+.ui-body-c{
+    background: none;
+}
+
+.tmp-dashboard-item-label{
+    display: none;
+}
+
+.tmp-dashboard-item{
+    margin: 5px 0;
+}
+
+.tmp-dashboard-item img{
+    /*height: 26px !important;*/
+    /*width: 26px !important;*/
+    width: 50%;
+    border: 1px solid #151515;
+}
+
+.tmp-dashboard-item.active{
+    background: none;
+}
+
+.tmp-dashboard-item img.active{
+    visibility: visible;
+}
+
+.rotation{
+    -webkit-transform-style: preserve-3d;
+	-webkit-transition: 0.5s;
+    -webkit-transform: rotateY(180deg);
+}
+
+.rotation_back{
+    -webkit-transform-style: preserve-3d;
+	-webkit-transition: 0.5s;
+    -webkit-transform: rotateY(180deg);
+}
+
+.tmp-dashboard-item.correct{
+    background: none;
+}
+
+.correct img{
+    visibility: hidden;
+    border: 1px solid #adff2f;
+}
