@@ -8,7 +8,7 @@
 
 SelectionListSample.TabBar = M.TabBarView.design({
 
-    childViews: 'TabSingleSelection TabMultipleSelection TabSingleSelectionDialog',
+    childViews: 'TabSingleSelection TabMultipleSelection TabSingleSelectionDialog TabMultipleSelectionDialog',
 
     anchorLocation: M.BOTTOM,
 
@@ -31,6 +31,12 @@ SelectionListSample.TabBar = M.TabBarView.design({
 
         value: 'Single (Dialog)',
         page: 'singleSelectionDialog'
+    }),
+
+    TabMultipleSelectionDialog: M.TabBarItemView.design({
+
+        value: 'Multiple (Dialog)',
+        page: 'multipleSelectionDialog'
     })
 
 })
