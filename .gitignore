@@ -1,2 +1,6 @@
-.DS_Store
 .idea
+.DS_Store
+.settings
+.project
+.buildpath
+.metadata
