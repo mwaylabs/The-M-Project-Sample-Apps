@@ -51,6 +51,13 @@ KitchenSink.ControlsSelectionListViewController = M.Controller.extend({
                     name: "setSelection()",
                     page: "controlsSelectionListView5"
 
+                },
+
+                {
+
+                    name: "Selection list (multiple selection dialog)",
+                    page: "controlsSelectionListView6"
+
                 }
 
             ];
