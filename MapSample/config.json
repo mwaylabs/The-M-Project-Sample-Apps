@@ -26,6 +26,7 @@
         "timeStampCreated": "created_at",
         "timeStampUpdated": "updated_at",
         "m_id": "m_id",
-        "useTransitions": true
+        "useTransitions": true,
+        "enableTouchOverflow": false
     }
 }
