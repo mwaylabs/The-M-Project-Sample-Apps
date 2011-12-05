@@ -16,8 +16,10 @@ $(document).bind("mobileinit", function(){
     }
 
     /* disable auto initialize */
-    $.mobile.touchOverflowEnabled = true;
     $.mobile.autoInitializePage = false;
+
+    /* disable touch overflow */
+    $.mobile.touchOverflowEnabled = false;
 });
 $(document).ready(function(){
     /* configure jqm */
@@ -25,4 +27,9 @@ $(document).ready(function(){
 
     /* init pages */
     $.mobile.initializePage();
+
+    /* bind orientation change event */
+    $(window).bind('orientationchange', function() {
+        $('#' + M.ViewManager.getCurrentPage().id).trigger('orientationchange');
+    });
 });
