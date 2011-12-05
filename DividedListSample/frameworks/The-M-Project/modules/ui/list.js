@@ -357,9 +357,9 @@ M.ListView = M.View.extend(
                 var regexResult = null;
                 if(obj[childViewsArray[i]].computedValue) {
                     /* This regex looks for a variable inside the template view (<%= ... %>) ... */
-                    regexResult = /^<%=\s+([.|_|-|$|�|a-zA-Z]+[0-9]*[.|_|-|$|�|a-zA-Z]*)\s*%>$/.exec(obj[childViewsArray[i]].computedValue.valuePattern);
+                    regexResult = /^<%=\s+([.|_|-|$|§|a-zA-Z]+[0-9]*[.|_|-|$|§|a-zA-Z]*)\s*%>$/.exec(obj[childViewsArray[i]].computedValue.valuePattern);
                 } else {
-                    regexResult = /^<%=\s+([.|_|-|$|�|a-zA-Z]+[0-9]*[.|_|-|$|�|a-zA-Z]*)\s*%>$/.exec(obj[childViewsArray[i]].valuePattern);
+                    regexResult = /^<%=\s+([.|_|-|$|§|a-zA-Z]+[0-9]*[.|_|-|$|§|a-zA-Z]*)\s*%>$/.exec(obj[childViewsArray[i]].valuePattern);
                 }
 
                 /* ... if a match was found, the variable is replaced by the corresponding value inside the record */
@@ -368,6 +368,7 @@ M.ListView = M.View.extend(
                         case 'M.LabelView':
                         case 'M.ButtonView':
                         case 'M.ImageView':
+                        case 'M.TextFieldView':
                             obj[childViewsArray[i]].value = record[regexResult[1]];
                             break;
                     }
