@@ -143,6 +143,8 @@ KitchenSink.app = M.Application.design({
 
     controlsTextFieldView4: KitchenSink.ControlsTextFieldViewPage4,
 
+    controlsTextFieldView5: KitchenSink.ControlsTextFieldViewPage5,
+
     controlsToggleView: KitchenSink.ControlsToggleViewPage,
 
     controlsToggleView1: KitchenSink.ControlsToggleViewPage1,

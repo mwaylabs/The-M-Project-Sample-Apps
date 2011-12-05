@@ -44,6 +44,13 @@ KitchenSink.ControlsTextFieldViewController = M.Controller.extend({
                     name: "Custom textfield",
                     page: "controlsTextFieldView4"
 
+                },
+
+                {
+
+                    name: "Input type date",
+                    page: "controlsTextFieldView5"
+
                 }
 
             ];
