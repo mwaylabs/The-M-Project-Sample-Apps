@@ -13,6 +13,13 @@ FormSample.app = M.Application.design({
 
     page1: M.PageView.design({
 
+        events: {
+            pageshow: {
+                target: FormSample.ApplicationController,
+                action: 'init'
+            }
+        },
+
         childViews: 'header content',
 
         header: M.ToolbarView.design({
@@ -20,9 +27,9 @@ FormSample.app = M.Application.design({
         }),
 
         content: M.ScrollView.design({
-            childViews: 'form buttonGrid clearLSButton',
+            childViews: 'form buttonGrid clearLSButton list',
             form: M.FormView.design({
-                childViews: 'grid ',
+                childViews: 'grid',
 
                 showAlertDialogOnError: YES,
 
@@ -49,6 +56,7 @@ FormSample.app = M.Application.design({
                         })
                     })
                 })
+                
             }),
 
 
@@ -68,7 +76,7 @@ FormSample.app = M.Application.design({
                 }),
 
                 saveButton: M.ButtonView.design({
-                    value: 'Save To Local Storage',
+                    value: 'Save',
                     events : {
                         tap: {
                             target: FormSample.ApplicationController,
@@ -87,6 +95,15 @@ FormSample.app = M.Application.design({
                     }
                 },
                 cssClass: 'a tmp-actionsheet-destructive-button'
+            }),
+
+            list: M.ListView.design({
+                contentBinding: {
+                    target: FormSample.ApplicationController,
+                    property: 'items'
+                },
+                listItemTemplateView: FormSample.Template,
+
             })
             
         })

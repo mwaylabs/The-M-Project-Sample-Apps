@@ -74,6 +74,16 @@ M.Environment = M.Object.extend(
     type: 'M.Environment',
 
     /**
+     * This property contains a custom configuration of the awesome modernizr
+     * library We currently only use this for detecting supported input types
+     * of the browser.
+     *
+     * @private
+     * @type Object
+     */
+    modernizr: function(a,b,c){function y(){e.inputtypes=function(a){for(var d=0,e,g,h,i=a.length;d<i;d++)k.setAttribute("type",g=a[d]),e=k.type!=="text",e&&(k.value=l,k.style.cssText="position:absolute;visibility:hidden;",/^range$/.test(g)&&k.style.WebkitAppearance!==c?(f.appendChild(k),h=b.defaultView,e=h.getComputedStyle&&h.getComputedStyle(k,null).WebkitAppearance!=="textfield"&&k.offsetHeight!==0,f.removeChild(k)):/^(search|tel)$/.test(g)||(/^(url|email)$/.test(g)?e=k.checkValidity&&k.checkValidity()===!1:/^color$/.test(g)?(f.appendChild(k),f.offsetWidth,e=k.value!=l,f.removeChild(k)):e=k.value!=l)),o[a[d]]=!!e;return o}("search tel url email datetime date month week time datetime-local number range color".split(" "))}function x(a,b){return!!~(""+a).indexOf(b)}function w(a,b){return typeof a===b}function v(a,b){return u(prefixes.join(a+";")+(b||""))}function u(a){j.cssText=a}var d="2.0.6",e={},f=b.documentElement,g=b.head||b.getElementsByTagName("head")[0],h="modernizr",i=b.createElement(h),j=i.style,k=b.createElement("input"),l=":)",m=Object.prototype.toString,n={},o={},p={},q=[],r,s={}.hasOwnProperty,t;!w(s,c)&&!w(s.call,c)?t=function(a,b){return s.call(a,b)}:t=function(a,b){return b in a&&w(a.constructor.prototype[b],c)};for(var z in n)t(n,z)&&(r=z.toLowerCase(),e[r]=n[z](),q.push((e[r]?"":"no-")+r));e.input||y(),u(""),i=k=null,e._version=d;return e}(this,this.document),
+
+    /**
      * Checks the connection status by sending an ajax request
      * and waiting for the response to decide whether online or offline.
      *
@@ -179,6 +189,38 @@ M.Environment = M.Object.extend(
     },
 
     /**
+     * Returns the total size of the page/document, means not only the area of the browser window.
+     *
+     * 0 -> width
+     * 1 -> height
+     *
+     * @returns {Array} The width and height of the document.
+     */
+    getTotalSize: function() {
+        return [this.getTotalWidth(), this.getTotalHeight()];
+    },
+
+    /**
+     * Returns the total width of the page/document, means not only the area of the browser window.
+     * Uses jQuery.
+     *
+     * @returns {Number} The total width of the document.
+     */
+    getTotalWidth: function() {
+        return $(document).width();
+    },
+
+    /**
+     * Returns the total height of the page/document, means not only the area of the browser window.
+     * Uses jQuery.
+     *
+     * @returns {Number} The total height of the document.
+     */
+    getTotalHeight: function() {
+        return $(document).height();
+    },
+
+    /**
      * This method returns the device's current orientation, depending on whether
      * or not the device is capable of detecting the current orientation. If the
      * device is unable to detect the current orientation, this method will return
@@ -206,6 +248,22 @@ M.Environment = M.Object.extend(
                 M.Logger.log('This device does not support orientation detection.', M.WARN);
                 return NO;
         }
+    },
+
+    /**
+     * This method checks if the browser supports a certain input type specified with
+     * HTML5. This check is based on Modernizr. For further information abbout the
+     * input types, take a look at the W3C spec:
+     * http://dev.w3.org/html5/spec/Overview.html#states-of-the-type-attribute
+     *
+     * @param {String} inputTye The HTML5 input type to be checked.
+     * @return {Boolean} A flag telling you if the input type is supported or not.
+     */
+    supportsInputType: function(inputType) {
+        if(this.modernizr.inputtypes && this.modernizr.inputtypes[inputType] === YES) {
+            return YES;
+        }
+        return NO;
     }
 
 });

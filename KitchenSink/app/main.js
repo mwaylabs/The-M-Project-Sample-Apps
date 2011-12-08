@@ -103,6 +103,8 @@ KitchenSink.app = M.Application.design({
 
     controlsLoaderView1: KitchenSink.ControlsLoaderViewPage1,
 
+    controlsLoaderView2: KitchenSink.ControlsLoaderViewPage2,
+
     controlsSearchBarView: KitchenSink.ControlsSearchBarViewPage,
 
     controlsSearchBarView1: KitchenSink.ControlsSearchBarViewPage1,
@@ -125,6 +127,8 @@ KitchenSink.app = M.Application.design({
 
     controlsSelectionListView5: KitchenSink.ControlsSelectionListViewPage5,
 
+    controlsSelectionListView6: KitchenSink.ControlsSelectionListViewPage6,
+
     controlsTabBarView: KitchenSink.ControlsTabBarViewPage,
 
     controlsTabBarView1: KitchenSink.ControlsTabBarViewPage1,
@@ -138,6 +142,8 @@ KitchenSink.app = M.Application.design({
     controlsTextFieldView3: KitchenSink.ControlsTextFieldViewPage3,
 
     controlsTextFieldView4: KitchenSink.ControlsTextFieldViewPage4,
+
+    controlsTextFieldView5: KitchenSink.ControlsTextFieldViewPage5,
 
     controlsToggleView: KitchenSink.ControlsToggleViewPage,
 

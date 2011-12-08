@@ -51,6 +51,10 @@ SelectionListSample.SingleSelectionDialogController = M.Controller.extend({
         } else {
 
             selectionList.setSelection(textField.value);
+            
+            textField.setValue('');
+
+            textField.lostFocus();
 
         }
 

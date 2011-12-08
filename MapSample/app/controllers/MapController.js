@@ -15,7 +15,34 @@ MapSample.MapController = M.Controller.extend({
     init: function(isFirstTime) {
         if(isFirstTime) {
 
-            M.ViewManager.getView('page', 'map').initMap({});
+            var map = M.ViewManager.getView('page', 'map');
+            map.initMap({
+                callbacks: {
+                    success: {
+                        target: this,
+                        action: function() {
+                            /* google namespace is loaded, so use places now */
+                            var service = new google.maps.places.PlacesService(map.map);
+                            var request = {
+                                location: new google.maps.LatLng(-33.8665433, 151.1956316),
+                                radius: '500',
+                                types: ['store']
+                            };
+
+                            service.search(request, function(results, status) {
+                                console.log('STATUS: ' + status);
+                                console.log('RESULTS: ' + results);
+                            });
+                        }
+                    },
+                    error: {
+                        target: this,
+                        action: function() {
+                            console.log('Err');
+                        }
+                    }
+                }
+            });
             
         }
     },
@@ -70,7 +97,7 @@ MapSample.MapController = M.Controller.extend({
         M.LocationManager.getLocation(this, this.onSuccess, this.onError, {
             maximumAge: 0,
             timeout: 10000,
-            accuracy: 500
+            accuracy: 5000
         });
     },
 

@@ -15,6 +15,8 @@ SelectionListSample.app = M.Application.design({
 
     multipleSelection: SelectionListSample.MultipleSelectionPage,
 
-    singleSelectionDialog: SelectionListSample.SingleSelectionDialogPage
+    singleSelectionDialog: SelectionListSample.SingleSelectionDialogPage,
+
+    multipleSelectionDialog: SelectionListSample.MultipleSelectionDialogPage
 
 });

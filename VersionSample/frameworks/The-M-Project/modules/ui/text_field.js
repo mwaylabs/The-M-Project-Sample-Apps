@@ -52,6 +52,48 @@ M.INPUT_URL = 'url';
 M.INPUT_EMAIL = 'email';
 
 /**
+ * A constant value for input type: time
+ *
+ * @type String
+ */
+M.INPUT_TIME = 'time';
+
+/**
+ * A constant value for input type: date
+ *
+ * @type String
+ */
+M.INPUT_DATE = 'date';
+
+/**
+ * A constant value for input type: month
+ *
+ * @type String
+ */
+M.INPUT_MONTH = 'month';
+
+/**
+ * A constant value for input type: week
+ *
+ * @type String
+ */
+M.INPUT_WEEK = 'week';
+
+/**
+ * A constant value for input type: datetime
+ *
+ * @type String
+ */
+M.INPUT_DATETIME = 'datetime';
+
+/**
+ * A constant value for input type: datetime-local
+ *
+ * @type String
+ */
+M.INPUT_DATETIME_LOCAL = 'datetime-local';
+
+/**
  * @class
  *
  * M.TextFieldView is the prototype of any text field input view. It can be rendered as both
@@ -131,11 +173,39 @@ M.TextFieldView = M.View.extend(
     inputType: M.INPUT_TEXT,
 
     /**
+     * This property is used internally to determine all the possible input types for a
+     * date textfield.
+     *
+     * @private
+     * @type Array
+     */
+    dateInputTypes: [M.INPUT_DATETIME, M.INPUT_DATE, M.INPUT_MONTH, M.INPUT_WEEK, M.INPUT_TIME, M.INPUT_DATETIME_LOCAL],
+
+    /**
+     * This property can be used to specify the allowed number if chars for this text field
+     * view. If nothing is specified, the corresponding 'maxlength' HTML property will not
+     * be set.
+     *
+     * @type Number
+     */
+    numberOfChars: null,
+
+    /**
+     * This property can be used to specify whether to use the native implementation
+     * of one of the HTML5 input types if it is available. If set to YES, e.g. iOS5
+     * will render its own date/time picker controls to the corresponding input
+     * type. If set to no, the native implementation will be disabled.
+     *
+     * @type Boolean
+     */
+    useNativeImplementationIfAvailable: YES,
+
+    /**
      * This property specifies the recommended events for this type of view.
      *
      * @type Array
      */
-    recommendedEvents: ['focus', 'blur', 'enter', 'keyup'],
+    recommendedEvents: ['focus', 'blur', 'enter', 'keyup', 'tap'],
 
     /**
      * Renders a TextFieldView
@@ -144,6 +214,7 @@ M.TextFieldView = M.View.extend(
      * @returns {String} The text field view's html representation.
      */
     render: function() {
+        this.computeValue();
         this.html += '<div';
 
         if(this.label && this.isGrouped) {
@@ -164,7 +235,12 @@ M.TextFieldView = M.View.extend(
             this.html += '<textarea cols="40" rows="8" name="' + (this.name ? this.name : this.id) + '" id="' + this.id + '"' + this.style() + '>' + (this.value ? this.value : this.initialText) + '</textarea>';
             
         } else {
-            this.html += '<input type="' + this.inputType + '" name="' + (this.name ? this.name : this.id) + '" id="' + this.id + '"' + this.style() + ' value="' + (this.value ? this.value : this.initialText) + '" />';
+            var type = this.inputType;
+            if(_.include(this.dateInputTypes, this.inputType) && !this.useNativeImplementationIfAvailable) {
+                type = 'text';
+            }
+            
+            this.html += '<input ' + (this.numberOfChars ? 'maxlength="' + this.numberOfChars + '"' : '') + 'type="' + type + '" name="' + (this.name ? this.name : this.id) + '" id="' + this.id + '"' + this.style() + ' value="' + (this.value ? this.value : this.initialText) + '" />';
         }
 
         this.html += '</div>';
@@ -193,6 +269,10 @@ M.TextFieldView = M.View.extend(
             keyup: {
                 target: this,
                 action: 'setValueFromDOM'
+            },
+            tap: {
+                target: this,
+                action: 'handleTap'
             }
         }
         this.bindToCaller(this, M.View.registerEvents)();
@@ -224,8 +304,36 @@ M.TextFieldView = M.View.extend(
      * @private
      */
     renderUpdate: function() {
+        this.computeValue();
         $('#' + this.id).val(this.value);
         this.styleUpdate();
+    },
+
+    /**
+     * This method is called whenever the view is taped/clicked. Typically a text
+     * field view would not use a tap event. But since a tap is called before the
+     * focus event, we use this to do some input type depending stuff, e.g. show
+     * a date picker.
+     *
+     * @param {String} id The DOM id of the event target.
+     * @param {Object} event The DOM event.
+     * @param {Object} nextEvent The next event (external event), if specified.
+     */
+    handleTap: function(id, event, nextEvent) {
+        if(_.include(this.dateInputTypes, this.inputType) && (!M.Environment.supportsInputType(this.inputType) || !this.useNativeImplementationIfAvailable)) {
+            M.DatePickerView.show({
+                source: this,
+                useSourceDateAsInitialDate: YES,
+                showDatePicker: (this.inputType !== M.INPUT_TIME),
+                showTimePicker: (this.inputType === M.INPUT_TIME || this.inputType === M.INPUT_DATETIME || this.inputType === M.INPUT_DATETIME_LOCAL),
+                dateOrder: (this.inputType === M.INPUT_MONTH ? M.DatePickerView.dateOrderMonthOnly : M.DatePickerView.dateOrder),
+                dateFormat: (this.inputType === M.INPUT_MONTH ? M.DatePickerView.dateFormatMonthOnly : M.DatePickerView.dateFormat)
+            });
+        }
+
+        if(nextEvent) {
+            M.EventDispatcher.callHandler(nextEvent, event, YES);
+        }
     },
 
     /**
@@ -286,10 +394,11 @@ M.TextFieldView = M.View.extend(
         if(this.isInline) {
             html += 'display:inline;';
         }
-        if(!this.isEnabled) {
-            html += 'disabled:disabled;';
-        }
         html += '"';
+
+        if(!this.isEnabled) {
+            html += ' disabled="disabled"';
+        }
         
         if(this.cssClass) {
             html += ' class="' + this.cssClass + '"';
@@ -320,6 +429,12 @@ M.TextFieldView = M.View.extend(
      * @private
      */
     styleUpdate: function() {
+        /* trigger keyup event to make the text field autogrow (enable fist, if necessary) */
+        if(this.value) {
+            $('#' + this.id).removeAttr('disabled');
+            $('#'  + this.id).trigger('keyup');
+        }
+
         if(this.isInline) {
             $('#' + this.id).attr('display', 'inline');
         } else {
@@ -330,11 +445,6 @@ M.TextFieldView = M.View.extend(
             $('#' + this.id).attr('disabled', 'disabled');
         } else {
             $('#' + this.id).removeAttr('disabled');
-        }
-
-        /* trigger keyup event to make the text field autogrow */
-        if(this.value) {
-            $('#'  + this.id).trigger('keyup');
         }
     },
 
@@ -400,6 +510,15 @@ M.TextFieldView = M.View.extend(
 
         /* call lostFocus() to get the initial text displayed */
         this.lostFocus();
+    },
+
+    /**
+     * This method returns the text field view's value.
+     *
+     * @returns {String} The text field view's value.
+     */
+    getValue: function() {
+        return this.value;
     }
 
 });

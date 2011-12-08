@@ -20,12 +20,20 @@ VersionSample.app = M.Application.design({
         }),
 
         content: M.ScrollView.design({
-            childViews: 'label',
+            childViews: 'tmpVersion appVersion',
 
-            label: M.LabelView.design({
+            tmpVersion: M.LabelView.design({
                 computedValue: {
                     operation: function(v) {
-                        return M.version
+                        return 'TMP-Version ' + M.Version;
+                    }
+                }
+            }),
+
+            appVersion: M.LabelView.design({
+                computedValue: {
+                    operation: function(v) {
+                        return 'Version ' + M.Application.getConfig('version');
                     }
                 }
             })

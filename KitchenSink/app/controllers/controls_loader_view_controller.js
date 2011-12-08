@@ -21,6 +21,13 @@ KitchenSink.ControlsLoaderViewController = M.Controller.extend({
                     name: "Default loader",
                     page: "controlsLoaderView1"
 
+                },
+
+                {
+
+                    name: "Custom loader message",
+                    page: "controlsLoaderView2"
+
                 }
 
             ];
@@ -57,6 +64,13 @@ KitchenSink.ControlsLoaderViewController = M.Controller.extend({
     showLoader: function() {
 
         M.LoaderView.show();
+
+    },
+
+
+    showLoader2: function() {
+
+        M.LoaderView.show('Custom message');
 
     },
 

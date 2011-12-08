@@ -29,7 +29,7 @@ KitchenSink.ControlsSelectionListViewPage3 = M.PageView.design({
 
         title: M.LabelView.design({
 
-            value: 'Selection list (multiple selection)',
+            value: 'Selection list (single selection dialog)',
 
             anchorLocation: M.CENTER
 

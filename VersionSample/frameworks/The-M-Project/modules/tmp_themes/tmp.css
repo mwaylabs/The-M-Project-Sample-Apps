@@ -10,12 +10,7 @@
     color: #fff;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     z-index: 100001;
-    position: absolute; /*the element is removed from the natural flux of the page and positioned in a absolute way*/
-    top: 50%; /*the top border of the element is positioned at half of the available height of the parent element*/
-    margin-top: -100px; /*half of the element height is removed from the top margin to center it*/
-    left: 50%;
-    margin-left: -125px;
-    z-index: 1000 !important;
+
 }
 
 .tmp-dialog-header {
@@ -53,8 +48,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    /*height:100%;
-         padding-top:15%;*/
+    height:100%;
     background: rgba(0, 0, 0, 0.5);
     z-index: 1000 !important;
 }
@@ -87,4 +81,195 @@
 
 .tmp-actionsheet-destructive-button:active {
     background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.05, rgb(235, 104, 87)), color-stop(1.0, rgb(245, 46, 19)));
+}
+
+
+
+/* DASHBOARD */
+.tmp-dashboard-line {
+    margin-top: 20px;
+}
+
+.tmp-dashboard-line:first-child {
+    margin-top: 0px;
+}
+
+.tmp-dashboard-item {
+    float: left;
+}
+
+.tmp-dashboard-item img {
+    max-width: 100%;
+    -webkit-touch-callout: none;
+}
+
+.tmp-dashboard-item, .tmp-dashboard-item-label {
+    text-align: center;
+}
+
+.tmp-dashboard-item-label {
+    font-size: 0.8em;
+    white-space: nowrap;
+	width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.tmp-dashboard-line-clear {
+    clear: left;
+}
+
+@-webkit-keyframes rotate {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    25% {
+        -webkit-transform: rotate(5deg);
+    }
+    50% {
+        -webkit-transform: rotate(0deg);
+    }
+    75% {
+        -webkit-transform: rotate(-5deg);
+    }
+    100% {
+        -webkit-transform: rotate(0deg);
+    }
+}
+
+.rotate1 {
+    -webkit-animation:
+        rotate 0.3s linear infinite
+}
+
+.rotate2 {
+    -webkit-animation:
+        rotate 0.4s linear infinite
+}
+
+
+
+/* datepicker */
+.dwo {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.dw {
+    border-radius: 8px;
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgba(47, 74, 117, 0.9)), color-stop(0.5, rgba(47, 76, 117, 0.9)), color-stop(0.5, rgba(47, 76, 117, 0.9)), color-stop(1, rgba(134, 140, 158, 0.9)));
+    -webkit-box-shadow: 0 0 8px 4px #555;
+    box-shadow: 0 0 8px 4px #555;
+    border: 2px solid #fff;
+    color: #fff;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.dw .dwc .dwwc {
+    border-radius: 8px;
+    border: 1px solid #555555;
+}
+
+.dw .ui-grid-a {
+    width: 100%;
+    margin: auto;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.dw > div.ui-btn {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.dw > div.ui-btn:last-child {
+    margin-top: 0px;
+}
+
+.tmp-datepicker-no-label .dw .dwl {
+    display: none;
+}
+
+.tmp-datepicker-no-label .dw .dww {
+    top: 0px;
+}
+
+.tmp-datepicker-no-label .dw .dwc {
+    padding-top: 10px;
+}
+
+
+
+
+/* slider */
+.tmp-slider-container.tmp-slider-is-slider-only {
+    padding-left: 14px;
+    padding-right: 14px;
+    min-height: 30px;
+}
+
+.tmp-slider-container.tmp-slider-is-slider-only div.ui-slider {
+    width: 100%;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+
+/* adjustments for touch overflow */
+.ui-mobile-touch-overflow .ui-content {
+    left: 0px;
+    right: 0px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.ui-mobile-touch-overflow .ui-listview {
+    margin-top:  -15px;
+    margin-bottom:  -15px;
+}
+
+
+
+
+/* table */
+.tmp-table-container {
+    width: 100%;
+}
+
+.tmp-table {
+    width: 100%;
+    table-layout:fixed;
+    border: 1px solid #121212;
+    border-spacing: 0px;
+}
+
+.tmp-table-th {
+    background-color: #121212;
+    color: #FFFFFF;
+    text-shadow: none;
+    padding: 5px;
+    text-align: left;
+}
+
+.tmp-table-td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 5px;
+}
+
+.tmp-table-tr-a td {
+    background-color: rgb(220, 220, 220);
+}
+
+.tmp-table-tr-b td {
+    background-color: rgb(235, 235, 235);
+}
+
+
+
+
+/* fixing the 100% problem of jqm */
+.ui-page {
+    min-height: 100% !important;
 }

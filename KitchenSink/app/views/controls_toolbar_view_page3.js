@@ -86,7 +86,7 @@ KitchenSink.ControlsToolbarViewPage3 = M.PageView.design({
 
         markup: M.LabelView.design({
 
-            value: 'M.ToolbarView.design({\n\n\tchildViews: \'backButton label\',\n\n\tbackButton: M.ButtonView.design({\n\n\t\tanchorLocation: M.LEFT,\n\n\t\tvalue: \'Back\',\n\n\t\ticon: \'arrow-l\'\n\n\t}),\n\n\tlabel: M.LabelView.design({\n\n\t\tanchorLocation: M.CENTER,\n\n\t\tvalue: \'Toolbar\'\n\n\t})\n\n})',
+            value: 'M.ToolbarView.design({\n\n\tchildViews: \'backButton label rightButton\',\n\n\tbackButton: M.ButtonView.design({\n\n\t\tanchorLocation: M.LEFT,\n\n\t\tvalue: \'Back\',\n\n\t\ticon: \'arrow-l\'\n\n\t}),\n\n\tlabel: M.LabelView.design({\n\n\t\tanchorLocation: M.CENTER,\n\n\t\tvalue: \'Toolbar\'\n\n\t}),\n\n\trightButton: M.ButtonView.design({\n\n\t\tanchorLocation: M.RIGHT,\n\n\t\tvalue: \'Save\',\n\n\t\ticon: \'check\'\n\n\t})\n\n})',
 
             cssClass: 'source'
 
