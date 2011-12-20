@@ -66,6 +66,8 @@ M.I18N.zh_cn = {
     
     "finnish": "Suomi",
 
+    "frensh": "Français",
+
     "days": "天数",
 
     "contact": "联系人",

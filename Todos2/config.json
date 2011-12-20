@@ -27,7 +27,8 @@
         "sk_sk",
         "ko_kr",
         "sv_sv",
-        "fi_fi"
+        "fi_fi",
+        "fr_fr"
     ],
     "application": {
         "version": "1.0",

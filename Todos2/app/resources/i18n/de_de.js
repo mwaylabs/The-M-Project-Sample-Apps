@@ -64,6 +64,8 @@ M.I18N.de_de = {
 
     "swedish": "Svenska",
 
+    "frensh": "Français",
+
     "days": "Tag(e)",
 
     "contact": "Kontakt",
@@ -72,6 +74,10 @@ M.I18N.de_de = {
 
     "contactText": "Für weitere Informationen bezüglich dieser Anwendung oder 'The-M-Project' kontaktieren Sie bitte die Panacoda GmbH.",
 
-    "confirm": "Möchten Sie diesen Eintrag wirklich löschen?"
+    "confirm": "Möchten Sie diesen Eintrag wirklich löschen?",
+
+    "ok": "OK",
+
+    "cancel": "Abbrechen"
 
 }
