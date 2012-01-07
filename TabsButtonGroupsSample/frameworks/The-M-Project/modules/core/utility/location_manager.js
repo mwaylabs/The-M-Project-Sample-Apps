@@ -47,6 +47,13 @@ M.LOCATION_UNKNOWN_ERROR = 'UNKNOWN_ERROR';
 M.LOCATION_NOT_SUPPORTED = 'NOT_SUPPORTED';
 
 /**
+ * A constant value for already receiving error.
+ *
+ * @type String
+ */
+M.LOCATION_ALREADY_RECEIVING = 'ALREADY_RECEIVING';
+
+/**
  * A constant value for location type: approximate.
  *
  * @type Number
@@ -203,13 +210,11 @@ M.LocationManager = M.Object.extend(
      * @param {Object} onSuccess The success callback.
      * @param {Object} onError The error callback.
      * @param {Object} options The options for retrieving a location.
-     *
-     * @return Boolean Determines whether the getLocation call was initialized successfully or not.
      */
     getLocation: function(caller, onSuccess, onError, options) {
         if(this.isGettingLocation) {
             M.Logger.log('M.LocationManager is currently already trying to retrieve a location.', M.WARN);
-            return NO;
+            this.bindToCaller(caller, onError, M.LOCATION_ALREADY_RECEIVING)();
         } else {
             this.isGettingLocation = YES; 
         }
@@ -222,12 +227,12 @@ M.LocationManager = M.Object.extend(
         options.enableHighAccuracy = options.enableHighAccuracy ? options.enableHighAccuracy : NO;
         options.maximumAge = options.maximumAge ? options.maximumAge : 0;
         options.timeout = options.timeout ? options.timeout : 3000;
-        options.accuracy = options.accuracy ? options.accuracy : 50;
 
         if(navigator && navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
                 function(position) {
-                    if(position.coords.accuracy <= options.accuracy) {
+                    that.isGettingLocation = NO;
+                    if(!options.accuracy || (options.accuracy && position.coords.accuracy <= options.accuracy)) {
                         var location = M.Location.extend({
                             latitude: position.coords.latitude,
                             longitude: position.coords.longitude,
@@ -242,9 +247,9 @@ M.LocationManager = M.Object.extend(
                         options.timeout = options.timeout - that.lastLocationUpdate.timeBetween(now);
                         that.getLocation(caller, onSuccess, onError, options);
                     }
-                    that.isGettingLocation = NO;
                 },
                 function(error) {
+                    that.isGettingLocation = NO;
                     switch (error.code) {
                         case 1:
                             that.bindToCaller(caller, onError, M.LOCATION_PERMISSION_DENIED)();
@@ -259,15 +264,12 @@ M.LocationManager = M.Object.extend(
                             that.bindToCaller(caller, onError, M.LOCATION_UNKNOWN_ERROR)();
                             break;
                     }
-                    that.isGettingLocation = NO;
                 },
                 options
             );
         } else {
             that.bindToCaller(that, onError, M.LOCATION_NOT_SUPPORTED)();
         }
-
-        return YES;
     },
 
     /**

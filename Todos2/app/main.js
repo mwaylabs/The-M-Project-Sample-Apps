@@ -104,7 +104,7 @@ Todos2.app = M.Application.design({
                 events: {
                     tap: {
                         target: Todos2.TodoController,
-                        action: 'goBack'
+                        action: 'gotoToDoList'
                     }
                 },
                 anchorLocation: M.LEFT
@@ -241,17 +241,22 @@ Todos2.app = M.Application.design({
                     date: M.TextFieldView.design({
                         name: 'date',
                         label: M.I18N.l('due_date'),
+                        isEnabled: NO,
                         validators: [M.PresenceValidator.customize({
                             msg: M.I18N.l('due_date_req')
-                        }), M.DateValidator.customize({
-                            msg: M.I18N.l('due_date_invalid')
                         })],
                         cssClassOnError: 'error',
                         contentBinding: {
                             target: Todos2.TodoController,
                             property: 'selDate'
                         },
-                        cssClass: 'todos_form'
+                        cssClass: 'todos_form',
+                        events: {
+                            tap: {
+                                target: Todos2.TodoController,
+                                action: 'getDate'
+                            }
+                        }
                     })
 
                 }),
@@ -340,15 +345,19 @@ Todos2.app = M.Application.design({
                 date: M.TextFieldView.design({
                     name: 'date',
                     label: M.I18N.l('due_date'),
-                    initialText: M.I18N.l('due_date_format'),
-                    cssClassOnInit: 'textfieldInit',
+                    initialText: D8.now().format('mm/dd/yyyy HH:MM'),
+                    isEnabled: NO,
                     validators: [M.PresenceValidator.customize({
                         msg: M.I18N.l('due_date_req')
-                    }), M.DateValidator.customize({
-                        msg: M.I18N.l('due_date_invalid')
                     })],
                     cssClassOnError: 'error',
-                    cssClass: 'todos_form'
+                    cssClass: 'todos_form',
+                    events: {
+                        tap: {
+                            target: Todos2.TodoController,
+                            action: 'getDate'
+                        }
+                    }
                 })
 
             })
@@ -385,7 +394,7 @@ Todos2.app = M.Application.design({
 
             langSelection: M.SelectionListView.design({
 
-                childViews: 'item1 item2 item3 item4 item5 item6 item7 item8 item9 item10 item11 item12 item13 item14',
+                childViews: 'item1 item2 item3 item4 item5 item6 item7 item8 item9 item10 item11 item12 item13 item14 item15',
 
                 selectionMode: M.SINGLE_SELECTION_DIALOG,
 
@@ -497,6 +506,13 @@ Todos2.app = M.Application.design({
 
                     label: M.I18N.l('finnish'),
                     value: 'fi_fi'
+
+                }),
+
+                item15: M.SelectionListItemView.design({
+
+                    label: M.I18N.l('frensh'),
+                    value: 'fr_fr'
 
                 })
 

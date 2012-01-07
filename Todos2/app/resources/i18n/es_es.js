@@ -66,11 +66,13 @@ M.I18N.es_es = {
     
     "finnish": "Suomi",
 
+    "frensh": "Français",
+
     "days": "dia(s)",
 
     "contact": "Contacto",
 
-    "contactText": "Para mas informacion sobre esta aplicacion o 'The-M-Project' por favor contacta con M-Way Solutions o visita nuestro sitio web.",
+    "contactText": "Para mas informacion sobre esta aplicacion o 'The-M-Project' por favor contacta con Panacoda o visita nuestro sitio web.",
 
     "confirm": "¿Estás seguro que quieres eliminar este entrada?"
 

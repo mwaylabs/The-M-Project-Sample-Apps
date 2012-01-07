@@ -66,6 +66,8 @@ M.I18N.it_it = {
     
     "finnish": "Suomi",
 
+    "frensh": "Français",
+
     "days": "giorno(i)",
 
     "contact": "Contatto",
@@ -76,8 +78,6 @@ M.I18N.it_it = {
 
     "ok": "Ok",
 
-    "cancel": "Annulla",
-
-    "error": "Errore"
+    "cancel": "Annulla"
 
 }

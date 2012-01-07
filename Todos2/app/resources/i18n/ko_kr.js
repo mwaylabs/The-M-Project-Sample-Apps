@@ -66,6 +66,8 @@ M.I18N.ko_kr = {
     
     "finnish": "Suomi",
 
+    "frensh": "Français",
+
     "days": "일",
 
     "contact": "연락처",

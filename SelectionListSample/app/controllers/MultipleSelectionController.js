@@ -15,8 +15,7 @@ SelectionListSample.MultipleSelectionController = M.Controller.extend({
             this.set('items', [
                 {
                     value: 'germany',
-                    label: 'Germany (germany)',
-                    isSelected: YES
+                    label: 'Germany (germany)'
                 },
                 {
                     value: 'italy',

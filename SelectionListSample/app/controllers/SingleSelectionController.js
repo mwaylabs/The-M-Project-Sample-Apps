@@ -15,8 +15,7 @@ SelectionListSample.SingleSelectionController = M.Controller.extend({
             this.set('items', [
                 {
                     value: 'germany',
-                    label: 'Germany (germany)',
-                    isSelected: YES
+                    label: 'Germany (germany)'
                 },
                 {
                     value: 'italy',
@@ -52,6 +51,10 @@ SelectionListSample.SingleSelectionController = M.Controller.extend({
         } else {
 
             selectionList.setSelection(textField.value);
+
+            textField.setValue('');
+
+            textField.lostFocus();
 
         }
 

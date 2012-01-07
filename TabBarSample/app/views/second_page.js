@@ -2,11 +2,14 @@ m_require('app/views/tab_bar.js');
 
 TabBarSample.SecondPageView = M.PageView.design({
 
-    onLoad: {
+    events: {
 
-        target: TabBarSample.SecondPageController,
+        pageshow: {
 
-        action: 'init'
+            target: TabBarSample.SecondPageController,
+
+            action: 'init'
+        }
 
     },
 

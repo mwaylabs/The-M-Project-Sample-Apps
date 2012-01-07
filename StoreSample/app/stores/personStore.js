@@ -8,16 +8,10 @@
 
 StoreSample.PersonStore = M.Store.create({
 
-    model: StoreSample.PersonModel
+    model: StoreSample.PersonModel,
 
-    /* local storage */
-    /*,dataProvider: M.DataProviderWebStorage.configure({
+    dataProvider: M.DataProviderWebStorage.configure({
         storage: M.WEBSTORAGE_LOCAL
-    })*/
-
-    /* web sql */
-    ,dataProvider: M.DataProviderWebSql.configure({
-        dbName: 'Persons'
     })
 
 });

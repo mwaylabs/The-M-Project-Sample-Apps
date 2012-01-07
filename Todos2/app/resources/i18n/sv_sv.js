@@ -63,6 +63,8 @@ M.I18N.sv_sv = {
     
     "finnish": "Suomi",
 
+    "frensh": "Français",
+
     "days": "dagar",
 
     "contact": "kontakta",

@@ -14,7 +14,21 @@ MyContacts.LocalStorageContactDetailsPage = M.PageView.design({
 
         header: M.ToolbarView.design({
 
-            childViews: 'nameLabel',
+            childViews: 'back nameLabel',
+
+            back: M.ButtonView.design({
+                value: 'back',
+                icon: 'arrow-l',
+                anchorLocation: M.LEFT,
+                events: {
+                    tap: {
+                        target: MyContacts.LocalStorageController,
+                        action: function() {
+                            this.switchToPage('localStorageContacts', null, YES);
+                        }
+                    }
+                }
+            }),
 
             nameLabel: M.LabelView.design({
                 label: '',
@@ -24,8 +38,6 @@ MyContacts.LocalStorageContactDetailsPage = M.PageView.design({
                 },
                 anchorLocation: M.CENTER
             }),
-
-            showBackButton: YES,
 
             anchorLocation: M.TOP
 

@@ -43,7 +43,7 @@ DashboardSample.app = M.Application.design({
                     }
                 },
                 itemsPerLine: 3,
-                isEditable: YES,
+                isEditable: NO,
                 contentBinding: {
                     target: DashboardSample.ApplicationController,
                     property: 'items'

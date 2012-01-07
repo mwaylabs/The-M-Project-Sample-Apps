@@ -1,10 +1,9 @@
 {
     "name" : "Todos",
-    "version": "0.0.1",
     "mode": "debug",
     "debugLevel": 1,
-    "eliminate": true,
-    "minify": true,
+    "eliminate": false,
+    "minify": false,
     "htmlHeader": [
         "<meta charset=\"utf-8\">",
         "<meta name=\"apple-mobile-web-app-capable\" content=\"yes\">",
@@ -29,5 +28,15 @@
         "ko_kr",
         "sv_sv",
         "fi_fi"
-    ]
+    ],
+    "application": {
+        "version": "1.0",
+        "debugMode": "true",
+        "keyPrefix": "#m#",
+        "keySuffix": "_",
+        "timeStampCreated": "created_at",
+        "timeStampUpdated": "updated_at",
+        "m_id": "m_id",
+        "useTransitions": true
+    }
 }
