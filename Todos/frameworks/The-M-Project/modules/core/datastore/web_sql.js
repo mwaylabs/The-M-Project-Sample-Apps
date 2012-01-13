@@ -9,7 +9,7 @@
 //            http://github.com/mwaylabs/The-M-Project/blob/master/GPL-LICENSE
 // ==========================================================================
 
-m_require('core/data/data_provider.js');
+m_require('core/datastore/data_provider.js');
 
 /**
  * @class
@@ -139,53 +139,57 @@ M.DataProviderWebSql = M.DataProvider.extend(
         }
 
         var pre_suffix = '';
+        var sif
 
-        if(obj.record.state === M.STATE_NEW) { // perform an INSERT
+        if(obj.model.state === M.STATE_NEW) { // perform an INSERT
 
-            var sql = 'INSERT INTO ' + obj.record.name + ' (';
-            this.getKeys(obj).join(',')
+            var sql = 'INSERT INTO ' + obj.model.name + ' (';
+            for(var prop in obj.model.record) {
+                sql += prop + ', ';
+            }
+
             /* now name m_id column */
             sql += M.META_M_ID + ') ';
 
             /* VALUES(12, 'Test', ... ) */
             sql += 'VALUES (';
 
-            for(var prop2 in obj.record.data) {
-                //console.log(obj.record.data[prop2]);
-                var propDataType = obj.record.__meta[prop2].dataType;
+            for(var prop2 in obj.model.record) {
+                //console.log(obj.model.record[prop2]);
+                var propDataType = obj.model.__meta[prop2].dataType;
                 /* if property is string or text write value in quotes */
                 pre_suffix = propDataType === 'String' || propDataType === 'Text' || propDataType === 'Date' ? '"' : '';
                 /* if property is date object, convert to string by calling toJSON */
-                recordPropValue = (obj.record.data[prop2].type === 'M.Date') ? obj.record.data[prop2].toJSON() : obj.record.data[prop2];
+                recordPropValue = (obj.model.record[prop2].type === 'M.Date') ? obj.model.record[prop2].toJSON() : obj.model.record[prop2];
                 sql += pre_suffix + recordPropValue + pre_suffix + ', ';
             }
 
-            sql += obj.record.m_id + ')';
+            sql += obj.model.m_id + ')';
 
             this.performOp(sql, obj, 'INSERT');
 
         } else { // perform an UPDATE with id of model
 
-            var sql = 'UPDATE ' + obj.record.name + ' SET ';
+            var sql = 'UPDATE ' + obj.model.name + ' SET ';
 
             var nrOfUpdates = 0;
 
-            for(var p in obj.record.data) {
+            for(var p in obj.model.record) {
 
-                if(p === 'ID' || !obj.record.__meta[p].isUpdated) { /* if property has not been updated, then exclude from update call */
+                if(p === 'ID' || !obj.model.__meta[p].isUpdated) { /* if property has not been updated, then exclude from update call */
                     continue;
                 }
                 nrOfUpdates = nrOfUpdates + 1;
 
-                pre_suffix = obj.record.__meta[p].dataType === 'String' || obj.record.__meta[p].dataType === 'Text' || obj.record.__meta[p].dataType === 'Date' ? '"' : '';
+                pre_suffix = obj.model.__meta[p].dataType === 'String' || obj.model.__meta[p].dataType === 'Text' || obj.model.__meta[p].dataType === 'Date' ? '"' : '';
 
                 /* if property is date object, convert to string by calling toJSON */
-                recordPropValue = obj.record.__meta[p].dataType === 'Date' ? obj.record.data[p].toJSON() : obj.record.data[p];
+                recordPropValue = obj.model.__meta[p].dataType === 'Date' ? obj.model.record[p].toJSON() : obj.model.record[p];
 
                 sql += p + '=' + pre_suffix + recordPropValue + pre_suffix + ', ';
             }
             sql = sql.substring(0, sql.lastIndexOf(','));
-            sql += ' WHERE ' + 'ID=' + obj.record.data.ID + ';';
+            sql += ' WHERE ' + 'ID=' + obj.model.record.ID + ';';
 
             /* if no properties updated, do nothing, just return by calling onSuccess callback */
             if(nrOfUpdates === 0) {
@@ -215,7 +219,7 @@ M.DataProviderWebSql = M.DataProvider.extend(
         this.dbHandler.transaction(function(t) {
             t.executeSql(sql, null, function() {
                 if(opType === 'INSERT') { /* after INSERT operation set the assigned DB ID to the model records id */
-                    that.queryDbForId(obj.record);
+                    that.queryDbForId(obj.model);
                 }
             }, function() { // error callback for SQLStatementTransaction
                 M.Logger.log('Incorrect statement: ' + sql, M.ERR);
@@ -230,7 +234,7 @@ M.DataProviderWebSql = M.DataProvider.extend(
         function() {    // voidCallback (success)
              /* delete  the model from the model record list */
             if(opType === 'DELETE') {
-                obj.record.dataManager.remove(obj.record.m_id);
+                obj.model.recordManager.remove(obj.model.m_id);
             }
             /* bind success callback */
             if (obj.onSuccess && obj.onSuccess.target && obj.onSuccess.action) {
@@ -259,7 +263,7 @@ M.DataProviderWebSql = M.DataProvider.extend(
             return;
         }
 
-        var sql = 'DELETE FROM ' + obj.record.name + ' WHERE ID=' + obj.record.data.ID + ';';
+        var sql = 'DELETE FROM ' + obj.model.name + ' WHERE ID=' + obj.model.record.ID + ';';
 
         this.performOp(sql, obj, 'DELETE');
     },
@@ -307,7 +311,7 @@ M.DataProviderWebSql = M.DataProvider.extend(
             sql += '* ';
         }
 
-        sql += ' FROM ' + obj.record.name + ' ';
+        sql += ' FROM ' + obj.model.name + ' ';
 
         var stmtParameters = [];
 
@@ -357,7 +361,7 @@ M.DataProviderWebSql = M.DataProvider.extend(
                     delete rec[M.META_M_ID];
                     /* create model record from result with state valid */
                     /* $.extend merges param1 object with param2 object*/
-                    var myRec = obj.record.createRecord($.extend(rec, {state: M.STATE_VALID}));
+                    var myRec = obj.model.createRecord($.extend(rec, {state: M.STATE_VALID}));
 
                     /* create M.Date objects for all date properties */
                     for(var j in myRec.__meta) {
@@ -439,14 +443,14 @@ M.DataProviderWebSql = M.DataProvider.extend(
      * @private
      */
     createTable: function(obj, callback) {
-        var sql = 'CREATE TABLE IF NOT EXISTS '  + obj.record.name
+        var sql = 'CREATE TABLE IF NOT EXISTS '  + obj.model.name
                     + ' (ID INTEGER PRIMARY KEY ASC AUTOINCREMENT UNIQUE';
 
-        for(var r in obj.record.__meta) {
+        for(var r in obj.model.__meta) {
             if(r === 'ID') {/* skip ID, it is defined manually above */
                 continue;
             }
-           sql += ', ' + this.buildDbAttrFromProp(obj.record, r);
+           sql += ', ' + this.buildDbAttrFromProp(obj.model, r);
         }
 
         sql += ', ' + M.META_M_ID + ' INTEGER NOT NULL);';
@@ -506,9 +510,9 @@ M.DataProviderWebSql = M.DataProvider.extend(
 
         var transactions = [];
 
-        var sqlTemplate = ' INSERT OR REPLACE INTO ' + obj.record.name + ' (';
+        var sqlTemplate = ' INSERT OR REPLACE INTO ' + obj.model.name + ' (';
         /* append columns */
-        for(var prop in obj.record.data) {
+        for(var prop in obj.model.record) {
             sqlTemplate += prop + ', ';
         }
 
@@ -674,29 +678,6 @@ M.DataProviderWebSql = M.DataProvider.extend(
             code: err.code + 200,     // 200 is offset of WebSQL errors in M.Error
             msg: err.message
         });
-    },
-
-    getKeys: function(obj) {
-        return _.keys(obj.record.data);
-        // should be named: return _.keys(obj.record.data);
-    },
-
-    getValues: function(obj) {
-        return _.values(obj.record.data);
-        // should be named: return _.values(obj.record.data);
-    },
-
-    buildValueString: function(obj) {
-        var values = this.getValues(obj);
-        
-        //console.log(obj.record.data[prop2]);
-        var propDataType = obj.record.__meta[prop2].dataType;
-        /* if property is string or text write value in quotes */
-        pre_suffix = propDataType === 'String' || propDataType === 'Text' || propDataType === 'Date' ? '"' : '';
-        /* if property is date object, convert to string by calling toJSON */
-        recordPropValue = (obj.record.data[prop2].type === 'M.Date') ? obj.record.data[prop2].toJSON() : obj.record.data[prop2];
-        sql += pre_suffix + recordPropValue + pre_suffix + ', ';
-        
     }
 
 });

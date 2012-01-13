@@ -15,7 +15,7 @@ Todos.DetailsController = M.Controller.extend({
     },
 
     showDetails: function(id, m_id) {
-        var record = Todos.NoteStore.getRecordById(m_id);
+        var record = Todos.NoteModel.recordManager.getRecordForId(m_id);
         if (record) {
             this.set('record', record);
             this.switchToPage('detailsPage');
@@ -50,24 +50,15 @@ Todos.DetailsController = M.Controller.extend({
 
         var title = M.ViewManager.getView('detailsPage', 'title').value;
         var text = M.ViewManager.getView('detailsPage', 'text').value;
-        var date = M.Date.create(M.ViewManager.getView('detailsPage', 'date').value);
+        var date = D8.create(M.ViewManager.getView('detailsPage', 'date').value).getTimestamp();
 
         this.record.set('title', title);
         this.record.set('text', text);
         this.record.set('date', date);
 
-        Todos.NoteStore.save({
-            record: this.record,
-            callbacks: {
-                success: {
-                    target: this,
-                    action: function() {
-                        this.resetToggleView();
-                        this.set('record', this.record);
-                    }
-                }
-            }
-        });
+        this.record.save();
+        this.resetToggleView();
+        this.set('record', this.record);
     },
 
     deleteItem: function() {
@@ -78,17 +69,8 @@ Todos.DetailsController = M.Controller.extend({
                 confirm: {
                     target: this,
                     action: function () {
-                        Todos.NoteStore.del({
-                            record: this.record,
-                            callbacks: {
-                                success: {
-                                    target: this,
-                                    action: function() {
-                                        this.switchToPage('listPage', null, YES);
-                                    }
-                                }
-                            }
-                        })
+                        this.record.del();
+                        this.switchToPage('listPage', null, YES);
                     }
                 }
             }

@@ -9,33 +9,32 @@
 //            http://github.com/mwaylabs/The-M-Project/blob/master/GPL-LICENSE
 // ==========================================================================
 
-m_require('core/data/validator.js')
+m_require('core/datastore/validator.js')
 
 /**
  * @class
  *
- * Validates a string if it matches a phone number pattern.
+ * Validates if value represents a valid URL.
  *
  * @extends M.Validator
  */
-M.PhoneValidator = M.Validator.extend(
-/** @scope M.PhoneValidator.prototype */ {
+M.UrlValidator = M.Validator.extend(
+/** @scope M.UrlValidator.prototype */ {
 
     /**
      * The type of this object.
      *
      * @type String
      */
-    type: 'M.PhoneValidator',
+    type: 'M.UrlValidator',
 
     /**
-     * It is assumed that phone numbers consist only of: 0-9, -, /, (), .
-     * @type {RegExp} The regular expression detecting a phone adress.
+     * @type {RegExp} The regular expression for a valid web URL
      */
-    pattern: /^[0-9-\/()+\.\s]+$/,
+    pattern: /^(http[s]\:\/\/)?[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?$/,
 
     /**
-     * Validation method. Executes e-mail regex pattern to string. 
+     * Validation method. Executes url regex pattern to string.
      *
      * @param {Object} obj Parameter object. Contains the value to be validated, the {@link M.ModelAttribute} object of the property and the model record's id.
      * @returns {Boolean} Indicating whether validation passed (YES|true) or not (NO|false).
@@ -48,13 +47,12 @@ M.PhoneValidator = M.Validator.extend(
         if (this.pattern.exec(obj.value)) {
             return YES;
         }
-
-
+        
         var err = M.Error.extend({
-            msg: this.msg ? this.msg : obj.value + ' is not a phone number.',
-            code: M.ERR_VALIDATION_PHONE,
+            msg: this.msg ? this.msg : obj.value + ' is not a valid url.',
+            code: M.ERR_VALIDATION_URL,
             errObj: {
-                msg: obj.value + ' is not a phone number.',
+                msg: obj.value + ' is not a valid url.',
                 modelId: obj.modelId,
                 property: obj.property,
                 viewId: obj.viewId,
@@ -63,7 +61,6 @@ M.PhoneValidator = M.Validator.extend(
                 onError: obj.onError
             }
         });
-
         this.validationErrors.push(err);
         return NO;
     }

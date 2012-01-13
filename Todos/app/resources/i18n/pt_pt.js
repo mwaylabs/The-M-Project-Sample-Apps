@@ -68,6 +68,8 @@ M.I18N.pt_pt = {
     
     "finnish": "Suomi",
 
+    "frensh": "Français",
+
     "days": "dia(s)",
 
     "contact": "Contato",

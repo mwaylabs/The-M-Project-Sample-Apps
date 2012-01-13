@@ -67,6 +67,8 @@ M.I18N.fi_fi = {
 
     "finnish": "Suomi",
 
+    "frensh": "Français",
+
     "days": "päivä(t)",
 
     "contact": "yhteystieto",
