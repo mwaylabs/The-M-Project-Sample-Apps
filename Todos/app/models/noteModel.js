@@ -30,4 +30,4 @@ Todos.NoteModel = M.Model.create({
         defaultValue: NO
     })
 
-});
+}, M.DataProviderLocalStorage);

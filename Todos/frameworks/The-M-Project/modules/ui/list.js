@@ -277,6 +277,12 @@ M.ListView = M.View.extend(
         /* Get the list view's template view for each list item */
         var templateView = this.listItemTemplateView;
 
+        /* if there is no template, log error and stop */
+        if(!templateView) {
+            M.Logger.log('The template view could not be loaded! Maybe you forgot to use m_require to set up the correct load order?', M.ERR);
+            return;
+        }
+
         /* If there is an items property, re-assign this to content, otherwise iterate through content itself */
         if(this.items) {
             content = content[this.items];
@@ -295,7 +301,7 @@ M.ListView = M.View.extend(
         this.themeUpdate();
 
         /* At last fix the toolbar */
-        $.fixedToolbars.show();
+        $.mobile.fixedToolbars.show();
     },
 
     /**
@@ -340,8 +346,8 @@ M.ListView = M.View.extend(
             /* Get the child views as an array of strings */
             var childViewsArray = obj.getChildViewsAsArray();
 
-            /* If the item is a model record, read the values from the 'data' property instead */
-            var data = item.type === 'M.Model' ? item.data : item;
+            /* If the item is a model, read the values from the 'record' property instead */
+            var record = item.type === 'M.Model' ? item.record : item;
 
             /* Iterate through all views defined in the template view */
             for(var i in childViewsArray) {
@@ -351,18 +357,19 @@ M.ListView = M.View.extend(
                 var regexResult = null;
                 if(obj[childViewsArray[i]].computedValue) {
                     /* This regex looks for a variable inside the template view (<%= ... %>) ... */
-                    regexResult = /^<%=\s+([.|_|-|$|�|a-zA-Z]+[0-9]*[.|_|-|$|�|a-zA-Z]*)\s*%>$/.exec(obj[childViewsArray[i]].computedValue.valuePattern);
+                    regexResult = /^<%=\s+([.|_|-|$|§|a-zA-Z]+[0-9]*[.|_|-|$|§|a-zA-Z]*)\s*%>$/.exec(obj[childViewsArray[i]].computedValue.valuePattern);
                 } else {
-                    regexResult = /^<%=\s+([.|_|-|$|�|a-zA-Z]+[0-9]*[.|_|-|$|�|a-zA-Z]*)\s*%>$/.exec(obj[childViewsArray[i]].valuePattern);
+                    regexResult = /^<%=\s+([.|_|-|$|§|a-zA-Z]+[0-9]*[.|_|-|$|§|a-zA-Z]*)\s*%>$/.exec(obj[childViewsArray[i]].valuePattern);
                 }
 
-                /* ... if a match was found, the variable is replaced by the corresponding value inside the data */
+                /* ... if a match was found, the variable is replaced by the corresponding value inside the record */
                 if(regexResult) {
                     switch (obj[childViewsArray[i]].type) {
                         case 'M.LabelView':
                         case 'M.ButtonView':
                         case 'M.ImageView':
-                            obj[childViewsArray[i]].value = data[regexResult[1]];
+                        case 'M.TextFieldView':
+                            obj[childViewsArray[i]].value = record[regexResult[1]];
                             break;
                     }
                 }
@@ -413,7 +420,6 @@ M.ListView = M.View.extend(
      * @private
      */
     theme: function() {
-        $('#' + this.id).listview();
         if(this.searchBar) {
             /* JQM-hack: remove multiple search bars */
             if($('#' + this.id) && $('#' + this.id).parent()) {
@@ -464,7 +470,11 @@ M.ListView = M.View.extend(
             this.selectedItem.removeCssClass('ui-btn-active');
         }
         this.selectedItem = M.ViewManager.getViewById(listItemId);
-        this.selectedItem.addCssClass('ui-btn-active');
+
+        /* is the selection list items are selectable, activate the right one */
+        if(this.listItemTemplateView && this.listItemTemplateView.isSelectable) {
+            this.selectedItem.addCssClass('ui-btn-active');
+        }
 
         /* delegate event to external handler, if specified */
         if(nextEvent) {

@@ -68,6 +68,8 @@ M.I18N.sk_sk = {
     
     "finnish": "Suomi",
 
+    "frensh": "Français",
+
     "days": "deň(dni)",
 
     "contact": "Kontakt",

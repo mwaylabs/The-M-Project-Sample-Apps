@@ -68,6 +68,8 @@ M.I18N.nl_nl = {
     
     "finnish": "Suomi",
 
+    "frensh": "Français",
+
     "days": "dag(en)",
 
     "contact": "Contact",

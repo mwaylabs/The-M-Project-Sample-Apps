@@ -18,18 +18,18 @@ Twitter.TwitterResultsView = M.ListItemView.design({
     },
 
     image1: M.ImageView.design({
-        valuePattern: '<%= profile_image_url %>',
+        valuePattern: '<%= userImage %>',
         cssClass: 'listThumb'
     }),
 
     label1 : M.LabelView.design({
-        valuePattern: '<%= from_user %>',
+        valuePattern: '<%= userName %>',
         cssClass: 'username'
     }),
 
     label2 : M.LabelView.design({
         computedValue: {
-            valuePattern: '<%= created_at %>',
+            valuePattern: '<%= createdAt %>',
             operation: function(v) {
                 var date = M.Date.create(v);
                 return date.format('mm/dd/yyyy HH:MM');
@@ -39,7 +39,7 @@ Twitter.TwitterResultsView = M.ListItemView.design({
     }),
 
     text : M.LabelView.design({
-        valuePattern: '<%= text %>',
+        valuePattern: '<%= tweet %>',
         cssClass: 'text'
     })
 
