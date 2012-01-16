@@ -61,11 +61,19 @@ KitchenSink.ControlsSearchBarViewPage4 = M.PageView.design({
 
         markup: M.LabelView.design({
 
-            value: '-',
-
-            contentBinding: {
-                target: KitchenSink.ControlsSearchBarViewController,
-                property: 'output2'
+            computedValue: {
+                value: '-',
+                contentBinding: {
+                    target: KitchenSink.ControlsSearchBarViewController,
+                    property: 'output2'
+                },
+                operation: function(v) {
+                    if(v) {
+                        return v;
+                    } else {
+                        return '-';
+                    }
+                }
             },
 
             cssClass: 'source'
