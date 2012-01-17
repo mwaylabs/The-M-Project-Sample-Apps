@@ -21,10 +21,10 @@ KitchenSink.DataController = M.Controller.extend({
                     name: "LocalStorage ToDo App Example",
                     page: "dataLocalStorageTaskApp"
                 },
-                {
-                    name: "WebSQL ToDo App Example",
-                    page: "dataWebSqlTaskApp"
-                },
+//                {
+//                    name: "WebSQL ToDo App Example",
+//                    page: "dataWebSqlTaskApp"
+//                },
                 {
                     name: "M.Request: Send GET Request",
                     page: "dataRequestSample"
