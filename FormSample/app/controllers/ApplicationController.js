@@ -30,25 +30,25 @@ FormSample.ApplicationController = M.Controller.extend({
         var form = M.ViewManager.getView('page1', 'form');
 
         /* validation */
-        form.validate();
-
-        var values = form.getFormValues();
-        var n = FormSample.Name.createRecord({
-            firstName: values['firstname'] ? values['firstname'] : '',
-            lastName: values['lastname'] ? values['lastname'] : ''
-        });
-        var result = n.save();
-        if(result) {
-            this.updateList();
-            M.DialogView.alert({
-                title: 'Successful',
-                message: 'The name pair was successfully saved.'
+        if(form.validate()) {
+            var values = form.getFormValues();
+            var n = FormSample.Name.createRecord({
+                firstName: values['firstname'] ? values['firstname'] : '',
+                lastName: values['lastname'] ? values['lastname'] : ''
             });
-        } else {
-            M.DialogView.alert({
-                title: 'Not Successful',
-                message: 'The name pair couldn\'t be saved'
-            });
+            var result = n.save();
+            if(result) {
+                this.updateList();
+                M.DialogView.alert({
+                    title: 'Successful',
+                    message: 'The name pair was successfully saved.'
+                });
+            } else {
+                M.DialogView.alert({
+                    title: 'Not Successful',
+                    message: 'The name pair couldn\'t be saved'
+                });
+            }
         }
     },
 
