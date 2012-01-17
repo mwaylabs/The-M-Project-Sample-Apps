@@ -185,6 +185,7 @@ M.Request = M.Object.extend(
             timeout: obj['timeout'] ? obj['timeout'] : this.timeout,
             data: obj['data'] ? obj['data'] : this.data,
             callbacks: obj['callbacks'],
+            sendNoCacheHeader: obj['sendNoCacheHeader'],
             sendTimestamp: obj['sendTimestamp'],
             beforeSend: obj['beforeSend'] ? obj['beforeSend'] : this.beforeSend,
             onError: obj['onError'] ? obj['onError'] : this.onError,
@@ -243,7 +244,7 @@ M.Request = M.Object.extend(
             this.beforeSend(request);
         }
 
-        if(this.callbacks && M.EventDispatcher.checkHandler(this.callbacks['beforeSend'])) {
+        if(this.callbacks && this.callbacks['beforeSend'] && M.EventDispatcher.checkHandler(this.callbacks['beforeSend'])) {
             M.EventDispatcher.callHandler(this.callbacks['beforeSend'], null, NO, [request]);
         }
     },
@@ -260,7 +261,7 @@ M.Request = M.Object.extend(
             this.onError(request, msg);
         }
 
-        if(this.callbacks && M.EventDispatcher.checkHandler(this.callbacks['error'])) {
+        if(this.callbacks && this.callbacks['error'] && M.EventDispatcher.checkHandler(this.callbacks['error'])) {
             M.EventDispatcher.callHandler(this.callbacks['error'], null, NO, [request, msg]);
         }
     },
@@ -278,7 +279,7 @@ M.Request = M.Object.extend(
             this.onSuccess(data, msg, request);
         }
 
-        if(this.callbacks && M.EventDispatcher.checkHandler(this.callbacks['success'])) {
+        if(this.callbacks && this.callbacks['success'] && M.EventDispatcher.checkHandler(this.callbacks['success'])) {
             M.EventDispatcher.callHandler(this.callbacks['success'], null, NO, [data, msg, request]);
         }
     },
