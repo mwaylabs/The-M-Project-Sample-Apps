@@ -19,14 +19,12 @@
         "<link rel=\"apple-touch-icon\" href=\"theme/images/Icon@2x.png\" />"
     ],
     "application": {
-        "version": "1.0",
+        "version": "0.0.1",
         "debugMode": "true",
         "keyPrefix": "#m#",
         "keySuffix": "_",
         "timeStampCreated": "created_at",
         "timeStampUpdated": "updated_at",
-        "m_id": "m_id",
-        "useTransitions": true,
-        "enableTouchOverflow": false
+        "m_id": "m_id"
     }
 }

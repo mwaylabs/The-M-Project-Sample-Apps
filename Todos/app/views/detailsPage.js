@@ -141,7 +141,11 @@ Todos.DetailsPage = M.PageView.design({
                     },
                     operation: function(v) {
                         if(v && v.get('date')) {
-                            return v.get('date').format(M.I18N.l('due_date_format'));
+                            if(typeof(v.get('date')) === 'object') {
+                                return v.get('date').format(M.I18N.l('due_date_format'));
+                            } else {
+                                return D8.create(v.get('date')).format(M.I18N.l('due_date_format'));
+                            }
                         }
                     }
                 },
@@ -204,11 +208,8 @@ Todos.DetailsPage = M.PageView.design({
                 date: M.TextFieldView.design({
                     name: 'date',
                     label: M.I18N.l('due_date'),
-                    initialText: M.I18N.l('due_date_format'),
                     validators: [M.PresenceValidator.customize({
                         msg: M.I18N.l('due_date_req')
-                    }), M.DateValidator.customize({
-                        msg: M.I18N.l('due_date_invalid')
                     })],
                     cssClassOnError: 'error',
                     cssClass: 'todos_form',
@@ -219,10 +220,15 @@ Todos.DetailsPage = M.PageView.design({
                         },
                         operation: function(v) {
                             if(v && v.get('date')) {
-                                return v.get('date').format(M.I18N.l('due_date_format'));
+                                if(typeof(v.get('date')) === 'object') {
+                                    return v.get('date').format('mmm dd, yyyy hh:MM TT');
+                                } else {
+                                    return D8.create(v.get('date')).format('mmm dd, yyyy hh:MM TT');
+                                }
                             }
                         }
-                    }
+                    },
+                    inputType: M.INPUT_DATETIME
                 }),
 
                 buttonSave: M.ButtonView.design({

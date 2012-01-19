@@ -56,18 +56,12 @@ Todos.NewItemPage = M.PageView.design({
             date: M.TextFieldView.design({
                 name: 'date',
                 label: M.I18N.l('due_date'),
-                initialText: M.I18N.l('due_date_format'),
                 validators: [M.PresenceValidator.customize({
                     msg: M.I18N.l('due_date_req')
-                }), M.DateValidator.customize({
-                    msg: M.I18N.l('due_date_invalid')
                 })],
                 cssClassOnError: 'error',
                 cssClass: 'todos_form',
-                contentBinding: {
-                    target: Todos.NewItemController,
-                    property: 'currentDate'
-                }
+                inputType: M.INPUT_DATETIME
             }),
 
             button: M.ButtonView.design({

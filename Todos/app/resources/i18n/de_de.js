@@ -66,6 +66,10 @@ M.I18N.de_de = {
 
     "swedish": "Svenska",
 
+    "finnish": "Suomi",
+
+    "frensh": "Français",
+
     "days": "Tag(e)",
 
     "contact": "Kontakt",

@@ -11,49 +11,20 @@ Todos.ListController = M.Controller.extend({
     notes: null,
 
     init: function(isFirstLoad) {
-        if(isFirstLoad) {
-            Todos.NoteStore.findAll({
-            callbacks: {
-                successOp: {
-                    action: function(record, opCount, opTotal) {
-                        M.LoaderView.show('Retrieved ' + (opCount+1) + '/' + (opTotal+1));
-                    }
-                },
-                success: {
-                    target: this,
-                    action: function(records) {
-                        M.LoaderView.hide(YES);
-                        this.set('notes', Todos.NoteStore.records);
-                        this.applyDone();
-                    }
-                }
-            }
-            });
-        } else {
-            this.set('notes', Todos.NoteStore.records);
-            this.applyDone();
-        }
+        this.set('notes', Todos.NoteModel.find());
+        this.applyDone();
     },
 
     markAsDone: function(id) {
         var listItemId = $('#' + id).parent().parent().parent().parent().attr('id');
         var listItem = M.ViewManager.getViewById(listItemId);
         if(listItem) {
-            var record = Todos.NoteStore.getRecordById(listItem.modelId);
+            var record = Todos.NoteModel.recordManager.getRecordForId(listItem.modelId);
             var done = record.get('done') ? NO : YES;
             record.set('done', done);
-            Todos.NoteStore.save({
-                record: record,
-                callbacks: {
-                    success: {
-                        target: this,
-                        action: function() {
-                            this.set('notes', Todos.NoteStore.records);
-                            this.applyDone();
-                        }
-                    }
-                }
-            });
+            record.save();
+            this.set('notes', Todos.NoteModel.find());
+            this.applyDone();
         }
     },
 
@@ -63,7 +34,7 @@ Todos.ListController = M.Controller.extend({
             $('#' + list.id).find('li').each(function() {
                 var listItem = M.ViewManager.getViewById($(this).attr('id'));
                 if(listItem) {
-                    var record = Todos.NoteStore.getRecordById(listItem.modelId);
+                    var record = Todos.NoteModel.recordManager.getRecordForId(listItem.modelId);
                     if(record && record.get('done')) {
                         listItem.addCssClass('itemDone');
                     } else {
