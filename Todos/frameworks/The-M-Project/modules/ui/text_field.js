@@ -236,7 +236,7 @@ M.TextFieldView = M.View.extend(
             
         } else {
             var type = this.inputType;
-            if(_.include(this.dateInputTypes, this.inputType) && !this.useNativeImplementationIfAvailable) {
+            if(_.include(this.dateInputTypes, this.inputType) && !this.useNativeImplementationIfAvailable || (this.initialText && this.inputType == M.INPUT_PASSWORD)) {
                 type = 'text';
             }
             
@@ -351,9 +351,6 @@ M.TextFieldView = M.View.extend(
     gotFocus: function(id, event, nextEvent) {
         if(this.initialText && (!this.value || this.initialText === this.value)) {
             this.setValue('');
-            if(this.cssClassOnInit) {
-                this.removeCssClass(this.cssClassOnInit);
-            }
         }
         this.hasFocus = YES;
 
@@ -372,12 +369,14 @@ M.TextFieldView = M.View.extend(
      * @param {Object} nextEvent The next event (external event), if specified.
      */
     lostFocus: function(id, event, nextEvent) {
+        /* if this is a native date field, get the value from dom */
+        if(_.include(this.dateInputTypes, this.inputType) && M.Environment.supportsInputType(this.inputType) && this.useNativeImplementationIfAvailable) {
+            this.setValueFromDOM();
+        }
+
         if(this.initialText && !this.value) {
             this.setValue(this.initialText, NO);
             this.value = '';
-            if(this.cssClassOnInit) {
-                this.addCssClass(this.cssClassOnInit);
-            }
         }
         this.hasFocus = NO;
 
@@ -481,6 +480,28 @@ M.TextFieldView = M.View.extend(
      */
     setValue: function(value, delegateUpdate, preventValueComputing) {
         this.value = value;
+
+		// Handle the classOnInit for initial text
+		if(value != this.initialText) {
+			if(this.cssClassOnInit) {
+				this.removeCssClass(this.cssClassOnInit);
+			}
+			if(this.inputType == M.INPUT_PASSWORD) {
+				// Set the field type to password
+				$('#' + this.id).prop('type','password');
+			}
+		}
+		else {
+            if(this.cssClassOnInit) {
+                this.addCssClass(this.cssClassOnInit);
+            }
+
+			if(this.inputType == M.INPUT_PASSWORD) {
+				// Set the field type to text
+				$('#' + this.id).prop('type','text');
+			}
+		}
+
         this.renderUpdate(preventValueComputing);
 
         if(delegateUpdate) {
