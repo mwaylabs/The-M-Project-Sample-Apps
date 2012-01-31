@@ -187,8 +187,6 @@ KitchenSink.app = M.Application.design({
 
     dataLocalStorageTaskApp: KitchenSink.DataLocalStorageTaskAppPage,
 
-    dataWebSqlTaskApp: KitchenSink.DataWebSqlTaskAppPage,
-
     dataRequestSample: KitchenSink.DataRequestSamplePage
 
 });

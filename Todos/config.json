@@ -39,5 +39,60 @@
         "timeStampUpdated": "updated_at",
         "m_id": "m_id",
         "useTransitions": true
+    },
+    "package": {
+        "android": {
+            "method": "PhoneGap",
+            "os": "Android",
+            "sdk": "android-8",
+            "mode": "debug",
+            "package": "com.tmp.todos",
+            "activity": "ToDos",
+            "keystore": "/path/to/android-key.keystore",
+            "keyalias": "theAlias",
+            "storepass": "thePassword",
+            "manifest": {
+                "activity": {
+                    "screenOrientation": "portrait"
+                }
+            }
+        },
+        "ios": {
+            "method": "PhoneGap",
+            "os": "iOS",
+            "sdk": "iphonesimulator4.3",
+            "package": "com.tmp.todos",
+            "activity": "ToDos",
+            "mode": "debug",
+            "plists": {
+                "PhoneGap": {
+                    "DetectPhoneNumber": true,
+                    "TopActivityIndicator": "gray",
+                    "EnableLocation": false,
+                    "EnableAcceleration": true,
+                    "EnableViewportScale": false,
+                    "AutoHideSplashScreen": true,
+                    "ShowSplashScreenSpinner": true,
+                    "MediaPlaybackRequiresUserAction": false,
+                    "AllowInlineMediaPlayback": false,
+                    "OpenAllWhitelistURLsInWebView": false,
+                    "ExternalHosts": ["*"],
+                    "Plugins": {
+                        "com.phonegap.accelerometer": "PGAccelerometer",
+                        "com.phonegap.camera": "PGCamera",
+                        "com.phonegap.connection": "PGConnection",
+                        "com.phonegap.contacts": "PGContacts",
+                        "com.phonegap.debugconsole": "PGDebugConsole",
+                        "com.phonegap.file": "PGFile",
+                        "com.phonegap.filetransfer": "PGFileTransfer",
+                        "com.phonegap.geolocation": "PGLocation",
+                        "com.phonegap.notification": "PGNotification",
+                        "com.phonegap.media": "PGSound",
+                        "com.phonegap.mediacapture": "PGCapture",
+                        "com.phonegap.splashscreen": "PGSplashScreen"
+                    }
+                }
+            }
+        }
     }
 }
