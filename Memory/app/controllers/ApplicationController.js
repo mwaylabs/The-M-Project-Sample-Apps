@@ -18,6 +18,7 @@ Memory.ApplicationController = M.Controller.extend({
 
     moves: 0,
     correct: 0,
+    timer: 0,
 
     init: function(isFirstLoad) {
 
@@ -37,10 +38,10 @@ Memory.ApplicationController = M.Controller.extend({
         this.secondItem = '';
         this.moves = 0;
         this.correct = 0;
-
+        this.timer = 60;
 
         var cards = this.getCards();
-
+        var self = this;
         var len = cards.length;
 
         //duplicate the array
@@ -54,6 +55,25 @@ Memory.ApplicationController = M.Controller.extend({
             $(this).attr('alt', $(this).attr('src'));
             $(this).attr('src', 'theme/images/Icon.png');
         });
+
+        this.timeout = setInterval(function(){
+            self.set('timer', self.timer -= 1);
+            if(self.timer <= 1){
+                clearInterval(self.timeout);
+                M.DialogView.alert({
+                    title: 'Game over!',
+                    message: 'Time moves on buddy!',
+                    confirmButtonValue: 'Play again?.',
+                    callbacks: {
+                        confirm: {
+                            action: function() {
+                                self.restart();
+                            }
+                        }
+                    }
+                });
+            }
+        }, 1000);
     },
 
     itemClicked: function(objId) {
