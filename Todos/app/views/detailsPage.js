@@ -218,12 +218,20 @@ Todos.DetailsPage = M.PageView.design({
                             target: Todos.DetailsController,
                             property: 'record'
                         },
-                        operation: function(v) {
+                        operation: function(v, view) {
                             if(v && v.get('date')) {
+                                var d;
                                 if(typeof(v.get('date')) === 'object') {
-                                    return v.get('date').format('mmm dd, yyyy hh:MM TT');
+                                    d = v.get('date');
                                 } else {
-                                    return D8.create(v.get('date')).format('mmm dd, yyyy hh:MM TT');
+                                    d = D8.create(v.get('date'));
+                                }
+
+                                if(view && _.include(view.dateInputTypes, view.inputType) && M.Environment.supportsInputType(view.inputType) && view.useNativeImplementationIfAvailable) {
+                                    d = D8.create(d.getTimestamp() + d.date.getTimezoneOffset() * 60 * 1000);
+                                    return d.format('yyyy-mm-dd') + 'T' + d.format('hh:MM') + 'Z';
+                                } else {
+                                    return d.format('mmm dd, yyyy hh:MM TT');
                                 }
                             }
                         }
