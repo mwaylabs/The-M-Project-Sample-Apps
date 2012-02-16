@@ -11,14 +11,24 @@ WebViewSample.ApplicationController = M.Controller.extend({
     url: null,
 
     initApp: function() {
-        var pageHeight = $('#m_entryPage').outerHeight();
-        var headerHeight =  $('#m_entryPage [data-role="header"]').outerHeight();
-        $('#' + M.ViewManager.getView('page1', 'webview').id).css('height', pageHeight - headerHeight);
+        var width = M.Environment.getTotalWidth();
+        var itemSize = width - 30;
+        var factor = itemSize / 960;
+        $('.myWebView').css('height', (itemSize/16*9) * 1/factor);
+        $('.myWebView').css('width', itemSize * (1/factor));
+        $('.myWebView').css('-webkit-transform', 'scale(' + factor + ')');
+        $('.container').css('height', (itemSize/16*9));
+        $('.container').css('width', itemSize);
+        $('.ui-page').css('width', width);
     },
 
-    updateURL: function() {
-        var url = M.ViewManager.getView('page1', 'urlBar').value;
-        this.set('url', url);
+    updateURL: function(url) {
+        var that = this;
+        $('#' + M.ViewManager.getView('page1', 'webview').id).animate({
+            opacity: 0
+        }, 500, function(){
+            that.set('url', url);
+        });
     }
 
 });

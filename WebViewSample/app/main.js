@@ -9,7 +9,6 @@ var WebViewSample  = WebViewSample || {};
 
 WebViewSample.app = M.Application.design({
 
-    /* Define the entry/start page of your app. This property must be provided! */
     entryPage : 'page1',
 
     page1: M.PageView.design({
@@ -24,43 +23,64 @@ WebViewSample.app = M.Application.design({
         },
 
         header: M.ToolbarView.design({
-            childViews: 'urlBar btn',
-            urlBar: M.TextFieldView.design({
-                anchorLocation: M.CENTER,
-                cssClass: 'urlBar',
-                events: {
-                    enter: {
+            value: 'WebView Sample'
+        }),
+
+        content: M.ScrollView.design({
+            childViews: 'container btn1 btn2 btn3',
+            container: M.ContainerView.design({
+                cssClass: 'container',
+                childViews: 'webview',
+                webview: M.WebView.design({
+                    value: 'http://www.the-m-project.org',
+                    cssClass: 'myWebView',
+                    isScrollable: NO,
+                    contentBinding: {
                         target: WebViewSample.ApplicationController,
-                        action: 'updateURL'
+                        property: 'url'
                     },
-                    focus: {
-                        action: function(id) {
-                            $('#' + id).select();
+                    events: {
+                        load: {
+                            action: function(id) {
+                                $('#' + id).animate({
+                                    opacity: 1
+                                }, 500);
+                            }
+                        }
+                    }
+                })
+            }),
+            btn1: M.ButtonView.design({
+                value: 'The-M-Project',
+                events: {
+                    tap: {
+                        target: WebViewSample.ApplicationController,
+                        action: function() {
+                            this.updateURL('http://www.the-m-project.org');
                         }
                     }
                 }
             }),
-            btn: M.ButtonView.design({
-                anchorLocation: M.RIGHT,
-                value: 'Go',
+            btn2: M.ButtonView.design({
+                value: 'jQuery Mobile',
                 events: {
                     tap: {
                         target: WebViewSample.ApplicationController,
-                        action: 'updateURL'
+                        action: function() {
+                            this.updateURL('http://www.jquerymobile.com');
+                        }
                     }
                 }
-            })
-        }),
-
-        content: M.ScrollView.design({
-            childViews: 'webview',
-            webview: M.WebView.design({
-                value: 'http://www.the-m-project.org',
-                cssClass: 'myWebView',
-                isScrollable: YES,
-                contentBinding: {
-                    target: WebViewSample.ApplicationController,
-                    property: 'url'
+            }),
+            btn3: M.ButtonView.design({
+                value: 'Underscore.JS',
+                events: {
+                    tap: {
+                        target: WebViewSample.ApplicationController,
+                        action: function() {
+                            this.updateURL('http://documentcloud.github.com/underscore/');
+                        }
+                    }
                 }
             })
         })

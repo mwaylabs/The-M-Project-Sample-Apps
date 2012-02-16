@@ -18,6 +18,26 @@
     width: 80%;
 }
 
-[data-role="content"] {
-    padding: 0px;
+.myWebView {
+    width: 960px;
+    height: 960px;
+    -moz-transform: scale(0.2);
+    -moz-transform-origin: 0 0;
+    -o-transform: scale(0.2);
+    -o-transform-origin: 0 0;
+    -webkit-transform: scale(0.2);
+    -webkit-transform-origin: 0 0;
+    opacity: 0;
+}
+
+.container {
+    overflow: hidden;
+    width: 192px;
+    height: 192px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+
+.container:nth-child(3n) {
+    margin-right: 0px;
 }
