@@ -1,0 +1,23 @@
+[data-role="header"] h1.ui-title {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+[data-role="header"] .ui-btn-right {
+    margin-top: 8px;
+}
+
+[data-role="header"] .ui-btn-right .ui-btn-text {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.urlBar_container {
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 80%;
+}
+
+[data-role="content"] {
+    padding: 0px;
+}
