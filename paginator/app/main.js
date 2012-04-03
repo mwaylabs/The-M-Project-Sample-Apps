@@ -30,17 +30,14 @@ paginator.app = M.Application.design({
         }),
 
         content: M.ScrollView.design({
-            childViews: 'label pagination',
-            label: M.LabelView.design({
-                value: 'Welcome to The M-Project'
-            }),
+            childViews: 'pagination',
 			pagination: M.PaginationView.design({
 				contentBinding: {
 	                target: paginator.appController,
 	                property: 'list'
 	            },
 	            listItemTemplateView: paginator.paginationTemplateView,
-	            itemsPerPage: 5,
+	            itemsPerPage: 3,
 	            idName: 'objectID'
 			})
         }),
