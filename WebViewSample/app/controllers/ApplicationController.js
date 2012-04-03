@@ -24,6 +24,7 @@ WebViewSample.ApplicationController = M.Controller.extend({
 
     updateURL: function(url) {
         var that = this;
+        M.LoaderView.show('Loading...');
         $('#' + M.ViewManager.getView('page1', 'webview').id).animate({
             opacity: 0
         }, 500, function(){

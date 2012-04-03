@@ -45,6 +45,7 @@ WebViewSample.app = M.Application.design({
                                 $('#' + id).animate({
                                     opacity: 1
                                 }, 500);
+                                M.LoaderView.hide();
                             }
                         }
                     }
