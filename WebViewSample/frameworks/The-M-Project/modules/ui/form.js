@@ -67,6 +67,10 @@ M.FormView = M.View.extend(
         for(var name in ids) {
             var view = M.ViewManager.getViewById(ids[name]);
             if(view && view.validators) {
+                if(view.cssClassOnError) {
+                    view.removeCssClass(view.cssClassOnError);
+                }
+
                 _.each(view.validators, function(validator) {
                     if(!validator.validate(view, name)) {
                         isValid = NO;
@@ -92,11 +96,13 @@ M.FormView = M.View.extend(
     showErrors: function() {
         var errors = '';
         _.each(M.Validator.validationErrors, function(error) {
-            var view = M.ViewManager.getViewById(error.errObj.viewId);
-            if(view && view.cssClassOnError) {
-                view.addCssClass(view.cssClassOnError);
+            if(error && error.errObj) {
+                var view = M.ViewManager.getViewById(error.errObj.viewId);
+                if(view && view.cssClassOnError) {
+                    view.addCssClass(view.cssClassOnError);
+                }
+                errors += '<li>' + error.msg + '</li>';
             }
-            errors += '<li>' + error.msg + '</li>';
         });
 
         if(this.showAlertDialogOnError) {

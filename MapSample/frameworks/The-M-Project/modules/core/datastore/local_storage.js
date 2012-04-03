@@ -54,7 +54,8 @@ M.DataProviderLocalStorage = M.DataProvider.extend(
             localStorage.setItem(M.LOCAL_STORAGE_PREFIX + M.Application.name + M.LOCAL_STORAGE_SUFFIX + obj.model.name + '_' + obj.model.m_id, value);
             return YES;
         } catch (e) {
-            M.Logger.log(M.WARN, 'Error saving ' + obj.model.record + ' to localStorage with key: ' + M.LOCAL_STORAGE_PREFIX + M.Application.name + M.LOCAL_STORAGE_SUFFIX + obj.model.name + '_' + this.m_id);
+            M.Logger.log('Error saving ' + obj.model.record + ' to localStorage with key: ' + M.LOCAL_STORAGE_PREFIX + M.Application.name + M.LOCAL_STORAGE_SUFFIX + obj.model.name + '_' + this.m_id, M.WARN);
+            M.Logger.log('Error ' + e.code + ', ' + e.name + ': ' + e.message);
             return NO;
         }
 
@@ -77,7 +78,7 @@ M.DataProviderLocalStorage = M.DataProvider.extend(
             }
             return NO;
         } catch (e) {
-            M.Logger.log(M.WARN, 'Error removing key: ' + M.LOCAL_STORAGE_PREFIX + M.Application.name + M.LOCAL_STORAGE_SUFFIX + obj.model.name + '_' + obj.model.m_id + ' from localStorage');
+            M.Logger.log('Error removing key: ' + M.LOCAL_STORAGE_PREFIX + M.Application.name + M.LOCAL_STORAGE_SUFFIX + obj.model.name + '_' + obj.model.m_id + ' from localStorage', M.WARN);
             return NO;
         }
     },
@@ -137,7 +138,8 @@ M.DataProviderLocalStorage = M.DataProvider.extend(
             if(res && res.length > 0) {
                 var o = res[0];
                 if (typeof(o.record[ident]) != o.__meta[ident].dataType.toLowerCase()) {
-                    throw 'Query: "' + ident + op + val + '" tries to compare ' + typeof(o.record[ident]) + ' with ' + o.__meta[ident].dataType.toLowerCase() + '.';
+					if(!(o.__meta[ident].dataType.toLowerCase() == "reference" && typeof(o.record[ident]) == "string"))
+						throw 'Query: "' + ident + op + val + '" tries to compare ' + typeof(o.record[ident]) + ' with ' + o.__meta[ident].dataType.toLowerCase() + '.';
                 }
             }
 
