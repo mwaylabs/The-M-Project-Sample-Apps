@@ -52,7 +52,7 @@ Memory.app = M.Application.design({
                 value: '',
                 isInline: YES,
                 contentBinding: {
-                    target: memory.ApplicationController,
+                    target: Memory.ApplicationController,
                     property: 'timer'
                 }
             }),
