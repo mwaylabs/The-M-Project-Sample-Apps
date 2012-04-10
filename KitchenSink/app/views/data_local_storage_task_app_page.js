@@ -103,7 +103,8 @@ KitchenSink.DataLocalStorageTaskAppPage = M.PageView.design({
             contentBinding: {
                 target: KitchenSink.DataLocalStorageTaskAppController,
                 property: 'tasks'
-            }
+            },
+            doNotOverlapAtTop: YES
         })
     }),
 

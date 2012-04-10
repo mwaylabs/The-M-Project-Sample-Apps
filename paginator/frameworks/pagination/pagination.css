@@ -1,0 +1,26 @@
+.pagination {
+    height: 50px;
+    margin: 15px -15px 0px -15px;
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.5, rgb(236, 236, 236)), color-stop(0, rgb(218, 218, 218)));
+    background-image: -moz-linear-gradient(center bottom, rgb(236, 236, 236) 50%, rgb(218, 218, 218) 0%);
+}
+
+.pagination .pageNumbers {
+    width: 80%;
+    text-align: center;
+    margin: 0 auto;
+    padding: 14px 0 0 0;
+}
+
+.pagination .pageNumbers a {
+    display: block;
+    float: left;
+    height: 30px;
+    width: 30px;
+    color: #555555;
+    text-decoration: none
+}
+
+.pagination a.active {
+    color: #e60003;
+}
