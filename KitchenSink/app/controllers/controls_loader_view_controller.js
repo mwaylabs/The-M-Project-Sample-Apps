@@ -28,6 +28,20 @@ KitchenSink.ControlsLoaderViewController = M.Controller.extend({
                     name: "Custom loader message",
                     page: "controlsLoaderView2"
 
+                },
+
+                {
+
+                    name: "Loader without spinner",
+                    page: "controlsLoaderView3"
+
+                },
+
+                {
+
+                    name: "Loader as info message",
+                    page: "controlsLoaderView4"
+
                 }
 
             ];
@@ -71,6 +85,23 @@ KitchenSink.ControlsLoaderViewController = M.Controller.extend({
     showLoader2: function() {
 
         M.LoaderView.show('Custom message');
+
+    },
+
+
+    showLoader3: function() {
+
+        M.LoaderView.show('Custom message', YES);
+
+    },
+
+
+    showLoader4: function() {
+
+        M.LoaderView.show('This message will disappear in 5 seconds!', YES);
+        window.setTimeout(function() {
+            M.LoaderView.hide();
+        }, 5000);
 
     },
 

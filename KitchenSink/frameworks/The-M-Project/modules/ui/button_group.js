@@ -284,7 +284,7 @@ M.ButtonGroupView = M.View.extend(
     theme: function() {
         /* if there are multiple lines of buttons, it's getting heavy */
         if(this.numberOfLines) {
-            
+
             /* iterate through all lines */
             for(var line in this.lines) {
                 line = parseInt(line);
@@ -293,7 +293,7 @@ M.ButtonGroupView = M.View.extend(
                 $('#' + this.lines[line]).controlgroup();
                 var childViews = this.getChildViewsAsArray();
                 var currentButtonIndex = 0;
-                
+
                 /* if isCompact, iterate through all buttons */
                 if(this.isCompact) {
                     for(var i in childViews) {
