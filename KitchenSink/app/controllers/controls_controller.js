@@ -109,6 +109,13 @@ KitchenSink.ControlsController = M.Controller.extend({
 
                 {
 
+                    name: "M.SliderView",
+                    page: "controlsSliderView"
+
+                },
+
+                {
+
                     name: "M.TabBarView",
                     page: "controlsTabBarView"
 
