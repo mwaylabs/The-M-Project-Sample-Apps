@@ -6,4 +6,5 @@
 .toolbar {
     margin: 15px -15px -15px -15px;
     width: auto;
+    position: relative;
 }

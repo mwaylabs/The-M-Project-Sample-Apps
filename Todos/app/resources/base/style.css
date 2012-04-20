@@ -96,7 +96,7 @@ div.ui-loader span.ui-icon {
     display: none;
 }
 
-.listItem .ui-btn:nth-child(2) {
+.listItem .ui-grid-a .ui-block-a a {
     position: absolute;
     right: 0px;
     top: 0px;
@@ -105,7 +105,7 @@ div.ui-loader span.ui-icon {
     padding-top: 5px;
 }
 
-.listItem .ui-btn:nth-child(3) {
+.listItem .ui-grid-a .ui-block-b a {
     position: absolute;
     right: 0px;
     top: 40px;

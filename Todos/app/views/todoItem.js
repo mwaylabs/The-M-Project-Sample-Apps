@@ -17,7 +17,7 @@ Todos.TodoItem = M.ListItemView.design({
 
     cssClass: 'listItem',
 
-    childViews: 'title text date buttonDone buttonEdit',
+    childViews: 'title text date buttonGrid',
 
     title : M.LabelView.design({
         valuePattern: '<%= title %>'
@@ -38,28 +38,34 @@ Todos.TodoItem = M.ListItemView.design({
         cssClass: 'listDate'
     }),
 
-    buttonDone: M.ButtonView.design({
-        value: '',
-        icon: 'check',
-        events: {
-            tap: {
-                target: Todos.ListController,
-                action: 'markAsDone'
-            }
-        }
-    }),
+    buttonGrid: M.GridView.design({
+        childViews: 'buttonDone buttonEdit',
 
-    buttonEdit: M.ButtonView.design({
-        value: '',
-        icon: 'gear',
-        events: {
-            tap: {
-                action: function(id, m_id) {
-                    var listItemId = $('#' + id).parent().parent().parent().parent().attr('id');
-                    $('#' + listItemId).trigger('tap');
+        layout:M.TWO_COLUMNS,
+
+        buttonDone: M.ButtonView.design({
+            value: '',
+            icon: 'check',
+            events: {
+                tap: {
+                    target: Todos.ListController,
+                    action: 'markAsDone'
                 }
             }
-        }
+        }),
+
+        buttonEdit: M.ButtonView.design({
+            value: '',
+            icon: 'gear',
+            events: {
+                tap: {
+                    action: function(id, m_id) {
+                        var listItemId = $('#' + id).parent().parent().parent().parent().parent().attr('id');
+                        $('#' + listItemId).trigger('tap');
+                    }
+                }
+            }
+        })
     })
 
 });
