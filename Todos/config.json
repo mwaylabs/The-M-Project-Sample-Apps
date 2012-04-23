@@ -55,7 +55,8 @@
                 "activity": {
                     "screenOrientation": "portrait"
                 }
-            }
+            },
+            "autoScaleIcon": true
         },
         "ios": {
             "method": "PhoneGap",
