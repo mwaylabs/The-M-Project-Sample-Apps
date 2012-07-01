@@ -12,6 +12,8 @@ TableSample.ApplicationController = M.Controller.extend({
 
     init: function() {
 
+        M.LoaderView.show('Getting tweets...');
+
         var searchString = 'HTML5';
         var that = this;
         M.Request.init({
@@ -41,6 +43,7 @@ TableSample.ApplicationController = M.Controller.extend({
                         ]);
                     });
                     that.set('content', content);
+                    M.LoaderView.hide();
                 }
             }
         }).send();
