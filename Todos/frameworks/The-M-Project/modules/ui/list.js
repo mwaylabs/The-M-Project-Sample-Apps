@@ -294,8 +294,8 @@ M.ListView = M.View.extend(
         var that = this;
 
         /* Get the list view's content as an object from the assigned content binding */
-        if(this.contentBinding && typeof(this.contentBinding.target) === 'object' && typeof(this.contentBinding.property) === 'string' && this.contentBinding.target[this.contentBinding.property]) {
-            var content = this.contentBinding.target[this.contentBinding.property];
+        if(this.contentBinding && typeof(this.contentBinding.target) === 'object' && typeof(this.contentBinding.property) === 'string' && this.value) {
+            var content = this.value;
         } else {
             M.Logger.log('The specified content binding for the list view (' + this.id + ') is invalid!', M.WARN);
             return;
@@ -319,10 +319,19 @@ M.ListView = M.View.extend(
         }
 
         if(this.isDividedList) {
-            _.each(content, function(items, divider) {
-                that.renderListItemDivider(divider);
-                that.renderListItemView(items, templateView);
-            });
+            /* @deprecated implementation for old-fashioned data structure */
+            if(!_.isArray(content)) {
+                _.each(content, function(items, divider) {
+                    that.renderListItemDivider(divider);
+                    that.renderListItemView(items, templateView);
+                });
+            /* new implementation with more intelligent data structures */
+            } else {
+                _.each(content, function(item) {
+                    that.renderListItemDivider(item.label);
+                    that.renderListItemView(item.items, templateView);
+                });
+            }
         } else {
             this.renderListItemView(content, templateView);
         }
@@ -356,7 +365,7 @@ M.ListView = M.View.extend(
         /* Save this in variable that for later use within an other scope (e.g. _each()) */
         var that = this;
 
-        _.each(content, function(item) {
+        _.each(content, function(item, index) {
 
             /* Create a new object for the current template view */
             var obj = templateView.design({});
@@ -368,6 +377,10 @@ M.ListView = M.View.extend(
                 obj.modelId = item.id;
             } else if(item[that.idName] || item[that.idName] === "") {
                 obj.modelId = item[that.idName];
+            } else { // if nothing is set, use the index of the passed array (if available)
+                if(index !== undefined && index !== null) {
+                    obj.modelId = index;
+                }
             }
 
             obj = that.cloneObject(obj, item);
@@ -435,7 +448,8 @@ M.ListView = M.View.extend(
             obj[childViewsArray[i]] = this.cloneObject(obj[childViewsArray[i]], item);
 
             /* This regex looks for a variable inside the template view (<%= ... %>) ... */
-            var regexResult = /^<%=\s+([.|_|-|$|§|@|a-zA-Z0-9]+)\s*%>$/.exec(obj[childViewsArray[i]].computedValue ? obj[childViewsArray[i]].computedValue.valuePattern : obj[childViewsArray[i]].valuePattern);
+            var pattern = obj[childViewsArray[i]].computedValue ? obj[childViewsArray[i]].computedValue.valuePattern : obj[childViewsArray[i]].valuePattern;
+            var regexResult = /<%=\s+([.|_|-|$|§|@|a-zA-Z0-9]+)\s*%>/.exec(pattern);
 
             /* ... if a match was found, the variable is replaced by the corresponding value inside the record */
             if(regexResult) {
@@ -444,12 +458,22 @@ M.ListView = M.View.extend(
                     case 'M.ButtonView':
                     case 'M.ImageView':
                     case 'M.TextFieldView':
-                        obj[childViewsArray[i]].value = record[regexResult[1]];
+                        while(regexResult !== null) {
+                            if(typeof(record[regexResult[1]]) === 'object') {
+                                pattern = record[regexResult[1]];
+                                regexResult = null;
+                            } else {
+                                pattern = pattern.replace(regexResult[0], record[regexResult[1]]);
+                                regexResult = /<%=\s+([.|_|-|$|§|@|a-zA-Z0-9]+)\s*%>/.exec(pattern);
+                            }
+                        }
+                        obj[childViewsArray[i]].value = pattern;
                         break;
                 }
             }
         }
-
+        obj.item = item;
+        
         return obj;
     },
 

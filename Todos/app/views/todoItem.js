@@ -31,8 +31,14 @@ Todos.TodoItem = M.ListItemView.design({
     date: M.LabelView.design({
         computedValue: {
             valuePattern: '<%= date %>',
-            operation: function(date) {
-                return M.I18N.l('due_date') + ': ' + date.format(M.I18N.l('due_date_format'));
+            operation: function(v) {
+                if(v) {
+                    if(typeof(v) === 'object') {
+                        return v.format(M.I18N.l('due_date_format'));
+                    } else {
+                        return D8.create(v).format(M.I18N.l('due_date_format'));
+                    }
+                }
             }
         },
         cssClass: 'listDate'
