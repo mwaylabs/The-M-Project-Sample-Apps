@@ -17,7 +17,7 @@ Todos.TodoItem = M.ListItemView.design({
 
     cssClass: 'listItem',
 
-    childViews: 'title text date buttonDone buttonEdit',
+    childViews: 'title text date buttonGrid',
 
     title : M.LabelView.design({
         valuePattern: '<%= title %>'
@@ -31,35 +31,47 @@ Todos.TodoItem = M.ListItemView.design({
     date: M.LabelView.design({
         computedValue: {
             valuePattern: '<%= date %>',
-            operation: function(date) {
-                return M.I18N.l('due_date') + ': ' + date.format(M.I18N.l('due_date_format'));
+            operation: function(v) {
+                if(v) {
+                    if(typeof(v) === 'object') {
+                        return v.format(M.I18N.l('due_date_format'));
+                    } else {
+                        return D8.create(v).format(M.I18N.l('due_date_format'));
+                    }
+                }
             }
         },
         cssClass: 'listDate'
     }),
 
-    buttonDone: M.ButtonView.design({
-        value: '',
-        icon: 'check',
-        events: {
-            tap: {
-                target: Todos.ListController,
-                action: 'markAsDone'
-            }
-        }
-    }),
+    buttonGrid: M.GridView.design({
+        childViews: 'buttonDone buttonEdit',
 
-    buttonEdit: M.ButtonView.design({
-        value: '',
-        icon: 'gear',
-        events: {
-            tap: {
-                action: function(id, m_id) {
-                    var listItemId = $('#' + id).parent().parent().parent().parent().attr('id');
-                    $('#' + listItemId).trigger('tap');
+        layout:M.TWO_COLUMNS,
+
+        buttonDone: M.ButtonView.design({
+            value: '',
+            icon: 'check',
+            events: {
+                tap: {
+                    target: Todos.ListController,
+                    action: 'markAsDone'
                 }
             }
-        }
+        }),
+
+        buttonEdit: M.ButtonView.design({
+            value: '',
+            icon: 'gear',
+            events: {
+                tap: {
+                    action: function(id, m_id) {
+                        var listItemId = $('#' + id).parent().parent().parent().parent().parent().attr('id');
+                        $('#' + listItemId).trigger('tap');
+                    }
+                }
+            }
+        })
     })
 
 });

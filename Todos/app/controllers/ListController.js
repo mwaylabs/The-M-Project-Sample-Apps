@@ -16,7 +16,7 @@ Todos.ListController = M.Controller.extend({
     },
 
     markAsDone: function(id) {
-        var listItemId = $('#' + id).parent().parent().parent().parent().attr('id');
+        var listItemId = $('#' + id).parent().parent().parent().parent().parent().attr('id');
         var listItem = M.ViewManager.getViewById(listItemId);
         if(listItem) {
             var record = Todos.NoteModel.recordManager.getRecordForId(listItem.modelId);

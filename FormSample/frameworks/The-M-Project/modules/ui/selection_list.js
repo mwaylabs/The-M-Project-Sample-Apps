@@ -500,6 +500,9 @@ M.SelectionListView = M.View.extend(
                 M.EventDispatcher.callHandler(nextEvent, event, NO, [selectionValues, this.selection]);
             }
         }
+
+        /* fix the toolbar(s) again */
+        $('#' + this.id).blur();
     },
 
     /**
@@ -711,7 +714,7 @@ M.SelectionListView = M.View.extend(
                 $(this).checkboxradio('disable');
             });
         } else {
-            $('#' + this.id).select('disable');
+            $('#' + this.id).selectmenu('disable');
             $('#' + this.id).each(function() {
                 $(this).attr('disabled', 'disabled');
             });
@@ -729,7 +732,7 @@ M.SelectionListView = M.View.extend(
                 $(this).checkboxradio('enable');
             });
         } else {
-            $('#' + this.id).select('enable');
+            $('#' + this.id).selectmenu('enable');
             $('#' + this.id).each(function() {
                 $(this).removeAttr('disabled');
             });

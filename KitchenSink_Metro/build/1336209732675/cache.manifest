@@ -1,0 +1,63 @@
+CACHE MANIFEST
+#Application:KitchenSink, Version:1.0, Timestamp:1336209732675
+
+
+# Explicitly cached entries
+CACHE:
+de_de.js
+en_us.js
+underscore-min.js
+d8-0.2.0.min.js
+theme/tmp.css
+bootstrap.js
+theme/style.css
+theme/images/controls.png
+theme/images/core.png
+theme/images/Icon-72.png
+theme/images/Icon.png
+theme/images/Icon@2x.png
+theme/images/mway_logo.png
+theme/images/mway_logo_sm.png
+theme/images/square_cyan.png
+theme/images/square_green.png
+theme/images/square_magenta.png
+theme/images/square_red.png
+theme/images/square_yellow.png
+theme/images/storage.png
+theme/images/utilities.png
+ui.js
+jquery-1.7.1.min.js
+jquery_mobile_plugins.js
+theme/jquery_mobile_plugins.css
+jquery_mobile.js
+theme/jquery.mobile.metro.theme.css
+jquery.mobile.metro.theme.init.js
+jquery.mobile.themeswitcher.js
+theme/images/ajax-loader.png
+theme/images/checkbox-disabled.png
+theme/images/checkbox.png
+theme/images/icons-18-black.png
+theme/images/icons-18-white.png
+theme/images/icons-36-black.png
+theme/images/icons-36-white.png
+theme/images/radiobtn-disabled.png
+theme/images/radiobtn.png
+theme/images/wait-indicator.gif
+core.js
+theme/jquery.mobile-1.1.0.min.css
+theme/images/ajax-loader.gif
+theme/images/ajax-loader.png
+theme/images/icons-18-black.png
+theme/images/icons-18-white.png
+theme/images/icons-36-black.png
+theme/images/icons-36-white.png
+KitchenSink_App.js
+
+
+# Resources that require the device/user to be online.
+NETWORK:
+twitter
+*
+
+# Fallback resources 
+FALLBACK:

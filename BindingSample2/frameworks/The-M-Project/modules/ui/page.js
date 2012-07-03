@@ -179,6 +179,14 @@ M.PageView = M.View.extend(
             M.LoaderView.initialize();
         }
 
+        /* call controlgroup plugin on any such element on the page */
+        $('#' + id).find('[data-role="controlgroup"]').each(function() {
+            var that = this;
+            window.setTimeout(function() {
+                $(that).controlgroup();
+            }, 1);
+        });
+
         /* reset the page's title */
         document.title = M.Application.name;
 
@@ -202,8 +210,10 @@ M.PageView = M.View.extend(
             M.EventDispatcher.callHandler(nextEvent, event, NO, [this.isFirstLoad]);
         }
 
-        /* call jqm to fix header/footer */
-        $.mobile.fixedToolbars.show();
+        /* call controlgroup plugin on any such element on the page */
+//        $('#' + id).find('[data-role="controlgroup"]').each(function() {
+//            $(this).controlgroup();
+//        });
 
         this.isFirstLoad = NO;
     },
@@ -271,6 +281,12 @@ M.PageView = M.View.extend(
                 dialog.positionDialog(dialogDOM);
                 dialog.positionBackground($('.tmp-dialog-background'));
             }, 500);
+        });
+
+        /* auto-reposition carousels */
+        $('#' + this.id + ' .tmp-carousel-wrapper').each(function() {
+            var carousel = M.ViewManager.getViewById($(this).attr('id'));
+            carousel.orientationDidChange();
         });
 
         /* set the current orientation */

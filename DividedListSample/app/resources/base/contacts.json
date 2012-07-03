@@ -1,73 +1,72 @@
-{
+[
+    {
+        "label": "B",
+        "items": [
+            {
+                "firstName": "Holger",
+                "lastName": "Badstuber"
+            },
 
-    "B": [
+            {
+                "firstName": "Michael",
+                "lastName": "Ballack"
+            },
 
-        {
-            "firstName": "Holger",
-            "lastName": "Badstuber"
-        },
+            {
+                "firstName": "Jérôme",
+                "lastName": "Boateng"
+            }
+        ]
+    },
+    {
+        "label": "F",
+        "items": [
+            {
+                "firstName": "Arne",
+                "lastName": "Friedrich"
+            },
 
-        {
-            "firstName": "Michael",
-            "lastName": "Ballack"
-        },
+            {
+                "firstName": "Torsten",
+                "lastName": "Frings"
+            },
 
-        {
-            "firstName": "Jérôme",
-            "lastName": "Boateng"
-        }
+            {
+                "firstName": "Clemens",
+                "lastName": "Fritz"
+            }
+        ]
+    },
+    {
+        "label": "H",
+        "items": [
+            {
+                "firstName": "Alexander",
+                "lastName": "Henka"
+            }
+        ]
+    },
+    {
+        "label": "L",
+        "items": [
+            {
+                "firstName": "Dominik",
+                "lastName": "Laubach"
+            },
 
-    ],
-
-    "F": [
-
-        {
-            "firstName": "Arne",
-            "lastName": "Friedrich"
-        },
-
-        {
-            "firstName": "Torsten",
-            "lastName": "Frings"
-        },
-
-        {
-            "firstName": "Clemens",
-            "lastName": "Fritz"
-        }
-
-    ],
-
-    "H": [
-
-        {
-            "firstName": "Alexander",
-            "lastName": "Henka"
-        }
-
-    ],
-
-    "L": [
-
-        {
-            "firstName": "Dominik",
-            "lastName": "Laubach"
-        },
-
-        {
-            "firstName": "Phillip",
-            "lastName": "Lahm"
-        }
-
-    ],
-
-    "W": [
-
-        {
-            "firstName": "Sebastian",
-            "lastName": "Werler"
-        }
-
-    ]
-
-}
+            {
+                "firstName": "Phillip",
+                "lastName": "Lahm"
+            }
+        ]
+    },
+    {
+        "label": "W",
+        "items": [
+            {
+                "firstName": "Sebastian",
+                "lastName": "Werler"
+            }
+        ]
+    }
+]

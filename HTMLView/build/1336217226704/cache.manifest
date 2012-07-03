@@ -1,0 +1,43 @@
+CACHE MANIFEST
+#Application:HTMLView, Version:0.0.1, Timestamp:1336217226704
+
+
+# Explicitly cached entries
+CACHE:
+underscore-min.js
+d8-0.2.0.min.js
+theme/tmp.css
+bootstrap.js
+HTMLView.js
+usage.html
+view_1.html
+view_2.html
+view_3.html
+theme/style.css
+theme/images/Icon-72.png
+theme/images/Icon.png
+theme/images/Icon@2x.png
+jquery-1.7.1.min.js
+ui.js
+jquery_mobile_plugins.js
+theme/jquery_mobile_plugins.css
+jquery_mobile.js
+core.js
+theme/jquery.mobile-1.1.0.min.css
+theme/images/ajax-loader.gif
+theme/images/ajax-loader.png
+theme/images/icons-18-black.png
+theme/images/icons-18-white.png
+theme/images/icons-36-black.png
+theme/images/icons-36-white.png
+HTMLView_App.js
+
+
+# Resources that require the device/user to be online.
+NETWORK:
+myServer
+myServer2
+*
+
+# Fallback resources 
+FALLBACK:
