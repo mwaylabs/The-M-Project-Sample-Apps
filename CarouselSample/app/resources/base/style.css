@@ -1,0 +1,66 @@
+.logo {
+    width:30px;
+}
+
+.clear {
+    clear:both;
+}
+
+.ui-page {
+    background-image: url("images/bckgrnd12.png");
+    height: 100%;
+}
+
+.header {
+    height: 55px;
+    border:none;
+    background-color: rgb(3,83,129);
+    background-image: linear-gradient(bottom, rgb(39,131,192) 100%, rgb(3,83,129) 0%);
+    background-image: -o-linear-gradient(bottom, rgb(39,131,192) 100%, rgb(3,83,129) 0%);
+    background-image: -moz-linear-gradient(bottom, rgb(39,131,192) 100%, rgb(3,83,129) 0%);
+    background-image: -webkit-linear-gradient(bottom, rgb(39,131,192) 100%, rgb(3,83,129) 0%);
+    background-image: -ms-linear-gradient(bottom, rgb(39,131,192) 100%, rgb(3,83,129) 0%);
+
+    background-image: -webkit-gradient(
+    	linear,
+    	left bottom,
+    	left top,
+    	color-stop(1, rgb(39,131,192)),
+    	color-stop(0, rgb(3,83,129))
+    )
+}
+
+.ui-content {
+    height: 100%;
+    padding: 0px;
+    padding-top:55px;
+    -webkit-box-sizing: border-box;
+}
+
+/* Gallery Page */
+
+.carouselImg {
+    width:100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
