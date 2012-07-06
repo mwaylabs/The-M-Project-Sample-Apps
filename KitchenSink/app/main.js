@@ -201,6 +201,14 @@ KitchenSink.app = M.Application.design({
 
     dataLocalStorageTaskApp: KitchenSink.DataLocalStorageTaskAppPage,
 
+    controlsToggleSwitchView: KitchenSink.ControlsToggleSwitchView,
+
+    controlsToggleSwitch1: KitchenSink.ControlsToggleSwitchViewPage1,
+
+    controlsToggleSwitch2: KitchenSink.ControlsToggleSwitchViewPage2,
+
+    controlsToggleSwitch3: KitchenSink.ControlsToggleSwitchViewPage3,
+
     dataRequestSample: KitchenSink.DataRequestSamplePage
 
 });

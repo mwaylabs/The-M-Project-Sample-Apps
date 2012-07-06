@@ -2,7 +2,7 @@ m_require('app/views/tabs.js');
 m_require('app/views/controls_page.js');
 m_require('app/views/controls_toolbar_view_page.js');
 
-KitchenSink.ControlsToolbarViewPage1 = M.PageView.design({
+KitchenSink.ControlsToggleSwitchViewPage2 = M.PageView.design({
 
     childViews: 'header content tabBar',
 
@@ -22,7 +22,7 @@ KitchenSink.ControlsToolbarViewPage1 = M.PageView.design({
 
             events: {
                 tap:{
-                    target: KitchenSink.ControlsToolbarViewController,
+                    target: KitchenSink.ControlsToggleSwitchController,
                     action: 'here'
                 }
             }
@@ -43,13 +43,11 @@ KitchenSink.ControlsToolbarViewPage1 = M.PageView.design({
 
     content: M.ScrollView.design({
 
-        childViews: 'toolbar markupTitle markup',
+        childViews: 'toggleswitch markupTitle markup',
 
-        toolbar: M.ToolbarView.design({
-
-            value: 'Toolbar',
-            isFixed: NO
-
+        toggleswitch:M.ToggleSwitchView.design({
+            label: 'I am the label and this switch has isMini:YES',
+            isMini: YES
         }),
 
         markupTitle: M.LabelView.design({
@@ -61,7 +59,7 @@ KitchenSink.ControlsToolbarViewPage1 = M.PageView.design({
 
         markup: M.LabelView.design({
 
-            value: 'M.ToolbarView.design({\n\n\tvalue: \'Toolbar\'\n\n})',
+            value: 'M.ToggleSwitchView.design({\n\n\tlabel: \'I am the label and this switch has isMini:YES\'\n\n})',
 
             cssClass: 'source'
 

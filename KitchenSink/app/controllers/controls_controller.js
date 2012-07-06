@@ -140,6 +140,13 @@ KitchenSink.ControlsController = M.Controller.extend({
                     name: "M.ToolbarView",
                     page: "controlsToolbarView"
 
+                },
+
+                {
+
+                    name: "M.ToggleSwitchView",
+                    page: "controlsToggleSwitchView"
+
                 }
 
             ];

@@ -45,6 +45,8 @@ KitchenSink.ControlsToolbarViewPage5 = M.PageView.design({
 
         toolbar: M.ToolbarView.design({
 
+            isFixed: NO,
+
             childViews: 'image grid',
 
             cssClass: 'myToolbar',
