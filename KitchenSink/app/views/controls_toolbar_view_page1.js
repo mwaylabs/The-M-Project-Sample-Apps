@@ -18,6 +18,8 @@ KitchenSink.ControlsToolbarViewPage1 = M.PageView.design({
 
             anchorLocation: M.LEFT,
 
+            isFixed: YES,
+
             events: {
                 tap:{
                     target: KitchenSink.ControlsToolbarViewController,
@@ -45,7 +47,8 @@ KitchenSink.ControlsToolbarViewPage1 = M.PageView.design({
 
         toolbar: M.ToolbarView.design({
 
-            value: 'Toolbar'
+            value: 'Toolbar',
+            isFixed: NO
 
         }),
 
