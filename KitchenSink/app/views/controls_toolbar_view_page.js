@@ -38,7 +38,7 @@ KitchenSink.ControlsToolbarViewPage = M.PageView.design({
 
         title: M.LabelView.design({
 
-            value: 'M.ToggleView',
+            value: 'M.ToolbarView',
 
             anchorLocation: M.CENTER
 
