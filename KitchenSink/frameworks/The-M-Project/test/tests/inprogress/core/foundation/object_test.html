@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>M Test</title>
+  <meta name="viewport" content="width=device-width, height=device-height, user-scalable=yes, initial-scale=1.0;" />
+
+  <!-- Test Runner -->
+  <script src="/resources/testharness.js"></script>
+  <script src="/resources/testharnessreport.js"></script>
+	<script src="m.js"></script>
+	<script src="object.js"></script>
+</head>
+<body>
+	<h2>TODO:</h2>
+	<ul>
+		<li>implement a M.Object.bindToCaller test</li>
+		<li>implement a M.Object.delete test</li>
+	</ul>
+  <div id="log"></div>
+  <!--
+    REMOVE THIS
+
+    TESTHARNESS.JS API:
+
+      http://hoppipolla.co.uk/talks/ttwf/testharness.html
+
+    IMPORTANT:
+
+      Create a symbolic link from your hard drive root directory to the 
+      Dropbox /HTML5/ so that the testharness.js reference above works 
+      without changes.
+      For example:
+        sudo ln -s ~/Dropbox/TestTWF/MOBILE/resources /resources
+    -->
+    <script type="text/javascript">
+
+		var PROPERTIES = ['bindToCaller', 'include', 'create', 'extend', 'get', 'set', 'destroy'];
+
+		var inheritsFromObject = function(obj){
+			PROPERTIES.forEach(function(prop){
+				assert_idl_attribute(obj, prop);
+			});
+			return true;
+		};
+
+		test(function () {
+		    assert_true(typeof M !== 'undefined');
+		    assert_true(typeof M === 'object');
+			assert_own_property(M, 'Object');
+
+			assert_own_property(M.Object, 'type');
+			assert_equals(M.Object.type, 'M.Object');
+
+			PROPERTIES.forEach(function(prop){
+				assert_own_property(M.Object, prop);
+			});
+
+		}, "M.Object is available and all properties are initilazied correctly");
+
+		test(function () {
+		    var obj = M.Object.create(M.Object);
+			assert_true(inheritsFromObject(obj));
+		}, "create returns an object that inherits from M.Object");
+
+		test(function () {
+		    var obj = M.Object.extend({
+				type: 'test',
+				'my_own_prop': 'my_own_prop'
+			});
+			assert_true(inheritsFromObject(obj));
+			assert_own_property(obj, 'my_own_prop');
+			assert_true(obj.type === 'test');
+		}, "extend returns an object that inherits from M.Object");
+		
+		test(function () {
+			var obj = M.Object.extend({
+				type: 'test',
+				'my_own_prop': 'my_own_prop'
+			});
+			PROPERTIES.forEach(function(prop){
+				assert_true(typeof obj.get(prop) !== 'undefined');
+			});
+		}, "get returns every property");
+
+		test(function () {
+			var obj = M.Object.extend({
+				type: 'test',
+				'my_own_prop': 'my_own_prop'
+			});
+			
+			var random = String(Math.random());
+			PROPERTIES.push('my_own_prop');
+			PROPERTIES.forEach(function(prop){
+				if(prop !== 'set' && prop !== 'get'){
+					obj.set(prop, random);
+				}
+			});
+			PROPERTIES.forEach(function(prop){
+				if(prop !== 'set' && prop !== 'get'){
+					assert_true(obj.get(prop) === random);
+				}
+			});
+			PROPERTIES.pop();
+		}, "it is possible to set every property");
+
+    </script>
+</body>
+</html>

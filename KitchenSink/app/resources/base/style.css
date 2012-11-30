@@ -50,7 +50,7 @@ div[data-role=header] h1.ui-title {
     font-size:12px;
 }
 
-a[data-theme=customButton] {
+a.customButton {
     color:#ffffff;
     -moz-box-shadow: 0px 0px 0px #ffffff;
     -webkit-box-shadow: 0px 0px 0px #ffffff;
@@ -71,14 +71,14 @@ a[data-theme=customButton] {
     margin-left:13%;
 }
 
-a[data-theme=customButton]:hover {
+a.customButton:hover {
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="00009b", endColorstr="3166ff");
     background: -webkit-gradient(linear, left top, left bottom, from(#00009b), to(#3166ff));
     background: -moz-linear-gradient(top center, #00009b, #3166ff);
     font-weight: bold;
 }
 
-a[data-theme=customButton] span {
+a.customButton span {
     text-shadow: none;
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;

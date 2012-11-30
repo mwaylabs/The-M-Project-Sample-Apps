@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>M Test</title>
+  <meta name="viewport" content="width=device-width, height=device-height, user-scalable=yes, initial-scale=1.0;" />
+
+  <!-- Test Runner -->
+  <script src="/resources/testharness.js"></script>
+  <script src="/resources/testharnessreport.js"></script>
+	<script src="m.js"></script>
+</head>
+<body>
+  <div id="log"></div>
+  <!--
+    REMOVE THIS
+
+    TESTHARNESS.JS API:
+
+      http://hoppipolla.co.uk/talks/ttwf/testharness.html
+
+    IMPORTANT:
+
+      Create a symbolic link from your hard drive root directory to the 
+      Dropbox /HTML5/ so that the testharness.js reference above works 
+      without changes.
+      For example:
+        sudo ln -s ~/Dropbox/TestTWF/MOBILE/resources /resources
+    -->
+    <script type="text/javascript">
+
+		setup({
+		explicit_done: true
+		})
+		test(function () {
+		    assert_true(typeof M !== 'undefined');
+		    assert_true(typeof M === 'object');
+
+			assert_own_property(M, 'LOCAL_STORAGE_PREFIX');
+			assert_own_property(M, 'LOCAL_STORAGE_SUFFIX');
+			assert_own_property(M, 'META_CREATED_AT');
+			assert_own_property(M, 'META_M_ID');
+			assert_own_property(M, 'META_UPDATED_AT');
+			assert_own_property(M, 'Version');
+
+			assert_equals(M.LOCAL_STORAGE_PREFIX, '#m#');
+			assert_equals(M.LOCAL_STORAGE_SUFFIX, '_');
+			assert_equals(M.META_CREATED_AT, '_createdAt');
+			assert_equals(M.META_M_ID, '_m_id');
+			assert_equals(M.META_UPDATED_AT, '_updatedAt');
+		    assert_true(typeof M.Version === 'string');
+
+		}, "M is available and all properties are initilazied correctly");
+
+		test(function () {
+		    assert_true(YES);
+		}, "YES equals true");
+
+		test(function () {
+		    assert_false(NO);
+		}, "NO equals false");
+
+		var putSomethingToTheLocaleStorage = function(){
+			M.Application = {};
+			M.Application.name = 'test';
+			localStorage.setItem('test0', 'test0');
+			localStorage.setItem('test1', 'test1');
+			localStorage.setItem(M.LOCAL_STORAGE_PREFIX + M.Application.name + M.LOCAL_STORAGE_SUFFIX + 'test0', M.LOCAL_STORAGE_PREFIX + M.Application.name + M.LOCAL_STORAGE_SUFFIX + 'test0');
+			localStorage.setItem(M.LOCAL_STORAGE_PREFIX + M.Application.name + M.LOCAL_STORAGE_SUFFIX + 'test1', M.LOCAL_STORAGE_PREFIX + M.Application.name + M.LOCAL_STORAGE_SUFFIX + 'test1');
+		};
+
+		test(function () {
+		    assert_own_property(window, 'localStorage');
+			putSomethingToTheLocaleStorage();
+			localStorage.clear('f');
+			assert_equals(localStorage.length, 0);
+
+		}, "localStorage is available and the clear function works with the parameter 'f'");
+
+		test(function () {	
+		    assert_own_property(window, 'localStorage');
+			putSomethingToTheLocaleStorage();
+			localStorage.clear();
+			assert_equals(localStorage.length, 0);
+
+		}, "localStorage.clear() is implemented as anticipated in the spec");
+		
+    </script>
+</body>
+</html>

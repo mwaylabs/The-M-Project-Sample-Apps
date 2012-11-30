@@ -143,6 +143,8 @@ KitchenSink.app = M.Application.design({
 
     controlsSelectionListView6: KitchenSink.ControlsSelectionListViewPage6,
 
+    controlsSelectionListView7: KitchenSink.ControlsSelectionListViewPage7,
+
     controlsTabBarView: KitchenSink.ControlsTabBarViewPage,
 
     controlsTabBarView1: KitchenSink.ControlsTabBarViewPage1,
