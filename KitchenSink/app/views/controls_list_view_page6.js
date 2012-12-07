@@ -53,6 +53,8 @@ KitchenSink.ControlsListViewPage6 = M.PageView.design({
 
         childViews: 'list markupTitle markup',
 
+        cssClass: 'listFix',
+
         list: M.ListView.design({
 
             listItemTemplateView: KitchenSink.ControlsListViewPage6Template,

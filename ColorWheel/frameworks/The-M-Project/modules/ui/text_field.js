@@ -302,11 +302,15 @@ M.TextFieldView = M.View.extend(
             keyup: {
                 target: this,
                 action: 'setValueFromDOM'
-            },
-            tap: {
-                target: this,
-                action: 'handleTap'
             }
+        };
+        /* add TAP handler only if needed */
+        var type = this.inputType;
+        if (_.include(this.dateInputTypes, this.inputType) && !this.useNativeImplementationIfAvailable) {
+            this.internalEvents['tap'] = {
+                target:this,
+                action:'handleTap'
+            };
         }
         this.bindToCaller(this, M.View.registerEvents)();
     },
@@ -402,10 +406,7 @@ M.TextFieldView = M.View.extend(
      * @param {Object} nextEvent The next event (external event), if specified.
      */
     lostFocus: function(id, event, nextEvent) {
-        /* if this is a native date field, get the value from dom */
-        if(_.include(this.dateInputTypes, this.inputType) && M.Environment.supportsInputType(this.inputType) && this.useNativeImplementationIfAvailable) {
-            this.setValueFromDOM();
-        }
+        this.setValueFromDOM();
 
         if(this.initialText && !this.value) {
             this.setValue(this.initialText, NO);
@@ -465,7 +466,7 @@ M.TextFieldView = M.View.extend(
      */
     styleUpdate: function() {
         /* trigger keyup event to make the text field autogrow (enable fist, if necessary) */
-        if(this.value) {
+        if(this.value && this.value !== this.initialText) {
             $('#' + this.id).removeAttr('disabled');
             $('#'  + this.id).trigger('keyup');
         }

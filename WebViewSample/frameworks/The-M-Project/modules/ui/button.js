@@ -70,11 +70,19 @@ M.ButtonView = M.View.extend(
     tag: null,
 
     /**
+     * This property can be used to specifically set the data-theme property of a button view
+     * as it is used by jquery mobile.
+     *
+     * @type String
+     */
+    dataTheme: '',
+
+    /**
      * This property specifies the recommended events for this type of view.
      *
      * @type Array
      */
-    recommendedEvents: ['click', 'tap'],
+    recommendedEvents: ['click', 'tap', 'vclick'],
 
     /**
      * Renders a button as an input tag. Input is automatically converted by jQuery mobile.
@@ -174,7 +182,10 @@ M.ButtonView = M.View.extend(
             html += ' data-icon="' + this.icon + '"';
         }
         if(this.cssClass) {
-            html += ' data-theme="' + this.cssClass + '"';
+            html += ' class="' + this.cssClass + '"';
+        }
+        if(this.dataTheme) {
+            html += ' data-theme="' + this.dataTheme + '"';
         }
         if(this.isIconOnly) {
             html += ' data-iconpos="notext"';

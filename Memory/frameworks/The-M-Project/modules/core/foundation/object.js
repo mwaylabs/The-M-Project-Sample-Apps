@@ -110,11 +110,26 @@ M.Object =
      */
     destroy: function() {
         if(this.id && $('#' + this.id)) {
+            var childViews = this.getChildViewsAsArray();
+            for(var i in childViews) {
+                if(this[childViews[i]]) {
+                    this[childViews[i]].destroy();
+                }
+            }
             M.EventDispatcher.unregisterEvents(this);
             M.ViewManager.unregister(this);
             $('#' + this.id).remove();
         }
         delete this;
+    },
+
+    detachContentBinding: function(){
+        if( this.contentBinding && this.contentBinding.target && this.contentBinding.target.observable && this.contentBinding.property){
+            this.contentBinding.target.observable.detach(this.contentBinding.property);
+        }
+        if( this.valueBinding    && this.valueBinding.target    && this.valueBinding.target.observable    && this.valueBinding.property){
+            this.valueBinding.target.observable.detach(this.valueBinding.property);
+        }
     }
 
 };

@@ -10,6 +10,7 @@ KitchenSink.ControlsToolbarViewPage4 = M.PageView.design({
 
         childViews: 'backButton title',
 
+
         backButton: M.ButtonView.design({
 
             value: 'Back',
@@ -48,6 +49,8 @@ KitchenSink.ControlsToolbarViewPage4 = M.PageView.design({
             childViews: 'buttonGroup',
 
             cssClass: 'myToolbar2',
+
+            isFixed: NO,
 
             buttonGroup: M.ButtonGroupView.design({
 

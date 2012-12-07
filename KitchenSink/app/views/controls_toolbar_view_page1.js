@@ -45,7 +45,8 @@ KitchenSink.ControlsToolbarViewPage1 = M.PageView.design({
 
         toolbar: M.ToolbarView.design({
 
-            value: 'Toolbar'
+            value: 'Toolbar',
+            isFixed: NO
 
         }),
 

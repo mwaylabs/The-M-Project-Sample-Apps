@@ -388,8 +388,9 @@ M.SelectionListView = M.View.extend(
     theme: function() {
         if(this.selectionMode === M.SINGLE_SELECTION_DIALOG || this.selectionMode === M.MULTIPLE_SELECTION_DIALOG) {
             $('#' + this.id).selectmenu();
-            if(this.selectionMode === M.MULTIPLE_SELECTION_DIALOG && this.initialText && this.selection && this.selection.length === 0) {
+            if((this.selectionMode === M.MULTIPLE_SELECTION_DIALOG && this.initialText && this.selection && this.selection.length === 0) || (this.selectionMode === M.SINGLE_SELECTION_DIALOG && !this.selection && this.initialText)) {
                 $('#' + this.id + '_container').find('.ui-btn-text').html(this.initialText);
+                document.getElementById(this.id).selectedIndex = -1;
             }
         } else if(this.selectionMode !== M.SINGLE_SELECTION_DIALOG && this.selectionMode !== M.MULTIPLE_SELECTION_DIALOG) {
             $('#' + this.id).controlgroup();
@@ -404,8 +405,9 @@ M.SelectionListView = M.View.extend(
     themeUpdate: function() {
         if(this.selectionMode === M.SINGLE_SELECTION_DIALOG || this.selectionMode === M.MULTIPLE_SELECTION_DIALOG) {
             $('#' + this.id).selectmenu('refresh');
-            if(this.selectionMode === M.MULTIPLE_SELECTION_DIALOG && this.initialText && this.selection && this.selection.length === 0) {
+            if((this.selectionMode === M.MULTIPLE_SELECTION_DIALOG && this.initialText && this.selection && this.selection.length === 0) || (this.selectionMode === M.SINGLE_SELECTION_DIALOG && !this.selection && this.initialText)) {
                 $('#' + this.id + '_container').find('.ui-btn-text').html(this.initialText);
+                document.getElementById(this.id).selectedIndex = -1;
             } else if(this.selectionMode === M.SINGLE_SELECTION_DIALOG && !this.selection) {
                 var that = this;
                 var item = M.ViewManager.getViewById($('#' + this.id).find('option:first-child').attr('id'));
@@ -490,6 +492,7 @@ M.SelectionListView = M.View.extend(
                 selectionValues.push(this.selection[i].value);
                 $('#' + this.id + '_container').find('.ui-btn-text').html(this.formatSelectionLabel(this.selection.length));
             }
+            $('#' + this.id + '_container').find('.ui-li-count').html(this.selection ? this.selection.length : 0);
 
             /* if there is no more item selected, reset the initial text */
             if(this.selection.length === 0) {
@@ -502,7 +505,9 @@ M.SelectionListView = M.View.extend(
         }
 
         /* fix the toolbar(s) again */
-        $('#' + this.id).blur();
+        if(this.selectionMode !== M.MULTIPLE_SELECTION_DIALOG) {
+            $('#' + this.id).blur();
+        }
     },
 
     /**
@@ -615,6 +620,7 @@ M.SelectionListView = M.View.extend(
 
                     /* set the label */
                     $('#' + that.id + '_container').find('.ui-btn-text').html(that.formatSelectionLabel(that.selection.length));
+                    $('#' + that.id + '_container').find('.ui-li-count').html(that.selection ? that.selection.length : 0);
                 });
             }
         }
@@ -737,6 +743,29 @@ M.SelectionListView = M.View.extend(
                 $(this).removeAttr('disabled');
             });
         }
+    },
+
+    valueDidChange: function(){
+        var valueBinding = this.valueBinding ? this.valueBinding : (this.computedValue) ? this.computedValue.valueBinding : null;
+
+        if(!valueBinding) {
+            return;
+        }
+
+        var value = valueBinding.target;
+        var propertyChain = valueBinding.property.split('.');
+        _.each(propertyChain, function(level) {
+            if(value) {
+                value = value[level];
+            }
+        });
+
+        if(!value || value === undefined || value === null) {
+            M.Logger.log('The value assigned by valueBinding (property: \'' + valueBinding.property + '\') for ' + this.type + ' (' + (this._name ? this._name + ', ' : '') + '#' + this.id + ') is invalid!', M.WARN);
+            return;
+        }
+
+        this.setSelection(value);
     }
 
 });

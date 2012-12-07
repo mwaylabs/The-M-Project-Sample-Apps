@@ -84,7 +84,7 @@ M.AlertDialogView = M.DialogView.extend(
             var that = this;
             button = M.ButtonView.design({
                 value: this.confirmButtonValue,
-                dataTheme: 'b tmp-dialog-smallerbtn',
+                cssClass: 'b tmp-dialog-smallerbtn',
                 events: {
                     tap: {
                         target: that,

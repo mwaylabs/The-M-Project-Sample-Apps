@@ -189,3 +189,7 @@ div.myToolbar2 h1.ui-title {
     width: 48px;
     height: 48px;
 }
+
+.listFix .ui-listview{
+    margin-top: 15px;
+}

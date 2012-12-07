@@ -47,6 +47,8 @@ KitchenSink.ControlsToolbarViewPage2 = M.PageView.design({
 
             childViews: 'backButton label',
 
+            isFixed: NO,
+
             backButton: M.ButtonView.design({
 
                 anchorLocation: M.LEFT,

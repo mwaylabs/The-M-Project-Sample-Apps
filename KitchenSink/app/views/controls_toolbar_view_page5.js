@@ -49,6 +49,8 @@ KitchenSink.ControlsToolbarViewPage5 = M.PageView.design({
 
             cssClass: 'myToolbar',
 
+            isFixed: NO,
+
             image: M.ImageView.design({
 
                 anchorLocation: M.LEFT,

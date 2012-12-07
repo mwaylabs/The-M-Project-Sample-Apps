@@ -44,8 +44,8 @@ BindingSample2.ApplicationController = M.Controller.extend({
 
             /* push person 3 */
             this.persons.push({
-                firstname: 'Nicolas',
-                lastname: 'Sarkozy',
+                firstname: 'Francois',
+                lastname: 'Hollande',
                 address: {
                     street: {
                         name: 'rue du faubourg Saint-Honoré',

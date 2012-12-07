@@ -39,7 +39,7 @@ KitchenSink.DataLocalStorageTaskAppPage = M.PageView.design({
             button1: M.ButtonView.design({
                 value: 'Edit',
                 events: {
-                    tap: {
+                    vclick: {
                         target: KitchenSink.DataLocalStorageTaskAppController,
                         action: 'edit'
                     }
@@ -50,7 +50,7 @@ KitchenSink.DataLocalStorageTaskAppPage = M.PageView.design({
             button2: M.ButtonView.design({
                 value: 'Save',
                 events: {
-                    tap: {
+                    vclick: {
                         target: KitchenSink.DataLocalStorageTaskAppController,
                         action: 'edit'
                     }
@@ -77,6 +77,8 @@ KitchenSink.DataLocalStorageTaskAppPage = M.PageView.design({
     content: M.ScrollView.design({
 
         childViews: 'form taskList',
+
+        cssClass: 'listFix',
 
         form: M.FormView.design({
             childViews: 'taskField',

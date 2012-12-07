@@ -1,3 +1,9 @@
+/* iOS portrait to landscape hack*/
+    .ui-mobile body .ui-page-active {
+        position:relative;
+        overflow-x:hidden;
+    }
+
 /*Buttons in the Header are shown in the content area*/
 	.ui-header .ui-btn{
 		margin-top: 0;

@@ -202,6 +202,14 @@ M.ListView = M.View.extend(
     swipeButton: null,
 
     /**
+     * This property can be used to determine whether or not to use a list items index as its refer id.
+     *
+     * @type Boolean
+     * @private
+     */
+    useIndexAsId: NO,
+
+    /**
      * This method renders the empty list view either as an ordered or as an unordered list. It also applies
      * some styling, if the corresponding properties where set.
      *
@@ -272,6 +280,9 @@ M.ListView = M.View.extend(
      * method is based on jQuery's empty().
      */
     removeAllItems: function() {
+        $('#' + this.id).find('> li').each(function() {
+            M.ViewManager.getViewById($(this).attr('id')).destroy();
+        });
         $('#' + this.id).empty();
     },
 
@@ -369,22 +380,27 @@ M.ListView = M.View.extend(
 
             /* Create a new object for the current template view */
             var obj = templateView.design({});
-            /* If item is a model, assign the model's id to the view's modelId property */
-            if(item.type === 'M.Model') {
-                obj.modelId = item.m_id;
-            /* Otherwise, if there is an id property, save this automatically to have a reference */
-            } else if(item.id || !isNaN(item.id)) {
-                obj.modelId = item.id;
-            } else if(item[that.idName] || item[that.idName] === "") {
-                obj.modelId = item[that.idName];
-            } else { // if nothing is set, use the index of the passed array (if available)
-                if(index !== undefined && index !== null) {
-                    obj.modelId = index;
+
+            /* Determine the "modelId" value of the list item */
+            if(that.useIndexAsId && typeof(index) === 'number') {
+                obj.modelId = index;
+            } else if(item.type === 'M.Model') {
+                if(that.idName) {
+                    obj.modelId = item.get(that.idName);
+                } else {
+                    obj.modelId = item.m_id;
                 }
+            } else if(that.idName) {
+                obj.modelId = item[that.idName] || undefined;
+            } else if(item.id) {
+                obj.modelId = item.id;
+            } else if(typeof(index) === 'number') {
+                obj.modelId = index;
             }
 
             obj = that.cloneObject(obj, item);
-
+            //set the current list item value to the view value. This enables for example to get the value/contentBinding of a list item in a template view.
+            obj.value = item;
             /* If edit mode is on, render a delete button */
             if(that.inEditMode) {
                 obj.inEditMode = that.inEditMode;
@@ -656,6 +672,69 @@ M.ListView = M.View.extend(
 
         /* un-register tap/click for the page */
         $('#' + M.ViewManager.getCurrentPage().id).unbind('click tap');
+    },
+
+    /**
+     * This method can be used to determine a list item view based on its id.
+     *
+     * Note: This is not the DOM id! If no special id was set with the list item's data, the index
+     * of the item within the list is taken as reference id.
+     *
+     * @param {String, Number} modelId The id to determine the list item.
+     */
+    getListItemViewById: function(modelId) {
+        var item = _.detect(this.childViewObjects, function(item) {
+            return item.modelId === modelId;
+        });
+
+        return item;
+    },
+
+    /**
+     * This method can be used to silently update values within a single list item. Instead
+     * of removing the whole item, only the desired sub views are updated.
+     *
+     * To determine which list item to update, pass the internal id of the item as the first
+     * parameter.
+     *
+     * Note: This is not the DOM id! If no special id was set with the list item's data, the index
+     * of the item within the list is taken as reference id.
+     *
+     * As second parameter pass an array containing objects that specify which sub view to
+     * update (key) and which value to set (value), e.g.:
+     *
+     *     [
+     *         {
+     *             key: 'label1',
+     *             value: 'new value',
+     *         }
+     *     ]
+     *
+     * @param {String, Number} modelId The id to determine the list item.
+     * @param {Array} updates An array containing all updates.
+     */
+    updateListItemView: function(modelId, updates) {
+        var item = this.getListItemViewById(modelId);
+
+        if(!item) {
+            M.Logger.log('No list item found with given id \'' + modelId + '\'.', M.WARN);
+            return;
+        }
+
+        if(!(updates && typeof(updates) === 'object')) {
+            M.Logger.log('No updates specified when calling \'updateListItemView\'.', M.WARN);
+            return;
+        }
+
+        _.each(updates, function(update) {
+            var view = M.ViewManager.getView(item, update['key']);
+
+            if(view) {
+                view.setValue(update['value']);
+            } else {
+                M.Logger.log('There is no view \'' + update['key'] + '\' available within the list item.', M.WARN);
+            }
+        });
     }
 
 });
