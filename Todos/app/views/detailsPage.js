@@ -57,7 +57,7 @@ Todos.DetailsPage = M.PageView.design({
             button1: M.ButtonView.design({
                 value: M.I18N.l('edit'),
                 events: {
-                    tap: {
+                    vclick: {
                         target: Todos.DetailsController,
                         action: 'showEditItem'
                     }
@@ -68,7 +68,7 @@ Todos.DetailsPage = M.PageView.design({
             button2: M.ButtonView.design({
                 value: M.I18N.l('save'),
                 events: {
-                    tap: {
+                    vclick: {
                         target: Todos.DetailsController,
                         action: 'saveItem'
                     }
