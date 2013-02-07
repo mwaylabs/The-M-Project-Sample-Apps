@@ -79,6 +79,13 @@ KitchenSink.ControlsController = M.Controller.extend({
 
                 },
 
+                {
+
+                    name: "M.PanelView",
+                    page: "controlsPanelView"
+
+                },
+
                 /*{
 
                     name: "M.PageView",
