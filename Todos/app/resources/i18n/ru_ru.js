@@ -69,6 +69,12 @@ M.I18N.ru_ru = {
     "finnish": "Suomi",
 
     "frensh": "Français",
+
+    "bosnian": "Bosanski",
+
+    "serbian": "Srpski",
+
+    "croatian": "Hrvatski",
     
     "days": "дней",
 

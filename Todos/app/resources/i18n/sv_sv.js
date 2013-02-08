@@ -67,6 +67,12 @@ M.I18N.sv_sv = {
 
     "frensh": "Français",
 
+    "bosnian": "Bosanski",
+
+    "serbian": "Srpski",
+
+    "croatian": "Hrvatski",
+
     "days": "dagar",
 
     "contact": "kontakta",

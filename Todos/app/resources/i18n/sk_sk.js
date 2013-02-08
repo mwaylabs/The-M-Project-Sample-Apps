@@ -70,6 +70,12 @@ M.I18N.sk_sk = {
 
     "frensh": "Français",
 
+    "bosnian": "Bosanski",
+
+    "serbian": "Srpski",
+
+    "croatian": "Hrvatski",
+
     "days": "deň(dni)",
 
     "contact": "Kontakt",

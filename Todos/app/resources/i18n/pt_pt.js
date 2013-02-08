@@ -70,6 +70,12 @@ M.I18N.pt_pt = {
 
     "frensh": "Français",
 
+    "bosnian": "Bosanski",
+
+    "serbian": "Srpski",
+
+    "croatian": "Hrvatski",
+
     "days": "dia(s)",
 
     "contact": "Contato",

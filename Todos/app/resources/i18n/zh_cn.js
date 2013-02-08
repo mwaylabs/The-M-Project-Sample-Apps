@@ -70,6 +70,12 @@ M.I18N.zh_cn = {
 
     "frensh": "Français",
 
+    "bosnian": "Bosanski",
+
+    "serbian": "Srpski",
+
+    "croatian": "Hrvatski",
+
     "days": "天数",
 
     "contact": "联系人",

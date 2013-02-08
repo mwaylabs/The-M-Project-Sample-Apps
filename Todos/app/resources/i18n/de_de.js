@@ -70,6 +70,12 @@ M.I18N.de_de = {
 
     "frensh": "Français",
 
+    "bosnian": "Bosanski",
+
+    "serbian": "Srpski",
+
+    "croatian": "Hrvatski",
+
     "days": "Tag(e)",
 
     "contact": "Kontakt",

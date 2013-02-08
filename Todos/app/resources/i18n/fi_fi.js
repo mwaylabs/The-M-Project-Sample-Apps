@@ -69,6 +69,12 @@ M.I18N.fi_fi = {
 
     "frensh": "Français",
 
+    "bosnian": "Bosanski",
+
+    "serbian": "Srpski",
+
+    "croatian": "Hrvatski",
+
     "days": "päivä(t)",
 
     "contact": "yhteystieto",

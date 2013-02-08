@@ -70,6 +70,12 @@ M.I18N.ko_kr = {
 
     "frensh": "Français",
 
+    "bosnian": "Bosanski",
+
+    "serbian": "Srpski",
+
+    "croatian": "Hrvatski",
+
     "days": "일",
 
     "contact": "연락처",

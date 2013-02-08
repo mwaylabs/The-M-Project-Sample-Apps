@@ -68,6 +68,14 @@ M.I18N.zh_tw = {
     
     "finnish": "Suomi",
 
+    "frensh": "Français",
+
+    "bosnian": "Bosanski",
+
+    "serbian": "Srpski",
+
+    "croatian": "Hrvatski",
+
     "days": "天數",
 
     "contact": "聯繫人",
