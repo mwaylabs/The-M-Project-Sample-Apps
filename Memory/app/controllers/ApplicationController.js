@@ -77,7 +77,7 @@ Memory.ApplicationController = M.Controller.extend({
     },
 
     itemClicked: function(objId) {
-        if ($('#' + objId).hasClass('correct')) {
+        if ($('#' + objId).hasClass('correct') || !($('#' + objId).hasClass('tmp-dashboard-item'))) {
             return
         }
 
