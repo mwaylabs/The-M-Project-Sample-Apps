@@ -118,9 +118,9 @@ img.myImage {
     border:5px solid #FF0000;
     position:relative;
     left:50%;
-    margin-left: -100px;
-    width:200px;
-    height:75px;
+    margin-left: -99px;
+    width:197px;
+    height:35px;
 }
 
 .listPage3Subtitle {
