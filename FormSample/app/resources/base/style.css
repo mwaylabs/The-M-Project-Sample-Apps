@@ -9,3 +9,10 @@
 ul[data-role="listview"].ui-listview {
     margin-top: 15px;
 }
+
+.tmp-actionsheet-destructive-button .ui-btn-text {
+    color: #FFFFFF;
+    -webkit-text-shadow: 0px 0px 1px #111111;
+    -moz-text-shadow: 0px 0px 1px #111111;
+    text-shadow: 0px 0px 1px #111111;
+}
