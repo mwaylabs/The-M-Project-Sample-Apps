@@ -120,7 +120,7 @@ M.LabelView = M.View.extend(
         }
 
         this.html += '</div>';
-        
+
         return this.html;
     },
 

@@ -92,6 +92,13 @@ M.GridView = M.View.extend(
      * @type Object
      */
     layout: null,
+    
+    /**
+     * This property can be used to assign a css class to the view to get a custom styling.
+     *
+     * @type String
+     */
+    cssClass: '',
 
     /**
      * Renders a grid view based on the specified layout.
@@ -100,7 +107,7 @@ M.GridView = M.View.extend(
      * @returns {String} The grid view's html representation.
      */
     render: function() {
-        this.html += '<div id="' + this.id + '" ' + this.style() + '>';
+        this.html = '<div id="' + this.id + '" ' + this.style() + '>';
 
         this.renderChildViews();
 
@@ -152,7 +159,7 @@ M.GridView = M.View.extend(
      */
     style: function() {
         if(this.layout) {
-            var html = 'class="' + this.layout.cssClass + '"';
+            var html = 'class="' + this.layout.cssClass + ' ' + this.cssClass + '"';
             return html;
         }
     }

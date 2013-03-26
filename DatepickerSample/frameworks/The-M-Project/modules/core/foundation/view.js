@@ -315,7 +315,11 @@ M.View = M.Object.extend(
      * @returns {Array} The child views as an array.
      */
     getChildViewsAsArray: function() {
-        return this.childViews ? $.trim(this.childViews.replace(/\s+/g, ' ')).split(' ') : [];
+    	try{
+    	    return this.childViews ? $.trim(this.childViews.replace(/\s+/g, ' ')).split(' ') : [];
+    	} catch(e){
+    	    return [];
+    	}
     },
 
     /**
@@ -765,6 +769,33 @@ M.View = M.Object.extend(
             }
             return this.parentPage;
         }
-    }
+    },
+    
+    /*
+    * find all childviews to the given string
+    *
+    * @param {String} childName the name of the child view looking for.
+    * @param {Boolean} deepSearch look also in all childViews for the one.
+    * @return {Array} all found childViews
+    * 
+    */
+    findChildViews: function( childName, deepSearch ) {
+    	var that = this;
+        var childViews = this.getChildViewsAsArray();
+        var foundChildren = [];
+        _.each(childViews, function( child ) {
+            if( child === childName ) {
+                foundChildren.push(that[child]);
+            }
+        });
 
+        if( deepSearch ) {
+            _.each(childViews, function( child ) {
+                foundChildren.push.apply(foundChildren, that[child].findChildViews(childName, deepSearch));
+            });
+        }
+
+        return foundChildren;
+    }
+	
 });

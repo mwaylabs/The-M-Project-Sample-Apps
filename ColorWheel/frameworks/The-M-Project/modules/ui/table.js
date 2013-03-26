@@ -85,7 +85,7 @@ M.TableView = M.View.extend(
      * @returns {String} The table view's html representation.
      */
     render: function() {
-        this.html += '<div id="' + this.id + '_container"><table id="' + this.id +'"' + this.style() + '><thead></thead><tbody></tbody></table></div>';
+        this.html = '<div id="' + this.id + '_container"><table id="' + this.id +'"' + this.style() + '><thead></thead><tbody></tbody></table></div>';
 
         return this.html;
     },
@@ -193,8 +193,8 @@ M.TableView = M.View.extend(
                 _.each(content.content, function(row) {
                     zebraFlag = (zebraFlag === 0 ? 1 : 0);
                     html = '<tr class="tmp-table-tr-' + (zebraFlag === 1 ? 'a' : 'b') + '">';
-                    _.each(row, function(col) {
-                        html += '<td class="tmp-table-td">' + (col && col.toString() ? col.toString() : '') + '</td> ';
+                    _.each(row, function(col, index) {
+                        html += '<td class="tmp-table-td col_'+index+'">' + (col && col.toString() ? col.toString() : '') + '</td> ';
                     });
                     html += '</tr>';
                     that.addRow(html);

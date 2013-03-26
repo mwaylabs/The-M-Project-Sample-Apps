@@ -81,6 +81,10 @@ MovableLabel.app = M.Application.design({
                             enter: {
                                 target: MovableLabel.MovableLabelController,
                                 action: 'setTime'
+                            },
+                            blur: {
+                                target: MovableLabel.MovableLabelController,
+                                action: 'setTime'
                             }
                         }
                     }),
@@ -128,6 +132,10 @@ MovableLabel.app = M.Application.design({
                         validators: [M.PresenceValidator],
                         events: {
                             enter: {
+                                target: MovableLabel.MovableLabelController,
+                                action: 'setPxPerSec'
+                            },
+                            blur: {
                                 target: MovableLabel.MovableLabelController,
                                 action: 'setPxPerSec'
                             }
@@ -179,11 +187,15 @@ MovableLabel.app = M.Application.design({
                             enter: {
                                 target: MovableLabel.MovableLabelController,
                                 action: 'setOffset'
+                            },
+                            blur: {
+                                target: MovableLabel.MovableLabelController,
+                                action: 'setOffset'
                             }
                         }
                     }),
                     label2: M.LabelView.design({
-                        value: 'sec',
+                        value: 'px',
                         cssClass: 'rightGridLabel green'
                     })
 

@@ -203,7 +203,7 @@ M.SelectionListView = M.View.extend(
         /* initialize the initialState property as new array */
         this.initialState = [];
 
-        this.html += '<div id="' + this.id + '_container"';
+        this.html = '<div id="' + this.id + '_container"';
 
         if(this.isGrouped) {
             this.html += ' data-role="fieldcontain"';
@@ -508,6 +508,22 @@ M.SelectionListView = M.View.extend(
         if(this.selectionMode !== M.MULTIPLE_SELECTION_DIALOG) {
             $('#' + this.id).blur();
         }
+        
+        this.delegateValueUpdate();
+    },
+    
+    /**
+     * This method delegates any value changes to a controller, if the 'contentBindingReverse'
+     * property is specified.
+     */
+    delegateValueUpdate: function() {
+        /**
+         * delegate value updates to a bound controller, but only if the view currently is
+         * the master
+         */
+        if(this.contentBindingReverse) {
+            this.contentBindingReverse.target.set(this.contentBindingReverse.property, this.selection.value);
+        }
     },
 
     /**
@@ -624,7 +640,6 @@ M.SelectionListView = M.View.extend(
                 });
             }
         }
-        that.theme();
     },
 
     /**

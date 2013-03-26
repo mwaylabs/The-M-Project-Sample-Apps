@@ -227,7 +227,9 @@ M.ListView = M.View.extend(
             this.searchBar.isListViewSearchBar = YES;
             this.searchBar.listView = this;
             this.searchBar = M.SearchBarView.design(this.searchBar);
-            this.html += this.searchBar.render();
+            this.html = this.searchBar.render();
+        } else {
+            this.html = '';
         }
 
         var listTagName = this.isNumberedList ? 'ol' : 'ul';
@@ -360,7 +362,7 @@ M.ListView = M.View.extend(
     renderListItemDivider: function(name) {
         var obj = M.ListItemView.design({});
         obj.value = name;
-        obj.isDivider = YES,
+        obj.isDivider = YES;
         this.addItem(obj.render());
         obj.theme();
     },
@@ -465,7 +467,7 @@ M.ListView = M.View.extend(
 
             /* This regex looks for a variable inside the template view (<%= ... %>) ... */
             var pattern = obj[childViewsArray[i]].computedValue ? obj[childViewsArray[i]].computedValue.valuePattern : obj[childViewsArray[i]].valuePattern;
-            var regexResult = /<%=\s+([.|_|-|$|§|@|a-zA-Z0-9]+)\s*%>/.exec(pattern);
+            var regexResult = /<%=\s+([.|_|-|$|§|@|a-zA-Z0-9\s]+)\s+%>/.exec(pattern);
 
             /* ... if a match was found, the variable is replaced by the corresponding value inside the record */
             if(regexResult) {
@@ -480,7 +482,7 @@ M.ListView = M.View.extend(
                                 regexResult = null;
                             } else {
                                 pattern = pattern.replace(regexResult[0], record[regexResult[1]]);
-                                regexResult = /<%=\s+([.|_|-|$|§|@|a-zA-Z0-9]+)\s*%>/.exec(pattern);
+                                regexResult = /<%=\s+([.|_|-|$|§|@|a-zA-Z0-9\s]+)\s+%>/.exec(pattern);
                             }
                         }
                         obj[childViewsArray[i]].value = pattern;
@@ -489,6 +491,12 @@ M.ListView = M.View.extend(
             }
         }
         obj.item = item;
+
+        _.each(Object.keys(item), function(key){
+            if(!obj.hasOwnProperty(key)){
+                obj[key] = item[key];
+            }
+        });
         
         return obj;
     },
@@ -499,6 +507,7 @@ M.ListView = M.View.extend(
      * @private
      */
     theme: function() {
+        $('#' + this.id).listview();
         if(this.searchBar) {
             /* JQM-hack: remove multiple search bars */
             if($('#' + this.id) && $('#' + this.id).parent()) {

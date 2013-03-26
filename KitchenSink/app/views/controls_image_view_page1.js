@@ -45,7 +45,7 @@ KitchenSink.ControlsImageViewPage1 = M.PageView.design({
 
         image: M.ImageView.design({
 
-            value: 'theme/images/mway_logo_sm.png'
+            value: 'theme/images/tmp_logo_sm.png'
 
         }),
 
@@ -58,7 +58,7 @@ KitchenSink.ControlsImageViewPage1 = M.PageView.design({
 
         markup: M.LabelView.design({
 
-            value: 'M.ImageView.design({\n\n\tvalue: \'theme/images/mway_logo_sm.png\'\n\n})',
+            value: 'M.ImageView.design({\n\n\tvalue: \'theme/images/tmp_logo_sm.png\'\n\n})',
 
             cssClass: 'source'
 
