@@ -5,14 +5,13 @@ kitchensink.Controllers = kitchensink.Controllers || {};
 (function() {
     'use strict';
 
-    kitchensink.Controllers.ButtonsController = kitchensink.Controllers.AbstractController.extend({
+    kitchensink.Controllers.ModalsController = kitchensink.Controllers.AbstractController.extend({
 
-        pageHeadline: 'Buttons',
+        pageHeadline: 'Modals',
 
         _initViews: function() {
-
             if( !this.contentView ) {
-                this.contentView = kitchensink.Views.ButtonsView.create(this, null, true);
+                this.contentView = kitchensink.Views.ModalsView.create(this, null, true);
             }
             if( !this.headerView ) {
                 this.headerView = kitchensink.Views.BackheaderView.create(this, null, true);
@@ -23,11 +22,10 @@ kitchensink.Controllers = kitchensink.Controllers || {};
 
         registerToMenu: function( menuController ) {
             menuController.registerMenuItem({
-                _value_: 'M.ButtonView',
-                goto: 'buttons'
+                _value_: 'M.ModalView',
+                goto: 'modals'
             });
         }
-
     });
 
 })();
