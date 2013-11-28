@@ -18,7 +18,6 @@ kitchensink.Controllers = kitchensink.Controllers || {};
 
              //Init the collection
             this._initMenu();
-
             //create the menu
             if( !this.contentView ) {
                 this.contentView = kitchensink.Views.MenuView.create(this, null, true);

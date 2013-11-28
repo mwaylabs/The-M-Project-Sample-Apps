@@ -21,6 +21,13 @@ kitchensink.Views = kitchensink.Views || {};
                     }
                 })
 
+            }),
+
+            info: M.TextView.extend({
+                value: 'Shake to toggle the DebugView',
+                grid: 'col-xs-12',
+                cssClass: 'stencil',
+                icon: 'fa-bug'
             })
         })
     });

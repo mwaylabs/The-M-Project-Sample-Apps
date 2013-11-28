@@ -9,3 +9,15 @@
 .kitchen-buttons .buttonview {
     margin-bottom: 15px;
 }
+
+.stencil div{
+    font-size: 25px;
+    line-height: 30px;
+}
+
+.stencil i{
+    font-size: 100px;
+    display: block;
+    text-align: center;
+    width: 100%;
+}
