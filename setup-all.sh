@@ -21,10 +21,14 @@ then
 	for dir in *; do
 		test -d "$dir" || continue
 	    cd $dir
-	    echo "Run setup for" $dir
+	    echo "Run setup for: "$dir
 	    bower install
 	    npm install
 	    cd -
 	done
 fi
+
+echo "------------------------------------------------------\n"
+echo "To run an example, simply switch to the directory an run: grunt server"
+
 
