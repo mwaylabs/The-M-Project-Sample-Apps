@@ -6,21 +6,22 @@ kitchensink.Views = kitchensink.Views || {};
     'use strict';
 
     kitchensink.Views.ButtonsView = M.View.extend({
+        cssClass: 'kitchen-buttons',
         grid: 'col-xs-12'
     }, {
 
         singleButtons: M.View.extend({
             value: 'Buttons',
-            grid: 'row'
+            grid: 'row ktichen-row'
         }, {
 
             grid6Button: M.ButtonView.extend({
-                grid: 'col-xs-6',
+                grid: 'col-xs-12 col-sm-6 col-md-4',
                 value: 'Grid Button 6'
             }),
 
             eventButton: M.ButtonView.extend({
-                grid: 'col-xs-6',
+                grid: 'col-xs-12 col-sm-6 col-md-4',
                 value: M.Model.create({
                     _value_: 1
                 }),
@@ -34,7 +35,7 @@ kitchensink.Views = kitchensink.Views || {};
             }),
 
             deactiveButton: M.ButtonView.extend({
-                grid: 'col-xs-12',
+                grid: 'col-xs-12 col-sm-6 col-md-4',
                 value: M.Model.create({
                     _value_: 1
                 }),
@@ -68,46 +69,46 @@ kitchensink.Views = kitchensink.Views || {};
 
         colorfulButtons: M.View.extend({
             value: 'Colorful Buttons',
-            grid: 'row'
+            grid: 'row ktichen-row'
         }, {
 
             defaultButton: M.ButtonView.extend({
-                grid: 'col-xs-6',
+                grid: 'col-xs-12 col-sm-6 col-md-4',
                 value: 'Default Color'
             }),
 
             purpleButton: M.ButtonView.extend({
-                grid: 'col-xs-6',
+                grid: 'col-xs-12 col-sm-6 col-md-4',
                 cssClass: 'm-primary',
                 value: 'm-primary'
             }),
 
             greenButton: M.ButtonView.extend({
-                grid: 'col-xs-6',
+                grid: 'col-xs-12 col-sm-6 col-md-4',
                 cssClass: 'm-success',
                 value: 'm-success'
             }),
 
             redButton: M.ButtonView.extend({
-                grid: 'col-xs-6',
+                grid: 'col-xs-12 col-sm-6 col-md-4',
                 cssClass: 'm-error',
                 value: 'm-error'
             }),
 
             orangeButton: M.ButtonView.extend({
-                grid: 'col-xs-6',
+                grid: 'col-xs-12 col-sm-6 col-md-4',
                 cssClass: 'm-warning',
                 value: 'm-warning'
             }),
 
             yellowButton: M.ButtonView.extend({
-                grid: 'col-xs-6',
+                grid: 'col-xs-12 col-sm-6 col-md-4',
                 cssClass: 'm-info',
                 value: 'm-info'
             }),
 
             greyButton: M.ButtonView.extend({
-                grid: 'col-xs-6',
+                grid: 'col-xs-12 col-sm-6 col-md-4',
                 cssClass: 'm-fuzzy',
                 value: 'm-fuzzy'
             })
@@ -116,53 +117,53 @@ kitchensink.Views = kitchensink.Views || {};
 
         colorfulDisabledButtons: M.View.extend({
             value: 'Colorful Buttons deactivated',
-            grid: 'row'
+            grid: 'row ktichen-row'
         }, {
 
             defaultButton: M.ButtonView.extend({
-                grid: 'col-xs-6',
+                grid: 'col-xs-12 col-sm-6 col-md-4',
                 enabled: NO,
                 value: 'Default Color'
             }),
 
             purpleButton: M.ButtonView.extend({
                 enabled: NO,
-                grid: 'col-xs-6',
+                grid: 'col-xs-12 col-sm-6 col-md-4',
                 cssClass: 'm-primary',
                 value: 'm-primary'
             }),
 
             greenButton: M.ButtonView.extend({
                 enabled: NO,
-                grid: 'col-xs-6',
+                grid: 'col-xs-12 col-sm-6 col-md-4',
                 cssClass: 'm-success',
                 value: 'm-success'
             }),
 
             redButton: M.ButtonView.extend({
                 enabled: NO,
-                grid: 'col-xs-6',
+                grid: 'col-xs-12 col-sm-6 col-md-4',
                 cssClass: 'm-error',
                 value: 'm-error'
             }),
 
             orangeButton: M.ButtonView.extend({
                 enabled: NO,
-                grid: 'col-xs-6',
+                grid: 'col-xs-12 col-sm-6 col-md-4',
                 cssClass: 'm-warning',
                 value: 'm-warning'
             }),
 
             yellowButton: M.ButtonView.extend({
                 enabled: NO,
-                grid: 'col-xs-6',
+                grid: 'col-xs-12 col-sm-6 col-md-4',
                 cssClass: 'm-info',
                 value: 'm-info'
             }),
 
             greyButton: M.ButtonView.extend({
                 enabled: NO,
-                grid: 'col-xs-6',
+                grid: 'col-xs-12 col-sm-6 col-md-4',
                 cssClass: 'm-fuzzy',
                 value: 'm-fuzzy'
             })
@@ -171,7 +172,7 @@ kitchensink.Views = kitchensink.Views || {};
 
         buttonGroup: M.View.extend({
             value: 'ButtonGroup',
-            grid: 'row'
+            grid: 'row ktichen-row'
         }, {
             buttongroupExample: M.ButtonGroupView.extend({
 
