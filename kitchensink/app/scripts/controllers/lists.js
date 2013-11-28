@@ -7,6 +7,8 @@ kitchensink.Controllers = kitchensink.Controllers || {};
 
     kitchensink.Controllers.ListsController = kitchensink.Controllers.AbstractController.extend({
 
+        pageHeadline: 'Lists',
+
         _initViews: function() {
             if( !this.contentView ) {
                 this.contentView = kitchensink.Views.ListsView.create(this, null, true);

@@ -7,6 +7,8 @@ kitchensink.Controllers = kitchensink.Controllers || {};
 
     kitchensink.Controllers.FormsController = kitchensink.Controllers.AbstractController.extend({
 
+        pageHeadline: 'Form',
+
         person: M.Model.create({
             name: 'egon',
             birthday: '1383751054966',

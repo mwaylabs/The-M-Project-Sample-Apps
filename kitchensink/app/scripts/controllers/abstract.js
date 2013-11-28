@@ -9,6 +9,7 @@ kitchensink.Controllers = kitchensink.Controllers || {};
 
         headerView: null,
         contentView: null,
+        pageHeadline: '',
 
         /**
          * The application start (after reload)
