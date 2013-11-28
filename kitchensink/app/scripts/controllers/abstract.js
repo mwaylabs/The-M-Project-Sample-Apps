@@ -22,10 +22,16 @@ kitchensink.Controllers = kitchensink.Controllers || {};
 
         show: function( settings ) {
             this._initViews();
-            kitchensink.getLayout().startTransition();
+            var _layout = M.SwitchHeaderContentLayout.design(this, null, true);
+            if( _layout._type === kitchensink.getLayout()._type ) {
+                kitchensink.getLayout().startTransition();
+            } else {
+                kitchensink.setLayout(_layout);
+                this._initViews();
+            }
         },
 
-        applicationReady: function(){
+        applicationReady: function() {
             this.registerToMenu(kitchensink.router.menuController);
         },
 
@@ -40,7 +46,7 @@ kitchensink.Controllers = kitchensink.Controllers || {};
             // OVERRIDE ME PLEASE
         },
 
-        registerToMenu: function(){
+        registerToMenu: function() {
             // OVERRIDE ME PLEASE
         }
     });

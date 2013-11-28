@@ -1,7 +1,7 @@
 /*global $, M*/
 
 
-(function(global) {
+(function( global ) {
     'use strict';
 
     global.kitchensink = M.Application.extend().create(global.kitchensink.mconfig);
@@ -16,14 +16,16 @@
                     'buttons': 'buttonsController',
                     'modals': 'modalsController',
                     'lists': 'listsController',
-                    'texts': 'textsController'
+                    'texts': 'textsController',
+                    'tabbar(/:tab)': 'tabbarController'
                 },
                 menuController: global.kitchensink.Controllers.MenuController.create(),
                 formsController: global.kitchensink.Controllers.FormsController.create(),
                 buttonsController: global.kitchensink.Controllers.ButtonsController.create(),
                 listsController: global.kitchensink.Controllers.ListsController.create(),
                 modalsController: global.kitchensink.Controllers.ModalsController.create(),
-                textsController: global.kitchensink.Controllers.TextsController.create()
+                textsController: global.kitchensink.Controllers.TextsController.create(),
+                tabbarController: global.kitchensink.Controllers.TabbarController.create()
 
             }
         });
