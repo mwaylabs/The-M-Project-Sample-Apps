@@ -74,7 +74,7 @@ kitchensink.Views = kitchensink.Views || {};
                     ]),
 
                     listItemView: M.ListItemView.extend({
-                        type: M.ListItemView.CONS.LINKED
+                        type: M.ListItemView.CONST.LINKED
                     })
 
                 })
@@ -98,7 +98,7 @@ kitchensink.Views = kitchensink.Views || {};
                     ]),
 
                     listItemView: M.ListItemView.extend({
-                        type: M.ListItemView.CONS.LINKED,
+                        type: M.ListItemView.CONST.LINKED,
                         icon: 'fa-html5'
                     })
 
@@ -121,7 +121,7 @@ kitchensink.Views = kitchensink.Views || {};
                     ]),
 
                     listItemView: M.ListItemView.extend({
-                        type: M.ListItemView.CONS.ICON,
+                        type: M.ListItemView.CONST.ICON,
                         getIcon: function() {
                             return 'fa-' + this.model.get('_value_').toLocaleLowerCase();
                         }

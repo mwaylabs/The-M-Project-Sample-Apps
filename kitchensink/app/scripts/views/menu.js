@@ -16,6 +16,9 @@ kitchensink.Views = kitchensink.Views || {};
                 scopeKey: 'tmpViews',
 
                 listItemView: M.ListItemView.extend({
+
+                    type: M.ListItemView.CONST.LINKED,
+
                     events: {
                         tap: 'gotoPage'
                     }

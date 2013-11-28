@@ -18,7 +18,7 @@ kitchensink.Views = kitchensink.Views || {};
                 value: 'Show raw Toast',
                 events: {
                     tap: function() {
-                        M.Toast.show({text: 'Displayed ' + M.Toast.RAW + ' ms', timeout: M.Toast.RAW});
+                        M.Toast.show({text: 'Displayed ' + M.Toast.CONST.RAW + ' ms', timeout: M.Toast.CONST.RAW});
                     }
                 }
             }),
@@ -28,7 +28,7 @@ kitchensink.Views = kitchensink.Views || {};
                 value: 'Show medium Toast',
                 events: {
                     tap: function() {
-                        M.Toast.show('Displayed ' + M.Toast.MEDIUM + ' ms')
+                        M.Toast.show('Displayed ' + M.Toast.CONST.MEDIUM + ' ms')
                     }
                 }
             }),
@@ -38,7 +38,7 @@ kitchensink.Views = kitchensink.Views || {};
                 value: 'Show crispy Toast',
                 events: {
                     tap: function() {
-                        M.Toast.show({text: 'Displayed ' + M.Toast.CRISPY + ' ms', timeout: M.Toast.CRISPY});
+                        M.Toast.show({text: 'Displayed ' + M.Toast.CONST.CRISPY + ' ms', timeout: M.Toast.CONST.CRISPY});
                     }
                 }
             })
