@@ -24,6 +24,10 @@ kitchensink.Controllers = kitchensink.Controllers || {};
             kitchensink.getLayout().startTransition();
         },
 
+        applicationReady: function(){
+            this.registerToMenu(kitchensink.router.menuController);
+        },
+
         _applyViews: function() {
             kitchensink.getLayout().applyViews({
                 header: this.headerView,
@@ -32,6 +36,10 @@ kitchensink.Controllers = kitchensink.Controllers || {};
         },
 
         _initViews: function() {
+            // OVERRIDE ME PLEASE
+        },
+
+        registerToMenu: function(){
             // OVERRIDE ME PLEASE
         }
     });

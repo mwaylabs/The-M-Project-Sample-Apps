@@ -1,0 +1,7 @@
+.custom-list .col-xs-2{
+    height: 44px;
+    width: 44px;
+    display: block;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
