@@ -53,7 +53,7 @@ kitchensink.Views = kitchensink.Views || {};
                 value: 'Toogle enable state for the button above',
                 events: {
                     tap: function( event, element ) {
-                        var buttonAbove = element.scope.content.childViews.singleButtons.childViews.deactiveButton;
+                        var buttonAbove = element.scope.contentView.childViews.singleButtons.childViews.deactiveButton;
                         if( buttonAbove.isEnabled() ) {
                             buttonAbove.disable();
                         } else {
