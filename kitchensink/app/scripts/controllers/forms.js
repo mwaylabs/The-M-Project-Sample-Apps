@@ -5,7 +5,7 @@ kitchensink.Controllers = kitchensink.Controllers || {};
 (function() {
     'use strict';
 
-    kitchensink.Controllers.FormsController = M.Controller.extend({
+    kitchensink.Controllers.FormsController = kitchensink.Controllers.AbstractController.extend({
 
         person: M.Model.create({
             name: 'egon',
@@ -22,39 +22,16 @@ kitchensink.Controllers = kitchensink.Controllers || {};
 
         multipleSelectionListModel: M.Model.create({water: ['evian']}),
 
-        content: null,
-
-        /**
-         * The application start (after reload)
-         */
-        applicationStart: function() {
-            var _layout = M.SwitchHeaderContentLayout.design(this, null, true);
-            kitchensink.setLayout(_layout);
-            this._initViews();
-        },
-
-        show: function( settings ) {
-            this._initViews();
-            kitchensink.getLayout().startTransition();
-        },
-
         _initViews: function() {
-            if( !this.content ) {
-                this.content = kitchensink.Views.FormsView.create(this, null, true);
+            if( !this.contentView ) {
+                this.contentView = kitchensink.Views.FormsView.create(this, null, true);
             }
-            if( !this.header ) {
-                this.header = kitchensink.Views.BackheaderView.create(this, null, true);
+            if( !this.headerView ) {
+                this.headerView = kitchensink.Views.BackheaderView.create(this, null, true);
             }
 
             this._applyViews();
         },
-
-        _applyViews: function() {
-            kitchensink.getLayout().applyViews({
-                header: this.header,
-                content: this.content
-            });
-        }
     });
 
 })();

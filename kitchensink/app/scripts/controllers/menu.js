@@ -17,44 +17,31 @@ kitchensink.Controllers = kitchensink.Controllers || {};
         }
     ];
 
-    kitchensink.Controllers.MenuController = M.Controller.extend({
+    kitchensink.Controllers.MenuController = kitchensink.Controllers.AbstractController.extend({
 
         tmpViews: null,
 
-        applicationStart: function () {
-            this._init();
+        _initViews: function(){
 
-            kitchensink.setLayout(M.SwitchHeaderContentLayout.design(this, null, true));
-
-            //fill the layout with a view and render it
-            kitchensink.getLayout().applyViews({
-                header: this.header,
-                content: this.menu
-            });
-        },
-
-        show: function () {
-            this._init();
-            kitchensink.getLayout().applyViews({
-                header: this.header,
-                content: this.menu
-            });
-            kitchensink.getLayout().startTransition();
-        },
-
-        _init: function(){
-
-            //Init the collection
-            this.tmpViews = this.tmpViews || kitchensink.Collections.TmpviewsCollection.create(views);
+             //Init the collection
+            if( !this.tmpViews ) {
+                this.tmpViews = kitchensink.Collections.TmpviewsCollection.create(views);
+            }
 
             //create the menu
-            this.menu = this.menu || kitchensink.Views.MenuView.create(this, null, true);
+            if( !this.contentView ) {
+                this.contentView = kitchensink.Views.MenuView.create(this, null, true);
+            }
 
-            this.header = this.header || M.View.extend({
-                tagName: 'h2',
-                grid: 'col-md-12',
-                value: M.I18N.get('global.appName', {aka: 'Absinth'})
-            }).create()
+            if( !this.headerView ) {
+                this.headerView = M.View.extend({
+                    tagName: 'h2',
+                    grid: 'col-md-12',
+                    value: M.I18N.get('global.appName', {aka: 'Absinth'})
+                }).create()
+            }
+
+            this._applyViews();
         },
 
         gotoPage: function( event, element ) {
