@@ -5,28 +5,19 @@ kitchensink.Controllers = kitchensink.Controllers || {};
 (function() {
     'use strict';
 
-    var views = [
-        {
-            _value_: 'M.ButtonView',
-            goto:'buttons'
-
-        },
-        {
-            _value_: 'Form Views',
-            goto:'forms'
-        }
-    ];
-
     kitchensink.Controllers.MenuController = kitchensink.Controllers.AbstractController.extend({
 
         tmpViews: null,
 
+        registerMenuItem: function( menuEntry ){
+            this._initMenu();
+            this.tmpViews.add(menuEntry)
+        },
+
         _initViews: function(){
 
              //Init the collection
-            if( !this.tmpViews ) {
-                this.tmpViews = kitchensink.Collections.TmpviewsCollection.create(views);
-            }
+            this._initMenu();
 
             //create the menu
             if( !this.contentView ) {
@@ -44,21 +35,18 @@ kitchensink.Controllers = kitchensink.Controllers || {};
             this._applyViews();
         },
 
+        _initMenu: function(){
+            if( !this.tmpViews ) {
+                this.tmpViews = kitchensink.Collections.TmpviewsCollection.create([]);
+            }
+        },
+
         gotoPage: function( event, element ) {
 
             var goto = element.model.get('goto');
-            var route = '';
-            switch(goto){
-                case 'forms':
-                    route = 'forms'
-                    break;
-                case 'buttons':
-                    route = 'buttons'
-                    break;
-            };
 
             kitchensink.navigate({
-                route: route
+                route: goto
             });
 
         }

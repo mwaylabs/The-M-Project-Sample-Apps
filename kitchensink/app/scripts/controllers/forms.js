@@ -32,6 +32,13 @@ kitchensink.Controllers = kitchensink.Controllers || {};
 
             this._applyViews();
         },
+
+        registerToMenu: function( menuController ){
+            menuController.registerMenuItem({
+                _value_: 'Form Views',
+                goto:'forms'
+            });
+        }
     });
 
 })();
