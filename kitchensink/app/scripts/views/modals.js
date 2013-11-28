@@ -18,7 +18,7 @@ kitchensink.Views = kitchensink.Views || {};
                 value: 'Show raw Toast',
                 events: {
                     tap: function() {
-                        M.Toast.show('Displayed ' + M.Toast.RAW + ' ms')
+                        M.Toast.show({text: 'Displayed ' + M.Toast.RAW + ' ms', timeout: M.Toast.RAW});
                     }
                 }
             }),
@@ -38,7 +38,7 @@ kitchensink.Views = kitchensink.Views || {};
                 value: 'Show crispy Toast',
                 events: {
                     tap: function() {
-                        M.Toast.show('Displayed ' + M.Toast.CRISPY + ' ms')
+                        M.Toast.show({text: 'Displayed ' + M.Toast.CRISPY + ' ms', timeout: M.Toast.CRISPY});
                     }
                 }
             })
