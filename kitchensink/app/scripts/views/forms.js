@@ -5,21 +5,12 @@ kitchensink.Views = kitchensink.Views || {};
 (function() {
     'use strict';
 
-    kitchensink.Views.FormsView = M.View.extend({},{
-
-        content: M.View.extend({
-            grid: 'row'
-
-        }, {
-            headline: M.View.extend({
-                tagName: 'h2',
-                grid: 'col-xs-12',
-                value: M.I18N.get('global.forms')
-            }),
+    kitchensink.Views.FormsView = M.View.extend({
+        grid: 'col-xs-12'
+    },{
 
             textfieldViews: M.View.extend({
-                tagName: 'h3',
-                grid: 'col-xs-12',
+                grid: 'row',
                 value: 'M.TextfielView'
             }, {
 
@@ -122,8 +113,8 @@ kitchensink.Views = kitchensink.Views || {};
             }),
 
             radiolistView: M.View.extend({
-                tagName: 'h3',
-                grid: 'col-xs-12',
+                
+                grid: 'row',
                 value: 'M.RadiolistView'
             }, {
 
@@ -158,8 +149,8 @@ kitchensink.Views = kitchensink.Views || {};
             }),
 
             checkboxlistView: M.View.extend({
-                tagName: 'h3',
-                grid: 'col-xs-12',
+                
+                grid: 'row',
                 value: 'M.CheckboxlistView'
             }, {
                 rb1: M.CheckboxlistView.extend({
@@ -192,8 +183,8 @@ kitchensink.Views = kitchensink.Views || {};
             }),
 
             selectView: M.View.extend({
-                tagName: 'h3',
-                grid: 'col-xs-12',
+                
+                grid: 'row',
                 value: 'M.SelectView'
             }, {
                 selectionlistExample: M.SelectView.extend({
@@ -213,8 +204,8 @@ kitchensink.Views = kitchensink.Views || {};
 
 
             multipleSelectView: M.View.extend({
-                tagName: 'h3',
-                grid: 'col-xs-12',
+                
+                grid: 'row',
                 value: 'M.SelectView isMultiple:YES'
             }, {
                 mulitpleSelectionListViewExample: M.SelectView.extend({
@@ -235,8 +226,8 @@ kitchensink.Views = kitchensink.Views || {};
 
             }),
             toggleSwitchView: M.View.extend({
-                tagName: 'h3',
-                grid: 'col-xs-12',
+                
+                grid: 'row',
                 value: 'M.ToggleSwitchView'
             }, {
                 toggleSwitch: M.ToggleSwitchView.extend({
@@ -256,7 +247,6 @@ kitchensink.Views = kitchensink.Views || {};
             })
 
 
-        })
     });
 
 })();

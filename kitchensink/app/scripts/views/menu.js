@@ -9,7 +9,7 @@ kitchensink.Views = kitchensink.Views || {};
         content: M.View.extend({
             grid: 'row'
         }, {
-            listExample: M.ListView.extend({
+            menu: M.ListView.extend({
 
                 grid: 'col-xs-12',
 
