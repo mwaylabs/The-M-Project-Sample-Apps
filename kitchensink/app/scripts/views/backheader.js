@@ -14,11 +14,13 @@ kitchensink.Views = kitchensink.Views || {};
             value: 'back',
             events: {
                 tap: function(){
-                    history.back();
+                    kitchensink.navigate({
+                        route: '/',
+                        transition: M.PageTransitions.CONST.MOVE_TO_RIGHT_FROM_LEFT
+                    });
                 }
             }
         })
 
     });
-
 })();
