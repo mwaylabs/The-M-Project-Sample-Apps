@@ -17,7 +17,8 @@
                     'modals': 'modalsController',
                     'lists': 'listsController',
                     'texts': 'textsController',
-                    'tabbar(/:tab)': 'tabbarController'
+                    'tabbar(/:tab)': 'tabbarController',
+                    'transitions(/:name)': 'transitionsController'
                 },
                 menuController: global.kitchensink.Controllers.MenuController.create(),
                 formsController: global.kitchensink.Controllers.FormsController.create(),
@@ -25,7 +26,8 @@
                 listsController: global.kitchensink.Controllers.ListsController.create(),
                 modalsController: global.kitchensink.Controllers.ModalsController.create(),
                 textsController: global.kitchensink.Controllers.TextsController.create(),
-                tabbarController: global.kitchensink.Controllers.TabbarController.create()
+                tabbarController: global.kitchensink.Controllers.TabbarController.create(),
+                transitionsController: global.kitchensink.Controllers.TransitionsController.create()
 
             }
         });
