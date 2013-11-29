@@ -212,13 +212,21 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     dot: true,
+                    cwd: '/bower_components/font-awesome/',
+                    dest: '',
+                    src: [
+                        'fonts/{,*/}*.*'
+                    ]
+                },{
+                    expand: true,
+                    dot: true,
                     cwd: '<%= yeoman.app %>',
                     dest: '<%= yeoman.dist %>',
                     src: [
                         '*.html',
                         'icons/*.png',
                         'images/{,*/}*.{webp,gif}',
-                        'styles/fonts/{,*/}*.*',
+                        'fonts/{,*/}*.*',
                         'i18n/*.json'
                     ]
                 }]
@@ -243,7 +251,7 @@ module.exports = function (grunt) {
                         // TODO support rev for i18n and images
                         '<%= yeoman.dist %>/scripts/{,*/}*.js',
                         '<%= yeoman.dist %>/styles/{,*/}*.css',
-                        '<%= yeoman.dist %>/styles/fonts/{,*/}*.*'
+                        '<%= yeoman.dist %>/fonts/{,*/}*.*'
                     ]
                 }
             }
@@ -299,7 +307,7 @@ module.exports = function (grunt) {
         ];
 
         if(reloadType === 'livereload') {
-            tasks.push('watch');
+            tasks.push('watch:livereload');
         }
 
         if( defaultOption('openBrowser', cfg.server.openBrowser) ) {

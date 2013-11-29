@@ -6,24 +6,15 @@ kitchensink.Views = kitchensink.Views || {};
     'use strict';
 
     kitchensink.Views.MenuView = M.View.extend({}, {
-        content: M.View.extend({
-            grid: 'row'
-        }, {
+        content: M.View.extend({}, {
             menu: M.ListView.extend({
-
-                grid: 'col-xs-12',
-
                 scopeKey: 'tmpViews',
-
                 listItemView: M.ListItemView.extend({
-
                     type: M.ListItemView.CONST.LINKED,
-
                     events: {
                         tap: 'gotoPage'
                     }
                 })
-
             }),
 
             info: M.TextView.extend({
