@@ -15,23 +15,24 @@ kitchensink.Controllers = kitchensink.Controllers || {};
          * The application start (after reload)
          */
         applicationStart: function() {
-            var _layout = M.SwitchHeaderContentLayout.design(this, null, true);
+            var _layout = M.SwitchHeaderContentLayout.extend().create(this, null, true);
             kitchensink.setLayout(_layout);
             this._initViews();
         },
 
         show: function( settings ) {
             this._initViews();
-            var _layout = M.SwitchHeaderContentLayout.design(this, null, true);
-            if( _layout._type === kitchensink.getLayout()._type ) {
+            var _layout = M.SwitchHeaderContentLayout.extend().create(this, null, true);
+            if(_layout._type === kitchensink.getLayout()._type){
                 kitchensink.getLayout().startTransition();
             } else {
-                kitchensink.setLayout(_layout);
-                this._initViews();
+                this.applicationStart();
             }
+
+
         },
 
-        applicationReady: function() {
+        applicationReady: function(){
             this.registerToMenu(kitchensink.router.menuController);
         },
 
@@ -46,7 +47,7 @@ kitchensink.Controllers = kitchensink.Controllers || {};
             // OVERRIDE ME PLEASE
         },
 
-        registerToMenu: function() {
+        registerToMenu: function(){
             // OVERRIDE ME PLEASE
         }
     });

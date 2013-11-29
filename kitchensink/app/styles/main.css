@@ -10,14 +10,53 @@
     margin-bottom: 15px;
 }
 
-.stencil div{
+.stencil div {
     font-size: 25px;
     line-height: 30px;
 }
 
-.stencil i{
+.stencil i {
     font-size: 100px;
     display: block;
     text-align: center;
     width: 100%;
+}
+
+.m-tab .textview.stencil {
+    background: none;
+}
+
+
+.m-tab .stencil{
+    background: none;
+}
+
+.m-tab .textview.stencil .input-icon-addon,
+.m-tab .textview.stencil i {
+    text-shadow: rgba(182, 183, 185, 0.5) 0px 3px 3px;
+    background-color: #000000;
+}
+
+.m-tab:nth-child(1) {
+    background: #1092d3;
+}
+
+.m-tab:nth-child(2) {
+    background: #6c64ff;
+}
+
+.m-tab:nth-child(3) {
+    background: #2dcca2;
+}
+
+.m-tab:nth-child(4) {
+    background: #ed253d;
+}
+
+.m-tab:nth-child(5) {
+    background: #f45b42;
+}
+
+.m-tab:nth-child(6) {
+    background: #eab13a;
 }

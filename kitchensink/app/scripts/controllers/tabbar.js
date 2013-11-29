@@ -7,40 +7,34 @@ kitchensink.Controllers = kitchensink.Controllers || {};
 
     kitchensink.Controllers.TabbarController = kitchensink.Controllers.AbstractController.extend({
 
-        registerToMenu: function( menuController ) {
-            menuController.registerMenuItem({
-                _value_: 'Tabbar Layout',
-                goto: 'tabbar/0'
-            });
-        },
+        scrolling: NO,
 
-        initialized: null,
+        changeScrollingType: function( scroll ){
+            this.scrolling = scroll;
+            this.tabLayout = null;
+        },
 
         /**
          * The application start (after reload)
          */
         applicationStart: function( settings ) {
-            this.init();
             if(settings.tab){
                 this.setLayout(settings.tab);
             }
         },
 
-        init: function() {
-            if( this.initialized === null ) {
-                this.initialized = YES
-            }
-        },
-
         show: function( settings ) {
-
+            if(this.tabLayout){
+                this.tabLayout.switchToTab(settings.tab);
+            } else {
                 this.applicationStart(settings);
+            }
 
         },
 
         setLayout: function( index ) {
             this.tabLayout = M.TabLayout.extend({
-                scrolling: YES,
+                scrolling: this.scrolling,
                 switchToTabCallback: function( index ) {
                     kitchensink.navigate({
                         route: 'tabbar/' + index
@@ -54,12 +48,13 @@ kitchensink.Controllers = kitchensink.Controllers || {};
             if(!index || index === null || index == 'null'){
                 index = 0;
             }
-            this.tabLayout.switchToTab(index);
+
             kitchensink.setLayout(this.tabLayout);
             kitchensink.navigate({
                 route: 'tabbar/' + index
             });
 
+            this.tabLayout.switchToTab(index);
         }
     });
 
