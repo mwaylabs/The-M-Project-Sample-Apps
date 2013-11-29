@@ -1,4 +1,4 @@
-/*global kitchensink, M*/
+/*global kitchensink*/
 
 kitchensink.Controllers = kitchensink.Controllers || {};
 
@@ -20,7 +20,7 @@ kitchensink.Controllers = kitchensink.Controllers || {};
             this._initViews();
         },
 
-        show: function( settings ) {
+        show: function() {
             this._initViews();
             var _layout = M.SwitchHeaderContentLayout.extend().create(this, null, true);
             if(_layout._type === kitchensink.getLayout()._type){

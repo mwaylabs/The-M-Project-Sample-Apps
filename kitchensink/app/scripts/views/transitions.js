@@ -1,4 +1,4 @@
-/*global kitchensink, M*/
+/*global kitchensink, M, _*/
 
 kitchensink.Views = kitchensink.Views || {};
 

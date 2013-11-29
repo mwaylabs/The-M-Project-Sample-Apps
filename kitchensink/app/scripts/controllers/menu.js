@@ -1,4 +1,4 @@
-/*global kitchensink, M*/
+/*global kitchensink*/
 
 kitchensink.Controllers = kitchensink.Controllers || {};
 
@@ -11,7 +11,7 @@ kitchensink.Controllers = kitchensink.Controllers || {};
 
         registerMenuItem: function( menuEntry ){
             this._initMenu();
-            this.tmpViews.add(menuEntry)
+            this.tmpViews.add(menuEntry);
         },
 
         _initViews: function(){
@@ -28,7 +28,7 @@ kitchensink.Controllers = kitchensink.Controllers || {};
                     tagName: 'h2',
                     grid: 'col-md-12',
                     value: M.I18N.get('global.appName', {aka: 'Absinthe'})
-                }).create()
+                }).create();
             }
 
             this._applyViews();

@@ -19,8 +19,8 @@
                     'texts': 'textsController',
                     'tabbars': 'tabbarsController',
                     'tabbar(/:tab)': 'tabbarController',
-                    'transitions(/:name)': 'transitionsController'
-
+                    'transitions(/:name)': 'transitionsController',
+                    //m:routes
                 },
                 menuController: global.kitchensink.Controllers.MenuController.create(),
                 formsController: global.kitchensink.Controllers.FormsController.create(),
@@ -30,8 +30,8 @@
                 textsController: global.kitchensink.Controllers.TextsController.create(),
                 tabbarsController: global.kitchensink.Controllers.TabbarsController.create(),
                 tabbarController: global.kitchensink.Controllers.TabbarController.create(),
-                transitionsController: global.kitchensink.Controllers.TransitionsController.create()
-
+                transitionsController: global.kitchensink.Controllers.TransitionsController.create(),
+                //m:controllers
             }
         });
     });
