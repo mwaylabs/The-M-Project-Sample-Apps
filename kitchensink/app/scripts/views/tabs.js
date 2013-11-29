@@ -1,4 +1,4 @@
-/*global kitchensink, M*/
+/*global kitchensink*/
 
 kitchensink.Views = kitchensink.Views || {};
 
@@ -150,7 +150,5 @@ kitchensink.Views = kitchensink.Views || {};
                 })
             })
         }
-
-    ]
-
+    ];
 })();

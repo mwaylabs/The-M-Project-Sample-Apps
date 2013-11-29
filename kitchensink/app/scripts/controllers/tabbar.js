@@ -1,4 +1,4 @@
-/*global kitchensink, M*/
+/*global kitchensink*/
 
 kitchensink.Controllers = kitchensink.Controllers || {};
 
@@ -28,14 +28,12 @@ kitchensink.Controllers = kitchensink.Controllers || {};
 
         init: function() {
             if( this.initialized === null ) {
-                this.initialized = YES
+                this.initialized = YES;
             }
         },
 
         show: function( settings ) {
-
-                this.applicationStart(settings);
-
+            this.applicationStart(settings);
         },
 
         setLayout: function( index ) {
@@ -51,7 +49,7 @@ kitchensink.Controllers = kitchensink.Controllers || {};
 
             this.tabLayout.applyViews(kitchensink.Views.TabsView);
 
-            if(!index || index === null || index == 'null'){
+            if(!index || index === null || index === 'null'){
                 index = 0;
             }
             this.tabLayout.switchToTab(index);

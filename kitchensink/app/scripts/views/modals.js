@@ -1,4 +1,4 @@
-/*global kitchensink, M*/
+/*global kitchensink*/
 
 kitchensink.Views = kitchensink.Views || {};
 
@@ -28,7 +28,7 @@ kitchensink.Views = kitchensink.Views || {};
                 value: 'Show medium Toast',
                 events: {
                     tap: function() {
-                        M.Toast.show('Displayed ' + M.Toast.CONST.MEDIUM + ' ms')
+                        M.Toast.show('Displayed ' + M.Toast.CONST.MEDIUM + ' ms');
                     }
                 }
             }),
