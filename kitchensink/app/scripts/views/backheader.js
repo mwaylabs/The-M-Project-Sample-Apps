@@ -5,12 +5,11 @@ kitchensink.Views = kitchensink.Views || {};
 (function() {
     'use strict';
 
-    kitchensink.Views.BackheaderView = M.View.extend({
+    kitchensink.Views.BackheaderView = M.ToolbarView.extend({
         scopeKey: 'pageHeadline'
     },{
 
         first: M.ButtonView.extend({
-            cssClass:'first',
             value: 'back',
             events: {
                 tap: function(){
