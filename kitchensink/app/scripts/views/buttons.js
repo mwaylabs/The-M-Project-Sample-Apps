@@ -170,6 +170,93 @@ kitchensink.Views = kitchensink.Views || {};
 
         }),
 
+        iconButtons: M.View.extend({
+            value: 'Buttons with Icons',
+            grid: 'row ktichen-row'
+        }, {
+
+            iconButton: M.ButtonView.extend({
+                grid: 'col-xs-12 col-sm-6 col-md-4',
+                value: 'Icon Default',
+                icon: 'fa-cog'
+            }),
+
+            iconOnlyButtonRight: M.ButtonView.extend({
+                grid: 'col-xs-12 col-sm-4 col-md-3',
+                icon: 'fa-cog',
+                cssClass: 'm-info right',
+                value: 'Icon Right'
+            }),
+
+            iconOnlyButtonRightSmall: M.ButtonView.extend({
+                grid: 'col-xs-12 col-sm-4 col-md-3',
+                icon: 'fa-headphones',
+                cssClass: 'm-fuzzy left',
+                value: 'Icon Left'
+            }),
+
+            iconOnlyButton: M.ButtonView.extend({
+                grid: 'col-xs-12 col-sm-6 col-md-4',
+                icon: 'fa-gear',
+                cssClass: 'm-success',
+                value: ''
+            }),
+
+            iconOnlyButtonSmall: M.ButtonView.extend({
+                grid: 'col-xs-1',
+                cssClass: 'm-error',
+                value: '',
+                icon: 'fa-calendar'
+            })
+
+        }),
+
+        disabledIconButtons: M.View.extend({
+            value: 'Buttons with Icons',
+            grid: 'row ktichen-row'
+        }, {
+
+            iconButton: M.ButtonView.extend({
+                grid: 'col-xs-12 col-sm-6 col-md-4',
+                value: 'Icon Default',
+                enabled: NO,
+                icon: 'fa-cog'
+            }),
+
+            iconOnlyButtonRight: M.ButtonView.extend({
+                grid: 'col-xs-12 col-sm-4 col-md-3',
+                icon: 'fa-cog',
+                cssClass: 'm-info right',
+                enabled: NO,
+                value: 'Icon Right'
+            }),
+
+            iconOnlyButtonRightSmall: M.ButtonView.extend({
+                grid: 'col-xs-12 col-sm-4 col-md-3',
+                icon: 'fa-headphones',
+                cssClass: 'm-fuzzy left',
+                enabled: NO,
+                value: 'Icon Left'
+            }),
+
+            iconOnlyButton: M.ButtonView.extend({
+                grid: 'col-xs-12 col-sm-6 col-md-4',
+                icon: 'fa-gear',
+                enabled: NO,
+                cssClass: 'm-success',
+                value: ''
+            }),
+
+            iconOnlyButtonSmall: M.ButtonView.extend({
+                grid: 'col-xs-4',
+                cssClass: 'm-error',
+                value: '',
+                enabled: NO,
+                icon: 'fa-calendar'
+            })
+
+        }),
+
         buttonGroup: M.View.extend({
             value: 'ButtonGroup',
             grid: 'row ktichen-row'
@@ -180,22 +267,22 @@ kitchensink.Views = kitchensink.Views || {};
 
                 firstButton: M.ButtonView.extend({
                     value: 'first button',
-                    gri1d: 'col-xs-3'
+                    grid: 'col-xs-3'
                 }),
 
                 secondButton: M.ButtonView.extend({
                     value: 'second button',
-                    grid1: 'col-xs-2'
+                    grid: 'col-xs-3'
                 }),
 
                 thirdButton: M.ButtonView.extend({
                     value: 'third button',
-                    gri1d: 'col-xs-3'
+                    grid: 'col-xs-3'
                 }),
 
                 fourthButton: M.ButtonView.extend({
                     value: 'fourth button',
-                    gri1d: 'col-xs-4'
+                    grid: 'col-xs-3'
                 })
             }),
 
@@ -205,22 +292,122 @@ kitchensink.Views = kitchensink.Views || {};
 
                 firstButton: M.ButtonView.extend({
                     value: 'first button',
-                    gri1d: 'col-xs-2'
+                    grid: 'col-xs-2'
                 }),
 
                 secondButton: M.ButtonView.extend({
                     value: 'second button',
-                    grid1: 'col-xs-4'
+                    grid: 'col-xs-4'
                 }),
 
                 thirdButton: M.ButtonView.extend({
                     value: 'third button',
-                    gri1d: 'col-xs-6'
+                    grid: 'col-xs-6'
+                })
+            })
+        }),
+
+        iconButtonGroup: M.View.extend({
+            value: 'ButtonGroup',
+            grid: 'row ktichen-row'
+        }, {
+            buttongroupExample: M.ButtonGroupView.extend({
+
+            }, {
+
+                firstButton: M.ButtonView.extend({
+                    value: 'Plane',
+                    grid: 'col-xs-3',
+                    icon: 'fa-plane'
+                }),
+
+                secondButton: M.ButtonView.extend({
+                    value: 'Jet',
+                    grid: 'col-xs-3',
+                    icon: 'fa-fighter-jet'
+                }),
+
+                thirdButton: M.ButtonView.extend({
+                    value: 'Rocket',
+                    grid: 'col-xs-3',
+                    icon: 'fa-rocket'
+                })
+            }),
+
+            buttongroupExample2: M.ButtonGroupView.extend({
+
+            }, {
+
+                xing: M.ButtonView.extend({
+                    value: '',
+                    grid: 'col-xs-3 col-sm-1',
+                    icon: 'fa-xing'
+                }),
+
+                rss: M.ButtonView.extend({
+                    value: '',
+                    grid: 'col-xs-3 col-sm-1',
+                    icon: 'fa-rss'
+                }),
+
+                twitter: M.ButtonView.extend({
+                    value: '',
+                    grid: 'col-xs-3 col-sm-1',
+                    icon: 'fa-twitter'
+                }),
+                stackoverflow: M.ButtonView.extend({
+                    value: '',
+                    grid: 'col-xs-3 col-sm-1',
+                    icon: 'fa-stack-overflow'
+                }),
+
+                github: M.ButtonView.extend({
+                    value: '',
+                    grid: 'col-xs-3 col-sm-1',
+                    icon: 'fa-github'
+                }),
+
+                google: M.ButtonView.extend({
+                    value: '',
+                    grid: 'col-xs-3 col-sm-1',
+                    icon: 'fa-google-plus'
+                }),
+                linkedin: M.ButtonView.extend({
+                    value: '',
+                    grid: 'col-xs-3 col-sm-1',
+                    icon: 'fa-linkedin'
+                }),
+
+                tumblr: M.ButtonView.extend({
+                    value: '',
+                    grid: 'col-xs-3 col-sm-1',
+                    icon: 'fa-tumblr'
+                }),
+
+                pinterest: M.ButtonView.extend({
+                    value: '',
+                    grid: 'col-xs-3 col-sm-1',
+                    icon: 'fa-pinterest'
+                }),
+                instagram: M.ButtonView.extend({
+                    value: '',
+                    grid: 'col-xs-3 col-sm-1',
+                    icon: 'fa-instagram'
+                }),
+
+                flickr: M.ButtonView.extend({
+                    value: '',
+                    grid: 'col-xs-3 col-sm-1',
+                    icon: 'fa-flickr'
+                }),
+
+                youtube: M.ButtonView.extend({
+                    value: '',
+                    grid: 'col-xs-3 col-sm-1',
+                    icon: 'fa-youtube'
                 })
             })
         })
-
-
 
     });
 
