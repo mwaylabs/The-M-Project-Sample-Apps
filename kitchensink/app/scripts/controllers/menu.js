@@ -26,7 +26,7 @@ kitchensink.Controllers = kitchensink.Controllers || {};
             if( !this.headerView ) {
                 this.headerView = M.ToolbarView.extend({
                     grid: 'col-md-12',
-                    value: M.I18N.get('global.appName', {aka: 'Absinthe'})
+                    value: 'Kitchensink'
                 }).create();
             }
 

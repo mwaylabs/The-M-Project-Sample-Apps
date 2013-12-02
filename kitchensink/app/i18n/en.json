@@ -1,11 +1,4 @@
 {
-    "global": {
-        "appName": "EN Kitchensink {{aka}}",
-        "switchLanguage": "Switch language",
-        "pageswitch": "page switch",
-        "page2": "page 2",
-        "forms": "Form Views",
-        "date_example": "Date example",
-        "tablayoutExample": "Tab Layout Example"
-    }
+    "app.welcome": "Welcome",
+    "app.themproject": "to the new version of The-M-Project v{{version}}"
 }
