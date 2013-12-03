@@ -24,6 +24,20 @@ kitchensink.Views = kitchensink.Views || {};
                     });
                 }
             }
+        }),
+
+        tooltipScrollDown: M.TextView.extend({
+            value: 'A tab is also scrollable',
+            grid: 'col-xs-12',
+            cssClass: 'inner-content stencil',
+            icon: 'fa-long-arrow-down'
+        }),
+
+        tooltipScrollUp: M.TextView.extend({
+            value: 'A tab is also scrollable',
+            grid: 'col-xs-12',
+            cssClass: 'inner-content stencil scroll-up',
+            icon: 'fa-long-arrow-up'
         })
     })
 

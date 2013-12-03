@@ -56,3 +56,7 @@
 .m-tab:nth-child(6) {
     background: #eab13a;
 }
+
+.scroll-up{
+    margin-top: 500px;
+}
