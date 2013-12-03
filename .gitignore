@@ -1,6 +1,8 @@
-.idea
+node_modules
+bower_components
+dist
+test/temp
+.sass-cache
+.tmp
+.idea/
 .DS_Store
-.settings
-.project
-.buildpath
-.metadata
