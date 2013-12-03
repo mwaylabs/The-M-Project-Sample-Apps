@@ -12,6 +12,8 @@ kitchensink.Controllers = kitchensink.Controllers || {};
         transitionModel: null,
         _contentViewFirst: null,
         _contentViewSecond: null,
+        _headerViewFirst: null,
+        _headerViewSecond: null,
 
         _initViews: function( settings ) {
 
@@ -40,17 +42,21 @@ kitchensink.Controllers = kitchensink.Controllers || {};
                 if( !this._contentViewFirst ) {
                     this._contentViewFirst = kitchensink.Views.TransitionsFirstView.create(this, null, true);
                 }
+                if( !this._headerViewFirst ) {
+                    this._headerViewFirst = kitchensink.Views.BackheaderView.create(this, null, true);
+                }
                 this.contentView = this._contentViewFirst;
+                this.headerView = this._headerViewFirst;
 
             } else {
                 if( !this._contentViewSecond ) {
                     this._contentViewSecond = kitchensink.Views.TransitionsSecondView.create(this, null, true);
                 }
+                if( !this._headerViewSecond ) {
+                    this._headerViewSecond = kitchensink.Views.BackheaderView.create(this, null, true);
+                }
                 this.contentView = this._contentViewSecond;
-            }
-
-            if( !this.headerView ) {
-                this.headerView = kitchensink.Views.BackheaderView.create(this, null, true);
+                this.headerView = this._headerViewSecond;
             }
 
             this._applyViews();
