@@ -8,6 +8,8 @@
 
     $(document).ready(function() {
 
+
+
         global.kitchensink.start({
             routing: {
                 routes: {
