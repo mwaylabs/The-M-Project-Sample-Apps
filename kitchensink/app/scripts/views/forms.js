@@ -18,6 +18,7 @@ kitchensink.Views = kitchensink.Views || {};
                 grid: 'col-xs-12',
                 label: 'Label',
                 value: '',
+                type: 'text',
                 placeholder: 'Placeholder'
             }),
 
@@ -25,7 +26,6 @@ kitchensink.Views = kitchensink.Views || {};
                 grid: 'col-xs-12',
                 label: 'Clearbutton (if exists)',
                 value: '',
-                type: 'text',
                 placeholder: 'Placeholder'
             }),
 

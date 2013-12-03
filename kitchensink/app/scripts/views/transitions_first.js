@@ -5,7 +5,8 @@ kitchensink.Views = kitchensink.Views || {};
 (function() {
     'use strict';
 
-    kitchensink.Views.TransitionsView = M.View.extend({
+    kitchensink.Views.TransitionsFirstView = M.View.extend({
+        cssClass: 'transtion',
         grid: 'col-xs-12'
     }, {
 

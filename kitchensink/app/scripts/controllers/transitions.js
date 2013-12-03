@@ -10,18 +10,43 @@ kitchensink.Controllers = kitchensink.Controllers || {};
         pageHeadline: 'Transitions',
 
         transitionModel: null,
+        _contentViewFirst: null,
+        _contentViewSecond: null,
 
-        _initViews: function() {
-            if( !this.contentView ) {
+        _initViews: function( settings ) {
+
+            if( !this.transitionModel) {
                 this.transitionModel = M.Model.create({name: M.PageTransitions.CONST.NONE});
                 this.transitionModel.on('change', function( model ) {
+
+                    if( M.PageTransitions.isAnimating()) {
+                        return;
+                    }
+
                     var transtionName = model.get('name');
+                    var route = 'transitions';
+                    if( this.contentView !== this._contentViewSecond) {
+                        route += '/second';
+                    }
+
                     kitchensink.navigate({
-                        route: 'transitions/' + transtionName,
+                        route: route,
                         transition: M.PageTransitions.CONST[transtionName]
                     });
                 }, this);
-                this.contentView = kitchensink.Views.TransitionsView.create(this, null, true);
+            }
+
+            if( settings.name === null ) {
+                if( !this._contentViewFirst ) {
+                    this._contentViewFirst = kitchensink.Views.TransitionsFirstView.create(this, null, true);
+                }
+                this.contentView = this._contentViewFirst;
+
+            } else {
+                if( !this._contentViewSecond ) {
+                    this._contentViewSecond = kitchensink.Views.TransitionsSecondView.create(this, null, true);
+                }
+                this.contentView = this._contentViewSecond;
             }
 
             if( !this.headerView ) {
