@@ -287,4 +287,4 @@ Read about the [Application Lifecycle](#lifecycle)
 	
 	```
 	
-12. You want more? Look a the sample apps to get an idea of how to use The-M-Project. The [Kitchensink](http://www.the-m-project.org/apps/absinthe/kitchensink/index.html) is a good starting point.
+12. You want more? Look at the sample apps to get an idea of how to use The-M-Project. The [Kitchensink](http://www.the-m-project.org/apps/absinthe/kitchensink/index.html) is a good starting point.
