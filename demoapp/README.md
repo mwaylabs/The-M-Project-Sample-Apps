@@ -1,4 +1,4 @@
-# My first The-M-Project App from scratch
+# My first The-M-Project 2.0 App from scratch
 
 ## Setup
 
