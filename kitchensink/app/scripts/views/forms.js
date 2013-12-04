@@ -93,9 +93,8 @@ kitchensink.Views = kitchensink.Views || {};
 
             date2: M.TextfieldView.extend({
                 grid: 'col-xs-12',
-                label: 'Date example',
                 scopeKey: 'person',
-                template: '<input type="date" value="<%= birthday %>" />',
+                template: '<label>Date example with custom template</label><input type="date" value="<%= birthday %>" />',
                 onGet: function( value ) {
                     var date = M.Date.create(parseInt(value, 10)).format('YYYY-MM-DD');
                     return date;
@@ -224,27 +223,29 @@ kitchensink.Views = kitchensink.Views || {};
 
             })
 
-        }),
-        toggleSwitchView: M.View.extend({
-
-            grid: 'row',
-            value: 'M.ToggleSwitchView'
-        }, {
-            toggleSwitch: M.ToggleSwitchView.extend({
-                grid: 'col-xs-12',
-                label: 'Is Favorite',
-                scopeKey: 'person.favorite',
-                onValue: YES,
-                offValue: NO,
-                onLabel: 'on',
-                offLabel: 'off'
-            }),
-
-            isFavorite: M.View.extend({
-                scopeKey: 'person.favorite'
-            })
-
         })
+
+//        ,
+//        toggleSwitchView: M.View.extend({
+//
+//            grid: 'row',
+//            value: 'M.ToggleSwitchView'
+//        }, {
+//            toggleSwitch: M.ToggleSwitchView.extend({
+//                grid: 'col-xs-12',
+//                label: 'Is Favorite',
+//                scopeKey: 'person.favorite',
+//                onValue: YES,
+//                offValue: NO,
+//                onLabel: 'on',
+//                offLabel: 'off'
+//            }),
+//
+//            isFavorite: M.View.extend({
+//                scopeKey: 'person.favorite'
+//            })
+//
+//        })
 
 
     });
