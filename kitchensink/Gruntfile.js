@@ -272,13 +272,14 @@ module.exports = function (grunt) {
                 options: {
                     preferOnline: true,
                     timestamp: true,
+                    basePath: '',
                     master: ['<%= yeoman.dist %>/index.html']
                 },
                 src: [
-                    '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp}',
-                    '<%= yeoman.dist %>/scripts/{,*/}*.js',
-                    '<%= yeoman.dist %>/styles/{,*/}*.css',
-                    '<%= yeoman.dist %>/i18n/*.json'
+                    'images/{,*/}*.{png,jpg,jpeg,gif,webp}',
+                    'scripts/{,*/}*.js',
+                    'styles/{,*/}*.css',
+                    'i18n/*.json'
                 ],
                 dest: '<%= yeoman.dist %>/manifest.appcache'
             }
@@ -344,7 +345,7 @@ module.exports = function (grunt) {
 
         // Add manifest attribute
         var regex = new RegExp('(<html+(?![^>]*\bmanifest\b))', 'g');
-        content = content.replace(regex, '$1 manifest="cache.manifest"');
+        content = content.replace(regex, '$1 manifest="manifest.appcache"');
 
         // Save file
         grunt.file.write(path, content);
