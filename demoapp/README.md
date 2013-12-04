@@ -43,7 +43,7 @@ Read about the [Application Lifecycle](#lifecycle)
 	
 	- There is no Controller defined
 	- The Router points to no Controller
-	- The app is accessable through a the global namespace
+	- The app is accessable through a global namespace
 
 	```
 	// The app gets initialized with the configuration provided from the config.js
@@ -52,13 +52,13 @@ Read about the [Application Lifecycle](#lifecycle)
 
     $(document).ready(function() {
 
-		// If the DOM is ready initialzie the router
+	// If the DOM is ready, initialize the router
         global.demoapp.start({
             routing: {
                 routes: {
-                    //m:routes
+                    //m:routes -- don't edit this
                 },
-                //m:controllers
+                //m:controllers -- don't edit this
             }
         });
     });
@@ -67,10 +67,10 @@ Read about the [Application Lifecycle](#lifecycle)
 	
 4. Setup the both Controller
 	- The first page should contain a menu
-		- The Menu should be our entry point so the route to it is [http://localhost:9000/](http://localhost:9000/)
+		- The Menu should be our entry point. The route to it is [http://localhost:9000/](http://localhost:9000/)
 	- The second page is a detail of a selected menu item
-		- Use detail as route [http://localhost:9000/detail](http://localhost:9000/detail)
-	- This generates the both files
+		- Use detail as a route [http://localhost:9000/detail](http://localhost:9000/detail)
+	- This generates both files
 		- `scripts/controllers/menu.js`
 		- `scripts/controllers/detail.js`
 	- The generator adds a script tag for every view to the `index.html`
