@@ -39,6 +39,6 @@ kitchensink.Views = kitchensink.Views || {};
             cssClass: 'inner-content stencil scroll-up',
             icon: 'fa-long-arrow-up'
         })
-    })
+    });
 
 })();

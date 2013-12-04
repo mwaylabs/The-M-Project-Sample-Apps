@@ -45,7 +45,7 @@ kitchensink.Controllers = kitchensink.Controllers || {};
 
             this.tabLayout.applyViews(kitchensink.Views.TabsView);
 
-            if(!index || index === null || index == 'null'){
+            if(!index || index === null || index === 'null'){
                 index = 0;
             }
 

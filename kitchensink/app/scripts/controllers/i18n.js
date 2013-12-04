@@ -31,11 +31,11 @@ kitchensink.Controllers = kitchensink.Controllers || {};
         },
 
         changeLocaleToDe: function() {
-            this.changeLocale('de')
+            this.changeLocale('de');
         },
 
         changeLocaleToEn: function() {
-            this.changeLocale('en')
+            this.changeLocale('en');
         },
 
         changeLocale: function(locale) {
