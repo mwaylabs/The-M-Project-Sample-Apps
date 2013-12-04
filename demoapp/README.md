@@ -2,7 +2,7 @@
 
 ## Setup
 
-1. Install the generator if you hasn't already. [looking for details?](https://github.com/mwaylabs/generator-m/blob/master/README.md)
+1. Install the generator if you haven't already. [looking for details?](https://github.com/mwaylabs/generator-m/blob/master/README.md)
 
 2. Create a folder and name it after the application name and open it.
 
