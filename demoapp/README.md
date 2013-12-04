@@ -2,7 +2,7 @@
 
 ## Setup
 
-1. Install the generator if you havn't allready. [looking for details?](https://github.com/mwaylabs/generator-m/blob/master/README.md)
+1. Install the generator if you haven't already. [Looking for details?](https://github.com/mwaylabs/generator-m/blob/master/README.md)
 
 2. Create a folder and name it after the application name and open it.
 
@@ -24,9 +24,9 @@
 	
 ## Develop the application
 
-We want to develop a simple app with two pages and use different transitions to switch between those twos
+We want to develop a simple app with two pages and use different transitions to switch between both.
 
-[The sample app source code is on GitHub](https://github.com/mwaylabs/The-M-Project-Sample-Apps) (with a blank layout and without Sass)
+[The sample app source code is on GitHub](https://github.com/mwaylabs/The-M-Project-Sample-Apps) (with a blank layout and without Sass).
 Read about the [Application Lifecycle](#lifecycle)
 
 1. Start the Testserver
@@ -43,7 +43,7 @@ Read about the [Application Lifecycle](#lifecycle)
 	
 	- There is no Controller defined
 	- The Router points to no Controller
-	- The app is accessable through a the global namespace
+	- The app is accessable through a global namespace
 
 	```
 	// The app gets initialized with the configuration provided from the config.js
@@ -52,13 +52,13 @@ Read about the [Application Lifecycle](#lifecycle)
 
     $(document).ready(function() {
 
-		// If the DOM is ready initialzie the router
+	// If the DOM is ready, initialize the router
         global.demoapp.start({
             routing: {
                 routes: {
-                    //m:routes
+                    //m:routes -- don't edit this
                 },
-                //m:controllers
+                //m:controllers -- don't edit this
             }
         });
     });
@@ -67,10 +67,10 @@ Read about the [Application Lifecycle](#lifecycle)
 	
 4. Setup the both Controller
 	- The first page should contain a menu
-		- The Menu should be our entry point so the route to it is [http://localhost:9000/](http://localhost:9000/)
+		- The Menu should be our entry point. The route to it is [http://localhost:9000/](http://localhost:9000/)
 	- The second page is a detail of a selected menu item
-		- Use detail as route [http://localhost:9000/detail](http://localhost:9000/detail)
-	- This generates the both files
+		- Use detail as a route [http://localhost:9000/detail](http://localhost:9000/detail)
+	- This generates both files
 		- `scripts/controllers/menu.js`
 		- `scripts/controllers/detail.js`
 	- The generator adds a script tag for every view to the `index.html`
@@ -287,4 +287,4 @@ Read about the [Application Lifecycle](#lifecycle)
 	
 	```
 	
-12. Look a the sample apps to get an idea of how to use The-M-Project. The [Kitchensink](http://www.the-m-project.org/apps/absinthe/kitchensink/index.html) is a good starting point.
+12. You want more? Look at the sample apps to get an idea of how to use The-M-Project. The [Kitchensink](http://www.the-m-project.org/apps/absinthe/kitchensink/index.html) is a good starting point.
