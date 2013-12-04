@@ -24,9 +24,9 @@
 	
 ## Develop the application
 
-We want to develop a simple app with two pages and use different transitions to switch between those twos
+We want to develop a simple app with two pages and use different transitions to switch between both.
 
-[The sample app source code is on GitHub](https://github.com/mwaylabs/The-M-Project-Sample-Apps) (with a blank layout and without Sass)
+[The sample app source code is on GitHub](https://github.com/mwaylabs/The-M-Project-Sample-Apps) (with a blank layout and without Sass).
 Read about the [Application Lifecycle](#lifecycle)
 
 1. Start the Testserver
