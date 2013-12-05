@@ -78,7 +78,7 @@ KitchenSink.ControlsTabBarViewPage1 = M.PageView.design({
 
         markup: M.LabelView.design({
 
-            value: 'M.TabBarView.design({\n\n\tchildViews: \'tab1 tab2 tab3\',\n\n\tname: \'tabBar1\',\n\n\ttab1: M.TabBarItemView.design({\n\n\t\tvalue: \'Tab 1\'\n\n\t}),\n\n\ttab2: M.TabBarItemView.design({\n\n\t\tvalue: \'Tab 2\'\n\n\t}),\n\n\ttab2: M.TabBarItemView.design({\n\n\t\tvalue: \'Tab 3\'\n\n\t})\n\n})',
+            value: 'M.TabBarView.design({\n\n\tchildViews: \'tab1 tab2 tab3\',\n\n\tname: \'tabBar1\',\n\n\ttab1: M.TabBarItemView.design({\n\n\t\tvalue: \'Tab 1\'\n\n\t}),\n\n\ttab2: M.TabBarItemView.design({\n\n\t\tvalue: \'Tab 2\'\n\n\t}),\n\n\ttab3: M.TabBarItemView.design({\n\n\t\tvalue: \'Tab 3\'\n\n\t})\n\n})',
 
             cssClass: 'source'
 
