@@ -23,6 +23,7 @@
                     'tabbar(/:tab)': 'tabbarController',
                     'transitions(/:name)': 'transitionsController',
                     'i18n': 'i18n',
+                    'movables': 'movables',
                     //m:routes
                 },
                 menuController: global.kitchensink.Controllers.MenuController.create(),
@@ -35,6 +36,7 @@
                 tabbarController: global.kitchensink.Controllers.TabbarController.create(),
                 transitionsController: global.kitchensink.Controllers.TransitionsController.create(),
                 i18n: global.kitchensink.Controllers.I18nController.create(),
+                movables: global.kitchensink.Controllers.MovablesController.create(),
                 //m:controllers
             }
         });

@@ -8,6 +8,7 @@ kitchensink.Views = kitchensink.Views || {};
     kitchensink.Views.MenuView = M.View.extend({
 
     }, {
+
         menu: M.ListView.extend({
             scopeKey: 'tmpViews',
             listItemView: M.ListItemView.extend({
