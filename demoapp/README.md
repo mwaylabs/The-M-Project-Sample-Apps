@@ -6,13 +6,13 @@
 2. 
 2. Create a folder and name it after the application name and open it.
 
-	```bash
+	```
 	mkdir demoapp && cd $_
 	```
 
 3. Inside of the folder run the The-M-Project generator
 	
-	```bash
+	```
 	yo m
 	```
 	
@@ -35,7 +35,7 @@ Read about the [Application Lifecycle](https://github.com/mwaylabs/The-M-Project
 
 1. Start the Testserver
 
-	```bash
+	```
 	// Stop the server with ctrl+c
 	grunt server
 	
@@ -79,7 +79,7 @@ Read about the [Application Lifecycle](https://github.com/mwaylabs/The-M-Project
 	- The generator adds a script tag for every view to the `index.html`
 	- The generator adds every controller to the router inside the `app/scripts/main.js`
 
-	```bash
+	```
 	// The first argument is the name of the controller
 	yo m:controller menu ''
 	// The second argument is the route to the controller
