@@ -6,11 +6,15 @@
 2. 
 2. Create a folder and name it after the application name and open it.
 
-	```mkdir demoapp && cd $_```
+	```bash
+	mkdir demoapp && cd $_
+	```
 
 3. Inside of the folder run the The-M-Project generator
 	
-	```yo m```
+	```bash
+	yo m
+	```
 	
 4. The generator guides you through several configuration steps
 
@@ -31,7 +35,7 @@ Read about the [Application Lifecycle](https://github.com/mwaylabs/The-M-Project
 
 1. Start the Testserver
 
-	```
+	```bash
 	// Stop the server with ctrl+c
 	grunt server
 	
@@ -45,23 +49,22 @@ Read about the [Application Lifecycle](https://github.com/mwaylabs/The-M-Project
 	- The Router points to no Controller
 	- The app is accessable through a global namespace
 
-	```
-	// The app gets initialized with the configuration provided from the config.js
-	// and gets appended to the global (window) namespace named like the app 
-	global.demoapp = M.Application.extend().create(global.demoapp.mconfig);
-
-    $(document).ready(function() {
-
-	// If the DOM is ready, initialize the router
-        global.demoapp.start({
-            routing: {
-                routes: {
-                    //m:routes -- don't edit this
-                },
-                //m:controllers -- don't edit this
-            }
-        });
-    });
+	```javascript
+		// The app gets initialized with the configuration provided from the config.js
+		// and gets appended to the global (window) namespace named like the app 
+		global.demoapp = M.Application.extend().create(global.demoapp.mconfig);
+	    $(document).ready(function() {
+	
+		// If the DOM is ready, initialize the router
+	        global.demoapp.start({
+	            routing: {
+	                routes: {
+	                    //m:routes -- don't edit this
+	                },
+	                //m:controllers -- don't edit this
+	            }
+	        });
+	    });
 	
 	```
 	
@@ -76,7 +79,7 @@ Read about the [Application Lifecycle](https://github.com/mwaylabs/The-M-Project
 	- The generator adds a script tag for every view to the `index.html`
 	- The generator adds every controller to the router inside the `app/scripts/main.js`
 
-	```
+	```bash
 	// The first argument is the name of the controller
 	yo m:controller menu ''
 	// The second argument is the route to the controller
@@ -91,7 +94,7 @@ Read about the [Application Lifecycle](https://github.com/mwaylabs/The-M-Project
 5. Add a [Layout](https://github.com/mwaylabs/The-M-Project/tree/absinthe#layouts-1)
 	- Both Controllers share a layout so add initialize it inside the `applicationStart` of the demoapp.MenuController
 	
-	```
+	```javascript
 	...
 	applicationStart: function(settings) {
 		// Create a layout and apply it to the application
@@ -104,7 +107,7 @@ Read about the [Application Lifecycle](https://github.com/mwaylabs/The-M-Project
 	- Since both Controller should share the same Layout they can share the same code.
 	- Change the `scripts/controllers/detail.js`
 	
-	```
+	```javascript
 	...
 	// Extend the MenuController
 	demoapp.Controllers.DetailController = demoapp.Controllers.MenuController.extend({
@@ -116,7 +119,7 @@ Read about the [Application Lifecycle](https://github.com/mwaylabs/The-M-Project
 	
 7. Create the basic Views
 
-	```
+	```javascript
 	// The first argument is the name of the view
 	yo m:view menu
 	yo m:view detail
@@ -139,7 +142,7 @@ Read about the [Application Lifecycle](https://github.com/mwaylabs/The-M-Project
 		1. Initialize the Views
 		2. Change the from one content to another
 	
-	```
+	```javascript
 	// scripts/controllers/detail.js
 	demoapp.Controllers.DetailController = demoapp.Controllers.MenuController.extend({
 
@@ -151,7 +154,7 @@ Read about the [Application Lifecycle](https://github.com/mwaylabs/The-M-Project
 	
 	```
 
-	```
+	```javascript
 	// scripts/controllers/menu.js
 	 demoapp.Controllers.MenuController = M.Controller.extend({
 
@@ -195,7 +198,7 @@ Read about the [Application Lifecycle](https://github.com/mwaylabs/The-M-Project
 
 9. Add content and interaction to the views
 
-	```
+	```javascript
 	// scripts/views/detail.js
 	demoapp.Views.DetailView = M.View.extend({
         // The properties of a view
@@ -221,7 +224,7 @@ Read about the [Application Lifecycle](https://github.com/mwaylabs/The-M-Project
 	
 	```
 	
-	```
+	```javascript
 	// scripts/views/menu.js
 	demoapp.Views.MenuView = M.View.extend({
         // The properties of a view
@@ -248,7 +251,7 @@ Read about the [Application Lifecycle](https://github.com/mwaylabs/The-M-Project
 	
 10. Add Navigation methods to the Controller
 
-	```
+	```javascript
 	// scripts/controllers/detail.js
 	...
 	// Navigation: on button tap
@@ -262,7 +265,7 @@ Read about the [Application Lifecycle](https://github.com/mwaylabs/The-M-Project
 	
 	```
 
-	```
+	```javascript
 	// scripts/controllers/menu.js
 	...
 	// Navigation: on button tap
@@ -279,7 +282,7 @@ Read about the [Application Lifecycle](https://github.com/mwaylabs/The-M-Project
 11. Change Transitions
 	- To get an overview of all available transitions have a look at the `M.PageTransitions.CONST`
 	
-	```
+	```javascript
 	demoapp.navigate({
 		route: '/detail',
 		transition: M.PageTransitions.CONST.FALL
