@@ -27,7 +27,7 @@
 We want to develop a simple app with two pages and use different transitions to switch between both.
 
 [The sample app source code is on GitHub](https://github.com/mwaylabs/The-M-Project-Sample-Apps) (with a blank layout and without Sass).
-Read about the [Application Lifecycle](#lifecycle)
+Read about the [Application Lifecycle](https://github.com/mwaylabs/The-M-Project/tree/absinthe#application-lifecycle)
 
 1. Start the Testserver
 
@@ -88,7 +88,7 @@ Read about the [Application Lifecycle](#lifecycle)
 	- open [http://localhost:9000/](http://localhost:9000/) to call the `applicationStart` of the MenuController
 	- open [http://localhost:9000/#detail](http://localhost:9000/#detail) to call the `applicationStart` of the DetailController
 
-5. Add a [Layout](#layout)
+5. Add a [Layout](https://github.com/mwaylabs/The-M-Project/tree/absinthe#layouts-1)
 	- Both Controllers share a layout so add initialize it inside the `applicationStart` of the demoapp.MenuController
 	
 	```
