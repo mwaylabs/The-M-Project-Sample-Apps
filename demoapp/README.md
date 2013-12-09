@@ -370,11 +370,15 @@ Tipp: M.Model and M.Collection are extended from [Backbone.Model](http://backbon
 	3. Implement `initData` with demo data
 	
 		```
+		// initialze the data
 		initData: function(){
-            // create the contacts collections
-            this.contacts = demoapp.Collections.ContactsCollection.create(this.getContacts());
+            // create the contacts collections if it doesn't exist
+            if(!this.contacts){
+                this.contacts = demoapp.Collections.ContactsCollection.create(this.getContacts());
+            }
         },
 
+		// get the contacts
         getContacts: function(){
             // create some demo data
             return [{"name": 'foo', "lastname": "bar"}, {"name": 'max', "lastname": "mustermann"}];
@@ -423,9 +427,87 @@ grunt server
 ```
 
 6. Add contacts through a submit form
-	1. Create the Views `scripts/views/menu.js`
+	1. Create the input fields in `scripts/views/menu.js`
 	
+		```
+		...
+		// an input field for the lastname
+        addLastName: M.TextfieldView.extend({
+            // fit into the grid
+            grid: 'col-xs-12',
+            // label it as lastname with a placeholder ...
+            placeholder: 'Lastname',
+            // and a label
+            label: 'Lastname',
+            // add a nice icon from http://fontawesome.io/icons/
+            icon: 'fa-users',
+            // bind the view to a controller model attribute
+            scopeKey: 'newContact.lastname'
+        }),
+
+        // an input field for the firstname
+        addFirstName: M.TextfieldView.extend({
+            // fit into the grid
+            grid: 'col-xs-12',
+            // label it as lastname with a placeholder ...
+            placeholder: 'Firstname',
+            // and a label
+            label: 'Firstname',
+            // add a nice icon from http://fontawesome.io/icons/
+            icon: 'fa-user',
+            // bind the view to a controller model attribute
+            scopeKey: 'newContact.name'
+        }),
+        ...
+	
+		```
+	2. Add an submit button to `scripts/views/menu.js`
+
+		```
+		...
+		// a submit button for adding a entry to the list
+        addButton: M.ButtonView.extend({
+            //fit into the grid
+            grid: 'col-xs-12',
+            // The Text of the Button
+            value: 'Add',
+            // The events of the button
+            events: {
+                // On tab call the scope method 'addContact' (scope is the MenuController)
+                tap: 'addContact'
+            }
+        }),
+		...
+		```
+7. Extend the controller to serve the new features
+
+	1. Add an attribute for the TextFieldViews
+	
+		```
+		...
+		// use this model as reference to the form views
+        newContact: null,
+		...
+
+		```
 		
+	2. Implement the tap callback of the `addButton` inside the `scripts/controller/menu.js`
+		On the tab create a new model based on the `newContact` model. Thanks to [backbone.stickit](http://nytimes.github.io/backbone.stickit/) the model and the view are always in sync.
+	
+		```
+		addContact: function(){
+            // add a new model instance based on the the new contact model to the collection
+this.contacts.add(demoapp.Models.ContactModel.create(this.newContact.attributes));
+        }
+		```
+		
+8. Store the data inside the `localStorage`
+
+
+	
+
+
+
 
 
 

@@ -26,23 +26,38 @@ demoapp.Views = demoapp.Views || {};
             }
         }),
 
+        // an input field for the lastname
         addLastName: M.TextfieldView.extend({
+            // fit into the grid
             grid: 'col-xs-12',
-            label: 'Lastname',
-            icon: 'fa-users',
+            // label it as lastname with a placeholder ...
             placeholder: 'Lastname',
+            // and a label
+            label: 'Lastname',
+            // add a nice icon from http://fontawesome.io/icons/
+            icon: 'fa-users',
+            // bind the view to a controller model attribute
             scopeKey: 'newContact.lastname'
         }),
 
+        // an input field for the firstname
         addFirstName: M.TextfieldView.extend({
+            // fit into the grid
             grid: 'col-xs-12',
+            // label it as lastname with a placeholder ...
+            placeholder: 'Firstname',
+            // and a label
             label: 'Firstname',
-            scopeKey: 'newContact.name',
+            // add a nice icon from http://fontawesome.io/icons/
             icon: 'fa-user',
-            placeholder: 'Firstname'
+            // bind the view to a controller model attribute
+            scopeKey: 'newContact.name'
         }),
 
+
+        // a submit button for adding a entry to the list
         addButton: M.ButtonView.extend({
+            //fit into the grid
             grid: 'col-xs-12',
             // The Text of the Button
             value: 'Add',

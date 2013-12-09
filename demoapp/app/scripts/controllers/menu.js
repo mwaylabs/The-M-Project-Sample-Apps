@@ -61,21 +61,26 @@ demoapp.Controllers = demoapp.Controllers || {};
             });
         },
 
+        // initialze the data
         initData: function(){
             //create a model to store the first and the last name
             this.newContact = demoapp.Models.ContactModel.create();
-            // create the contacts collections
-            this.contacts = demoapp.Collections.ContactsCollection.create(this.getContacts());
+            // create the contacts collections if it doesn't exist
+            if(!this.contacts){
+                this.contacts = demoapp.Collections.ContactsCollection.create(this.getContacts());
+            }
+
         },
 
+        // get the contacts
         getContacts: function(){
             // create some demo data
             return [{"name": 'foo', "lastname": "bar"}, {"name": 'max', "lastname": "mustermann"}];
         },
 
         addContact: function(){
-            // add the new contact to the collection
-            this.contacts.add(this.newContact);
+            // add a new model instance based on the the new contact model to the collection
+            this.contacts.add(demoapp.Models.ContactModel.create(this.newContact.attributes));
         }
     });
 
