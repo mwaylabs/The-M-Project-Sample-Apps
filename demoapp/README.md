@@ -1,5 +1,11 @@
 # My first The-M-Project 2.0 App from scratch
 
+In this tutorial we first build a very basic application. You will learn how to use The-M-Project.
+1. The first step is to create the app and switch the content on a buttonpress with a transition
+2. Then you learn how to use models and collections and connect them with bikini 
+
+# Step 1 - Basic Sample App
+
 ## Setup
 
 1. Install the generator if you haven't already. [Looking for details?](https://github.com/mwaylabs/generator-m/blob/master/README.md)
@@ -291,3 +297,143 @@ Read about the [Application Lifecycle](https://github.com/mwaylabs/The-M-Project
 	```
 	
 12. You want more? Look at the sample apps to get an idea of how to use The-M-Project. The [Kitchensink](http://www.the-m-project.org/apps/absinthe/kitchensink/index.html) is a good starting point.
+
+
+# Step 2 - Working with models and collections
+Tipp: M.Model and M.Collection are extended from [Backbone.Model](http://backbonejs.org/#Model) and [Backbone.Collection](http://backbonejs.org/#Collection)
+
+1. Create a collection called contacts
+
+	- this will create a folder `scripts/collections` and inside a file called `contacts.js`
+	
+    ```
+    yo m:collection contacts
+    ```
+2. Create a model called contact
+	- this will create a folder `scripts/models` and inside a file called `contact.js`
+
+    ```
+    yo m:model contact
+    ```
+    
+3. Assign the `contact` model to the `contacts` collection. Open `scripts/collections`. Default the model is called the same as the collection in this case `ContactsModel` so just remove the `s`:
+
+	```
+	demoapp.Collections.ContactsCollection = M.Collection.extend({
+		//assign the contact model to this collection
+        model: demoapp.Models.ContactModel
+    });
+	```
+	
+5. Create the collection inside the Menucontroller. `scripts/controllers/menu.js`
+	1. define a variable for it 
+
+		```	
+		...
+		// define contacts collection
+	    contacts: null,    
+	    ...
+		
+		```
+	
+	2. Initialze the collection inside `applicationStart` and `show` before the `initViews` call.
+
+		```
+		...
+			// Called when the Application starts
+        applicationStart: function () {
+           	 // Create a layout and apply it to the application
+           	 var layout = M.SwitchLayout.extend().create(this);
+           	 // Set the Layout to the View
+           	 demoapp.setLayout(layout);
+           	 // Initialze the Collection
+           	 this.initData();
+           	 // Initialize the Views
+           	 this.initViews();
+           	 // Apply the Views to the Layout (render)
+           	 this._applyViews();
+        },
+
+        show: function () {
+            // Initialze the Collection
+            this.initData();
+            // Initialize the Views
+            this.initViews();
+            // Apply the Views to the Layout (render)
+            this._applyViews();
+            // Switch the Layout
+            demoapp.getLayout().startTransition();
+        },
+        ...
+		```
+
+	3. Implement `initData` with demo data
+	
+		```
+		initData: function(){
+            // create the contacts collections
+            this.contacts = demoapp.Collections.ContactsCollection.create(this.getContacts());
+        },
+
+        getContacts: function(){
+            // create some demo data
+            return [{"name": 'foo', "lastname": "bar"}, {"name": 'max', "lastname": "mustermann"}];
+        }
+		```
+	
+4. Display the collection using a `M.ListView` in `scripts/views/menu.js`
+
+Tipp: Look at the Kitchensink for example code
+
+
+	- create a M.ListView
+	- apply a grid (from left to right with some padding)
+	- set the scopeKey	- the collections name inside the controller
+	- add a `M.ListItemView` as a blue print for every entry
+	- extend the template from `M.ListItemView` to fit to the collection model. Every attribute of the model can be displayed with '<%= ATTRIBUTE_NAME %>'
+
+	```
+	...
+	// The contacts list       
+        contactsList: M.ListView.extend({
+
+            // fit into the grid - whole page
+            grid: 'col-xs-12',
+
+            // the collection inside the menu controller
+            scopeKey: 'contacts',
+
+            // This property contains the listitem view
+            listItemView: M.ListItemView.extend({
+
+                // Extend the default template with this one. It gets injected into the <%= _value_ %> placeholder
+                extendTemplate: '<span><%= name %></span> <span><%= lastname %></span>'
+            })
+
+
+        })
+        ...
+	```
+5. Test the application
+
+The application should display a basic list with the both entries.
+
+```
+grunt server
+```
+
+6. Add contacts through a submit form
+	1. Create the Views `scripts/views/menu.js`
+	
+		
+
+
+
+
+
+
+
+
+
+
+
