@@ -15,14 +15,14 @@ kitchensink.Controllers = kitchensink.Controllers || {};
          * The application start (after reload)
          */
         applicationStart: function(settings) {
-            var _layout = M.SwitchHeaderContentLayout.extend().create(this, null, true);
+            var _layout = M.SwitchMenuHeaderContentLayout.extend({}).create(this, null, true);
             kitchensink.setLayout(_layout);
             this._initViews(settings);
         },
 
         show: function(settings) {
             this._initViews(settings);
-            var _layout = M.SwitchHeaderContentLayout.extend().create(this, null, true);
+            var _layout = M.SwitchMenuHeaderContentLayout.extend({}).create(this, null, true);
             if(_layout._type === kitchensink.getLayout()._type){
                 kitchensink.getLayout().startTransition();
             } else {

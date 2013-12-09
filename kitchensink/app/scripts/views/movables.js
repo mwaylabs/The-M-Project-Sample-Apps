@@ -6,10 +6,10 @@ kitchensink.Views = kitchensink.Views || {};
     'use strict';
 
     kitchensink.Views.MovablesView = M.View.extend({
-        grid: 'col-xs-12'
+        grid: 'col-xs-12 has-menu'
     }, {
 
-        menuView: M.MovableView.extend({
+        movableView: M.MovableView.extend({
             value: 'drag me'
         }),
 
@@ -17,10 +17,27 @@ kitchensink.Views = kitchensink.Views || {};
             value: 'toggle movable',
             events: {
                 tap: function(event, element){
-                    element.scope.contentView.childViews.menuView.toggle();
+                    element.scope.contentView.childViews.movableView.toggle();
                 }
             }
-        })
+        }),
+
+//        menuView: M.MenuView.extend({
+//            icon: 'fa-bars'
+//        }, {
+//
+//            'menu-content': M.View.extend({
+//                value: 'menu entry'
+//            }, {
+//                menuEntry1: M.ButtonView.extend({
+//                    value: 'menu entry 1'
+//                }),
+//
+//                menuEntry2: M.ButtonView.extend({
+//                    value: 'menu entry 2'
+//                })
+//            })
+//        })
 
     });
 
