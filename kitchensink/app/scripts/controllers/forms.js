@@ -9,25 +9,27 @@ kitchensink.Controllers = kitchensink.Controllers || {};
 
         pageHeadline: 'Form',
 
+        // Create a model instance with the given attributes
         person: M.Model.create({
             name: 'egon',
             birthday: '1383751054966',
             favorite: NO
         }),
 
-        bindingTestModel: M.Model.create({
-            a: 'first attribute',
-            b: 'second attribute'
-        }),
-
+        // Holds the selected item from the M.SelectView
         selectionListModel: M.Model.create({water: 'evian'}),
 
+        // Holds the selected item from the multiple M.SelectView
         multipleSelectionListModel: M.Model.create({water: ['evian']}),
 
         _initViews: function() {
+
+            // Create the ContentView with the controller (this) as scope
             if( !this.contentView ) {
                 this.contentView = kitchensink.Views.FormsView.create(this, null, true);
             }
+
+            // Create the HeaderView with the controller (this) as scope
             if( !this.headerView ) {
                 this.headerView = kitchensink.Views.BackheaderView.create(this, null, true);
             }
@@ -35,6 +37,7 @@ kitchensink.Controllers = kitchensink.Controllers || {};
             this._applyViews();
         },
 
+        // Register menu item for this view
         registerToMenu: function( menuController ){
             menuController.registerMenuItem({
                 _value_: 'Form Views',

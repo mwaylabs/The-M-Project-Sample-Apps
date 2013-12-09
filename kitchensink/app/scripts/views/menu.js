@@ -8,6 +8,8 @@ kitchensink.Views = kitchensink.Views || {};
     kitchensink.Views.MenuView = M.View.extend({
 
     }, {
+
+        // The main navigation for the kitchensink app
         menu: M.ListView.extend({
             scopeKey: 'tmpViews',
             listItemView: M.ListItemView.extend({
@@ -18,6 +20,7 @@ kitchensink.Views = kitchensink.Views || {};
             })
         }),
 
+        // Debug hint
         info: M.TextView.extend({
             value: 'Shake to toggle the DebugView',
             grid: 'col-xs-12',

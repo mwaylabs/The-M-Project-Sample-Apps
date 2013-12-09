@@ -7,6 +7,8 @@ kitchensink.Views = kitchensink.Views || {};
 
     kitchensink.Views.TransitionsFirstView = M.View.extend({
         cssClass: 'transtion',
+
+        // The view should be in a grid
         grid: 'col-xs-12'
     }, {
 

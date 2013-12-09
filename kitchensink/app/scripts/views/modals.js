@@ -6,6 +6,7 @@ kitchensink.Views = kitchensink.Views || {};
     'use strict';
 
     kitchensink.Views.ModalsView = M.View.extend({
+        // The view should be in a grid
         grid: 'col-xs-12'
     }, {
 
@@ -18,6 +19,7 @@ kitchensink.Views = kitchensink.Views || {};
                 value: 'Show raw Toast',
                 events: {
                     tap: function() {
+                        // Display a information for 500ms
                         M.Toast.show({text: 'Displayed ' + M.Toast.CONST.RAW + ' ms', timeout: M.Toast.CONST.RAW});
                     }
                 }
@@ -28,6 +30,7 @@ kitchensink.Views = kitchensink.Views || {};
                 value: 'Show medium Toast',
                 events: {
                     tap: function() {
+                        // Display a information for 2000ms
                         M.Toast.show('Displayed ' + M.Toast.CONST.MEDIUM + ' ms');
                     }
                 }
@@ -38,6 +41,7 @@ kitchensink.Views = kitchensink.Views || {};
                 value: 'Show crispy Toast',
                 events: {
                     tap: function() {
+                        // Display a information for 4000ms
                         M.Toast.show({text: 'Displayed ' + M.Toast.CONST.CRISPY + ' ms', timeout: M.Toast.CONST.CRISPY});
                     }
                 }

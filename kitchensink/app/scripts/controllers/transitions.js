@@ -39,9 +39,13 @@ kitchensink.Controllers = kitchensink.Controllers || {};
             }
 
             if( settings.name === null ) {
+
+                // Create the ContentView with the controller (this) as scope
                 if( !this._contentViewFirst ) {
                     this._contentViewFirst = kitchensink.Views.TransitionsFirstView.create(this, null, true);
                 }
+
+                // Create the HeaderView with the controller (this) as scope
                 if( !this._headerViewFirst ) {
                     this._headerViewFirst = kitchensink.Views.BackheaderView.create(this, null, true);
                 }
@@ -49,9 +53,13 @@ kitchensink.Controllers = kitchensink.Controllers || {};
                 this.headerView = this._headerViewFirst;
 
             } else {
+
+                // Create the ContentView with the controller (this) as scope
                 if( !this._contentViewSecond ) {
                     this._contentViewSecond = kitchensink.Views.TransitionsSecondView.create(this, null, true);
                 }
+
+                // Create the HeaderView with the controller (this) as scope
                 if( !this._headerViewSecond ) {
                     this._headerViewSecond = kitchensink.Views.BackheaderView.create(this, null, true);
                 }
@@ -62,6 +70,7 @@ kitchensink.Controllers = kitchensink.Controllers || {};
             this._applyViews();
         },
 
+        // Register menu item for this view
         registerToMenu: function( menuController ) {
             menuController.registerMenuItem({
                 _value_: 'Transitions',

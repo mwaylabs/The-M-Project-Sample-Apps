@@ -12,10 +12,13 @@ kitchensink.Controllers = kitchensink.Controllers || {};
         transitionModel: null,
 
         _initViews: function() {
+
+            // Create the ContentView with the controller (this) as scope
             if( !this.contentView ) {
                 this.contentView = kitchensink.Views.I18nView.create(this, null, true);
             }
 
+            // Create the HeaderView with the controller (this) as scope
             if( !this.headerView ) {
                 this.headerView = kitchensink.Views.BackheaderView.create(this, null, true);
             }
@@ -23,6 +26,7 @@ kitchensink.Controllers = kitchensink.Controllers || {};
             this._applyViews();
         },
 
+        // Register menu item for this view
         registerToMenu: function( menuController ) {
             menuController.registerMenuItem({
                 _value_: 'i18n',
@@ -39,6 +43,7 @@ kitchensink.Controllers = kitchensink.Controllers || {};
         },
 
         changeLocale: function(locale) {
+            // Sets the given locale and trigger render() on all affected views.
             M.I18N.setLocale( locale );
         }
     });

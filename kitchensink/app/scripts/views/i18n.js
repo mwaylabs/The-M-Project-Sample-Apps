@@ -6,6 +6,7 @@ kitchensink.Views = kitchensink.Views || {};
     'use strict';
 
     kitchensink.Views.I18nView = M.View.extend({
+        // The view should be in a grid
         grid: 'col-xs-12'
     }, {
 

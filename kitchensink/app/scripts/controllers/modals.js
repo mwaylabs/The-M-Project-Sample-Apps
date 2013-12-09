@@ -10,9 +10,13 @@ kitchensink.Controllers = kitchensink.Controllers || {};
         pageHeadline: 'Modals',
 
         _initViews: function() {
+
+            // Create the ContentView with the controller (this) as scope
             if( !this.contentView ) {
                 this.contentView = kitchensink.Views.ModalsView.create(this, null, true);
             }
+
+            // Create the HeaderView with the controller (this) as scope
             if( !this.headerView ) {
                 this.headerView = kitchensink.Views.BackheaderView.create(this, null, true);
             }
@@ -20,6 +24,7 @@ kitchensink.Controllers = kitchensink.Controllers || {};
             this._applyViews();
         },
 
+        // Register menu item for this view
         registerToMenu: function( menuController ) {
             menuController.registerMenuItem({
                 _value_: 'M.ModalView',
