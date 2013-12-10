@@ -374,6 +374,7 @@ Tipp: M.Model and M.Collection are extended from [Backbone.Model](http://backbon
 		initData: function(){
             // create the contacts collections if it doesn't exist
             if(!this.contacts){
+            	// create the collection with demo data
                 this.contacts = demoapp.Collections.ContactsCollection.create(this.getContacts());
             }
         },
@@ -502,6 +503,73 @@ this.contacts.add(demoapp.Models.ContactModel.create(this.newContact.attributes)
 		```
 		
 8. Store the data inside the `localStorage`
+
+	1. Add a store to the collection in `scripts/collection/contacts.js`
+	
+		```
+		demoapp.Collections.ContactsCollection = M.Collection.extend({
+    	    // assign the contact model to this collection
+	        model: demoapp.Models.ContactModel,
+	        // the collection uses the localStorage of the browser through the M.LocalStorageStore
+	        store: M.LocalStorageStore.create( {})
+	    });
+		```
+	
+	2. Extend the contact model with an entity and attributes in `scripts/models/contact.js`
+	
+		```
+		demoapp.Models.ContactModel = M.Model.extend({
+	     // an id for every entry
+   	     idAttribute: '_id',
+    	    // the entity
+	        entity: {
+	            // profide a name to identify the collection/model
+        	    name: 'contact',
+    	        fields: {
+	                // the identifier of the model
+	                _id: { type: M.CONST.TYPE.STRING, required: YES, index: YES },
+	                // the name of the model
+	                name: { type: M.CONST.TYPE.STRING },
+                	// the lastnamename of the model
+                	lastname: { type: M.CONST.TYPE.STRING }
+            	}
+        	}
+    	});
+		``` 
+
+	3. Implement `getContacts` with real data in the menu controller `scripts/controllers/menu.js`
+		
+		```
+		// get the contacts
+        getContacts: function(){
+            // read the data from the store
+            this.contacts.fetch();
+        },
+		```
+	
+		
+	3. Implement `initData` with real data in the `MenuController.initData` inside of `scripts/controllers/menu.js`
+		- remove `this.getContacts()` from the `create` call
+		- call `this.getContacts()` when the contacts are accessable
+		
+			```
+			// initialze the data
+	        initData: function(){
+    	        //create a model to store the first and the last name
+	     	    this.newContact = demoapp.Models.ContactModel.create();
+	            // create the contacts collections if it doesn't exist
+	            if(!this.contacts){
+	                this.contacts = demoapp.Collections.ContactsCollection.create();
+	            }
+	            // fetch the data
+	            this.getContacts();
+	        },
+			```
+9. Test the application
+	- If you start the application with `grunt server` the list should be empty
+	- Enter a name and lastname and add it to the collection by tapping the add button
+	- The new contact should be added to the list
+	- Refreshing the browser fetchs the data from the localStorage and the list won't loose the entries
 
 
 	

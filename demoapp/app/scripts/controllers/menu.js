@@ -67,20 +67,22 @@ demoapp.Controllers = demoapp.Controllers || {};
             this.newContact = demoapp.Models.ContactModel.create();
             // create the contacts collections if it doesn't exist
             if(!this.contacts){
-                this.contacts = demoapp.Collections.ContactsCollection.create(this.getContacts());
+                this.contacts = demoapp.Collections.ContactsCollection.create();
             }
-
+            // fetch the data
+            this.getContacts();
         },
 
         // get the contacts
         getContacts: function(){
-            // create some demo data
-            return [{"name": 'foo', "lastname": "bar"}, {"name": 'max', "lastname": "mustermann"}];
+            // read the data from the store
+            this.contacts.fetch();
         },
 
         addContact: function(){
             // add a new model instance based on the the new contact model to the collection
-            this.contacts.add(demoapp.Models.ContactModel.create(this.newContact.attributes));
+            this.contacts.create(this.newContact.attributes);
+
         }
     });
 
