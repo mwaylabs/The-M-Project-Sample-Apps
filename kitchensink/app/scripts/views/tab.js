@@ -19,6 +19,7 @@ kitchensink.Views = kitchensink.Views || {};
             value: 'Back to the Kitchensink Menu',
             events: {
                 tap: function() {
+                    // Go back to the MenuController
                     kitchensink.navigate({
                         route: ''
                     });

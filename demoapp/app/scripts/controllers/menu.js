@@ -10,12 +10,20 @@ demoapp.Controllers = demoapp.Controllers || {};
         // The Content of the page
         contentView: null,
 
+        // define contacts collection
+        contacts: null,
+
+        // use this model as reference to the form views
+        newContact: null,
+
         // Called when the Application starts
         applicationStart: function () {
             // Create a layout and apply it to the application
             var layout = M.SwitchLayout.extend().create(this);
             // Set the Layout to the View
             demoapp.setLayout(layout);
+            // Initialze the Collection
+            this.initData();
             // Initialize the Views
             this.initViews();
             // Apply the Views to the Layout (render)
@@ -23,6 +31,8 @@ demoapp.Controllers = demoapp.Controllers || {};
         },
 
         show: function () {
+            // Initialze the Collection
+            this.initData();
             // Initialize the Views
             this.initViews();
             // Apply the Views to the Layout (render)
@@ -49,6 +59,30 @@ demoapp.Controllers = demoapp.Controllers || {};
                 route: '/detail',
                 transition: M.PageTransitions.CONST.FALL
             });
+        },
+
+        // initialze the data
+        initData: function(){
+            //create a model to store the first and the last name
+            this.newContact = demoapp.Models.ContactModel.create();
+            // create the contacts collections if it doesn't exist
+            if(!this.contacts){
+                this.contacts = demoapp.Collections.ContactsCollection.create();
+            }
+            // fetch the data
+            this.getContacts();
+        },
+
+        // get the contacts
+        getContacts: function(){
+            // read the data from the store
+            this.contacts.fetch();
+        },
+
+        addContact: function(){
+            // add a new model instance based on the the new contact model to the collection
+            this.contacts.create(this.newContact.attributes);
+
         }
     });
 

@@ -18,11 +18,13 @@ kitchensink.Controllers = kitchensink.Controllers || {};
 
              //Init the collection
             this._initMenu();
-            //create the menu
+
+            // Create the menuView with the controller (this) as scope
             if( !this.contentView ) {
                 this.contentView = kitchensink.Views.MenuView.create(this, null, true);
             }
 
+            // Create the HeaderView with the controller (this) as scope
             if( !this.headerView ) {
                 this.headerView = M.ToolbarView.extend({
                     grid: 'col-md-12',

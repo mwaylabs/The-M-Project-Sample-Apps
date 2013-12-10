@@ -7,19 +7,23 @@ kitchensink.Controllers = kitchensink.Controllers || {};
 
     kitchensink.Controllers.AbstractController = M.Controller.extend({
 
+        // Contains the current headerView
         headerView: null,
+
+        // Contains the current contentView
         contentView: null,
+
+        // The headline which will be displayed in the headerView
         pageHeadline: '',
 
-        /**
-         * The application start (after reload)
-         */
+        // Called from the router when the application starts
         applicationStart: function(settings) {
             var _layout = M.SwitchMenuHeaderContentLayout.extend({}).create(this, null, true);
             kitchensink.setLayout(_layout);
             this._initViews(settings);
         },
 
+        // Called from the router everytime the route/url matchs the controller (binding in main.js)
         show: function(settings) {
             this._initViews(settings);
             var _layout = M.SwitchMenuHeaderContentLayout.extend({}).create(this, null, true);
@@ -28,14 +32,14 @@ kitchensink.Controllers = kitchensink.Controllers || {};
             } else {
                 this.applicationStart();
             }
-
-
         },
 
+        // Called for every controller when the application is ready. applicationStart is always called before.
         applicationReady: function(){
             this.registerToMenu(kitchensink.router.menuController);
         },
 
+        // This method assign the header and content view to the current layout.
         _applyViews: function() {
             kitchensink.getLayout().applyViews({
                 header: this.headerView,

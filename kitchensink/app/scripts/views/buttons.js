@@ -6,7 +6,9 @@ kitchensink.Views = kitchensink.Views || {};
     'use strict';
 
     kitchensink.Views.ButtonsView = M.View.extend({
+        // Additional css class for the view.
         cssClass: 'kitchen-buttons',
+        // The view should be in a grid
         grid: 'col-xs-12'
     }, {
 

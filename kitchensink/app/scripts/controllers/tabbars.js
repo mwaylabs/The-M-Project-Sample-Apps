@@ -9,6 +9,7 @@ kitchensink.Controllers = kitchensink.Controllers || {};
 
         pageHeadline: 'Tabbar Layouts',
 
+        // Register menu item for this view
         registerToMenu: function( menuController ) {
             menuController.registerMenuItem({
                 _value_: 'Tabbar Layouts',
@@ -17,9 +18,13 @@ kitchensink.Controllers = kitchensink.Controllers || {};
         },
 
         _initViews: function() {
+
+            // Create the ContentView with the controller (this) as scope
             if( !this.contentView ) {
                 this.contentView = kitchensink.Views.TabbarsView.create(this, null, true);
             }
+
+            // Create the HeaderView with the controller (this) as scope
             if( !this.headerView ) {
                 this.headerView = kitchensink.Views.BackheaderView.create(this, null, true);
             }
