@@ -1,8 +1,9 @@
 # My first The-M-Project 2.0 App from scratch
 
 In this tutorial we first build a very basic application. You will learn how to use The-M-Project.
-1. The first step is to create the app and switch the content on a buttonpress with a transition
-2. Then you learn how to use models and collections and connect them with bikini 
+
+- The first step is to create the app and switch the content on a buttonpress with a transition
+- Then you learn how to use models and collections and connect them with bikini 
 
 # Step 1 - Basic Sample App
 
