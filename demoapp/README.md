@@ -1,9 +1,10 @@
 # My first The-M-Project 2.0 App from scratch
 
-In this tutorial we first build a very basic application. You will learn how to use The-M-Project.
+In this tutorial we first build a very basic application. 
 
-- The first step is to create the app and switch the content on a buttonpress with a transition
-- Then you learn how to use models and collections and connect them with bikini 
+- The first step is to create the app and switch the content on a button press/tap with a transition
+- Then you learn how to use models and collections
+- Connect them with Bikini 
 
 # Step 1 - Basic Sample App
 
@@ -574,7 +575,8 @@ this.contacts.add(demoapp.Models.ContactModel.create(this.newContact.attributes)
 
 
 	
-
+# Step 3 - Connect with Bikini
+	- tbd
 
 
 
