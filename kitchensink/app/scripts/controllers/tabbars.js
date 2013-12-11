@@ -9,6 +9,8 @@ kitchensink.Controllers = kitchensink.Controllers || {};
 
         pageHeadline: 'Tabbar Layouts',
 
+        sourceCodePath: 'scripts/views/tabbars.js',
+
         // Register menu item for this view
         registerToMenu: function( menuController ) {
             menuController.registerMenuItem({

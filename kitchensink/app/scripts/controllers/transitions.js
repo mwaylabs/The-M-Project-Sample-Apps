@@ -9,6 +9,8 @@ kitchensink.Controllers = kitchensink.Controllers || {};
 
         pageHeadline: 'Transitions',
 
+        sourceCodePath: 'scripts/views/transitions_first.js',
+
         transitionModel: null,
         _contentViewFirst: null,
         _contentViewSecond: null,

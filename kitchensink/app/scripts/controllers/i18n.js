@@ -9,6 +9,8 @@ kitchensink.Controllers = kitchensink.Controllers || {};
 
         pageHeadline: 'i18n',
 
+        sourceCodePath: 'scripts/views/i18n.js',
+
         transitionModel: null,
 
         _initViews: function() {

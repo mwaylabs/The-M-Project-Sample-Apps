@@ -9,6 +9,8 @@ kitchensink.Controllers = kitchensink.Controllers || {};
 
         pageHeadline: 'Modals',
 
+        sourceCodePath: 'scripts/views/modals.js',
+
         _initViews: function() {
 
             // Create the ContentView with the controller (this) as scope
