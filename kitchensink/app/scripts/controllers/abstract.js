@@ -13,6 +13,9 @@ kitchensink.Controllers = kitchensink.Controllers || {};
         // Contains the current contentView
         contentView: null,
 
+        // Contains the current menuView
+        menuView: null,
+
         // The headline which will be displayed in the headerView
         pageHeadline: '',
 
@@ -41,9 +44,14 @@ kitchensink.Controllers = kitchensink.Controllers || {};
 
         // This method assign the header and content view to the current layout.
         _applyViews: function() {
+            if(!this.menuView){
+                this.menuView = kitchensink.Views.MenuView.create(kitchensink.router.menuController, null, true)
+            }
+
             kitchensink.getLayout().applyViews({
                 header: this.headerView,
-                content: this.contentView
+                content: this.contentView,
+                menuContent: this.menuView
             });
         },
 
