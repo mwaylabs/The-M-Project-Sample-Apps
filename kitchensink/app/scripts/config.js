@@ -19,6 +19,9 @@
             //m:i18n
         ],
 
+        //specify the file type of the language files. default is 'json'
+        localesFileType: 'js',
+
         // A flag whether to enable the debugView or not.
         // Shake your device to toggle the debugView.
         debugView: YES
