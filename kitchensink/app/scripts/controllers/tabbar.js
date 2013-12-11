@@ -9,6 +9,8 @@ kitchensink.Controllers = kitchensink.Controllers || {};
 
         scrolling: NO,
 
+        sourceCodePath: 'scripts/views/tabbars.js',
+
         changeScrollingType: function( scroll ){
             this.scrolling = scroll;
             this.tabLayout = null;
