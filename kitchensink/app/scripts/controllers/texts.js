@@ -9,6 +9,8 @@ kitchensink.Controllers = kitchensink.Controllers || {};
 
         pageHeadline: 'Text',
 
+        sourceCodePath: 'scripts/views/texts.js',
+
         _initViews: function() {
 
             // Create the ContentView with the controller (this) as scope

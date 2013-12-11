@@ -19,6 +19,17 @@ kitchensink.Views = kitchensink.Views || {};
                     });
                 }
             }
+        }),
+
+        second: M.ButtonView.extend({
+            value: '',
+            icon: 'fa-github',
+            events: {
+                tap: function(event, element){
+                    var url = element.scope.getSourceCodeUrl();
+                    window.open(url, '_blank');
+                }
+            }
         })
 
     });

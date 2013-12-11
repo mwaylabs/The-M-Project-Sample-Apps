@@ -9,6 +9,8 @@ kitchensink.Controllers = kitchensink.Controllers || {};
 
         pageHeadline: 'Form',
 
+        sourceCodePath: 'scripts/views/forms.js',
+
         // Create a model instance with the given attributes
         person: M.Model.create({
             name: 'egon',

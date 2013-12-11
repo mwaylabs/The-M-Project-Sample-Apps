@@ -9,6 +9,8 @@ kitchensink.Controllers = kitchensink.Controllers || {};
 
         tmpViews: null,
 
+        sourceCodePath: 'scripts/views/menu.js',
+
         registerMenuItem: function( menuEntry ){
             this._initMenu();
             this.tmpViews.add(menuEntry);
