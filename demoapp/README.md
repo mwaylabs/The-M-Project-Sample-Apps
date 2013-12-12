@@ -307,9 +307,23 @@ Tipp: M.Model and M.Collection are extended from [Backbone.Model](http://backbon
 
 	- this will create a folder `scripts/collections` and inside a file called `contacts.js`
 	
-    ```
-    yo m:collection contacts
-    ```
+	
+		```
+   		yo m:collection contacts
+   		```
+    		
+    	- UPDATE! There was a bug in the generator: https://github.com/mwaylabs/generator-m/issues/3 - all collections are append to the top of the index.html and not above this comment: <!-- m:collections -->
+		
+		- quickfix: #1: remove: `<script src="scripts/collections/contacts.js"></script>` from the first line of the index.html and add it like the this:
+	
+		```
+	 	<script src="scripts/models/contacts.js"></script>
+        <!-- m:models -->
+        <script src="scripts/collections/contacts.js"></script>
+        <!-- m:collections -->
+		```
+		- or:  delete the collection, update your generator and run the task again.
+	
 2. Create a model called contact
 	- this will create a folder `scripts/models` and inside a file called `contact.js`
 
