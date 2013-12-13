@@ -27,7 +27,7 @@ kitchensink.Controllers = kitchensink.Controllers || {};
 
         // Called from the router when the application starts
         applicationStart: function(settings) {
-            var _layout = M.SwitchHeaderContentLayout.extend({}).create(this, null, true);
+            var _layout = M.SwitchMenuHeaderContentLayout.extend({}).create(this, null, true);
             kitchensink.setLayout(_layout);
             this._initViews(settings);
         },
@@ -35,7 +35,7 @@ kitchensink.Controllers = kitchensink.Controllers || {};
         // Called from the router everytime the route/url matchs the controller (binding in main.js)
         show: function(settings) {
             this._initViews(settings);
-            var _layout = M.SwitchHeaderContentLayout.extend({}).create(this, null, true);
+            var _layout = M.SwitchMenuHeaderContentLayout.extend({}).create(this, null, true);
             if(_layout._type === kitchensink.getLayout()._type){
                 kitchensink.getLayout().startTransition();
             } else {
@@ -75,9 +75,9 @@ kitchensink.Controllers = kitchensink.Controllers || {};
         },
 
         toggleMenu: function(){
-//            if(kitchensink.getLayout().menu){
-//                kitchensink.getLayout().menu.toggle();
-//            }
+            if(kitchensink.getLayout().menu){
+                kitchensink.getLayout().menu.toggle();
+            }
 
         }
 

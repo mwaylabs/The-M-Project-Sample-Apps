@@ -20,14 +20,12 @@ kitchensink.Controllers = kitchensink.Controllers || {};
          * The application start (after reload)
          */
         applicationStart: function( settings ) {
-            debugger;
             if(settings.tab){
                 this.setLayout(settings.tab);
             }
         },
 
         show: function( settings ) {
-            debugger;
             if(this.tabLayout){
                 this.tabLayout.switchToTab(settings.tab);
             } else {

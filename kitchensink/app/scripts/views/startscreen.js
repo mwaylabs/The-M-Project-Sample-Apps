@@ -9,16 +9,6 @@ kitchensink.Views = kitchensink.Views || {};
 
     }, {
 
-        menu: M.ListView.extend({
-            scopeKey: 'tmpViews',
-            listItemView: M.ListItemView.extend({
-                type: M.ListItemView.CONST.LINKED,
-                events: {
-                    tap: 'gotoPage'
-                }
-            })
-        }),
-
         // Menu hint
         menuHint: M.TextView.extend({
             value: 'Drag from left to open up the menu or tab on this text',
