@@ -13,7 +13,7 @@ kitchensink.Views = kitchensink.Views || {};
     }, {
         // The childViews as object
         backButton: M.ButtonView.extend({
-            grid: 'col-xs-8 col-xs-offset-2',
+            grid: 'col-xs-12',
             value: 'Back to the Kitchensink Menu',
             events: {
                 tap: function() {

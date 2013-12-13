@@ -24,9 +24,13 @@ kitchensink.Controllers = kitchensink.Controllers || {};
 
         show: function( settings ) {
             if( this.tabLayout ) {
-                this._initViews(settings.subview);
-                // call animate
-                kitchensink.getLayout().startTransition();
+                if( settings.subview ) {
+                    this._initViews(settings.subview);
+                    kitchensink.getLayout().startTransition();
+                } else {
+                    this.setLayout(settings);
+                    this._initViews(settings.subview);
+                }
 
             } else {
                 this.applicationStart(settings);
@@ -46,9 +50,13 @@ kitchensink.Controllers = kitchensink.Controllers || {};
         setLayout: function() {
             this.tabLayout = M.SplitLayout.extend({
 
-                applyAdditionalBehaviourLeftContainer: function (element, layout) {
+                applyAdditionalBehaviourLeftContainer: function( element, layout ) {
                     $('body').append('<style>@media (max-width: 480px) {.customSplitBehaviour { display: none !important; }}</style>');
                     element.addClass('customSplitBehaviour');
+                },
+
+                applyAdditionalBehaviourRightContainer: function( element, layout ) {
+                    element.addClass('col-xs-12 grid');
                 }
 
             }).create(this, null, true);
