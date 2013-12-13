@@ -23,7 +23,7 @@ kitchensink.Controllers = kitchensink.Controllers || {};
 
             // Create the menuView with the controller (this) as scope
             if( !this.contentView ) {
-                this.contentView = kitchensink.Views.MenuView.create(this, null, true);
+                this.contentView = kitchensink.Views.StartScreenView.create(this, null, true);
             }
 
             // Create the HeaderView with the controller (this) as scope

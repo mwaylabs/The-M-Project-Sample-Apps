@@ -27,7 +27,7 @@ kitchensink.Controllers = kitchensink.Controllers || {};
 
         // Called from the router when the application starts
         applicationStart: function(settings) {
-            var _layout = M.SwitchMenuHeaderContentLayout.extend({}).create(this, null, true);
+            var _layout = M.SwitchHeaderContentLayout.extend({}).create(this, null, true);
             kitchensink.setLayout(_layout);
             this._initViews(settings);
         },
@@ -35,7 +35,7 @@ kitchensink.Controllers = kitchensink.Controllers || {};
         // Called from the router everytime the route/url matchs the controller (binding in main.js)
         show: function(settings) {
             this._initViews(settings);
-            var _layout = M.SwitchMenuHeaderContentLayout.extend({}).create(this, null, true);
+            var _layout = M.SwitchHeaderContentLayout.extend({}).create(this, null, true);
             if(_layout._type === kitchensink.getLayout()._type){
                 kitchensink.getLayout().startTransition();
             } else {
@@ -51,7 +51,7 @@ kitchensink.Controllers = kitchensink.Controllers || {};
         // This method assign the header and content view to the current layout.
         _applyViews: function() {
             if(!this.menuView){
-                this.menuView = kitchensink.Views.MenuView.create(kitchensink.router.menuController, null, true)
+                this.menuView = kitchensink.Views.MenuView.create(kitchensink.router.menuController, null, true);
             }
 
             kitchensink.getLayout().applyViews({
@@ -59,6 +59,7 @@ kitchensink.Controllers = kitchensink.Controllers || {};
                 content: this.contentView,
                 menuContent: this.menuView
             });
+            this.toggleMenu();
         },
 
         _initViews: function() {
@@ -69,10 +70,17 @@ kitchensink.Controllers = kitchensink.Controllers || {};
             // OVERRIDE ME PLEASE
         },
 
-
         getSourceCodeUrl: function(){
             return this.githubApplicationRootUrl + this.sourceCodePath;
+        },
+
+        toggleMenu: function(){
+//            if(kitchensink.getLayout().menu){
+//                kitchensink.getLayout().menu.toggle();
+//            }
+
         }
+
     });
 
 })();
