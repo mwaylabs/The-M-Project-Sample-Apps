@@ -63,6 +63,7 @@
                     'transitions(/:name)': 'transitionsController',
                     'i18n': 'i18n',
                     'split(/:subview)': 'split',
+                    'movables': 'movables',
                     //m:routes
                 },
                 menuController: global.kitchensink.Controllers.MenuController.create(),
@@ -76,6 +77,7 @@
                 transitionsController: global.kitchensink.Controllers.TransitionsController.create(),
                 i18n: global.kitchensink.Controllers.I18nController.create(),
                 split: global.kitchensink.Controllers.SplitController.create(),
+                movables: global.kitchensink.Controllers.MovablesController.create(),
                 //m:controllers
             }
         });

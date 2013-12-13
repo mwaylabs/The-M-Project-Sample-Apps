@@ -10,7 +10,7 @@ Addressbook.Collections = Addressbook.Collections || {};
         store: new M.BikiniStore({
             useLocalStore: NO
         }),
-        url: 'http://nerds.mway.io:8200/bikini/contacts'
+        url: 'http://ec2-23-23-24-142.compute-1.amazonaws.com:8200/bikini/contacts'
     });
 
 
