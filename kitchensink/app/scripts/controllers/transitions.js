@@ -17,7 +17,7 @@ kitchensink.Controllers = kitchensink.Controllers || {};
         _headerViewFirst: null,
         _headerViewSecond: null,
 
-        _initViews: function( settings ) {
+        _initViews: function( name ) {
 
             if( !this.transitionModel) {
                 this.transitionModel = M.Model.create({name: M.PageTransitions.CONST.NONE});
@@ -40,7 +40,7 @@ kitchensink.Controllers = kitchensink.Controllers || {};
                 }, this);
             }
 
-            if( settings.name === null ) {
+            if( name === null ) {
 
                 // Create the ContentView with the controller (this) as scope
                 if( !this._contentViewFirst ) {

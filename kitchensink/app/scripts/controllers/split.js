@@ -8,91 +8,109 @@ kitchensink.Controllers = kitchensink.Controllers || {};
     kitchensink.Controllers.SplitController = kitchensink.Controllers.AbstractController.extend({
 
         tabLayout: null,
-        menuView: null,
-        splitMenu: null,
-        contentView1: null,
-        contentView2: null,
-        contentView3: null,
 
         /**
          * The application start (after reload)
          */
-        applicationStart: function( settings ) {
-            this.setLayout(settings);
-            this._initViews(settings.subview);
+        applicationStart: function( menuId, viewId ) {
+            this.setLayout();
+            this._initViews(menuId, viewId);
         },
 
-        show: function( settings ) {
+        show: function( menuId, viewId ) {
+
             if( this.tabLayout ) {
-                if( settings.subview ) {
-                    this._initViews(settings.subview);
-                    kitchensink.getLayout().startTransition();
-                } else {
-                    this.setLayout(settings);
-                    this._initViews(settings.subview);
+
+                if( kitchensink.getLayout() !== this.tabLayout ) {
+                    this.setLayout();
                 }
+                this._initViews(menuId, viewId);
+
+                kitchensink.getLayout().startTransition();
 
             } else {
-                this.applicationStart(settings);
-            }
-        },
-
-        _initMenu: function() {
-            if( !this.splitMenu ) {
-                this.splitMenu = M.Collection.create([
-                    {_value_: 'SplitView 1', goto: '1'},
-                    {_value_: 'SplitView 2', goto: '2'},
-                    {_value_: 'SplitView 3', goto: '3'}
-                ]);
+                this.applicationStart( menuId, viewId );
             }
         },
 
         setLayout: function() {
             this.tabLayout = M.SplitLayout.extend({
 
-                applyAdditionalBehaviourLeftContainer: function( element, layout ) {
-                    $('body').append('<style>@media (max-width: 480px) {.customSplitBehaviour { display: none !important; }}</style>');
-                    element.addClass('customSplitBehaviour');
-                },
-
-                applyAdditionalBehaviourRightContainer: function( element, layout ) {
-                    element.addClass('col-xs-12');
-                }
-
             }).create(this, null, true);
             kitchensink.setLayout(this.tabLayout);
         },
 
-        _initViews: function( subview ) {
+        _initViews: function( menuId, viewId ) {
 
-            this._initMenu();
 
-            // Create the ContentView with the controller (this) as scope
-            if( !this.contentView1 ) {
-                this.contentView1 = kitchensink.Views.SplitView.create({value: 'SplitView 1'});
+            if( !menuId ) {
+                menuId = 1;
             }
-            if( !this.contentView2 ) {
-                this.contentView2 = kitchensink.Views.SplitView.create({value: 'SplitView 2'});
+            if( !viewId ) {
+                viewId = 1;
             }
-            if( !this.contentView3 ) {
-                this.contentView3 = kitchensink.Views.SplitView.create({value: 'SplitView 3'});
-            }
-            if( !this.menuView ) {
-                this.menuView = kitchensink.Views.SplitMenu.create(this, null, true)
-            }
+            viewId = menuId + '-' + viewId;
 
-            if( subview == 3 ) {
-                this.contentView = this.contentView3;
-            } else if( subview == 2 ) {
-                this.contentView = this.contentView2;
-            } else {
-                this.contentView = this.contentView1;
-            }
+            this._getMenuView(menuId);
+            this._getContentView(viewId);
+
+            this.contentView = this['contentView' + viewId]
+            this.menuView = this['menuView' + menuId]
 
             this._applyViews();
         },
 
-        gotoSplitPage: function( event, element ) {
+        _getMenuView: function( menuId ) {
+
+            if( !this['menuLevel' + menuId] ) {
+                var navItems = [];
+                for( var i = 1; i < 6; i++ ) {
+                    var link = i;
+                    if( menuId > 1 ) {
+                        link = menuId + '/' + i;
+                    }
+                    navItems.push({_value_: 'SplitView ' + link, goto: link})
+                }
+                this['menuLevel' + menuId] = M.Collection.create(navItems);
+            }
+
+            if( !this['menuView' + menuId] ) {
+                this['menuView' + menuId] = M.ListView.extend({
+                    scopeKey: 'menuLevel' + menuId,
+                    listItemView: M.ListItemView.extend({
+                        type: M.ListItemView.CONST.LINKED,
+                        events: {
+                            tap: 'gotoPage'
+                        }
+                    })
+                }).create(this, null, true)
+            }
+        },
+
+        _getContentView: function( viewId ) {
+            if( !this['contentView' + viewId] ) {
+                console.log('Create view: ' + viewId);
+                this['contentView' + viewId] = M.View.extend({
+                    // The views grid
+                    grid: 'col-xs-12'
+                }, {
+                    backButton: M.ButtonView.extend({
+                        grid: 'col-xs-12',
+                        value: 'Back to the Kitchensink Menu',
+                        events: {
+                            tap: function() {
+                                // Go back to the MenuController
+                                kitchensink.navigate({
+                                    route: ''
+                                });
+                            }
+                        }
+                    })
+                }).create({value: 'SplitView ' + viewId});
+            }
+        },
+
+        gotoPage: function( event, element ) {
             var goto = element.model.get('goto');
 
             kitchensink.navigate({

@@ -19,17 +19,17 @@ kitchensink.Controllers = kitchensink.Controllers || {};
         /**
          * The application start (after reload)
          */
-        applicationStart: function( settings ) {
-            if(settings.tab){
-                this.setLayout(settings.tab);
+        applicationStart: function( tab ) {
+            if(tab){
+                this.setLayout(tab);
             }
         },
 
-        show: function( settings ) {
+        show: function( tab ) {
             if(this.tabLayout){
-                this.tabLayout.switchToTab(settings.tab);
+                this.tabLayout.switchToTab(tab);
             } else {
-                this.applicationStart(settings);
+                this.applicationStart(tab);
             }
 
         },
