@@ -56,7 +56,7 @@ kitchensink.Controllers = kitchensink.Controllers || {};
                 },
 
                 applyAdditionalBehaviourRightContainer: function( element, layout ) {
-                    element.addClass('col-xs-12 grid');
+                    element.addClass('col-xs-12');
                 }
 
             }).create(this, null, true);

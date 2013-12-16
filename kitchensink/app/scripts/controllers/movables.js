@@ -21,10 +21,10 @@ kitchensink.Controllers = kitchensink.Controllers || {};
         },
 
         registerToMenu: function( menuController ){
-            menuController.registerMenuItem({
-                _value_: 'Movables',
-                goto:'movables'
-            });
+//            menuController.registerMenuItem({
+//                _value_: 'Movables',
+//                goto:'movables'
+//            });
         }
     });
 
