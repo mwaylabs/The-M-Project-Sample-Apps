@@ -24,47 +24,43 @@ kitchensink.Controllers = kitchensink.Controllers || {};
                 if( kitchensink.getLayout() !== this.tabLayout ) {
                     this.setLayout();
                 }
+
                 this._initViews(menuId, viewId);
-
-                if( viewId ) {
-                    kitchensink.getLayout().leftTransition.setTransition(M.Transitions.CONST.NONE);
-                    kitchensink.getLayout().rightTransition.setTransition(M.Transitions.CONST.MOVE_TO_LEFT_FROM_RIGHT);
-                    kitchensink.getLayout().leftTransition.startTransition();
-                    kitchensink.getLayout().rightTransition.startTransition();
-                } else {
-                    kitchensink.getLayout().rightTransition.setTransition(M.Transitions.CONST.NONE);
-                    kitchensink.getLayout().leftTransition.setTransition(M.Transitions.CONST.MOVE_TO_LEFT_FROM_RIGHT);
-                    kitchensink.getLayout().leftTransition.startTransition();
-                    kitchensink.getLayout().rightTransition.startTransition();
-                }
-
             } else {
                 this.applicationStart(menuId, viewId);
             }
         },
 
         setLayout: function() {
-            this.tabLayout = M.SplitLayout.extend({
-
-            }).create(this, null, true);
+            this.tabLayout = M.SplitLayout.extend().create(this, null, true);
             kitchensink.setLayout(this.tabLayout);
         },
 
         _initViews: function( menuId, viewId ) {
 
-            this._getMenuView(menuId);
-            this._getContentView(viewId);
+            this._buildMenuView(menuId);
+            this._buildContentView(viewId);
 
             this.menuView = this['menuView' + menuId];
 
-            if(viewId) {
-              this.contentView = this['contentView' + viewId]
+            if( viewId ) {
+                this.contentView = this['contentView' + viewId]
+            } else {
+                this.contentView = null;
             }
 
             this._applyViews();
         },
 
-        _getMenuView: function( menuId ) {
+        _applyViews: function() {
+            var views = {
+                content: this.contentView,
+                left: this.menuView
+            };
+            kitchensink.getLayout().applyViews(views);
+        },
+
+        _buildMenuView: function( menuId ) {
 
             if( !this['menuLevel' + menuId] ) {
                 var navItems = [];
@@ -91,9 +87,8 @@ kitchensink.Controllers = kitchensink.Controllers || {};
             }
         },
 
-        _getContentView: function( viewId ) {
+        _buildContentView: function( viewId ) {
             if( !this['contentView' + viewId] ) {
-                console.log('Create view: ' + viewId);
                 this['contentView' + viewId] = M.View.extend({
                     // The views grid
                     grid: 'col-xs-12'
@@ -122,16 +117,6 @@ kitchensink.Controllers = kitchensink.Controllers || {};
             });
         },
 
-        _applyViews: function() {
-
-            console.log('menuView', this.menuView);
-            console.log('contentView', this.contentView);
-
-            kitchensink.getLayout().applyViews({
-                left: this.menuView,
-                content: this.contentView
-            });
-        },
 
         registerToMenu: function( menuController ) {
             menuController.registerMenuItem({
