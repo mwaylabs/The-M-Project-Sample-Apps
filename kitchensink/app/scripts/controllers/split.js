@@ -26,10 +26,20 @@ kitchensink.Controllers = kitchensink.Controllers || {};
                 }
                 this._initViews(menuId, viewId);
 
-                kitchensink.getLayout().startTransition();
+                if( viewId ) {
+                    kitchensink.getLayout().leftTransition.setTransition(M.Transitions.CONST.NONE);
+                    kitchensink.getLayout().rightTransition.setTransition(M.Transitions.CONST.MOVE_TO_LEFT_FROM_RIGHT);
+                    kitchensink.getLayout().leftTransition.startTransition();
+                    kitchensink.getLayout().rightTransition.startTransition();
+                } else {
+                    kitchensink.getLayout().rightTransition.setTransition(M.Transitions.CONST.NONE);
+                    kitchensink.getLayout().leftTransition.setTransition(M.Transitions.CONST.MOVE_TO_LEFT_FROM_RIGHT);
+                    kitchensink.getLayout().leftTransition.startTransition();
+                    kitchensink.getLayout().rightTransition.startTransition();
+                }
 
             } else {
-                this.applicationStart( menuId, viewId );
+                this.applicationStart(menuId, viewId);
             }
         },
 
@@ -42,20 +52,14 @@ kitchensink.Controllers = kitchensink.Controllers || {};
 
         _initViews: function( menuId, viewId ) {
 
-
-            if( !menuId ) {
-                menuId = 1;
-            }
-            if( !viewId ) {
-                viewId = 1;
-            }
-            viewId = menuId + '-' + viewId;
-
             this._getMenuView(menuId);
             this._getContentView(viewId);
 
-            this.contentView = this['contentView' + viewId]
-            this.menuView = this['menuView' + menuId]
+            this.menuView = this['menuView' + menuId];
+
+            if(viewId) {
+              this.contentView = this['contentView' + viewId]
+            }
 
             this._applyViews();
         },
@@ -66,7 +70,7 @@ kitchensink.Controllers = kitchensink.Controllers || {};
                 var navItems = [];
                 for( var i = 1; i < 6; i++ ) {
                     var link = i;
-                    if( menuId > 1 ) {
+                    if( menuId ) {
                         link = menuId + '/' + i;
                     }
                     navItems.push({_value_: 'SplitView ' + link, goto: link})
@@ -119,6 +123,10 @@ kitchensink.Controllers = kitchensink.Controllers || {};
         },
 
         _applyViews: function() {
+
+            console.log('menuView', this.menuView);
+            console.log('contentView', this.contentView);
+
             kitchensink.getLayout().applyViews({
                 left: this.menuView,
                 content: this.contentView
