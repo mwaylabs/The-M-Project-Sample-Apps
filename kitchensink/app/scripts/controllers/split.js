@@ -75,15 +75,35 @@ kitchensink.Controllers = kitchensink.Controllers || {};
             }
 
             if( !this['menuView' + menuId] ) {
-                this['menuView' + menuId] = M.ListView.extend({
+
+                var childViews = {};
+
+                if( menuId ) {
+                    childViews.back = M.ButtonView.extend({
+                        value: '',
+                        cssClass: 'splitBackButton',
+                        icon: 'fa-arrow-circle-o-left',
+                        events: {
+                            tap: function() {
+                                kitchensink.navigate({
+                                    route: 'split'
+                                })
+                            }
+                        }
+                    });
+                }
+
+                childViews.menu = M.ListView.extend({
                     scopeKey: 'menuLevel' + menuId,
                     listItemView: M.ListItemView.extend({
                         type: M.ListItemView.CONST.LINKED,
                         events: {
-                            tap: 'gotoPage'
+                            tap: 'gotoPage',
                         }
                     })
-                }).create(this, null, true)
+                });
+
+                this['menuView' + menuId] = M.View.extend({}, childViews).create(this, null, true)
             }
         },
 
@@ -111,12 +131,14 @@ kitchensink.Controllers = kitchensink.Controllers || {};
 
         gotoPage: function( event, element ) {
             var goto = element.model.get('goto');
-
+            var link = 'split';
+            if(goto) {
+                link += '/' + goto;
+            }
             kitchensink.navigate({
-                route: 'split/' + goto
+                route: link
             });
         },
-
 
         registerToMenu: function( menuController ) {
             menuController.registerMenuItem({

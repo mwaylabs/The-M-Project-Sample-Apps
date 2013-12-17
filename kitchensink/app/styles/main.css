@@ -68,3 +68,17 @@
 #rightContainer{
     background: #eab13a;
 }
+
+.splitBackButton {
+    min-width: 48px;
+    width: 1em;
+}
+
+.splitBackButton .button {
+    border: 0;
+    font-size: 1.4em;
+    padding:0;
+    text-align: left;
+    padding: 0.4em 0.6em;
+    margin-bottom: 0;
+}
