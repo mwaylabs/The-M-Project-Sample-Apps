@@ -62,7 +62,7 @@
                     'tabbar(/:tab)': 'tabbarController',
                     'transitions(/:name)': 'transitionsController',
                     'i18n': 'i18n',
-                    'split(/:subview)': 'split',
+                    'split(/:menuId)(/:viewId)': 'split',
                     'movables': 'movables',
                     //m:routes
                 },
