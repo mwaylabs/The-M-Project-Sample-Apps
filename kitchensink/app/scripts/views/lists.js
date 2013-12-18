@@ -24,13 +24,13 @@ kitchensink.Views = kitchensink.Views || {};
                     grid: 'col-xs-12',
 
                     // The list view's items
-                    _value_: M.Collection.create([
-                        {_value_: 'List Item 1'},
-                        {_value_: 'List Item 2'},
-                        {_value_: 'List Item 3'},
-                        {_value_: 'List Item 4'},
-                        {_value_: 'List Item 5'},
-                        {_value_: 'List Item 6'}
+                    _value: M.Collection.create([
+                        {_value: 'List Item 1'},
+                        {_value: 'List Item 2'},
+                        {_value: 'List Item 3'},
+                        {_value: 'List Item 4'},
+                        {_value: 'List Item 5'},
+                        {_value: 'List Item 6'}
                     ])
 
                 })
@@ -45,13 +45,13 @@ kitchensink.Views = kitchensink.Views || {};
                     grid: 'col-xs-12',
 
                     // The list view's items
-                    _value_: M.Collection.create([
-                        {_value_: 'List Item 1 with active state'},
-                        {_value_: 'List Item 2 with active state'},
-                        {_value_: 'List Item 3 with active state'},
-                        {_value_: 'List Item 4 with active state'},
-                        {_value_: 'List Item 5 with active state'},
-                        {_value_: 'List Item 6 with active state'}
+                    _value: M.Collection.create([
+                        {_value: 'List Item 1 with active state'},
+                        {_value: 'List Item 2 with active state'},
+                        {_value: 'List Item 3 with active state'},
+                        {_value: 'List Item 4 with active state'},
+                        {_value: 'List Item 5 with active state'},
+                        {_value: 'List Item 6 with active state'}
                     ]),
 
                     // This property contains the listitem view
@@ -69,13 +69,13 @@ kitchensink.Views = kitchensink.Views || {};
                     grid: 'col-xs-12',
 
                     // The list view's items
-                    _value_: M.Collection.create([
-                        {_value_: 'List Item 1 with active state'},
-                        {_value_: 'List Item 2 with active state'},
-                        {_value_: 'List Item 3 with active state'},
-                        {_value_: 'List Item 4 with active state'},
-                        {_value_: 'List Item 5 with active state'},
-                        {_value_: 'List Item 6 with active state'}
+                    _value: M.Collection.create([
+                        {_value: 'List Item 1 with active state'},
+                        {_value: 'List Item 2 with active state'},
+                        {_value: 'List Item 3 with active state'},
+                        {_value: 'List Item 4 with active state'},
+                        {_value: 'List Item 5 with active state'},
+                        {_value: 'List Item 6 with active state'}
                     ]),
 
                     // This property contains the listitem view.
@@ -96,13 +96,13 @@ kitchensink.Views = kitchensink.Views || {};
                     grid: 'col-xs-12',
 
                     // The list view's items
-                    _value_: M.Collection.create([
-                        {_value_: 'List Item 1 with active state'},
-                        {_value_: 'List Item 2 with active state'},
-                        {_value_: 'List Item 3 with active state'},
-                        {_value_: 'List Item 4 with active state'},
-                        {_value_: 'List Item 5 with active state'},
-                        {_value_: 'List Item 6 with active state'}
+                    _value: M.Collection.create([
+                        {_value: 'List Item 1 with active state'},
+                        {_value: 'List Item 2 with active state'},
+                        {_value: 'List Item 3 with active state'},
+                        {_value: 'List Item 4 with active state'},
+                        {_value: 'List Item 5 with active state'},
+                        {_value: 'List Item 6 with active state'}
                     ]),
 
                     listItemView: M.ListItemView.extend({
@@ -124,18 +124,18 @@ kitchensink.Views = kitchensink.Views || {};
                     grid: 'col-xs-12',
 
                     // The list view's items
-                    _value_: M.Collection.create([
-                        {_value_: 'Android'},
-                        {_value_: 'Linux'},
-                        {_value_: 'Apple'},
-                        {_value_: 'Windows'}
+                    _value: M.Collection.create([
+                        {_value: 'Android'},
+                        {_value: 'Linux'},
+                        {_value: 'Apple'},
+                        {_value: 'Windows'}
                     ]),
 
                     listItemView: M.ListItemView.extend({
                         type: M.ListItemView.CONST.ICON,
                         // Sets a font awsome icon for this listitem view.
                         getIcon: function() {
-                            return 'fa-' + this.model.get('_value_').toLocaleLowerCase();
+                            return 'fa-' + this.model.get('_value').toLocaleLowerCase();
                         }
                     })
 
@@ -152,7 +152,7 @@ kitchensink.Views = kitchensink.Views || {};
                     grid: 'col-xs-12',
 
                     // The list view's items
-                    _value_: M.Collection.create([
+                    _value: M.Collection.create([
 
                         {headline: 'Sir Timothy John "Tim" Berners-Lee', text: 'The inventor of the World Wide Web.', image: 'http://upload.wikimedia.org/wikipedia/commons/8/83/Tim_Berners-Lee-Knight-crop.jpg'},
                         {headline: 'Brendan Eich', text: 'Creator of the JavaScript scripting language.', image: 'http://upload.wikimedia.org/wikipedia/commons/0/09/BEich.jpg'},

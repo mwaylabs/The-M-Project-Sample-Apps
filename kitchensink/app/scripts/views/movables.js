@@ -22,22 +22,27 @@ kitchensink.Views = kitchensink.Views || {};
             }
         }),
 
-//        menuView: M.MenuView.extend({
-//            icon: 'fa-bars'
-//        }, {
-//
-//            'menu-content': M.View.extend({
-//                value: 'menu entry'
-//            }, {
-//                menuEntry1: M.ButtonView.extend({
-//                    value: 'menu entry 1'
-//                }),
-//
-//                menuEntry2: M.ButtonView.extend({
-//                    value: 'menu entry 2'
-//                })
-//            })
-//        })
+        movableViewSmall: M.MovableView.extend({
+            value: 'drag me',
+            leftEdge: 100,
+            rightEdge: 200
+        }),
+
+        toggleMenuButtonForSmall: M.ButtonView.extend({
+            value: 'toggle movable',
+            events: {
+                tap: function(event, element){
+                    element.scope.contentView.childViews.movableViewSmall.toggle();
+                }
+            }
+        }),
+
+        movableViewOnRelease: M.MovableView.extend({
+            value: 'drag me',
+            onRelease: function(){
+                console.log('asdf');
+            }
+        })
 
     });
 
