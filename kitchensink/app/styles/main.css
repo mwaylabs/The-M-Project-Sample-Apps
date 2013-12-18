@@ -65,20 +65,40 @@
     text-align: center;
 }
 
-#rightContainer{
-    background: #eab13a;
-}
-
-.splitBackButton {
-    min-width: 48px;
-    width: 1em;
-}
-
 .splitBackButton .button {
     border: 0;
     font-size: 1.4em;
     padding:0;
     text-align: left;
-    padding: 0.4em 0.6em;
+    padding: 0.6em 0.8em;
     margin-bottom: 0;
+    background: none;
+}
+
+.splitlayout .listitemview li {
+    height: 50px;
+}
+
+.splitlayout #leftContainer{
+    border-right: 1px solid #ccc;
+    background: #fbfbfb;
+}
+
+.splitlayout .toolbarview {
+    position: relative;
+}
+
+.splitlayout .close {
+    display: none;
+}
+
+.splitlayout.single #leftContainer {
+    position: absolute;
+    top: 50px;
+    width: 180px;
+    height: 340px;
+    z-index: 9999;
+    left: 10px;
+    overflow: hidden;
+    border: 1px solid #ccc;
 }

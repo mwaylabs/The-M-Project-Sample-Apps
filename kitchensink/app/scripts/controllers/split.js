@@ -65,7 +65,7 @@ kitchensink.Controllers = kitchensink.Controllers || {};
         },
 
         _buildMenuView: function( menuId ) {
-            menuId = parseInt(menuId,10);
+            menuId = parseInt(menuId, 10);
 
             if( !this['menuLevel' + menuId] ) {
                 var navItems = [];
@@ -76,7 +76,7 @@ kitchensink.Controllers = kitchensink.Controllers || {};
                         obj['_value_'] = 'SplitView ' + i
                     } else {
                         obj.viewId = i;
-                        obj['_value_'] = 'SplitView ' + menuId  + '/' + obj.viewId
+                        obj['_value_'] = 'SplitView ' + menuId + '/' + obj.viewId
                     }
                     navItems.push(obj)
                 }
@@ -126,21 +126,27 @@ kitchensink.Controllers = kitchensink.Controllers || {};
         _buildContentView: function( viewId ) {
             if( !this['contentView' + viewId] ) {
                 this['contentView' + viewId] = M.View.extend({
-                    // The views grid
-                    grid: 'col-xs-12',
-                    value: 'SplitView ' + viewId
-                }, {
-                    backButton: M.ButtonView.extend({
-                        grid: 'visible-xs',
-                        value: 'Show Menu',
-                        events: {
-                            tap: function() {
-                                //$('#leftContainer').removeClass('hidden-xs col-xs-12');
-                                $('#leftContainer').toggleClass('hidden-xs');
-                            }
-                        }
-                    })
-                }).create();
+                        // The views grid
+                    }, {
+                        toolbar: M.ToolbarView.extend({
+                            value: 'Split Layout ' + viewId
+                        }, {
+                            first: M.ButtonView.extend({
+                                cssClass: 'visible-xs',
+                                value: 'Menu',
+                                events: {
+                                    tap: function() {
+                                        this.tabLayout.toggleLeftContainer();
+                                    }
+                                }
+                            })
+                        }),
+
+                        tf: M.View.extend({
+                            grid: 'col-xs-12',
+                            value: 'Content ' + viewId
+                        })
+                    }).create(this, null, true);
             }
         },
 
@@ -158,7 +164,8 @@ kitchensink.Controllers = kitchensink.Controllers || {};
         _navigateContent: function( id ) {
             kitchensink.navigate({
                 route: 'split/' + this._currentMenuId + '/' + id
-            })
+            });
+            this.tabLayout.closeLeftContainer();
         },
 
         registerToMenu: function( menuController ) {
