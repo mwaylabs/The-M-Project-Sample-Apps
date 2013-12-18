@@ -24,7 +24,6 @@ kitchensink.Controllers = kitchensink.Controllers || {};
                 if( kitchensink.getLayout() !== this.tabLayout ) {
                     this.setLayout();
                 }
-
                 this._initViews(menuId, viewId);
             } else {
                 this.applicationStart(menuId, viewId);
@@ -37,18 +36,23 @@ kitchensink.Controllers = kitchensink.Controllers || {};
         },
 
         _initViews: function( menuId, viewId ) {
+            menuId = menuId || 0;
+            viewId = viewId || 0;
 
             this._buildMenuView(menuId);
+            this._buildContentView('Home');
             this._buildContentView(viewId);
 
             this.menuView = this['menuView' + menuId];
 
-            if( viewId ) {
+            if( viewId > 0 ) {
                 this.contentView = this['contentView' + viewId]
             } else {
-                this.contentView = null;
+                this.contentView = this.contentViewHome;
             }
 
+            this._currentViewId = viewId;
+            this._currentMenuId = menuId;
             this._applyViews();
         },
 
@@ -61,15 +65,20 @@ kitchensink.Controllers = kitchensink.Controllers || {};
         },
 
         _buildMenuView: function( menuId ) {
+            menuId = parseInt(menuId,10);
 
             if( !this['menuLevel' + menuId] ) {
                 var navItems = [];
                 for( var i = 1; i < 6; i++ ) {
-                    var link = i;
-                    if( menuId ) {
-                        link = menuId + '/' + i;
+                    var obj = {}
+                    if( menuId === 0 ) {
+                        obj.menuId = i;
+                        obj['_value_'] = 'SplitView ' + i
+                    } else {
+                        obj.viewId = i;
+                        obj['_value_'] = 'SplitView ' + menuId  + '/' + obj.viewId
                     }
-                    navItems.push({_value_: 'SplitView ' + link, goto: link})
+                    navItems.push(obj)
                 }
                 this['menuLevel' + menuId] = M.Collection.create(navItems);
             }
@@ -85,9 +94,7 @@ kitchensink.Controllers = kitchensink.Controllers || {};
                         icon: 'fa-arrow-circle-o-left',
                         events: {
                             tap: function() {
-                                kitchensink.navigate({
-                                    route: 'split'
-                                })
+                                this._navigateMenu(0);
                             }
                         }
                     });
@@ -98,7 +105,16 @@ kitchensink.Controllers = kitchensink.Controllers || {};
                     listItemView: M.ListItemView.extend({
                         type: M.ListItemView.CONST.LINKED,
                         events: {
-                            tap: 'gotoPage',
+                            tap: function( event, element ) {
+                                var menuId = element.model.get('menuId');
+                                var viewId = element.model.get('viewId');
+
+                                if( viewId ) {
+                                    this._navigateContent(viewId)
+                                } else {
+                                    this._navigateMenu(menuId)
+                                }
+                            },
                         }
                     })
                 });
@@ -111,33 +127,38 @@ kitchensink.Controllers = kitchensink.Controllers || {};
             if( !this['contentView' + viewId] ) {
                 this['contentView' + viewId] = M.View.extend({
                     // The views grid
-                    grid: 'col-xs-12'
+                    grid: 'col-xs-12',
+                    value: 'SplitView ' + viewId
                 }, {
                     backButton: M.ButtonView.extend({
-                        grid: 'col-xs-12',
-                        value: 'Back to the Kitchensink Menu',
+                        grid: 'visible-xs',
+                        value: 'Show Menu',
                         events: {
                             tap: function() {
-                                // Go back to the MenuController
-                                kitchensink.navigate({
-                                    route: ''
-                                });
+                                //$('#leftContainer').removeClass('hidden-xs col-xs-12');
+                                $('#leftContainer').toggleClass('hidden-xs');
                             }
                         }
                     })
-                }).create({value: 'SplitView ' + viewId});
+                }).create();
             }
         },
 
         gotoPage: function( event, element ) {
             var goto = element.model.get('goto');
-            var link = 'split';
-            if(goto) {
-                link += '/' + goto;
-            }
+            this._navigateContent(goto);
+        },
+
+        _navigateMenu: function( id ) {
             kitchensink.navigate({
-                route: link
-            });
+                route: 'split/' + id + '/' + this._currentViewId
+            })
+        },
+
+        _navigateContent: function( id ) {
+            kitchensink.navigate({
+                route: 'split/' + this._currentMenuId + '/' + id
+            })
         },
 
         registerToMenu: function( menuController ) {
