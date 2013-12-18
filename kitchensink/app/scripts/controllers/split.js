@@ -40,9 +40,9 @@ kitchensink.Controllers = kitchensink.Controllers || {};
         _initMenu: function() {
             if( !this.splitMenu ) {
                 this.splitMenu = M.Collection.create([
-                    {_value_: 'SplitView 1', goto: '1'},
-                    {_value_: 'SplitView 2', goto: '2'},
-                    {_value_: 'SplitView 3', goto: '3'}
+                    {_value: 'SplitView 1', goto: '1'},
+                    {_value: 'SplitView 2', goto: '2'},
+                    {_value: 'SplitView 3', goto: '3'}
                 ]);
             }
         },
@@ -109,7 +109,7 @@ kitchensink.Controllers = kitchensink.Controllers || {};
 
         registerToMenu: function( menuController ) {
             menuController.registerMenuItem({
-                _value_: 'Split',
+                _value: 'Split',
                 goto: 'split'
             });
         }

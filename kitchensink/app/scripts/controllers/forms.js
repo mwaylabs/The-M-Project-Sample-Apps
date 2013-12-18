@@ -42,7 +42,7 @@ kitchensink.Controllers = kitchensink.Controllers || {};
         // Register menu item for this view
         registerToMenu: function( menuController ){
             menuController.registerMenuItem({
-                _value_: 'Form Views',
+                _value: 'Form Views',
                 goto:'forms'
             });
         }

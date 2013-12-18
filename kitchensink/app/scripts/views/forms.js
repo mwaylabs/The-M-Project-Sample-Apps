@@ -72,7 +72,7 @@ kitchensink.Views = kitchensink.Views || {};
                 type: 'clear',
                 placeholder: 'clear me',
                 value: M.Model.create({
-                    _value_: ''
+                    value: ''
                 })
             }),
 
