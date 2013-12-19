@@ -102,3 +102,11 @@
     overflow: hidden;
     border: 1px solid #ccc;
 }
+
+.splitBackKitchensink .button {
+    border:0;
+}
+
+.splitlayout .listview {
+    margin-bottom: 5px;
+}
