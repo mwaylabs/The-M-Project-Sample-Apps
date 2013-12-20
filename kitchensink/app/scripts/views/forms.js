@@ -112,6 +112,22 @@ kitchensink.Views = kitchensink.Views || {};
 
         }),
 
+        passwordsView: M.View.extend({
+            grid: 'row',
+            value: 'M.TextfielView password input'
+        },{
+            clearTextfieldExample: M.TextfieldView.extend({
+                grid: 'col-xs-12',
+                label: 'Custom clear',
+                type: 'password',
+                useCustomClear: YES,
+                placeholder: 'clear me',
+                value: M.Model.create({
+                    value: ''
+                })
+            })
+        }),
+
         radiolistView: M.View.extend({
 
             grid: 'row',

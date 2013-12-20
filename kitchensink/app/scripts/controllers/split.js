@@ -24,7 +24,6 @@ kitchensink.Controllers = kitchensink.Controllers || {};
                 if( kitchensink.getLayout() !== this.tabLayout ) {
                     this.setLayout();
                 }
-
                 this._initViews(menuId, viewId);
             } else {
                 this.applicationStart(menuId, viewId);
@@ -37,18 +36,23 @@ kitchensink.Controllers = kitchensink.Controllers || {};
         },
 
         _initViews: function( menuId, viewId ) {
+            menuId = menuId || 0;
+            viewId = viewId || 0;
 
             this._buildMenuView(menuId);
+            this._buildContentView('Home');
             this._buildContentView(viewId);
 
             this.menuView = this['menuView' + menuId];
 
-            if( viewId ) {
+            if( viewId > 0 ) {
                 this.contentView = this['contentView' + viewId]
             } else {
-                this.contentView = null;
+                this.contentView = this.contentViewHome;
             }
 
+            this._currentViewId = viewId;
+            this._currentMenuId = menuId;
             this._applyViews();
         },
 
@@ -61,51 +65,102 @@ kitchensink.Controllers = kitchensink.Controllers || {};
         },
 
         _buildMenuView: function( menuId ) {
+            menuId = parseInt(menuId, 10);
 
             if( !this['menuLevel' + menuId] ) {
                 var navItems = [];
                 for( var i = 1; i < 6; i++ ) {
-                    var link = i;
-                    if( menuId ) {
-                        link = menuId + '/' + i;
+                    var obj = {};
+                    if( menuId === 0 ) {
+                        obj.menuId = i;
+                        obj['value'] = 'SplitView ' + i
+                    } else {
+                        obj.viewId = i;
+                        obj['value'] = 'SplitView ' + menuId + '/' + obj.viewId
                     }
-                    navItems.push({value: 'SplitView ' + link, goto: link})
+                    navItems.push(obj)
                 }
                 this['menuLevel' + menuId] = M.Collection.create(navItems);
             }
 
             if( !this['menuView' + menuId] ) {
-                this['menuView' + menuId] = M.ListView.extend({
+
+                var childViews = {};
+
+                if( menuId ) {
+                    childViews.back = M.ButtonView.extend({
+                        value: '',
+                        cssClass: 'splitBackButton',
+                        icon: 'fa-arrow-circle-o-left',
+                        events: {
+                            tap: function() {
+                                this._navigateMenu(0);
+                            }
+                        }
+                    });
+                }
+
+                childViews.menu = M.ListView.extend({
                     scopeKey: 'menuLevel' + menuId,
                     listItemView: M.ListItemView.extend({
                         type: M.ListItemView.CONST.LINKED,
                         events: {
-                            tap: 'gotoPage'
+                            tap: function( event, element ) {
+                                var menuId = element.model.get('menuId');
+                                var viewId = element.model.get('viewId');
+
+                                if( viewId ) {
+                                    this._navigateContent(viewId)
+                                } else {
+                                    this._navigateMenu(menuId)
+                                }
+                            },
                         }
                     })
-                }).create(this, null, true)
+                });
+
+                if( menuId === 0 ) {
+                    childViews.back = M.ButtonView.extend({
+                        value: 'Back to the Kitchensink',
+                        cssClass: 'splitBackKitchensink',
+                        events: {
+                            tap: function() {
+                                kitchensink.navigate({
+                                   route: ''
+                                });
+                            }
+                        }
+                    });
+                }
+
+                this['menuView' + menuId] = M.View.extend({}, childViews).create(this, null, true)
             }
         },
 
         _buildContentView: function( viewId ) {
             if( !this['contentView' + viewId] ) {
                 this['contentView' + viewId] = M.View.extend({
-                    // The views grid
-                    grid: 'col-xs-12'
-                }, {
-                    backButton: M.ButtonView.extend({
-                        grid: 'col-xs-12',
-                        value: 'Back to the Kitchensink Menu',
-                        events: {
-                            tap: function() {
-                                // Go back to the MenuController
-                                kitchensink.navigate({
-                                    route: ''
-                                });
-                            }
-                        }
-                    })
-                }).create({value: 'SplitView ' + viewId});
+                        // The views grid
+                    }, {
+                        toolbar: M.ToolbarView.extend({
+                            value: 'Split Layout ' + viewId
+                        }, {
+                            first: M.ButtonView.extend({
+                                cssClass: 'visible-xs',
+                                value: 'Menu',
+                                events: {
+                                    tap: function() {
+                                        this.tabLayout.toggleLeftContainer();
+                                    }
+                                }
+                            })
+                        }),
+
+                        tf: M.View.extend({
+                            grid: 'col-xs-12',
+                            value: 'Content ' + viewId
+                        })
+                    }).create(this, null, true);
             }
         },
 

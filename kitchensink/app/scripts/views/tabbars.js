@@ -13,9 +13,9 @@ kitchensink.Views = kitchensink.Views || {};
 
             grid: 'row',
 
-            _value: M.Collection.create([
-                {_value: 'Tabbar without scrolling', tabbarExample: 1},
-                {_value: 'Tabbar with scrolling', tabbarExample: 2}
+            value: M.Collection.create([
+                {value: 'Tabbar without scrolling', tabbarExample: 1},
+                {value: 'Tabbar with scrolling', tabbarExample: 2}
             ]),
 
             listItemView: M.ListItemView.extend({
