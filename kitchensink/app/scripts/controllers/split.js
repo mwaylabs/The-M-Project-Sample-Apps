@@ -69,7 +69,7 @@ kitchensink.Controllers = kitchensink.Controllers || {};
                     if( menuId ) {
                         link = menuId + '/' + i;
                     }
-                    navItems.push({_value_: 'SplitView ' + link, goto: link})
+                    navItems.push({value: 'SplitView ' + link, goto: link})
                 }
                 this['menuLevel' + menuId] = M.Collection.create(navItems);
             }
@@ -120,7 +120,7 @@ kitchensink.Controllers = kitchensink.Controllers || {};
 
         registerToMenu: function( menuController ) {
             menuController.registerMenuItem({
-                _value_: 'Split',
+                value: 'Split',
                 goto: 'split'
             });
         }

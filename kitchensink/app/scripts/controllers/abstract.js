@@ -27,7 +27,9 @@ kitchensink.Controllers = kitchensink.Controllers || {};
 
         // Called from the router when the application starts
         applicationStart: function(settings) {
-            var _layout = M.SwitchMenuHeaderContentLayout.extend({}).create(this, null, true);
+            var _layout = M.SwitchMenuHeaderContentLayout.extend({
+
+            }).create(this, null, true);
             kitchensink.setLayout(_layout);
             this._initViews(settings);
         },

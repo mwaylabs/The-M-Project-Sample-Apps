@@ -25,13 +25,13 @@ kitchensink.Views = kitchensink.Views || {};
             eventButton: M.ButtonView.extend({
                 grid: 'col-xs-12 col-sm-6 col-md-4',
                 value: M.Model.create({
-                    _value: 1
+                    value: 1
                 }),
                 counter: 1,
                 events: {
                     tap: function( event, element ) {
-                        var count = element.model.get('_value');
-                        element.model.set('_value', ++count);
+                        var count = element.model.get('value');
+                        element.model.set('value', ++count);
                     }
                 }
             }),
@@ -39,14 +39,14 @@ kitchensink.Views = kitchensink.Views || {};
             deactiveButton: M.ButtonView.extend({
                 grid: 'col-xs-12 col-sm-6 col-md-4',
                 value: M.Model.create({
-                    _value: 1
+                    value: 1
                 }),
                 enabled: NO,
                 counter: 1,
                 events: {
                     tap: function( event, element ) {
-                        var count = element.model.get('_value');
-                        element.model.set('_value', ++count);
+                        var count = element.model.get('value');
+                        element.model.set('value', ++count);
                     }
                 }
             }),

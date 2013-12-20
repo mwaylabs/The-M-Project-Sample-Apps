@@ -22,7 +22,7 @@ kitchensink.Controllers = kitchensink.Controllers || {};
 
         registerToMenu: function( menuController ){
             menuController.registerMenuItem({
-                _value: 'Movables',
+                value: 'Movables',
                 goto:'movables'
             });
         }
