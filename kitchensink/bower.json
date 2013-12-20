@@ -2,7 +2,8 @@
   "name": "kitchensink",
   "version": "0.1.0",
   "dependencies": {
-    "themproject": "2.0.0-beta"
+    "themproject": "2.0.0-beta",
+    "enquire": "~2.1.0"
   },
   "devDependencies": {}
 }
