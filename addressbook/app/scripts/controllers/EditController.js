@@ -6,11 +6,11 @@
 
         editModel: M.Model.create(),
 
-        applicationStart: function (settings) {
+        applicationStart: function (id) {
 
             Addressbook.setLayout(M.AppLayout.design(this, null, true));
 
-            this._initView(settings);
+            this._initView(id);
 
             Addressbook.getLayout().applyViews({
                 header: this.header,
@@ -18,8 +18,8 @@
             });
         },
 
-        show: function (settings) {
-            this._initView(settings);
+        show: function (id) {
+            this._initView(id);
 
             Addressbook.getLayout().applyViews({
                 header: this.header,
@@ -35,9 +35,9 @@
             });
         },
 
-        _initView: function (settings) {
+        _initView: function (id) {
             var that = this;
-            var userId = settings.id;
+            var userId = id;
             var userModel = null;
 
             if (Addressbook.contactCollection && Addressbook.contactCollection.models.length > 1) {

@@ -6,11 +6,11 @@
 
         editModel: M.Model.create(),
 
-        applicationStart: function( settings ) {
+        applicationStart: function( ) {
 
             Addressbook.setLayout(M.AppLayout.design(this, null, true));
 
-            this._initView(settings);
+            this._initView( );
 
             Addressbook.getLayout().applyViews({
                 header: this.header,
@@ -18,8 +18,8 @@
             });
         },
 
-        show: function( settings ) {
-            this._initView(settings);
+        show: function( ) {
+            this._initView();
 
             Addressbook.getLayout().applyViews({
                 header: this.header,
@@ -36,29 +36,14 @@
             });
         },
 
-        _initView: function( settings ) {
-            var that = this;
-            var userId = settings.id;
-            var userModel = null;
-
-            if( Addressbook.contactCollection && Addressbook.contactCollection.models.length > 1 ) {
-                this._setModel(userId);
-            } else {
-                Addressbook.contactCollection = new Addressbook.Collections.ContactsCollection(/*dummy*/);
-                Addressbook.contactCollection.fetch({
-                    success: function() {
-                        that._setModel(userId);
-                    }
-                });
-            }
-
+        _initView: function( ) {
             if( !this.detailView ) {
                 this.detailView = Addressbook.Views.EditView.create(this, null, true);
             }
 
             if( !this.header ) {
                 this.header = M.ToolbarView.extend({
-                    value: M.I18N.get('global.edit')
+                    value: M.I18N.get('global.add')
                 }, {
                     first: M.ButtonView.extend({
                         cssClass: 'btn-default',
@@ -83,18 +68,9 @@
             }
         },
 
-        _setModel: function( userId ) {
-            var userModel = Addressbook.contactCollection.get(userId);
-            if( userModel ) {
-                this.currentModel = userModel;
-                this.editModel.set('firstname', userModel.get('firstname'));
-                this.editModel.set('lastname', userModel.get('lastname'));
-            }
-
-        },
-
         addEntry: function( event, element ) {
             element.scope.set('currentModel', Addressbook.contactCollection.create(element.scope.editModel.attributes));
+            this.back();
             //M.Toast.show({text: M.I18N.l('global.succ_add'), timeout: M.Toast.MEDIUM});
         }
 

@@ -45,7 +45,7 @@
             });
         },
 
-        _initView: function( settings ) {
+        _initView: function( ) {
             if( !this.contactCollection ) {
 
                 Addressbook.contactCollection = this.contactCollection = new Addressbook.Collections.ContactsCollection();

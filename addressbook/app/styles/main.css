@@ -157,6 +157,6 @@ body .button.buttonview.btn-info {
     color: black;
 }
 
-.zip{
+.zip, .street {
     padding-right: 5px;
 }

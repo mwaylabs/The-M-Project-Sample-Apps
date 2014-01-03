@@ -6,18 +6,18 @@
 
         currentModel: M.Model.create(),
 
-        applicationStart: function (settings) {
+        applicationStart: function (id) {
             Addressbook.setLayout(M.AppLayout.design(this, null, true));
 
-            this._initView(settings);
+            this._initView(id);
             Addressbook.getLayout().applyViews({
                 header: this.header,
                 content: this.detailView
             });
         },
 
-        show: function (settings) {
-            this._initView(settings);
+        show: function (id) {
+            this._initView(id);
             Addressbook.getLayout().applyViews({
                 header: this.header,
                 content: this.detailView
@@ -33,9 +33,9 @@
             });
         },
 
-        _initView: function (settings) {
+        _initView: function (id) {
             var that = this;
-            var userId = settings.id;
+            var userId = id;
             console.log(userId);
 
             if (Addressbook.contactCollection && Addressbook.contactCollection.models.length > 1) {
