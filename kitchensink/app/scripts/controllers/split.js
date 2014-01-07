@@ -31,7 +31,18 @@ kitchensink.Controllers = kitchensink.Controllers || {};
         },
 
         setLayout: function() {
-            this.tabLayout = M.SplitLayout.extend().create(this, null, true);
+            this.tabLayout = M.SplitLayout.extend({
+
+                onLandscape: function() {
+                     this.$el.addClass('hide-menu-button');
+                },
+
+                onPortrait: function() {
+                    this.$el.removeClass('hide-menu-button');
+                },
+
+            }).create(this, null, true);
+
             kitchensink.setLayout(this.tabLayout);
         },
 
@@ -69,7 +80,7 @@ kitchensink.Controllers = kitchensink.Controllers || {};
 
             if( !this['menuLevel' + menuId] ) {
                 var navItems = [];
-                for( var i = 1; i < 6; i++ ) {
+                for( var i = 1; i < 7; i++ ) {
                     var obj = {};
                     if( menuId === 0 ) {
                         obj.menuId = i;
@@ -126,7 +137,7 @@ kitchensink.Controllers = kitchensink.Controllers || {};
                         events: {
                             tap: function() {
                                 kitchensink.navigate({
-                                   route: ''
+                                    route: ''
                                 });
                             }
                         }
@@ -140,38 +151,47 @@ kitchensink.Controllers = kitchensink.Controllers || {};
         _buildContentView: function( viewId ) {
             if( !this['contentView' + viewId] ) {
                 this['contentView' + viewId] = M.View.extend({
-                        // The views grid
+                    // The views grid
+                }, {
+                    toolbar: M.ToolbarView.extend({
+                        value: 'Split Layout ' + viewId
                     }, {
-                        toolbar: M.ToolbarView.extend({
-                            value: 'Split Layout ' + viewId
-                        }, {
-                            first: M.ButtonView.extend({
-                                cssClass: 'visible-xs',
-                                value: 'Menu',
-                                events: {
-                                    tap: function() {
-                                        this.tabLayout.toggleLeftContainer();
-                                    }
+                        first: M.ButtonView.extend({
+                            cssClass: 'menu-button',
+                            icon: 'fa-bars',
+                            events: {
+                                tap: function() {
+                                    this.tabLayout.toggleLeftContainer();
                                 }
-                            })
-                        }),
-
-                        tf: M.View.extend({
-                            grid: 'col-xs-12',
-                            value: 'Content ' + viewId
+                            }
                         })
-                    }).create(this, null, true);
+                    }),
+
+                    tf: M.View.extend({
+                        grid: 'col-xs-12',
+                        value: 'Content ' + viewId
+                    })
+                }).create(this, null, true);
             }
         },
 
         gotoPage: function( event, element ) {
             var goto = element.model.get('goto');
-
-            kitchensink.navigate({
-                route: 'split/' + goto
-            });
+            this._navigateContent(goto);
         },
 
+        _navigateMenu: function( id ) {
+            kitchensink.navigate({
+                route: 'split/' + id + '/' + this._currentViewId
+            })
+        },
+
+        _navigateContent: function( id ) {
+            kitchensink.navigate({
+                route: 'split/' + this._currentMenuId + '/' + id
+            });
+            this.tabLayout.closeLeftContainer();
+        },
 
         registerToMenu: function( menuController ) {
             menuController.registerMenuItem({

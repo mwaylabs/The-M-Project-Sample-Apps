@@ -79,34 +79,28 @@
     height: 50px;
 }
 
-.splitlayout #leftContainer{
-    border-right: 1px solid #ccc;
-    background: #fbfbfb;
-}
-
-.splitlayout .toolbarview {
-    position: relative;
-}
-
-.splitlayout .close {
-    display: none;
-}
-
-.splitlayout.single #leftContainer {
-    position: absolute;
-    top: 50px;
-    width: 180px;
-    height: 340px;
-    z-index: 9999;
-    left: 10px;
-    overflow: hidden;
-    border: 1px solid #ccc;
-}
-
 .splitBackKitchensink .button {
     border:0;
 }
 
 .splitlayout .listview {
     margin-bottom: 5px;
+}
+
+.splitlayout .menu-button .button {
+    background: none;
+    color: #fff;
+    font-size: 34px;
+    border: none;
+    margin: 0;
+    padding: 5px;
+}
+
+.splitlayout .menu-button.active .button {
+    background: none;
+    color: #ccc;
+}
+
+.splitlayout.hide-menu-button .menu-button {
+    display: none;
 }
