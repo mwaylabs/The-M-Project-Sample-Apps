@@ -33,6 +33,7 @@
     background-color: #000000;
 }
 
+
 .m-tab:nth-child(1) {
     background: #1092d3;
 }
@@ -103,4 +104,18 @@
 
 .splitlayout.hide-menu-button .menu-button {
     display: none;
+}
+
+.listview ul .list-item-header li,
+.listview ul .list-item-footer li{
+    font-size: 10px;
+    padding: 2px 15px;
+}
+
+.odd{
+    background: rgb(218, 218, 218);
+}
+
+.even{
+    background: rgb(232, 232, 232);
 }
