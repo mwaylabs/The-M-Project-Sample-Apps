@@ -105,6 +105,20 @@
     display: none;
 }
 
+.listview ul .list-item-header li,
+.listview ul .list-item-footer li{
+    font-size: 10px;
+    padding: 2px 15px;
+}
+
+.odd{
+    background: rgb(218, 218, 218);
+}
+
+.even{
+    background: rgb(232, 232, 232);
+}
+
 .movable-bg {
     background: lightblue;
     height: 100%;
