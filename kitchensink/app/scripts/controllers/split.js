@@ -80,6 +80,7 @@ kitchensink.Controllers = kitchensink.Controllers || {};
 
             if( !this['menuLevel' + menuId] ) {
                 var navItems = [];
+
                 for( var i = 1; i < 7; i++ ) {
                     var obj = {};
                     if( menuId === 0 ) {
@@ -91,25 +92,20 @@ kitchensink.Controllers = kitchensink.Controllers || {};
                     }
                     navItems.push(obj)
                 }
+
+                if( menuId ) {
+                    navItems.push({
+                        menuId: 0,
+                        value: 'Back'
+                    })
+                }
+
                 this['menuLevel' + menuId] = M.Collection.create(navItems);
             }
 
             if( !this['menuView' + menuId] ) {
 
                 var childViews = {};
-
-                if( menuId ) {
-                    childViews.back = M.ButtonView.extend({
-                        value: '',
-                        cssClass: 'splitBackButton',
-                        icon: 'fa-arrow-circle-o-left',
-                        events: {
-                            tap: function() {
-                                this._navigateMenu(0);
-                            }
-                        }
-                    });
-                }
 
                 childViews.menu = M.ListView.extend({
                     scopeKey: 'menuLevel' + menuId,
@@ -129,20 +125,6 @@ kitchensink.Controllers = kitchensink.Controllers || {};
                         }
                     })
                 });
-
-                if( menuId === 0 ) {
-                    childViews.back = M.ButtonView.extend({
-                        value: 'Back to the Kitchensink',
-                        cssClass: 'splitBackKitchensink',
-                        events: {
-                            tap: function() {
-                                kitchensink.navigate({
-                                    route: ''
-                                });
-                            }
-                        }
-                    });
-                }
 
                 this['menuView' + menuId] = M.View.extend({}, childViews).create(this, null, true)
             }
@@ -168,9 +150,23 @@ kitchensink.Controllers = kitchensink.Controllers || {};
                     }),
 
                     tf: M.View.extend({
+                        cssClass: 'split-content h1',
                         grid: 'col-xs-12',
                         value: 'Content ' + viewId
+                    }),
+
+                    backToApp: M.ButtonView.extend({
+                        value: 'Back to the Kitchensink',
+                        grid: 'col-xs-12',
+                        events: {
+                            tap: function() {
+                                kitchensink.navigate({
+                                    route: ''
+                                });
+                            }
+                        }
                     })
+
                 }).create(this, null, true);
             }
         },

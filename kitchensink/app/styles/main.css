@@ -105,6 +105,10 @@
     display: none;
 }
 
+.split-content {
+    padding: 20px 0 30px 0;
+}
+
 .listview ul .list-item-header li,
 .listview ul .list-item-footer li{
     font-size: 10px;

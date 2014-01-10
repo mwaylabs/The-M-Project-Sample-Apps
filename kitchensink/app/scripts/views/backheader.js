@@ -10,7 +10,7 @@ kitchensink.Views = kitchensink.Views || {};
     },{
 
         first: M.ButtonView.extend({
-            icon: ' fa-arrow-circle-o-left',
+            icon: 'fa-chevron-left',
             events: {
                 tap: function(){
                     kitchensink.navigate({
