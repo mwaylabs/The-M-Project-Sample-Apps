@@ -31,6 +31,7 @@ kitchensink.Controllers = kitchensink.Controllers || {};
 
             }).create(this, null, true);
             kitchensink.setLayout(_layout);
+            kitchensink.router.menuController._initMenu(settings);
             this._initViews(settings);
         },
 

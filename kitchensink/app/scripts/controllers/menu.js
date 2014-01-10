@@ -17,7 +17,6 @@ kitchensink.Controllers = kitchensink.Controllers || {};
         },
 
         _initViews: function(){
-
              //Init the collection
             this._initMenu();
 
