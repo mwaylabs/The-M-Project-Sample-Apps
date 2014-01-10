@@ -6,11 +6,12 @@ kitchensink.Views = kitchensink.Views || {};
     'use strict';
 
     kitchensink.Views.MovablesView = M.View.extend({
-        grid: 'col-xs-12 has-menu'
+        grid: 'col-xs-12 has-menu movable-bg'
     }, {
 
         movableView: M.MovableView.extend({
-            value: 'drag me'
+            cssClass: 'movable-cloud',
+            extendTemplate: '<i class="fa fa-cloud"></i>'
         }),
 
         toggleMenuButton: M.ButtonView.extend({
@@ -23,7 +24,8 @@ kitchensink.Views = kitchensink.Views || {};
         }),
 
         movableViewSmall: M.MovableView.extend({
-            value: 'drag me',
+            cssClass: 'movable-cloud',
+            extendTemplate: '<i class="fa fa-cloud"></i>',
             leftEdge: 100,
             rightEdge: 200
         }),
@@ -38,7 +40,8 @@ kitchensink.Views = kitchensink.Views || {};
         }),
 
         movableViewOnRelease: M.MovableView.extend({
-            value: 'drag me',
+            cssClass: 'movable-cloud',
+            extendTemplate: '<i class="fa fa-cloud"></i>',
             onRelease: function(){
                 console.log('asdf');
             }

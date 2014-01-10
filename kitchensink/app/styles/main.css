@@ -104,3 +104,25 @@
 .splitlayout.hide-menu-button .menu-button {
     display: none;
 }
+
+.movable-bg {
+    background: lightblue;
+    height: 100%;
+}
+
+.movableview {
+    height: 85px;
+    background: none;
+    border-bottom: 1px dotted white;
+}
+
+.movableview {
+     padding-top: 10px;
+     padding-bottom: 30px;
+}
+
+.movableview .movable-element {
+    font-size: 93px;
+    background: none;
+    color: white;
+}

@@ -62,7 +62,7 @@ kitchensink.Controllers = kitchensink.Controllers || {};
                 content: this.contentView,
                 menuContent: this.menuView
             });
-            this.toggleMenu();
+            ///this.toggleMenu();
         },
 
         _initViews: function() {
