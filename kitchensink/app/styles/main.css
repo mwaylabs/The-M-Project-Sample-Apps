@@ -144,3 +144,7 @@
     background: none;
     color: white;
 }
+
+.switch-menu-header-content-layout .content-wrapper{
+    padding-bottom: 30px;
+}

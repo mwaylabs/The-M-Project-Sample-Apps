@@ -240,29 +240,28 @@ kitchensink.Views = kitchensink.Views || {};
 
             })
 
-        })
+        }),
 
-//        ,
-//        toggleSwitchView: M.View.extend({
-//
-//            grid: 'row',
-//            value: 'M.ToggleSwitchView'
-//        }, {
-//            toggleSwitch: M.ToggleSwitchView.extend({
-//                grid: 'col-xs-12',
-//                label: 'Is Favorite',
-//                scopeKey: 'person.favorite',
-//                onValue: YES,
-//                offValue: NO,
-//                onLabel: 'on',
-//                offLabel: 'off'
-//            }),
-//
-//            isFavorite: M.View.extend({
-//                scopeKey: 'person.favorite'
-//            })
-//
-//        })
+        toggle: M.ToggleSwitchView.extend({
+            grid: 'col-xs-6',
+            label: 'Wifi settings: ',
+            offLabel: 'Offline',
+            onLabel: 'Online',
+            scopeKey: 'wifi',
+            extendTemplate: '<%= wifi  %>',
+            onValue: 'online',
+            offValue: 'offline'
+        }),
+
+        toggle2: M.ToggleSwitchView.extend({
+            grid: 'col-xs-6',
+            offLabel: 'Off',
+            onLabel: 'On',
+            scopeKey: 'wifi',
+            extendTemplate: '<%= wifi  %>',
+            onValue: 'online',
+            offValue: 'offline'
+        })
 
 
     });

@@ -24,6 +24,8 @@ kitchensink.Controllers = kitchensink.Controllers || {};
         // Holds the selected item from the multiple M.SelectView
         multipleSelectionListModel: M.Model.create({water: ['evian']}),
 
+        wifi: M.Model.create(),
+
         _initViews: function() {
 
             // Create the ContentView with the controller (this) as scope
@@ -37,6 +39,11 @@ kitchensink.Controllers = kitchensink.Controllers || {};
             }
 
             this._applyViews();
+
+            var data = M.Model.create({
+                wifi: 'online'
+            });
+            this.set('wifi', data);
         },
 
         // Register menu item for this view
