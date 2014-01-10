@@ -65,10 +65,8 @@ module.exports = function (grunt) {
                     '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp}',
                     '<%= yeoman.app %>/scripts/templates/*.ejs',
                     '<%= yeoman.app %>/i18n/*.json',
-                    'test/spec/**/*.js',
-
-                    // remove this
-                    "<%= yeoman.app %>/bower_components/themproject/dist/*"
+                    'test/spec/**/*.js'
+                    //, "<%= yeoman.app %>/bower_components/themproject/dist/*"
                 ]
             },
             tmpl: {
