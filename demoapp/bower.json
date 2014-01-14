@@ -1,8 +1,8 @@
 {
   "name": "demoapp",
-  "version": "0.0.0",
+  "version": "0.2.0",
   "dependencies": {
-    "themproject": "2.0.0-beta"
+    "themproject": "2.0.0-beta2"
   },
   "devDependencies": {}
 }
