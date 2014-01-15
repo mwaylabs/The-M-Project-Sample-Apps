@@ -28,9 +28,11 @@ kitchensink.Controllers = kitchensink.Controllers || {};
             // Create the HeaderView with the controller (this) as scope
             if( !this.headerView ) {
                 this.headerView = M.ToolbarView.extend({
-                    grid: 'col-md-12',
                     value: 'Kitchensink'
-                }).create();
+                },{
+                        first: kitchensink.Views.ToggleMenuButton
+                    }
+                ).create(this, null, true);
             }
 
             this._applyViews();

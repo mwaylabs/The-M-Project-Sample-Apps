@@ -148,3 +148,11 @@
 .switch-menu-header-content-layout .content-wrapper{
     padding-bottom: 30px;
 }
+
+.menu-button i{
+    text-indent: -15px;
+}
+
+.menu-open .menu-button i{
+    text-indent: -25px;
+}
