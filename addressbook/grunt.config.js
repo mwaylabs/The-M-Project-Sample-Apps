@@ -1,6 +1,6 @@
 /**
  * The Grunt configuration file for The-M-Project.
- * Version: 0.1.0
+ * Version: 0.2.0
  *
  * This file allows you to modify the default grunt options
  * without a full understanding how grunt works.
@@ -10,15 +10,6 @@
  */
 
 var config = {
-
-    // Configurable paths
-    paths: {
-        // The location for the build
-        dist: "dist",
-
-        // The location for the app root
-        app: "app"
-    },
 
     // Options for the server task.
     server: {

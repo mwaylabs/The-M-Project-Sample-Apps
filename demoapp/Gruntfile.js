@@ -1,6 +1,6 @@
 /**
  * The Gruntfile for The-M-Project
- * Version: 0.1.0
+ * Version: 0.2.0
  *
  * If you want to modify several settings
  * take a look at the grunt.config.js file.
@@ -22,6 +22,7 @@ var mountFolder = function (connect, dir) {
 // 'test/spec/{,*/}*.js'
 // use this if you want to match all subfolders:
 // 'test/spec/**/*.js'
+// templateFramework: 'lodash'
 
 module.exports = function (grunt) {
     // show elapsed time at the end
@@ -29,12 +30,13 @@ module.exports = function (grunt) {
     // load all grunt tasks
     require('load-grunt-tasks')(grunt);
 
+    // load config
     var cfg = require('./grunt.config.js');
 
     // configurable paths
     var yeomanConfig = {
-        app: cfg.paths.app,
-        dist: cfg.paths.dist
+        app: 'app',
+        dist: 'dist'
     };
 
     // TODO: Implement validation handling
@@ -52,7 +54,8 @@ module.exports = function (grunt) {
         bwr: grunt.file.readJSON('bower.json'),
         watch: {
             options: {
-                nospawn: true
+                nospawn: true,
+                livereload: true
             },
             livereload: {
                 options: {
@@ -63,8 +66,7 @@ module.exports = function (grunt) {
                     '{.tmp,<%= yeoman.app %>}/styles/{,*/}*.css',
                     '{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js',
                     '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp}',
-                    '<%= yeoman.app %>/scripts/templates/*.ejs',
-                    '<%= yeoman.app %>/i18n/*.json',
+                    '<%= yeoman.app %>/scripts/templates/*.{ejs,mustache,hbs}',
                     'test/spec/**/*.js'
                 ]
             },
@@ -84,7 +86,6 @@ module.exports = function (grunt) {
                 port: defaultOption('port', cfg.server.port),
                 hostname: '0.0.0.0'
             },
-            proxies: cfg.server.proxies || [],
             livereload: {
                 options: {
                     middleware: function (connect) {
@@ -117,9 +118,10 @@ module.exports = function (grunt) {
             },
             test: {
                 options: {
-                    port: cfg.test.port,
+                    port: 9001,
                     middleware: function (connect) {
                         return [
+                            lrSnippet,
                             mountFolder(connect, '.tmp'),
                             mountFolder(connect, 'test'),
                             mountFolder(connect, yeomanConfig.app)
@@ -208,11 +210,19 @@ module.exports = function (grunt) {
         htmlmin: {
             dist: {
                 options: {
-                    collapseWhitespace: true
+                    /*removeCommentsFromCDATA: true,
+                    // https://github.com/yeoman/grunt-usemin/issues/44
+                    //collapseWhitespace: true,
+                    collapseBooleanAttributes: true,
+                    removeAttributeQuotes: true,
+                    removeRedundantAttributes: true,
+                    useShortDoctype: true,
+                    removeEmptyAttributes: true,
+                    removeOptionalTags: true*/
                 },
                 files: [{
                     expand: true,
-                    cwd: '<%= yeoman.dist %>',
+                    cwd: '<%= yeoman.app %>',
                     src: '*.html',
                     dest: '<%= yeoman.dist %>'
                 }]
@@ -239,14 +249,9 @@ module.exports = function (grunt) {
                         'splash/*.png',
                         'images/{,*/}*.{webp,gif}',
                         'fonts/{,*/}*.*',
-                        'i18n/*.json'
+                        'i18n/*.js'
                     ]
                 }]
-            }
-        },
-        bower: {
-            all: {
-                rjsConfig: '<%= yeoman.app %>/scripts/main.js'
             }
         },
         tmpl: {
@@ -367,6 +372,7 @@ module.exports = function (grunt) {
         'tmpl',
         'useminPrepare',
         'imagemin',
+        'htmlmin',
         'concat',
         'cssmin',
         'uglify',
