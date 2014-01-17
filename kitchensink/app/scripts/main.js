@@ -44,7 +44,7 @@
 
     // The app gets initialized with the configuration provided from the config.js
     // and gets appended to the global (window) namespace named like the app
-    global.kitchensink = M.Application.extend().create(global.kitchensink.mconfig);
+    global.kitchensink = M.Application.extend(global.kitchensink).create(global.kitchensink.mconfig);
 
     $(document).ready(function() {
 

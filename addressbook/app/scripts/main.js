@@ -5,7 +5,7 @@
 
 (function( global ) {
 
-    global.Addressbook = M.Application.extend().create(global.Addressbook.mconfig);
+    global.Addressbook = M.Application.extend(global.Addressbook).create(global.Addressbook.mconfig);
 
     $(document).ready(function() {
         'use strict';

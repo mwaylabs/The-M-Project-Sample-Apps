@@ -6,7 +6,7 @@
 (function(global) {
     'use strict';
 
-    global.demoapp = M.Application.extend().create(global.demoapp.mconfig);
+    global.demoapp = M.Application.extend(global.demoapp).create(global.demoapp.mconfig);
 
     $(document).ready(function() {
 
